@@ -1,11 +1,16 @@
 using Microsoft.EntityFrameworkCore;
 using Backend.Data;
+using Backend.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Database
 builder.Services.AddDbContext<GreenlightContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("Greenlight")));
+
+// Simulator
+builder.Services.AddSingleton<SimulatorState>();
+builder.Services.AddHostedService<SimulatorService>();
 
 // Enable CORS for frontend
 builder.Services.AddCors(options =>
@@ -158,5 +163,47 @@ app.MapGet("/api/sla-targets", async (GreenlightContext db) =>
             s.SlaDate
         })
         .ToListAsync());
+
+// ── Simulator control endpoints ──────────────────────────────────────
+
+app.MapGet("/api/simulator/status", (SimulatorState sim) => sim.GetStatus());
+
+app.MapPost("/api/simulator/start", (SimulatorState sim) =>
+{
+    if (sim.IsRunning)
+        return Results.BadRequest(new { error = "Simulation already running" });
+    sim.StartRequested = true;
+    return Results.Ok(new { message = "Simulation starting..." });
+});
+
+app.MapPost("/api/simulator/pause", (SimulatorState sim) =>
+{
+    if (!sim.IsRunning)
+        return Results.BadRequest(new { error = "No simulation running" });
+    sim.IsPaused = true;
+    return Results.Ok(new { message = "Simulation paused" });
+});
+
+app.MapPost("/api/simulator/resume", (SimulatorState sim) =>
+{
+    if (!sim.IsRunning)
+        return Results.BadRequest(new { error = "No simulation running" });
+    sim.IsPaused = false;
+    return Results.Ok(new { message = "Simulation resumed" });
+});
+
+app.MapPost("/api/simulator/speed/{multiplier:double}", (double multiplier, SimulatorState sim) =>
+{
+    sim.SpeedMultiplier = multiplier;
+    return Results.Ok(new { message = $"Speed set to {sim.SpeedMultiplier}x" });
+});
+
+app.MapPost("/api/simulator/reset", (SimulatorState sim) =>
+{
+    sim.IsRunning = false;
+    sim.IsPaused = false;
+    sim.ResetRequested = true;
+    return Results.Ok(new { message = "Simulation reset requested" });
+});
 
 app.Run();

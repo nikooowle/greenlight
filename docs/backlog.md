@@ -4,7 +4,7 @@
 |---|-----------|--------|-----------|
 | 1 | Project Setup & Skeleton | ✅ Done | 2026-04-12 |
 | 2 | Database Schema & Seed Data | ✅ Done | 2026-04-12 |
-| 3 | Data Simulator | ⬚ Not Started | — |
+| 3 | Data Simulator | ✅ Done | 2026-04-12 |
 | 4 | Processing Grid + Data Ingestion (Partial) Dashboard | ⬚ Not Started | — |
 | 5 | Subprocess Sidebar, SLA Predictions & Operator Tooling | ⬚ Not Started | — |
 | 6 | Notifications & Alerts | ⬚ Not Started | — |
