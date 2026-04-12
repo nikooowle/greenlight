@@ -1,0 +1,2405 @@
+[
+  {
+    "locationShort": "AU",
+    "locationCode": "AUDB",
+    "subprocessName": "Model Parameters",
+    "frequency": "M",
+    "deadline": "WD7",
+    "workday": 7,
+    "slaDate": "2026-04-10T15:59:00.000Z"
+  },
+  {
+    "locationShort": "BE",
+    "locationCode": "BEDB",
+    "subprocessName": "Model Parameters",
+    "frequency": "M",
+    "deadline": "WD7",
+    "workday": 7,
+    "slaDate": "2026-04-10T15:59:00.000Z"
+  },
+  {
+    "locationShort": "DE",
+    "locationCode": "DEDB",
+    "subprocessName": "Model Parameters",
+    "frequency": "M",
+    "deadline": "WD7",
+    "workday": 7,
+    "slaDate": "2026-04-10T15:59:00.000Z"
+  },
+  {
+    "locationShort": "ES",
+    "locationCode": "ESDB",
+    "subprocessName": "Model Parameters",
+    "frequency": "M",
+    "deadline": "WD7",
+    "workday": 7,
+    "slaDate": "2026-04-10T15:59:00.000Z"
+  },
+  {
+    "locationShort": "FR",
+    "locationCode": "FRDB",
+    "subprocessName": "Model Parameters",
+    "frequency": "M",
+    "deadline": "WD7",
+    "workday": 7,
+    "slaDate": "2026-04-10T15:59:00.000Z"
+  },
+  {
+    "locationShort": "IT",
+    "locationCode": "ITDB",
+    "subprocessName": "Model Parameters",
+    "frequency": "M",
+    "deadline": "WD7",
+    "workday": 7,
+    "slaDate": "2026-04-10T15:59:00.000Z"
+  },
+  {
+    "locationShort": "LU",
+    "locationCode": "LUDB",
+    "subprocessName": "Model Parameters",
+    "frequency": "M",
+    "deadline": "WD7",
+    "workday": 7,
+    "slaDate": "2026-04-10T15:59:00.000Z"
+  },
+  {
+    "locationShort": "NL",
+    "locationCode": "NLRB",
+    "subprocessName": "Model Parameters",
+    "frequency": "M",
+    "deadline": "WD7",
+    "workday": 7,
+    "slaDate": "2026-04-10T15:59:00.000Z"
+  },
+  {
+    "locationShort": "PL",
+    "locationCode": "PLDB",
+    "subprocessName": "Model Parameters",
+    "frequency": "M",
+    "deadline": "WD7",
+    "workday": 7,
+    "slaDate": "2026-04-10T15:59:00.000Z"
+  },
+  {
+    "locationShort": "RO",
+    "locationCode": "RODB",
+    "subprocessName": "Model Parameters",
+    "frequency": "M",
+    "deadline": "WD7",
+    "workday": 7,
+    "slaDate": "2026-04-10T15:59:00.000Z"
+  },
+  {
+    "locationShort": "TR",
+    "locationCode": "TRDB",
+    "subprocessName": "Model Parameters",
+    "frequency": "M",
+    "deadline": "WD7",
+    "workday": 7,
+    "slaDate": "2026-04-10T15:59:00.000Z"
+  },
+  {
+    "locationShort": "WBUS",
+    "locationCode": "WBUS",
+    "subprocessName": "Model Parameters",
+    "frequency": "M",
+    "deadline": "WD7",
+    "workday": 7,
+    "slaDate": "2026-04-10T15:59:00.000Z"
+  },
+  {
+    "locationShort": "ICDB",
+    "locationCode": "ICDB",
+    "subprocessName": "Model Parameters",
+    "frequency": "M",
+    "deadline": "WD7",
+    "workday": 7,
+    "slaDate": "2026-04-10T15:59:00.000Z"
+  },
+  {
+    "locationShort": "TR",
+    "locationCode": "TRDB",
+    "subprocessName": "Cost Pricing",
+    "frequency": "M",
+    "deadline": "WD5",
+    "workday": 5,
+    "slaDate": "2026-04-08T15:59:00.000Z"
+  },
+  {
+    "locationShort": "BE",
+    "locationCode": "BEDB",
+    "subprocessName": "Spreads",
+    "frequency": "M",
+    "deadline": "WD7",
+    "workday": 7,
+    "slaDate": "2026-04-10T15:59:00.000Z"
+  },
+  {
+    "locationShort": "DE",
+    "locationCode": "DEDB",
+    "subprocessName": "Spreads",
+    "frequency": "M",
+    "deadline": "WD7",
+    "workday": 7,
+    "slaDate": "2026-04-10T15:59:00.000Z"
+  },
+  {
+    "locationShort": "ES",
+    "locationCode": "ESDB",
+    "subprocessName": "Spreads",
+    "frequency": "M",
+    "deadline": "WD7",
+    "workday": 7,
+    "slaDate": "2026-04-10T15:59:00.000Z"
+  },
+  {
+    "locationShort": "FR",
+    "locationCode": "FRDB",
+    "subprocessName": "Spreads",
+    "frequency": "M",
+    "deadline": "WD7",
+    "workday": 7,
+    "slaDate": "2026-04-10T15:59:00.000Z"
+  },
+  {
+    "locationShort": "IT",
+    "locationCode": "ITDB",
+    "subprocessName": "Spreads",
+    "frequency": "M",
+    "deadline": "WD7",
+    "workday": 7,
+    "slaDate": "2026-04-10T15:59:00.000Z"
+  },
+  {
+    "locationShort": "LU",
+    "locationCode": "LUDB",
+    "subprocessName": "Spreads",
+    "frequency": "M",
+    "deadline": "WD7",
+    "workday": 7,
+    "slaDate": "2026-04-10T15:59:00.000Z"
+  },
+  {
+    "locationShort": "NL",
+    "locationCode": "NLRB",
+    "subprocessName": "Spreads",
+    "frequency": "M",
+    "deadline": "WD7",
+    "workday": 7,
+    "slaDate": "2026-04-10T15:59:00.000Z"
+  },
+  {
+    "locationShort": "PL",
+    "locationCode": "PLDB",
+    "subprocessName": "Spreads",
+    "frequency": "M",
+    "deadline": "WD7",
+    "workday": 7,
+    "slaDate": "2026-04-10T15:59:00.000Z"
+  },
+  {
+    "locationShort": "RO",
+    "locationCode": "RODB",
+    "subprocessName": "Spreads",
+    "frequency": "M",
+    "deadline": "WD7",
+    "workday": 7,
+    "slaDate": "2026-04-10T15:59:00.000Z"
+  },
+  {
+    "locationShort": "TR",
+    "locationCode": "TRDB",
+    "subprocessName": "Spreads",
+    "frequency": "M",
+    "deadline": "WD7",
+    "workday": 7,
+    "slaDate": "2026-04-10T15:59:00.000Z"
+  },
+  {
+    "locationShort": "WBUS",
+    "locationCode": "WBUS",
+    "subprocessName": "Spreads",
+    "frequency": "M",
+    "deadline": "WD7",
+    "workday": 7,
+    "slaDate": "2026-04-10T15:59:00.000Z"
+  },
+  {
+    "locationShort": "AU",
+    "locationCode": "AUDB",
+    "subprocessName": "Spreads",
+    "frequency": "M",
+    "deadline": "WD7",
+    "workday": 7,
+    "slaDate": "2026-04-10T15:59:00.000Z"
+  },
+  {
+    "locationShort": "ICDB",
+    "locationCode": "ICDB",
+    "subprocessName": "Spreads",
+    "frequency": "M",
+    "deadline": "WD7",
+    "workday": 7,
+    "slaDate": "2026-04-10T15:59:00.000Z"
+  },
+  {
+    "locationShort": "BE",
+    "locationCode": "BEDB",
+    "subprocessName": "Load Position",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "BEGT",
+    "locationCode": "BEGT",
+    "subprocessName": "Load Position",
+    "frequency": "M",
+    "deadline": "WD3",
+    "workday": 3,
+    "slaDate": "2026-04-03T15:59:00.000Z"
+  },
+  {
+    "locationShort": "DE",
+    "locationCode": "DEDB",
+    "subprocessName": "Load Position",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "DEGT",
+    "locationCode": "DEGT",
+    "subprocessName": "Load Position",
+    "frequency": "M",
+    "deadline": "WD3",
+    "workday": 3,
+    "slaDate": "2026-04-03T15:59:00.000Z"
+  },
+  {
+    "locationShort": "ES",
+    "locationCode": "ESDB",
+    "subprocessName": "Load Position",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "FR",
+    "locationCode": "FRDB",
+    "subprocessName": "Load Position",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "IT",
+    "locationCode": "ITDB",
+    "subprocessName": "Load Position",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "LU",
+    "locationCode": "LUDB",
+    "subprocessName": "Load Position",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "NL",
+    "locationCode": "NLRB",
+    "subprocessName": "Load Position",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "NLBTR",
+    "locationCode": "NLBTR",
+    "subprocessName": "Load Position",
+    "frequency": "M",
+    "deadline": "WD2",
+    "workday": 2,
+    "slaDate": "2026-04-02T15:59:00.000Z"
+  },
+  {
+    "locationShort": "PL",
+    "locationCode": "PLDB",
+    "subprocessName": "Load Position",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "RO",
+    "locationCode": "RODB",
+    "subprocessName": "Load Position",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "TR",
+    "locationCode": "TRDB",
+    "subprocessName": "Load Position",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "WBUS",
+    "locationCode": "WBUS",
+    "subprocessName": "Load Position",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "AU",
+    "locationCode": "AUDB",
+    "subprocessName": "Load Position",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "ICDB",
+    "locationCode": "ICDB",
+    "subprocessName": "Load Position",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "DE",
+    "locationCode": "DEDB",
+    "subprocessName": "PDCE planning",
+    "frequency": "Q",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "ES",
+    "locationCode": "ESDB",
+    "subprocessName": "PDCE planning",
+    "frequency": "Q",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "FR",
+    "locationCode": "FRDB",
+    "subprocessName": "PDCE planning",
+    "frequency": "Q",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "IT",
+    "locationCode": "ITDB",
+    "subprocessName": "PDCE planning",
+    "frequency": "Q",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "LU",
+    "locationCode": "LUDB",
+    "subprocessName": "PDCE planning",
+    "frequency": "Q",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "NL",
+    "locationCode": "NLRB",
+    "subprocessName": "PDCE planning",
+    "frequency": "Q",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "PL",
+    "locationCode": "PLDB",
+    "subprocessName": "PDCE planning",
+    "frequency": "Q",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "TR",
+    "locationCode": "TRDB",
+    "subprocessName": "PDCE planning",
+    "frequency": "Q",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "BE",
+    "locationCode": "BEDB",
+    "subprocessName": "Valuation",
+    "frequency": "M",
+    "deadline": "WD8",
+    "workday": 8,
+    "slaDate": "2026-04-13T15:59:00.000Z"
+  },
+  {
+    "locationShort": "BEGT",
+    "locationCode": "BEGT",
+    "subprocessName": "Valuation",
+    "frequency": "M",
+    "deadline": "WD6",
+    "workday": 6,
+    "slaDate": "2026-04-09T15:59:00.000Z"
+  },
+  {
+    "locationShort": "DE",
+    "locationCode": "DEDB",
+    "subprocessName": "Valuation",
+    "frequency": "M",
+    "deadline": "WD8",
+    "workday": 8,
+    "slaDate": "2026-04-13T15:59:00.000Z"
+  },
+  {
+    "locationShort": "DEGT",
+    "locationCode": "DEGT",
+    "subprocessName": "Valuation",
+    "frequency": "M",
+    "deadline": "WD6",
+    "workday": 6,
+    "slaDate": "2026-04-09T15:59:00.000Z"
+  },
+  {
+    "locationShort": "ES",
+    "locationCode": "ESDB",
+    "subprocessName": "Valuation",
+    "frequency": "M",
+    "deadline": "WD8",
+    "workday": 8,
+    "slaDate": "2026-04-13T15:59:00.000Z"
+  },
+  {
+    "locationShort": "FR",
+    "locationCode": "FRDB",
+    "subprocessName": "Valuation",
+    "frequency": "M",
+    "deadline": "WD8",
+    "workday": 8,
+    "slaDate": "2026-04-13T15:59:00.000Z"
+  },
+  {
+    "locationShort": "IT",
+    "locationCode": "ITDB",
+    "subprocessName": "Valuation",
+    "frequency": "M",
+    "deadline": "WD8",
+    "workday": 8,
+    "slaDate": "2026-04-13T15:59:00.000Z"
+  },
+  {
+    "locationShort": "LU",
+    "locationCode": "LUDB",
+    "subprocessName": "Valuation",
+    "frequency": "M",
+    "deadline": "WD8",
+    "workday": 8,
+    "slaDate": "2026-04-13T15:59:00.000Z"
+  },
+  {
+    "locationShort": "NL",
+    "locationCode": "NLRB",
+    "subprocessName": "Valuation",
+    "frequency": "M",
+    "deadline": "WD8",
+    "workday": 8,
+    "slaDate": "2026-04-13T15:59:00.000Z"
+  },
+  {
+    "locationShort": "NLBTR",
+    "locationCode": "NLBTR",
+    "subprocessName": "Valuation",
+    "frequency": "M",
+    "deadline": "WD6",
+    "workday": 6,
+    "slaDate": "2026-04-09T15:59:00.000Z"
+  },
+  {
+    "locationShort": "PL",
+    "locationCode": "PLDB",
+    "subprocessName": "Valuation",
+    "frequency": "M",
+    "deadline": "WD8",
+    "workday": 8,
+    "slaDate": "2026-04-13T15:59:00.000Z"
+  },
+  {
+    "locationShort": "RO",
+    "locationCode": "RODB",
+    "subprocessName": "Valuation",
+    "frequency": "M",
+    "deadline": "WD8",
+    "workday": 8,
+    "slaDate": "2026-04-13T15:59:00.000Z"
+  },
+  {
+    "locationShort": "TR",
+    "locationCode": "TRDB",
+    "subprocessName": "Valuation",
+    "frequency": "M",
+    "deadline": "WD8",
+    "workday": 8,
+    "slaDate": "2026-04-13T15:59:00.000Z"
+  },
+  {
+    "locationShort": "WBUS",
+    "locationCode": "WBUS",
+    "subprocessName": "Valuation",
+    "frequency": "M",
+    "deadline": "WD8",
+    "workday": 8,
+    "slaDate": "2026-04-13T15:59:00.000Z"
+  },
+  {
+    "locationShort": "AU",
+    "locationCode": "AUDB",
+    "subprocessName": "Valuation",
+    "frequency": "M",
+    "deadline": "WD8",
+    "workday": 8,
+    "slaDate": "2026-04-13T15:59:00.000Z"
+  },
+  {
+    "locationShort": "ICDB",
+    "locationCode": "ICDB",
+    "subprocessName": "Valuation",
+    "frequency": "M",
+    "deadline": "WD8",
+    "workday": 8,
+    "slaDate": "2026-04-13T15:59:00.000Z"
+  },
+  {
+    "locationShort": "BEGT",
+    "locationCode": "BEGT",
+    "subprocessName": "CSRBB (Val)",
+    "frequency": "M",
+    "deadline": "WD10",
+    "workday": 10,
+    "slaDate": "2026-04-15T15:59:00.000Z"
+  },
+  {
+    "locationShort": "DE",
+    "locationCode": "DEDB",
+    "subprocessName": "CSRBB (Val)",
+    "frequency": "M",
+    "deadline": "WD10",
+    "workday": 10,
+    "slaDate": "2026-04-15T15:59:00.000Z"
+  },
+  {
+    "locationShort": "ES",
+    "locationCode": "ESDB",
+    "subprocessName": "CSRBB (Val)",
+    "frequency": "M",
+    "deadline": "WD10",
+    "workday": 10,
+    "slaDate": "2026-04-15T15:59:00.000Z"
+  },
+  {
+    "locationShort": "FR",
+    "locationCode": "FRDB",
+    "subprocessName": "CSRBB (Val)",
+    "frequency": "M",
+    "deadline": "WD10",
+    "workday": 10,
+    "slaDate": "2026-04-15T15:59:00.000Z"
+  },
+  {
+    "locationShort": "LU",
+    "locationCode": "LUDB",
+    "subprocessName": "CSRBB (Val)",
+    "frequency": "M",
+    "deadline": "WD10",
+    "workday": 10,
+    "slaDate": "2026-04-15T15:59:00.000Z"
+  },
+  {
+    "locationShort": "IT",
+    "locationCode": "ITDB",
+    "subprocessName": "CSRBB (Val)",
+    "frequency": "M",
+    "deadline": "WD10",
+    "workday": 10,
+    "slaDate": "2026-04-15T15:59:00.000Z"
+  },
+  {
+    "locationShort": "NLBTR",
+    "locationCode": "NLBTR",
+    "subprocessName": "CSRBB (Val)",
+    "frequency": "M",
+    "deadline": "WD10",
+    "workday": 10,
+    "slaDate": "2026-04-15T15:59:00.000Z"
+  },
+  {
+    "locationShort": "PL",
+    "locationCode": "PLDB",
+    "subprocessName": "CSRBB (Val)",
+    "frequency": "M",
+    "deadline": "WD10",
+    "workday": 10,
+    "slaDate": "2026-04-15T15:59:00.000Z"
+  },
+  {
+    "locationShort": "RO",
+    "locationCode": "RODB",
+    "subprocessName": "CSRBB (Val)",
+    "frequency": "M",
+    "deadline": "WD10",
+    "workday": 10,
+    "slaDate": "2026-04-15T15:59:00.000Z"
+  },
+  {
+    "locationShort": "TR",
+    "locationCode": "TRDB",
+    "subprocessName": "CSRBB (Val)",
+    "frequency": "M",
+    "deadline": "WD10",
+    "workday": 10,
+    "slaDate": "2026-04-15T15:59:00.000Z"
+  },
+  {
+    "locationShort": "WBUS",
+    "locationCode": "WBUS",
+    "subprocessName": "CSRBB (Val)",
+    "frequency": "M",
+    "deadline": "WD10",
+    "workday": 10,
+    "slaDate": "2026-04-15T15:59:00.000Z"
+  },
+  {
+    "locationShort": "AU",
+    "locationCode": "AUDB",
+    "subprocessName": "CSRBB (Val)",
+    "frequency": "M",
+    "deadline": "WD10",
+    "workday": 10,
+    "slaDate": "2026-04-15T15:59:00.000Z"
+  },
+  {
+    "locationShort": "ICDB",
+    "locationCode": "ICDB",
+    "subprocessName": "CSRBB (Val)",
+    "frequency": "M",
+    "deadline": "WD10",
+    "workday": 10,
+    "slaDate": "2026-04-15T15:59:00.000Z"
+  },
+  {
+    "locationShort": "BEGT",
+    "locationCode": "BEGT",
+    "subprocessName": "CSRBB (Plan)",
+    "frequency": "M",
+    "deadline": "WD10",
+    "workday": 10,
+    "slaDate": "2026-04-15T15:59:00.000Z"
+  },
+  {
+    "locationShort": "DE",
+    "locationCode": "DEDB",
+    "subprocessName": "CSRBB (Plan)",
+    "frequency": "M",
+    "deadline": "WD10",
+    "workday": 10,
+    "slaDate": "2026-04-15T15:59:00.000Z"
+  },
+  {
+    "locationShort": "ES",
+    "locationCode": "ESDB",
+    "subprocessName": "CSRBB (Plan)",
+    "frequency": "M",
+    "deadline": "WD10",
+    "workday": 10,
+    "slaDate": "2026-04-15T15:59:00.000Z"
+  },
+  {
+    "locationShort": "FR",
+    "locationCode": "FRDB",
+    "subprocessName": "CSRBB (Plan)",
+    "frequency": "M",
+    "deadline": "WD10",
+    "workday": 10,
+    "slaDate": "2026-04-15T15:59:00.000Z"
+  },
+  {
+    "locationShort": "LU",
+    "locationCode": "LUDB",
+    "subprocessName": "CSRBB (Plan)",
+    "frequency": "M",
+    "deadline": "WD10",
+    "workday": 10,
+    "slaDate": "2026-04-15T15:59:00.000Z"
+  },
+  {
+    "locationShort": "NLBTR",
+    "locationCode": "NLBTR",
+    "subprocessName": "CSRBB (Plan)",
+    "frequency": "M",
+    "deadline": "WD10",
+    "workday": 10,
+    "slaDate": "2026-04-15T15:59:00.000Z"
+  },
+  {
+    "locationShort": "PL",
+    "locationCode": "PLDB",
+    "subprocessName": "CSRBB (Plan)",
+    "frequency": "M",
+    "deadline": "WD10",
+    "workday": 10,
+    "slaDate": "2026-04-15T15:59:00.000Z"
+  },
+  {
+    "locationShort": "RO",
+    "locationCode": "RODB",
+    "subprocessName": "CSRBB (Plan)",
+    "frequency": "M",
+    "deadline": "WD10",
+    "workday": 10,
+    "slaDate": "2026-04-15T15:59:00.000Z"
+  },
+  {
+    "locationShort": "TR",
+    "locationCode": "TRDB",
+    "subprocessName": "CSRBB (Plan)",
+    "frequency": "M",
+    "deadline": "WD10",
+    "workday": 10,
+    "slaDate": "2026-04-15T15:59:00.000Z"
+  },
+  {
+    "locationShort": "WBUS",
+    "locationCode": "WBUS",
+    "subprocessName": "CSRBB (Plan)",
+    "frequency": "M",
+    "deadline": "WD10",
+    "workday": 10,
+    "slaDate": "2026-04-15T15:59:00.000Z"
+  },
+  {
+    "locationShort": "AU",
+    "locationCode": "AUDB",
+    "subprocessName": "CSRBB (Plan)",
+    "frequency": "M",
+    "deadline": "WD10",
+    "workday": 10,
+    "slaDate": "2026-04-15T15:59:00.000Z"
+  },
+  {
+    "locationShort": "ICDB",
+    "locationCode": "ICDB",
+    "subprocessName": "CSRBB (Plan)",
+    "frequency": "M",
+    "deadline": "WD10",
+    "workday": 10,
+    "slaDate": "2026-04-15T15:59:00.000Z"
+  },
+  {
+    "locationShort": "IT",
+    "locationCode": "ITDB",
+    "subprocessName": "CSRBB (Plan)",
+    "frequency": "M",
+    "deadline": "WD10",
+    "workday": 10,
+    "slaDate": "2026-04-15T15:59:00.000Z"
+  },
+  {
+    "locationShort": "BEGT",
+    "locationCode": "BEGT",
+    "subprocessName": "CSRBB (Val) Quarterly",
+    "frequency": "Q",
+    "deadline": "WD15",
+    "workday": 15,
+    "slaDate": "2026-04-22T15:59:00.000Z"
+  },
+  {
+    "locationShort": "DE",
+    "locationCode": "DEDB",
+    "subprocessName": "CSRBB (Val) Quarterly",
+    "frequency": "Q",
+    "deadline": "WD15",
+    "workday": 15,
+    "slaDate": "2026-04-22T15:59:00.000Z"
+  },
+  {
+    "locationShort": "ES",
+    "locationCode": "ESDB",
+    "subprocessName": "CSRBB (Val) Quarterly",
+    "frequency": "Q",
+    "deadline": "WD15",
+    "workday": 15,
+    "slaDate": "2026-04-22T15:59:00.000Z"
+  },
+  {
+    "locationShort": "FR",
+    "locationCode": "FRDB",
+    "subprocessName": "CSRBB (Val) Quarterly",
+    "frequency": "Q",
+    "deadline": "WD15",
+    "workday": 15,
+    "slaDate": "2026-04-22T15:59:00.000Z"
+  },
+  {
+    "locationShort": "LU",
+    "locationCode": "LUDB",
+    "subprocessName": "CSRBB (Val) Quarterly",
+    "frequency": "Q",
+    "deadline": "WD15",
+    "workday": 15,
+    "slaDate": "2026-04-22T15:59:00.000Z"
+  },
+  {
+    "locationShort": "NLBTR",
+    "locationCode": "NLBTR",
+    "subprocessName": "CSRBB (Val) Quarterly",
+    "frequency": "Q",
+    "deadline": "WD15",
+    "workday": 15,
+    "slaDate": "2026-04-22T15:59:00.000Z"
+  },
+  {
+    "locationShort": "PL",
+    "locationCode": "PLDB",
+    "subprocessName": "CSRBB (Val) Quarterly",
+    "frequency": "Q",
+    "deadline": "WD15",
+    "workday": 15,
+    "slaDate": "2026-04-22T15:59:00.000Z"
+  },
+  {
+    "locationShort": "RO",
+    "locationCode": "RODB",
+    "subprocessName": "CSRBB (Val) Quarterly",
+    "frequency": "Q",
+    "deadline": "WD15",
+    "workday": 15,
+    "slaDate": "2026-04-22T15:59:00.000Z"
+  },
+  {
+    "locationShort": "TR",
+    "locationCode": "TRDB",
+    "subprocessName": "CSRBB (Val) Quarterly",
+    "frequency": "Q",
+    "deadline": "WD15",
+    "workday": 15,
+    "slaDate": "2026-04-22T15:59:00.000Z"
+  },
+  {
+    "locationShort": "WBUS",
+    "locationCode": "WBUS",
+    "subprocessName": "CSRBB (Val) Quarterly",
+    "frequency": "Q",
+    "deadline": "WD15",
+    "workday": 15,
+    "slaDate": "2026-04-22T15:59:00.000Z"
+  },
+  {
+    "locationShort": "AU",
+    "locationCode": "AUDB",
+    "subprocessName": "CSRBB (Val) Quarterly",
+    "frequency": "Q",
+    "deadline": "WD15",
+    "workday": 15,
+    "slaDate": "2026-04-22T15:59:00.000Z"
+  },
+  {
+    "locationShort": "ICDB",
+    "locationCode": "ICDB",
+    "subprocessName": "CSRBB (Val) Quarterly",
+    "frequency": "Q",
+    "deadline": "WD15",
+    "workday": 15,
+    "slaDate": "2026-04-22T15:59:00.000Z"
+  },
+  {
+    "locationShort": "IT",
+    "locationCode": "ITDB",
+    "subprocessName": "CSRBB (Val) Quarterly",
+    "frequency": "Q",
+    "deadline": "WD15",
+    "workday": 15,
+    "slaDate": "2026-04-22T15:59:00.000Z"
+  },
+  {
+    "locationShort": "BEGT",
+    "locationCode": "BEGT",
+    "subprocessName": "CSRBB (Plan) Quarterly",
+    "frequency": "Q",
+    "deadline": "WD15",
+    "workday": 15,
+    "slaDate": "2026-04-22T15:59:00.000Z"
+  },
+  {
+    "locationShort": "DE",
+    "locationCode": "DEDB",
+    "subprocessName": "CSRBB (Plan) Quarterly",
+    "frequency": "Q",
+    "deadline": "WD15",
+    "workday": 15,
+    "slaDate": "2026-04-22T15:59:00.000Z"
+  },
+  {
+    "locationShort": "ES",
+    "locationCode": "ESDB",
+    "subprocessName": "CSRBB (Plan) Quarterly",
+    "frequency": "Q",
+    "deadline": "WD15",
+    "workday": 15,
+    "slaDate": "2026-04-22T15:59:00.000Z"
+  },
+  {
+    "locationShort": "FR",
+    "locationCode": "FRDB",
+    "subprocessName": "CSRBB (Plan) Quarterly",
+    "frequency": "Q",
+    "deadline": "WD15",
+    "workday": 15,
+    "slaDate": "2026-04-22T15:59:00.000Z"
+  },
+  {
+    "locationShort": "LU",
+    "locationCode": "LUDB",
+    "subprocessName": "CSRBB (Plan) Quarterly",
+    "frequency": "Q",
+    "deadline": "WD15",
+    "workday": 15,
+    "slaDate": "2026-04-22T15:59:00.000Z"
+  },
+  {
+    "locationShort": "NLBTR",
+    "locationCode": "NLBTR",
+    "subprocessName": "CSRBB (Plan) Quarterly",
+    "frequency": "Q",
+    "deadline": "WD15",
+    "workday": 15,
+    "slaDate": "2026-04-22T15:59:00.000Z"
+  },
+  {
+    "locationShort": "PL",
+    "locationCode": "PLDB",
+    "subprocessName": "CSRBB (Plan) Quarterly",
+    "frequency": "Q",
+    "deadline": "WD15",
+    "workday": 15,
+    "slaDate": "2026-04-22T15:59:00.000Z"
+  },
+  {
+    "locationShort": "RO",
+    "locationCode": "RODB",
+    "subprocessName": "CSRBB (Plan) Quarterly",
+    "frequency": "Q",
+    "deadline": "WD15",
+    "workday": 15,
+    "slaDate": "2026-04-22T15:59:00.000Z"
+  },
+  {
+    "locationShort": "TR",
+    "locationCode": "TRDB",
+    "subprocessName": "CSRBB (Plan) Quarterly",
+    "frequency": "Q",
+    "deadline": "WD15",
+    "workday": 15,
+    "slaDate": "2026-04-22T15:59:00.000Z"
+  },
+  {
+    "locationShort": "WBUS",
+    "locationCode": "WBUS",
+    "subprocessName": "CSRBB (Plan) Quarterly",
+    "frequency": "Q",
+    "deadline": "WD15",
+    "workday": 15,
+    "slaDate": "2026-04-22T15:59:00.000Z"
+  },
+  {
+    "locationShort": "AU",
+    "locationCode": "AUDB",
+    "subprocessName": "CSRBB (Plan) Quarterly",
+    "frequency": "Q",
+    "deadline": "WD15",
+    "workday": 15,
+    "slaDate": "2026-04-22T15:59:00.000Z"
+  },
+  {
+    "locationShort": "ICDB",
+    "locationCode": "ICDB",
+    "subprocessName": "CSRBB (Plan) Quarterly",
+    "frequency": "Q",
+    "deadline": "WD15",
+    "workday": 15,
+    "slaDate": "2026-04-22T15:59:00.000Z"
+  },
+  {
+    "locationShort": "IT",
+    "locationCode": "ITDB",
+    "subprocessName": "CSRBB (Plan) Quarterly",
+    "frequency": "Q",
+    "deadline": "WD15",
+    "workday": 15,
+    "slaDate": "2026-04-22T15:59:00.000Z"
+  },
+  {
+    "locationShort": "AU",
+    "locationCode": "AUDB",
+    "subprocessName": "NII / Planning risk",
+    "frequency": "M",
+    "deadline": "WD12",
+    "workday": 12,
+    "slaDate": "2026-04-17T15:59:00.000Z"
+  },
+  {
+    "locationShort": "BE",
+    "locationCode": "BEDB",
+    "subprocessName": "NII / Planning risk",
+    "frequency": "M",
+    "deadline": "WD12",
+    "workday": 12,
+    "slaDate": "2026-04-17T15:59:00.000Z"
+  },
+  {
+    "locationShort": "BEGT",
+    "locationCode": "BEGT",
+    "subprocessName": "NII / Planning risk",
+    "frequency": "M",
+    "deadline": "WD6",
+    "workday": 6,
+    "slaDate": "2026-04-09T15:59:00.000Z"
+  },
+  {
+    "locationShort": "DE",
+    "locationCode": "DEDB",
+    "subprocessName": "NII / Planning risk",
+    "frequency": "M",
+    "deadline": "WD12",
+    "workday": 12,
+    "slaDate": "2026-04-17T15:59:00.000Z"
+  },
+  {
+    "locationShort": "DEGT",
+    "locationCode": "DEGT",
+    "subprocessName": "NII / Planning risk",
+    "frequency": "M",
+    "deadline": "WD6",
+    "workday": 6,
+    "slaDate": "2026-04-09T15:59:00.000Z"
+  },
+  {
+    "locationShort": "ES",
+    "locationCode": "ESDB",
+    "subprocessName": "NII / Planning risk",
+    "frequency": "M",
+    "deadline": "WD12",
+    "workday": 12,
+    "slaDate": "2026-04-17T15:59:00.000Z"
+  },
+  {
+    "locationShort": "FR",
+    "locationCode": "FRDB",
+    "subprocessName": "NII / Planning risk",
+    "frequency": "M",
+    "deadline": "WD12",
+    "workday": 12,
+    "slaDate": "2026-04-17T15:59:00.000Z"
+  },
+  {
+    "locationShort": "IT",
+    "locationCode": "ITDB",
+    "subprocessName": "NII / Planning risk",
+    "frequency": "M",
+    "deadline": "WD12",
+    "workday": 12,
+    "slaDate": "2026-04-17T15:59:00.000Z"
+  },
+  {
+    "locationShort": "LU",
+    "locationCode": "LUDB",
+    "subprocessName": "NII / Planning risk",
+    "frequency": "M",
+    "deadline": "WD12",
+    "workday": 12,
+    "slaDate": "2026-04-17T15:59:00.000Z"
+  },
+  {
+    "locationShort": "NL",
+    "locationCode": "NLRB",
+    "subprocessName": "NII / Planning risk",
+    "frequency": "M",
+    "deadline": "WD12",
+    "workday": 12,
+    "slaDate": "2026-04-17T15:59:00.000Z"
+  },
+  {
+    "locationShort": "NLBTR",
+    "locationCode": "NLBTR",
+    "subprocessName": "NII / Planning risk",
+    "frequency": "M",
+    "deadline": "WD6",
+    "workday": 6,
+    "slaDate": "2026-04-09T15:59:00.000Z"
+  },
+  {
+    "locationShort": "PL",
+    "locationCode": "PLDB",
+    "subprocessName": "NII / Planning risk",
+    "frequency": "M",
+    "deadline": "WD12",
+    "workday": 12,
+    "slaDate": "2026-04-17T15:59:00.000Z"
+  },
+  {
+    "locationShort": "RO",
+    "locationCode": "RODB",
+    "subprocessName": "NII / Planning risk",
+    "frequency": "M",
+    "deadline": "WD12",
+    "workday": 12,
+    "slaDate": "2026-04-17T15:59:00.000Z"
+  },
+  {
+    "locationShort": "TR",
+    "locationCode": "TRDB",
+    "subprocessName": "NII / Planning risk",
+    "frequency": "M",
+    "deadline": "WD12",
+    "workday": 12,
+    "slaDate": "2026-04-17T15:59:00.000Z"
+  },
+  {
+    "locationShort": "WBUS",
+    "locationCode": "WBUS",
+    "subprocessName": "NII / Planning risk",
+    "frequency": "M",
+    "deadline": "WD17",
+    "workday": 17,
+    "slaDate": "2026-04-24T15:59:00.000Z"
+  },
+  {
+    "locationShort": "ICDB",
+    "locationCode": "ICDB",
+    "subprocessName": "NII / Planning risk",
+    "frequency": "M",
+    "deadline": "WD12",
+    "workday": 12,
+    "slaDate": "2026-04-17T15:59:00.000Z"
+  },
+  {
+    "locationShort": "BE",
+    "locationCode": "BEDB",
+    "subprocessName": "AIC Valuation",
+    "frequency": "M",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "BEGT",
+    "locationCode": "BEGT",
+    "subprocessName": "AIC Valuation",
+    "frequency": "M",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "DE",
+    "locationCode": "DEDB",
+    "subprocessName": "AIC Valuation",
+    "frequency": "M",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "ES",
+    "locationCode": "ESDB",
+    "subprocessName": "AIC Valuation",
+    "frequency": "M",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "FR",
+    "locationCode": "FRDB",
+    "subprocessName": "AIC Valuation",
+    "frequency": "M",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "IT",
+    "locationCode": "ITDB",
+    "subprocessName": "AIC Valuation",
+    "frequency": "M",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "NL",
+    "locationCode": "NLRB",
+    "subprocessName": "AIC Valuation",
+    "frequency": "M",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "NLBTR",
+    "locationCode": "NLBTR",
+    "subprocessName": "AIC Valuation",
+    "frequency": "M",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "PL",
+    "locationCode": "PLDB",
+    "subprocessName": "AIC Valuation",
+    "frequency": "M",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "TR",
+    "locationCode": "TRDB",
+    "subprocessName": "AIC Valuation",
+    "frequency": "M",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "WBUS",
+    "locationCode": "WBUS",
+    "subprocessName": "AIC Valuation",
+    "frequency": "M",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "AU",
+    "locationCode": "AUDB",
+    "subprocessName": "AIC Valuation",
+    "frequency": "M",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "ICDB",
+    "locationCode": "ICDB",
+    "subprocessName": "AIC Valuation",
+    "frequency": "M",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "AU",
+    "locationCode": "AUDB",
+    "subprocessName": "EC",
+    "frequency": "M",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "BE",
+    "locationCode": "BEDB",
+    "subprocessName": "EC",
+    "frequency": "M",
+    "deadline": "WD10",
+    "workday": 10,
+    "slaDate": "2026-04-15T15:59:00.000Z"
+  },
+  {
+    "locationShort": "BEGT",
+    "locationCode": "BEGT",
+    "subprocessName": "EC",
+    "frequency": "M",
+    "deadline": "WD6",
+    "workday": 6,
+    "slaDate": "2026-04-09T15:59:00.000Z"
+  },
+  {
+    "locationShort": "DE",
+    "locationCode": "DEDB",
+    "subprocessName": "EC",
+    "frequency": "M",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "ES",
+    "locationCode": "ESDB",
+    "subprocessName": "EC",
+    "frequency": "M",
+    "deadline": "WD10",
+    "workday": 10,
+    "slaDate": "2026-04-15T15:59:00.000Z"
+  },
+  {
+    "locationShort": "FR",
+    "locationCode": "FRDB",
+    "subprocessName": "EC",
+    "frequency": "M",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "IT",
+    "locationCode": "ITDB",
+    "subprocessName": "EC",
+    "frequency": "M",
+    "deadline": "WD10",
+    "workday": 10,
+    "slaDate": "2026-04-15T15:59:00.000Z"
+  },
+  {
+    "locationShort": "LU",
+    "locationCode": "LUDB",
+    "subprocessName": "EC",
+    "frequency": "M",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "NL",
+    "locationCode": "NLRB",
+    "subprocessName": "EC",
+    "frequency": "M",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "NLBTR",
+    "locationCode": "NLBTR",
+    "subprocessName": "EC",
+    "frequency": "M",
+    "deadline": "WD6",
+    "workday": 6,
+    "slaDate": "2026-04-09T15:59:00.000Z"
+  },
+  {
+    "locationShort": "PL",
+    "locationCode": "PLDB",
+    "subprocessName": "EC",
+    "frequency": "M",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "RO",
+    "locationCode": "RODB",
+    "subprocessName": "EC",
+    "frequency": "M",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "TR",
+    "locationCode": "TRDB",
+    "subprocessName": "EC",
+    "frequency": "M",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "ICDB",
+    "locationCode": "ICDB",
+    "subprocessName": "EC",
+    "frequency": "M",
+    "deadline": "WD12",
+    "workday": 12,
+    "slaDate": "2026-04-17T15:59:00.000Z"
+  },
+  {
+    "locationShort": "AU",
+    "locationCode": "AUDB",
+    "subprocessName": "KR",
+    "frequency": "M",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "BE",
+    "locationCode": "BEDB",
+    "subprocessName": "KR",
+    "frequency": "M",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "BEGT",
+    "locationCode": "BEGT",
+    "subprocessName": "KR",
+    "frequency": "M",
+    "deadline": "WD6",
+    "workday": 6,
+    "slaDate": "2026-04-09T15:59:00.000Z"
+  },
+  {
+    "locationShort": "DE",
+    "locationCode": "DEDB",
+    "subprocessName": "KR",
+    "frequency": "M",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "ES",
+    "locationCode": "ESDB",
+    "subprocessName": "KR",
+    "frequency": "M",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "FR",
+    "locationCode": "FRDB",
+    "subprocessName": "KR",
+    "frequency": "M",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "IT",
+    "locationCode": "ITDB",
+    "subprocessName": "KR",
+    "frequency": "M",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "LU",
+    "locationCode": "LUDB",
+    "subprocessName": "KR",
+    "frequency": "M",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "NL",
+    "locationCode": "NLRB",
+    "subprocessName": "KR",
+    "frequency": "M",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "NLBTR",
+    "locationCode": "NLBTR",
+    "subprocessName": "KR",
+    "frequency": "M",
+    "deadline": "WD6",
+    "workday": 6,
+    "slaDate": "2026-04-09T15:59:00.000Z"
+  },
+  {
+    "locationShort": "PL",
+    "locationCode": "PLDB",
+    "subprocessName": "KR",
+    "frequency": "M",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "RO",
+    "locationCode": "RODB",
+    "subprocessName": "KR",
+    "frequency": "M",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "TR",
+    "locationCode": "TRDB",
+    "subprocessName": "KR",
+    "frequency": "M",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "WBUS",
+    "locationCode": "WBUS",
+    "subprocessName": "KR",
+    "frequency": "M",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "ICDB",
+    "locationCode": "ICDB",
+    "subprocessName": "KR",
+    "frequency": "M",
+    "deadline": "WD12",
+    "workday": 12,
+    "slaDate": "2026-04-17T15:59:00.000Z"
+  },
+  {
+    "locationShort": "AU",
+    "locationCode": "AUDB",
+    "subprocessName": "ITS planning",
+    "frequency": "M",
+    "deadline": "WD14",
+    "workday": 14,
+    "slaDate": "2026-04-21T15:59:00.000Z"
+  },
+  {
+    "locationShort": "BEGT",
+    "locationCode": "BEGT",
+    "subprocessName": "ITS planning",
+    "frequency": "M",
+    "deadline": "WD6",
+    "workday": 6,
+    "slaDate": "2026-04-09T15:59:00.000Z"
+  },
+  {
+    "locationShort": "DE",
+    "locationCode": "DEDB",
+    "subprocessName": "ITS planning",
+    "frequency": "M",
+    "deadline": "WD14",
+    "workday": 14,
+    "slaDate": "2026-04-21T15:59:00.000Z"
+  },
+  {
+    "locationShort": "ES",
+    "locationCode": "ESDB",
+    "subprocessName": "ITS planning",
+    "frequency": "M",
+    "deadline": "WD14",
+    "workday": 14,
+    "slaDate": "2026-04-21T15:59:00.000Z"
+  },
+  {
+    "locationShort": "FR",
+    "locationCode": "FRDB",
+    "subprocessName": "ITS planning",
+    "frequency": "M",
+    "deadline": "WD14",
+    "workday": 14,
+    "slaDate": "2026-04-21T15:59:00.000Z"
+  },
+  {
+    "locationShort": "IT",
+    "locationCode": "ITDB",
+    "subprocessName": "ITS planning",
+    "frequency": "M",
+    "deadline": "WD14",
+    "workday": 14,
+    "slaDate": "2026-04-21T15:59:00.000Z"
+  },
+  {
+    "locationShort": "PL",
+    "locationCode": "PLDB",
+    "subprocessName": "ITS planning",
+    "frequency": "M",
+    "deadline": "WD14",
+    "workday": 14,
+    "slaDate": "2026-04-21T15:59:00.000Z"
+  },
+  {
+    "locationShort": "NL",
+    "locationCode": "NLRB",
+    "subprocessName": "ITS planning",
+    "frequency": "M",
+    "deadline": "WD14",
+    "workday": 14,
+    "slaDate": "2026-04-21T15:59:00.000Z"
+  },
+  {
+    "locationShort": "NLBTR",
+    "locationCode": "NLBTR",
+    "subprocessName": "ITS planning",
+    "frequency": "M",
+    "deadline": "WD6",
+    "workday": 6,
+    "slaDate": "2026-04-09T15:59:00.000Z"
+  },
+  {
+    "locationShort": "RO",
+    "locationCode": "RODB",
+    "subprocessName": "ITS planning",
+    "frequency": "M",
+    "deadline": "WD14",
+    "workday": 14,
+    "slaDate": "2026-04-21T15:59:00.000Z"
+  },
+  {
+    "locationShort": "TR",
+    "locationCode": "TRDB",
+    "subprocessName": "ITS planning",
+    "frequency": "M",
+    "deadline": "WD14",
+    "workday": 14,
+    "slaDate": "2026-04-21T15:59:00.000Z"
+  },
+  {
+    "locationShort": "WBUS",
+    "locationCode": "WBUS",
+    "subprocessName": "ITS planning",
+    "frequency": "M",
+    "deadline": "WD14",
+    "workday": 14,
+    "slaDate": "2026-04-21T15:59:00.000Z"
+  },
+  {
+    "locationShort": "BE",
+    "locationCode": "BEDB",
+    "subprocessName": "Gap + Liquidity IR",
+    "frequency": "M",
+    "deadline": "WD14",
+    "workday": 14,
+    "slaDate": "2026-04-21T15:59:00.000Z"
+  },
+  {
+    "locationShort": "BEGT",
+    "locationCode": "BEGT",
+    "subprocessName": "Gap + Liquidity IR",
+    "frequency": "M",
+    "deadline": "WD6",
+    "workday": 6,
+    "slaDate": "2026-04-09T15:59:00.000Z"
+  },
+  {
+    "locationShort": "DE",
+    "locationCode": "DEDB",
+    "subprocessName": "Gap + Liquidity IR",
+    "frequency": "M",
+    "deadline": "WD14",
+    "workday": 14,
+    "slaDate": "2026-04-21T15:59:00.000Z"
+  },
+  {
+    "locationShort": "DEGT",
+    "locationCode": "DEGT",
+    "subprocessName": "Gap + Liquidity IR",
+    "frequency": "M",
+    "deadline": "WD6",
+    "workday": 6,
+    "slaDate": "2026-04-09T15:59:00.000Z"
+  },
+  {
+    "locationShort": "ES",
+    "locationCode": "ESDB",
+    "subprocessName": "Gap + Liquidity IR",
+    "frequency": "M",
+    "deadline": "WD14",
+    "workday": 14,
+    "slaDate": "2026-04-21T15:59:00.000Z"
+  },
+  {
+    "locationShort": "FR",
+    "locationCode": "FRDB",
+    "subprocessName": "Gap + Liquidity IR",
+    "frequency": "M",
+    "deadline": "WD14",
+    "workday": 14,
+    "slaDate": "2026-04-21T15:59:00.000Z"
+  },
+  {
+    "locationShort": "IT",
+    "locationCode": "ITDB",
+    "subprocessName": "Gap + Liquidity IR",
+    "frequency": "M",
+    "deadline": "WD14",
+    "workday": 14,
+    "slaDate": "2026-04-21T15:59:00.000Z"
+  },
+  {
+    "locationShort": "LU",
+    "locationCode": "LUDB",
+    "subprocessName": "Gap + Liquidity IR",
+    "frequency": "M",
+    "deadline": "WD14",
+    "workday": 14,
+    "slaDate": "2026-04-21T15:59:00.000Z"
+  },
+  {
+    "locationShort": "NL",
+    "locationCode": "NLRB",
+    "subprocessName": "Gap + Liquidity IR",
+    "frequency": "M",
+    "deadline": "WD14",
+    "workday": 14,
+    "slaDate": "2026-04-21T15:59:00.000Z"
+  },
+  {
+    "locationShort": "NLBTR",
+    "locationCode": "NLBTR",
+    "subprocessName": "Gap + Liquidity IR",
+    "frequency": "M",
+    "deadline": "WD6",
+    "workday": 6,
+    "slaDate": "2026-04-09T15:59:00.000Z"
+  },
+  {
+    "locationShort": "RO",
+    "locationCode": "RODB",
+    "subprocessName": "Gap + Liquidity IR",
+    "frequency": "M",
+    "deadline": "WD14",
+    "workday": 14,
+    "slaDate": "2026-04-21T15:59:00.000Z"
+  },
+  {
+    "locationShort": "PL",
+    "locationCode": "PLDB",
+    "subprocessName": "Gap + Liquidity IR",
+    "frequency": "M",
+    "deadline": "WD14",
+    "workday": 14,
+    "slaDate": "2026-04-21T15:59:00.000Z"
+  },
+  {
+    "locationShort": "TR",
+    "locationCode": "TRDB",
+    "subprocessName": "Gap + Liquidity IR",
+    "frequency": "M",
+    "deadline": "WD14",
+    "workday": 14,
+    "slaDate": "2026-04-21T15:59:00.000Z"
+  },
+  {
+    "locationShort": "WBUS",
+    "locationCode": "WBUS",
+    "subprocessName": "Gap + Liquidity IR",
+    "frequency": "M",
+    "deadline": "WD14",
+    "workday": 14,
+    "slaDate": "2026-04-21T15:59:00.000Z"
+  },
+  {
+    "locationShort": "ICDB",
+    "locationCode": "ICDB",
+    "subprocessName": "Gap + Liquidity IR",
+    "frequency": "M",
+    "deadline": "WD14",
+    "workday": 14,
+    "slaDate": "2026-04-21T15:59:00.000Z"
+  },
+  {
+    "locationShort": "NL",
+    "locationCode": "NLRB",
+    "subprocessName": "Planning Finance",
+    "frequency": "M",
+    "deadline": "WD13",
+    "workday": 13,
+    "slaDate": "2026-04-20T15:59:00.000Z"
+  },
+  {
+    "locationShort": "PL",
+    "locationCode": "PLDB",
+    "subprocessName": "Solo",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "DE",
+    "locationCode": "DEDB",
+    "subprocessName": "SOT",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "PL",
+    "locationCode": "PLDB",
+    "subprocessName": "SOT",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "LU",
+    "locationCode": "LUDB",
+    "subprocessName": "ACPR/ cashflow extraction",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "AU",
+    "locationCode": "AUDB",
+    "subprocessName": "TRISS export",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "IT",
+    "locationCode": "ITDB",
+    "subprocessName": "Custom reports",
+    "frequency": "",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "BE",
+    "locationCode": "BEDB",
+    "subprocessName": "EVE Optionality",
+    "frequency": "M",
+    "deadline": "WD20",
+    "workday": 20,
+    "slaDate": "2026-04-30T15:59:00.000Z"
+  },
+  {
+    "locationShort": "DE",
+    "locationCode": "DEDB",
+    "subprocessName": "EVE Optionality",
+    "frequency": "Q",
+    "deadline": "WD20",
+    "workday": 20,
+    "slaDate": "2026-04-30T15:59:00.000Z"
+  },
+  {
+    "locationShort": "ES",
+    "locationCode": "ESDB",
+    "subprocessName": "EVE Optionality",
+    "frequency": "Q",
+    "deadline": "WD20",
+    "workday": 20,
+    "slaDate": "2026-04-30T15:59:00.000Z"
+  },
+  {
+    "locationShort": "FR",
+    "locationCode": "FRDB",
+    "subprocessName": "EVE Optionality",
+    "frequency": "Q",
+    "deadline": "WD20",
+    "workday": 20,
+    "slaDate": "2026-04-30T15:59:00.000Z"
+  },
+  {
+    "locationShort": "IT",
+    "locationCode": "ITDB",
+    "subprocessName": "EVE Optionality",
+    "frequency": "Q",
+    "deadline": "WD20",
+    "workday": 20,
+    "slaDate": "2026-04-30T15:59:00.000Z"
+  },
+  {
+    "locationShort": "LU",
+    "locationCode": "LUDB",
+    "subprocessName": "EVE Optionality",
+    "frequency": "Q",
+    "deadline": "WD20",
+    "workday": 20,
+    "slaDate": "2026-04-30T15:59:00.000Z"
+  },
+  {
+    "locationShort": "NL",
+    "locationCode": "NLRB",
+    "subprocessName": "EVE Optionality",
+    "frequency": "Q",
+    "deadline": "WD20",
+    "workday": 20,
+    "slaDate": "2026-04-30T15:59:00.000Z"
+  },
+  {
+    "locationShort": "PL",
+    "locationCode": "PLDB",
+    "subprocessName": "EVE Optionality",
+    "frequency": "Q",
+    "deadline": "WD20",
+    "workday": 20,
+    "slaDate": "2026-04-30T15:59:00.000Z"
+  },
+  {
+    "locationShort": "TR",
+    "locationCode": "TRDB",
+    "subprocessName": "EVE Optionality",
+    "frequency": "Q",
+    "deadline": "WD20",
+    "workday": 20,
+    "slaDate": "2026-04-30T15:59:00.000Z"
+  },
+  {
+    "locationShort": "DE",
+    "locationCode": "DEDB",
+    "subprocessName": "Quarterly valuation",
+    "frequency": "Q",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "NL",
+    "locationCode": "NLRB",
+    "subprocessName": "Quarterly valuation",
+    "frequency": "Q",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "PL",
+    "locationCode": "PLDB",
+    "subprocessName": "Regulatory Valuation",
+    "frequency": "Q",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "PL",
+    "locationCode": "PLDB",
+    "subprocessName": "Regulatory Stress Test",
+    "frequency": "Q",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "NL",
+    "locationCode": "NLRB",
+    "subprocessName": "SLM",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "BEGT",
+    "locationCode": "BEGT",
+    "subprocessName": "Load Pos (RAS)",
+    "frequency": "M",
+    "deadline": "WD5",
+    "workday": 5,
+    "slaDate": "2026-04-08T15:59:00.000Z"
+  },
+  {
+    "locationShort": "DEGT",
+    "locationCode": "DEGT",
+    "subprocessName": "Planning (NII) (RAS)",
+    "frequency": "M",
+    "deadline": "WD6",
+    "workday": 6,
+    "slaDate": "2026-04-09T15:59:00.000Z"
+  },
+  {
+    "locationShort": "NLBTR",
+    "locationCode": "NLBTR",
+    "subprocessName": "Valuation (NPV) (RAS)",
+    "frequency": "M",
+    "deadline": "WD6",
+    "workday": 6,
+    "slaDate": "2026-04-09T15:59:00.000Z"
+  },
+  {
+    "locationShort": "BE",
+    "locationCode": "BEDB",
+    "subprocessName": "EVE (Monthly)",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "TR",
+    "locationCode": "TRDB",
+    "subprocessName": "GAP ITS Planning",
+    "frequency": "Q",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "AU",
+    "locationCode": "AUDB",
+    "subprocessName": "Import CSRBB Strategies",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "BEGT",
+    "locationCode": "BEGT",
+    "subprocessName": "Import CSRBB Strategies",
+    "frequency": "M",
+    "deadline": "WD5",
+    "workday": 5,
+    "slaDate": "2026-04-08T15:59:00.000Z"
+  },
+  {
+    "locationShort": "DE",
+    "locationCode": "DEDB",
+    "subprocessName": "Import CSRBB Strategies",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "ES",
+    "locationCode": "ESDB",
+    "subprocessName": "Import CSRBB Strategies",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "FR",
+    "locationCode": "FRDB",
+    "subprocessName": "Import CSRBB Strategies",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "IT",
+    "locationCode": "ITDB",
+    "subprocessName": "Import CSRBB Strategies",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "LU",
+    "locationCode": "LUDB",
+    "subprocessName": "Import CSRBB Strategies",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "NLBTR",
+    "locationCode": "NLBTR",
+    "subprocessName": "Import CSRBB Strategies",
+    "frequency": "M",
+    "deadline": "WD5",
+    "workday": 5,
+    "slaDate": "2026-04-08T15:59:00.000Z"
+  },
+  {
+    "locationShort": "PL",
+    "locationCode": "PLDB",
+    "subprocessName": "Import CSRBB Strategies",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "RO",
+    "locationCode": "RODB",
+    "subprocessName": "Import CSRBB Strategies",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "TR",
+    "locationCode": "TRDB",
+    "subprocessName": "Import CSRBB Strategies",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "WBUS",
+    "locationCode": "WBUS",
+    "subprocessName": "Import CSRBB Strategies",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "AU",
+    "locationCode": "AUDB",
+    "subprocessName": "Import Strategies",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "BE",
+    "locationCode": "BEDB",
+    "subprocessName": "Import Strategies",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "BEGT",
+    "locationCode": "BEGT",
+    "subprocessName": "Import Strategies",
+    "frequency": "M",
+    "deadline": "WD3",
+    "workday": 3,
+    "slaDate": "2026-04-03T15:59:00.000Z"
+  },
+  {
+    "locationShort": "DE",
+    "locationCode": "DEDB",
+    "subprocessName": "Import Strategies",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "DEGT",
+    "locationCode": "DEGT",
+    "subprocessName": "Import Strategies",
+    "frequency": "M",
+    "deadline": "WD3",
+    "workday": 3,
+    "slaDate": "2026-04-03T15:59:00.000Z"
+  },
+  {
+    "locationShort": "ES",
+    "locationCode": "ESDB",
+    "subprocessName": "Import Strategies",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "FR",
+    "locationCode": "FRDB",
+    "subprocessName": "Import Strategies",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "IT",
+    "locationCode": "ITDB",
+    "subprocessName": "Import Strategies",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "LU",
+    "locationCode": "LUDB",
+    "subprocessName": "Import Strategies",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "NLBTR",
+    "locationCode": "NLBTR",
+    "subprocessName": "Import Strategies",
+    "frequency": "M",
+    "deadline": "WD3",
+    "workday": 3,
+    "slaDate": "2026-04-03T15:59:00.000Z"
+  },
+  {
+    "locationShort": "NL",
+    "locationCode": "NLRB",
+    "subprocessName": "Import Strategies",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "PL",
+    "locationCode": "PLDB",
+    "subprocessName": "Import Strategies",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "RO",
+    "locationCode": "RODB",
+    "subprocessName": "Import Strategies",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "TR",
+    "locationCode": "TRDB",
+    "subprocessName": "Import Strategies",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "WBUS",
+    "locationCode": "WBUS",
+    "subprocessName": "Import Strategies",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "AU",
+    "locationCode": "AUDB",
+    "subprocessName": "Load AIC Spreads",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "BE",
+    "locationCode": "BEDB",
+    "subprocessName": "Load AIC Spreads",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "DE",
+    "locationCode": "DEDB",
+    "subprocessName": "Load AIC Spreads",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "ES",
+    "locationCode": "ESDB",
+    "subprocessName": "Load AIC Spreads",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "FR",
+    "locationCode": "FRDB",
+    "subprocessName": "Load AIC Spreads",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "IT",
+    "locationCode": "ITDB",
+    "subprocessName": "Load AIC Spreads",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "NL",
+    "locationCode": "NLRB",
+    "subprocessName": "Load AIC Spreads",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "PL",
+    "locationCode": "PLDB",
+    "subprocessName": "Load AIC Spreads",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "TR",
+    "locationCode": "TRDB",
+    "subprocessName": "Load AIC Spreads",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  },
+  {
+    "locationShort": "WBUS",
+    "locationCode": "WBUS",
+    "subprocessName": "Load AIC Spreads",
+    "frequency": "M",
+    "deadline": "",
+    "workday": "",
+    "slaDate": null
+  }
+]

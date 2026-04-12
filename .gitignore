@@ -23,5 +23,18 @@ Thumbs.db
 
 # Database
 *.db
+*.db-shm
+*.db-wal
 *.mdf
 *.ldf
+
+# Seed data temp files
+docs/seed-data/node_modules/
+docs/seed-data/package*.json
+docs/seed-data/export-validation.js
+docs/seed-data/greenlight-data-validation.xlsx
+docs/seed-data/locations.json
+docs/seed-data/~$*
+
+# Claude
+.claude/
