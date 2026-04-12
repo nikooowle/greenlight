@@ -5,7 +5,7 @@
 | 1 | Project Setup & Skeleton | ✅ Done | 2026-04-12 |
 | 2 | Database Schema & Seed Data | ✅ Done | 2026-04-12 |
 | 3 | Data Simulator | ✅ Done | 2026-04-12 |
-| 4 | Processing Grid + Data Ingestion (Partial) Dashboard | ⬚ Not Started | — |
+| 4 | Processing Grid + Data Ingestion (Partial) Dashboard | ✅ Done | 2026-04-13 |
 | 5 | Subprocess Sidebar, SLA Predictions & Operator Tooling | ⬚ Not Started | — |
 | 6 | Notifications & Alerts | ⬚ Not Started | — |
 | 7 | Data Quality Integration with DAS | ⬚ Not Started | — |
@@ -19,12 +19,20 @@
 ```
 frontend/
   src/
-    App.tsx                          ← main app with layout
+    App.tsx                          ← main app, wires dashboard + simulator hooks
+    types.ts                         ← TypeScript interfaces for API responses
     components/Sidebar.tsx           ← collapsible dark sidebar
-    components/MetricCards.tsx        ← 6 placeholder metric cards
-    components/PhaseGrid.tsx         ← 3-phase overview cards
+    components/MetricCards.tsx        ← 6 live metric cards (from matrix data)
+    components/ProcessingGrid.tsx    ← tabbed location×subprocess matrix grid
+    components/StatusLegend.tsx      ← 7-color status legend bar
+    components/SimulatorControls.tsx  ← play/pause/reset/speed controls
+    components/PhaseGrid.tsx         ← (legacy) 3-phase overview cards
+    hooks/usePolling.ts              ← generic polling hook
+    hooks/useDashboard.ts            ← fetches run, matrix, locations, subprocesses
+    hooks/useSimulator.ts            ← simulator status + control actions
+    lib/api.ts                       ← fetch wrappers for all API endpoints
     lib/utils.ts                     ← cn() utility
-  vite.config.ts                     ← port 3000, Tailwind, @ alias
+  vite.config.ts                     ← port 3000, proxy /api → backend:5176
 backend/
   Program.cs                         ← API: 6 endpoints (health, runs, matrix, logs, locations, SLA)
   Data/

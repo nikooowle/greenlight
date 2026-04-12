@@ -7,6 +7,8 @@ import {
   MapPin,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
+import type { MatrixCell, Location } from "@/types"
+import { useMemo } from "react"
 
 interface MetricCardProps {
   icon: React.ElementType
@@ -32,13 +34,32 @@ function MetricCard({ icon: Icon, label, value, subtext, color, bgColor }: Metri
   )
 }
 
-export function MetricCards() {
+interface MetricCardsProps {
+  matrix: MatrixCell[]
+  locations: Location[]
+}
+
+export function MetricCards({ matrix, locations }: MetricCardsProps) {
+  const counts = useMemo(() => {
+    const scopedCells = matrix.filter((c) => c.status !== "Not in Scope")
+    return {
+      completed: scopedCells.filter((c) => c.status === "Completed").length,
+      running: scopedCells.filter((c) => c.status === "Running").length,
+      failed: scopedCells.filter((c) => c.status === "Failed" || c.status === "Stopped").length,
+      waiting: scopedCells.filter((c) => c.status === "Not Started").length,
+      issues: scopedCells.filter((c) => c.status === "Failed").length,
+      locations: locations.filter((l) => l.inScope).length,
+    }
+  }, [matrix, locations])
+
+  const hasData = matrix.length > 0
+
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
       <MetricCard
         icon={CheckCircle2}
         label="Completed"
-        value="--"
+        value={hasData ? String(counts.completed) : "--"}
         subtext="Subprocesses done"
         color="text-emerald-400"
         bgColor="bg-emerald-500/10"
@@ -46,7 +67,7 @@ export function MetricCards() {
       <MetricCard
         icon={Loader2}
         label="Running"
-        value="--"
+        value={hasData ? String(counts.running) : "--"}
         subtext="In progress"
         color="text-blue-400"
         bgColor="bg-blue-500/10"
@@ -54,7 +75,7 @@ export function MetricCards() {
       <MetricCard
         icon={XCircle}
         label="Failed"
-        value="--"
+        value={hasData ? String(counts.failed) : "--"}
         subtext="Need attention"
         color="text-red-400"
         bgColor="bg-red-500/10"
@@ -62,7 +83,7 @@ export function MetricCards() {
       <MetricCard
         icon={Clock}
         label="Waiting"
-        value="--"
+        value={hasData ? String(counts.waiting) : "--"}
         subtext="Not started"
         color="text-slate-400"
         bgColor="bg-slate-500/10"
@@ -70,7 +91,7 @@ export function MetricCards() {
       <MetricCard
         icon={AlertTriangle}
         label="Issues"
-        value="--"
+        value={hasData ? String(counts.issues) : "--"}
         subtext="Open incidents"
         color="text-amber-400"
         bgColor="bg-amber-500/10"
@@ -78,7 +99,7 @@ export function MetricCards() {
       <MetricCard
         icon={MapPin}
         label="Locations"
-        value="15"
+        value={hasData ? String(counts.locations) : "--"}
         subtext="ING entities"
         color="text-purple-400"
         bgColor="bg-purple-500/10"
