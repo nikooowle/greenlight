@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ALM Greenlight — Dashboard v4 (Manual Override)</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; font-family: 'Segoe UI', Calibri, Arial, sans-serif; background: #f1f4f8; color: #1a1a1a; overflow-x: hidden; }
+  .app { padding: 20px; transition: padding-right 0.25s ease; }
+  .app.drawer-open { padding-right: 440px; }
+
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  .subtitle { color: #6b7684; font-size: 12px; margin-bottom: 18px; }
+
+  .top-banner { background: #fff8d6; border: 1px solid #f5d84b; border-radius: 6px; padding: 10px 14px; font-size: 12px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .top-banner a { color: #1a73e8; text-decoration: none; }
+
+  .month-banner { border-radius: 6px; padding: 10px 14px; font-size: 12px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .month-banner.qend { background: #f0e6ff; border: 1px solid #b8a0e6; }
+  .month-banner.regular { background: #e8f4ff; border: 1px solid #a8c8e8; }
+  .month-toggle { display: inline-flex; background: white; border: 1px solid #d1d9e0; border-radius: 16px; padding: 2px; font-size: 11px; }
+  .month-toggle span { padding: 4px 10px; cursor: pointer; border-radius: 12px; color: #6b7684; }
+  .month-toggle span.active { background: #1a73e8; color: white; }
+
+  .kpi-row { display: flex; gap: 12px; margin-bottom: 20px; }
+  .kpi { flex: 1; background: white; border-radius: 8px; padding: 14px 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); cursor: pointer; border-left: 4px solid #ccc; }
+  .kpi-value { font-size: 26px; font-weight: 700; line-height: 1; }
+  .kpi-label { font-size: 11px; color: #6b7684; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+  .kpi.ok { border-left-color: #4CAF50; }
+  .kpi.warn { border-left-color: #f5a623; }
+  .kpi.bad { border-left-color: #e74c3c; }
+  .kpi.info { border-left-color: #3498db; }
+
+  .toolbar { display: flex; gap: 8px; margin-bottom: 10px; align-items: center; flex-wrap: wrap; }
+  .pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: white; border: 1px solid #d1d9e0; border-radius: 16px; font-size: 12px; cursor: pointer; user-select: none; }
+  .pill.active { background: #1a73e8; color: white; border-color: #1a73e8; }
+  .pill .caret { font-size: 10px; color: #6b7684; }
+  .pill.active .caret { color: white; }
+
+  .matrix-wrap { background: white; border-radius: 8px; overflow: auto; box-shadow: 0 1px 3px rgba(0,0,0,0.08); max-height: calc(100vh - 320px); }
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #e8ecef; padding: 6px 4px; text-align: center; font-size: 11px; }
+  thead th { background: #f5f7fa; font-weight: 600; position: sticky; top: 0; z-index: 2; }
+  .group-header { font-size: 12px; padding: 8px 4px; }
+  .group-header.di { background: #d0e9d0 !important; }
+  .group-header.mp { background: #c8dcf0 !important; }
+  .group-header.ex { background: #e0d0ff !important; }
+  .sub-header { font-size: 9.5px; line-height: 1.1; padding: 6px 3px; max-width: 58px; min-width: 38px; word-wrap: break-word; }
+  .sub-header.quarterly-col { background: linear-gradient(to bottom, #f0e6ff 0%, #f5f7fa 40%) !important; border-top: 3px solid #8a5cc6 !important; }
+  .q-marker { display: inline-block; font-size: 8px; background: #8a5cc6; color: white; padding: 1px 4px; border-radius: 3px; font-weight: 700; vertical-align: super; }
+  .loc-cell { background: #f5f7fa !important; font-weight: 700; text-align: left; padding: 8px 10px; min-width: 70px; font-size: 12px; position: sticky; left: 0; z-index: 1; cursor: pointer; }
+  .loc-cell:hover { background: #eef2f6 !important; color: #1a73e8; }
+  tr.focused .loc-cell { background: #e3f0fc !important; color: #1a73e8; }
+  tr.focused td { background: #f7fbff; }
+
+  .cell-not-scope { background: #fdecea; }
+  .cell-done { background: #4CAF50; color: white; font-weight: 700; }
+  .cell-done.manual { background: #4CAF50; position: relative; }
+  .cell-done.manual::after { content: '👤'; position: absolute; top: -2px; right: -2px; font-size: 10px; background: #fff; border-radius: 50%; width: 14px; height: 14px; line-height: 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+  .cell-running { background: #f5a623; color: white; font-weight: 700; animation: pulse 2s ease-in-out infinite; }
+  .cell-failed { background: #e74c3c; color: white; font-weight: 700; }
+  .cell-pending { background: #bdc3c7; color: white; font-weight: 700; }
+  .cell-not-started { background: #ecf0f1; color: #6b7684; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+
+  .extras-cell { background: #fafbfc; padding: 6px 8px !important; text-align: center; }
+  .badge { display: inline-flex; align-items: center; justify-content: center; min-width: 28px; height: 22px; padding: 0 8px; border-radius: 11px; font-size: 11px; font-weight: 700; color: white; cursor: pointer; }
+  .badge.done { background: #4CAF50; }
+  .badge.running { background: #f5a623; }
+  .badge.failed { background: #e74c3c; }
+  .badge.mixed { background: linear-gradient(90deg, #4CAF50 50%, #f5a623 50%); }
+  .badge.none { visibility: hidden; }
+
+  .drawer { position: fixed; top: 0; right: -440px; width: 440px; height: 100vh; background: white; box-shadow: -4px 0 20px rgba(0,0,0,0.12); transition: right 0.25s ease; z-index: 100; overflow-y: auto; }
+  .drawer.open { right: 0; }
+  .drawer-header { padding: 18px 20px; border-bottom: 1px solid #e8ecef; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; background: white; z-index: 1; }
+  .drawer-title { font-size: 18px; font-weight: 700; margin: 0; }
+  .drawer-sub { font-size: 11px; color: #6b7684; margin-top: 2px; }
+  .drawer-close { background: none; border: none; font-size: 22px; cursor: pointer; color: #6b7684; }
+  .drawer-body { padding: 16px 20px; }
+  .drawer-phase { background: #fafbfc; border: 1px solid #e8ecef; border-radius: 6px; padding: 12px; margin-bottom: 10px; }
+  .drawer-phase-title { font-size: 13px; font-weight: 700; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center; }
+  .drawer-phase-counts { font-size: 10px; color: #6b7684; font-weight: normal; }
+
+  /* Step rows in drawer */
+  .step-item { display: flex; align-items: center; gap: 10px; padding: 8px 8px; border-radius: 4px; font-size: 12px; position: relative; }
+  .step-item:hover { background: #eef2f6; }
+  .step-item:hover .step-menu { opacity: 1; }
+  .step-status { width: 18px; height: 18px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 10px; color: white; font-weight: bold; flex-shrink: 0; position: relative; }
+  .step-status.done { background: #4CAF50; }
+  .step-status.running { background: #f5a623; }
+  .step-status.failed { background: #e74c3c; }
+  .step-status.pending { background: #bdc3c7; }
+  .step-status.not-started { background: #ecf0f1; color: #6b7684; }
+  .step-status.manual::after { content: '👤'; position: absolute; top: -4px; right: -6px; font-size: 10px; background: white; border-radius: 50%; width: 14px; height: 14px; line-height: 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+  .step-name { flex: 1; }
+  .step-meta { font-size: 10px; color: #6b7684; }
+  .step-menu { opacity: 0; background: none; border: none; cursor: pointer; color: #6b7684; font-size: 18px; padding: 0 4px; transition: opacity 0.15s; }
+  .step-menu:hover { color: #1a73e8; }
+  .step-dropdown { display: none; position: absolute; right: 10px; top: 100%; background: white; border: 1px solid #d1d9e0; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.12); z-index: 10; min-width: 220px; }
+  .step-dropdown.open { display: block; }
+  .step-dropdown button { display: block; width: 100%; text-align: left; padding: 10px 14px; font-size: 12px; background: none; border: none; cursor: pointer; }
+  .step-dropdown button:hover { background: #eef2f6; }
+  .step-dropdown button .ic { margin-right: 8px; }
+  .step-dropdown .divider { height: 1px; background: #e8ecef; margin: 4px 0; }
+  .step-override-note { font-size: 10px; color: #4CAF50; margin-top: 2px; font-style: italic; }
+
+  /* Modal */
+  .modal-bg { position: fixed; inset: 0; background: rgba(0,0,0,0.35); display: none; align-items: center; justify-content: center; z-index: 200; }
+  .modal-bg.open { display: flex; }
+  .modal { background: white; border-radius: 8px; width: 440px; max-width: 90vw; box-shadow: 0 10px 40px rgba(0,0,0,0.2); overflow: hidden; }
+  .modal-header { padding: 16px 20px; border-bottom: 1px solid #e8ecef; }
+  .modal-title { margin: 0; font-size: 16px; font-weight: 700; }
+  .modal-sub { font-size: 11px; color: #6b7684; margin-top: 4px; }
+  .modal-body { padding: 16px 20px; }
+  .field { margin-bottom: 14px; }
+  .field label { display: block; font-size: 11px; color: #6b7684; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; font-weight: 700; }
+  .field label .req { color: #e74c3c; }
+  .field input, .field textarea { width: 100%; padding: 8px 10px; border: 1px solid #d1d9e0; border-radius: 4px; font-size: 13px; font-family: inherit; }
+  .field textarea { resize: vertical; min-height: 60px; }
+  .field .hint { font-size: 10px; color: #6b7684; margin-top: 4px; }
+  .modal-footer { padding: 12px 20px; border-top: 1px solid #e8ecef; display: flex; justify-content: flex-end; gap: 8px; background: #fafbfc; }
+  .btn { padding: 8px 16px; border-radius: 4px; font-size: 13px; border: 1px solid transparent; cursor: pointer; font-weight: 600; }
+  .btn.primary { background: #1a73e8; color: white; }
+  .btn.primary:hover { background: #1557b0; }
+  .btn.ghost { background: none; color: #6b7684; }
+  .btn.ghost:hover { background: #eef2f6; }
+
+  /* Toast */
+  .toast { position: fixed; bottom: 24px; right: 24px; background: #1a1a1a; color: white; padding: 12px 18px; border-radius: 6px; box-shadow: 0 4px 16px rgba(0,0,0,0.2); font-size: 13px; display: none; align-items: center; gap: 10px; z-index: 300; animation: slideUp 0.3s ease; }
+  .toast.show { display: flex; }
+  .toast .ic { color: #4CAF50; font-size: 18px; }
+  .toast button { background: none; border: 1px solid rgba(255,255,255,0.3); color: white; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 11px; }
+  @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+  .legend { margin-top: 16px; font-size: 11px; display: flex; gap: 16px; flex-wrap: wrap; color: #6b7684; }
+  .legend-item { display: flex; align-items: center; gap: 6px; }
+  .lg-box { width: 14px; height: 14px; border-radius: 3px; border: 1px solid rgba(0,0,0,0.1); display: inline-block; position: relative; }
+  .lg-box.manual::after { content: '👤'; position: absolute; top: -4px; right: -4px; font-size: 9px; background: white; border-radius: 50%; width: 12px; height: 12px; line-height: 12px; }
+
+  .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.05); z-index: 50; display: none; }
+  .overlay.active { display: block; }
+</style>
+</head>
+<body>
+
+<div class="app" id="app">
+
+<h1>ALM Greenlight — Dashboard v4</h1>
+<p class="subtitle">Added: manual override for when operators complete work outside Q3 (e.g., manual QRM export). Overrides are tracked separately and visually distinct.</p>
+
+<div class="top-banner">
+  <span>👤 <b>Coordinator view</b> · 3 manual overrides this run · <a href="#">audit log</a></span>
+  <span>Try: open a location drawer → click ⋯ on a pending step → "Mark as manually completed"</span>
+</div>
+
+<div class="month-banner qend" id="month-banner">
+  <span>📅 <b>Viewing: Mar 2026 (2603) — Quarter End</b></span>
+  <div class="month-toggle">
+    <span data-month="2602">Feb 2026</span>
+    <span class="active" data-month="2603">Mar 2026 (Q1)</span>
+  </div>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi info"><div class="kpi-value">15</div><div class="kpi-label">Active Locations</div></div>
+  <div class="kpi ok"><div class="kpi-value">215<span style="font-size:16px;color:#6b7684"> / 280</span></div><div class="kpi-label">In-Scope Completed</div></div>
+  <div class="kpi warn"><div class="kpi-value">24</div><div class="kpi-label">Running</div></div>
+  <div class="kpi info"><div class="kpi-value">3 👤</div><div class="kpi-label">Manual Overrides</div></div>
+  <div class="kpi bad"><div class="kpi-value">3</div><div class="kpi-label">Failed</div></div>
+</div>
+
+<div class="toolbar">
+  <span class="pill active" data-toggle="di">✓ Data Ingestion <span class="caret">▾</span></span>
+  <span class="pill active" data-toggle="mp">✓ Main Processes <span class="caret">▾</span></span>
+  <span class="pill active" data-toggle="ex">✓ Extras <span class="caret">▾</span></span>
+</div>
+
+<div class="matrix-wrap">
+  <table id="matrix"></table>
+</div>
+
+<div class="legend">
+  <div class="legend-item"><span class="lg-box" style="background:#4CAF50"></span> Completed (from Q3 logs)</div>
+  <div class="legend-item"><span class="lg-box manual" style="background:#4CAF50"></span> Completed (manual override)</div>
+  <div class="legend-item"><span class="lg-box" style="background:#f5a623"></span> Running</div>
+  <div class="legend-item"><span class="lg-box" style="background:#e74c3c"></span> Failed</div>
+  <div class="legend-item"><span class="lg-box" style="background:#bdc3c7"></span> Pending (waiting)</div>
+  <div class="legend-item"><span class="lg-box" style="background:#fdecea"></span> Not in Scope</div>
+</div>
+
+</div>
+
+<!-- Drawer -->
+<div class="overlay" id="overlay"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-header">
+    <div>
+      <h2 class="drawer-title" id="drawer-title">Location</h2>
+      <div class="drawer-sub" id="drawer-sub">Detail view</div>
+    </div>
+    <button class="drawer-close" onclick="closeDrawer()">×</button>
+  </div>
+  <div class="drawer-body" id="drawer-body"></div>
+</div>
+
+<!-- Modal: manual override -->
+<div class="modal-bg" id="modal-bg">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 class="modal-title">Manually mark step complete</h3>
+      <div class="modal-sub" id="modal-sub">Step details</div>
+    </div>
+    <div class="modal-body">
+      <div class="field">
+        <label>Reason <span class="req">*</span></label>
+        <textarea id="f-reason" placeholder="e.g. Manual QRM export via UI due to Q3 timeout"></textarea>
+        <div class="hint">What did you do, and why wasn't it logged by Q3?</div>
+      </div>
+      <div class="field">
+        <label>Ticket reference (optional)</label>
+        <input id="f-ticket" placeholder="INC14598723 or JIRA-1234">
+      </div>
+      <div class="field">
+        <label>Evidence URL (optional)</label>
+        <input id="f-evidence" placeholder="\\share\exports\FRDB_valuation_report_202603.xlsx">
+        <div class="hint">Link to file, screenshot, or export artifact</div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn ghost" onclick="closeModal()">Cancel</button>
+      <button class="btn primary" onclick="saveOverride()">Mark complete</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast">
+  <span class="ic">✓</span>
+  <span id="toast-msg">Override saved</span>
+  <button onclick="undoOverride()">Undo</button>
+</div>
+
+<script>
+function simulateStatus(loc, sub) {
+  const seed = (loc + '|' + sub).split('').reduce((a,c) => a + c.charCodeAt(0), 0);
+  const r = (seed * 9301 + 49297) % 233280;
+  const pct = r / 233280;
+  if (pct < 0.72) return 'done';
+  if (pct < 0.85) return 'running';
+  if (pct < 0.92) return 'pending';
+  if (pct < 0.97) return 'failed';
+  return 'not-started';
+}
+function simulateSteps(loc, sub) {
+  const count = 4 + Math.floor(((loc + sub).length) % 3);
+  const sampleSteps = ['load', 'Stratification', 'portfolio valuation run', 'export to ara', 'Light Maintenance', 'QRM Reporter exports', 'OLAP exports'];
+  const result = [];
+  for (let i = 0; i < count; i++) result.push({ name: sampleSteps[(i + loc.length) % sampleSteps.length], order: i+1 });
+  return result;
+}
+function stepStatus(loc, sub, step, parentStatus) {
+  // Derive step statuses to match overall
+  const seed = (loc + sub + step.name).split('').reduce((a,c) => a + c.charCodeAt(0), 0);
+  const r = (seed * 9301 + 49297) % 233280 / 233280;
+  if (parentStatus === 'done') return 'done';
+  if (parentStatus === 'failed') return step.order < 3 ? 'done' : (step.order === 3 ? 'failed' : 'not-started');
+  if (parentStatus === 'running') return step.order < 3 ? 'done' : (step.order === 3 ? 'running' : 'not-started');
+  if (parentStatus === 'pending') return step.order < 3 ? 'done' : 'not-started';
+  return 'not-started';
+}
+function aggStatus(statuses) {
+  if (statuses.includes('failed')) return 'failed';
+  if (statuses.includes('running')) return 'running';
+  if (statuses.includes('pending') || statuses.includes('not-started')) return 'mixed';
+  if (statuses.every(s => s === 'done')) return 'done';
+  return 'mixed';
+}
+const statusSymbol = { done: '✓', running: '▶', failed: '✕', pending: '◯', 'not-started': '—' };
+
+// In-memory overrides store
+const overrides = new Map(); // key = `${loc}|${sub}|${step}` -> { reason, ticket, evidence, operator, timestamp }
+// Seed some example overrides so the dashboard visibly shows them on first load
+overrides.set('FRDB|Valuation|QRM Reporter exports', { reason: 'Manual QRM export via UI due to Q3 timeout', ticket: 'INC14598723', evidence: '', operator: 'rose.tuazon', timestamp: Date.now() });
+overrides.set('ITDB|KR|Light Maintenance', { reason: 'Server maintenance skipped - no longer needed per IT', ticket: 'INC14598811', evidence: '', operator: 'rose.tuazon', timestamp: Date.now() });
+overrides.set('DEDB|EC|export to ara', { reason: 'Manually exported via ARA console', ticket: '', evidence: '', operator: 'j.smith', timestamp: Date.now() });
+
+let matrixData = null;
+const activeGroups = ['di','mp','ex'];
+let currentMonth = '2603';
+let pendingOverride = null;
+let lastOverrideKey = null;
+
+fetch('matrix-data.json').then(r => r.json()).then(data => {
+  matrixData = data;
+  render();
+
+  document.querySelectorAll('.pill[data-toggle]').forEach(pill => {
+    pill.addEventListener('click', () => {
+      const k = pill.dataset.toggle;
+      const idx = activeGroups.indexOf(k);
+      if (idx >= 0) { activeGroups.splice(idx, 1); pill.classList.remove('active'); pill.querySelector('.caret').textContent = '▸'; }
+      else { activeGroups.push(k); pill.classList.add('active'); pill.querySelector('.caret').textContent = '▾'; }
+      render();
+    });
+  });
+  document.querySelectorAll('.month-toggle span').forEach(s => {
+    s.addEventListener('click', () => {
+      document.querySelectorAll('.month-toggle span').forEach(x => x.classList.remove('active'));
+      s.classList.add('active');
+      currentMonth = s.dataset.month;
+      render();
+    });
+  });
+});
+
+// Get effective status: override wins over log
+function effectiveStepStatus(loc, sub, step, parentStatus) {
+  const key = `${loc}|${sub}|${step.name}`;
+  if (overrides.has(key)) return { status: 'done', manual: true, override: overrides.get(key) };
+  return { status: stepStatus(loc, sub, step, parentStatus), manual: false };
+}
+function effectiveSubprocessStatus(loc, sub) {
+  const rawStatus = simulateStatus(loc, sub);
+  if (rawStatus === 'done') return { status: 'done', manual: false };
+  // Check steps
+  const steps = simulateSteps(loc, sub);
+  const stepStates = steps.map(s => effectiveStepStatus(loc, sub, s, rawStatus));
+  const hasManual = stepStates.some(s => s.manual);
+  // If all effective step states are 'done' → subprocess is done
+  if (stepStates.every(s => s.status === 'done')) return { status: 'done', manual: hasManual };
+  return { status: rawStatus, manual: false };
+}
+
+function render() {
+  const data = matrixData;
+  const isQuarterEnd = currentMonth === '2603';
+
+  const dataIngestion = data.dataIngestion.slice().sort((a,b)=>a.order-b.order);
+  const monthlyMain = data.mainProcesses.filter(s => !s.quarterly).sort((a,b)=>a.order-b.order);
+  const quarterlyMain = data.mainProcesses.filter(s => s.quarterly).sort((a,b)=>a.order-b.order);
+  const locSpecific = data.locationSpecific.filter(s => !s.quarterly);
+  const mainCols = isQuarterEnd ? [...monthlyMain, ...quarterlyMain.map(s => ({...s, _isQ: true}))] : monthlyMain;
+  const extras = isQuarterEnd ? [...locSpecific, ...data.locationSpecific.filter(s => s.quarterly).map(s => ({...s, _isQ: true}))] : locSpecific;
+  const showExtras = activeGroups.includes('ex');
+
+  let html = '<thead><tr><th class="loc-cell">Location</th>';
+  if (activeGroups.includes('di')) html += `<th colspan="${dataIngestion.length}" class="group-header di">Data Ingestion</th>`;
+  if (activeGroups.includes('mp')) html += `<th colspan="${mainCols.length}" class="group-header mp">Main Processes${isQuarterEnd ? ' <span class="q-marker">incl. Quarterly</span>' : ''}</th>`;
+  if (showExtras) html += `<th rowspan="2" class="group-header ex" style="min-width:70px;">Extras ⓘ</th>`;
+  html += '</tr><tr><th class="loc-cell"></th>';
+  if (activeGroups.includes('di')) for (const s of dataIngestion) html += `<th class="sub-header">${s.name.replace(/ /g,'<br>')}</th>`;
+  if (activeGroups.includes('mp')) for (const s of mainCols) {
+    const qCls = s._isQ ? 'sub-header quarterly-col' : 'sub-header';
+    const qTag = s._isQ ? ' <span class="q-marker">Q</span>' : '';
+    html += `<th class="${qCls}">${s.name.replace(/ /g,'<br>')}${qTag}</th>`;
+  }
+  html += '</tr></thead><tbody>';
+
+  const locs = data.locations.filter(l => l !== 'ICDB');
+  for (const loc of locs) {
+    html += `<tr data-loc="${loc}"><td class="loc-cell" onclick="openDrawer('${loc}')">${loc}</td>`;
+    if (activeGroups.includes('di')) for (const s of dataIngestion) {
+      const inScope = data.scope[loc] && data.scope[loc][s.name];
+      if (!inScope) html += `<td class="cell-not-scope"></td>`;
+      else {
+        const es = effectiveSubprocessStatus(loc, s.name);
+        const cls = 'cell-' + es.status + (es.manual ? ' manual' : '');
+        html += `<td class="${cls}" title="${s.name}${es.manual?' (manual override)':''}">${statusSymbol[es.status]}</td>`;
+      }
+    }
+    if (activeGroups.includes('mp')) for (const s of mainCols) {
+      const inScope = data.scope[loc] && data.scope[loc][s.name];
+      if (!inScope) html += `<td class="cell-not-scope"></td>`;
+      else {
+        const es = effectiveSubprocessStatus(loc, s.name);
+        const cls = 'cell-' + es.status + (es.manual ? ' manual' : '');
+        html += `<td class="${cls}" title="${s.name}${es.manual?' (manual override)':''}">${statusSymbol[es.status]}</td>`;
+      }
+    }
+    if (showExtras) {
+      const locExtras = extras.filter(e => data.scope[loc] && data.scope[loc][e.name]);
+      if (locExtras.length === 0) html += `<td class="extras-cell"><span class="badge none">0</span></td>`;
+      else {
+        const statuses = locExtras.map(e => effectiveSubprocessStatus(loc, e.name).status);
+        const agg = aggStatus(statuses);
+        html += `<td class="extras-cell"><span class="badge ${agg}" onclick="openDrawer('${loc}')">${locExtras.length}</span></td>`;
+      }
+    }
+    html += '</tr>';
+  }
+  html += '</tbody>';
+  document.getElementById('matrix').innerHTML = html;
+}
+
+function openDrawer(loc) {
+  const data = matrixData;
+  const isQuarterEnd = currentMonth === '2603';
+  document.getElementById('drawer-title').textContent = loc;
+  document.getElementById('drawer-sub').textContent = 'Full run detail';
+  document.querySelectorAll('tr').forEach(r => r.classList.remove('focused'));
+  const row = document.querySelector(`tr[data-loc="${loc}"]`);
+  if (row) row.classList.add('focused');
+
+  const di = data.dataIngestion.filter(s => data.scope[loc] && data.scope[loc][s.name]);
+  const mp = data.mainProcesses.filter(s => !s.quarterly && data.scope[loc] && data.scope[loc][s.name]);
+  const ls = data.locationSpecific.filter(s => !s.quarterly && data.scope[loc] && data.scope[loc][s.name]);
+  const qt = isQuarterEnd ? [...data.mainProcesses.filter(s=>s.quarterly), ...data.locationSpecific.filter(s=>s.quarterly)].filter(s => data.scope[loc] && data.scope[loc][s.name]) : [];
+
+  let body = '';
+  const renderSection = (title, items, subtitle) => {
+    if (items.length === 0) return '';
+    let html = `<div class="drawer-phase"><div class="drawer-phase-title">${title}<span class="drawer-phase-counts">${items.length} items</span></div>`;
+    if (subtitle) html += `<div class="drawer-phase-counts" style="margin-bottom:6px;">${subtitle}</div>`;
+    for (const s of items) {
+      const subStatus = simulateStatus(loc, s.name);
+      const subRes = effectiveSubprocessStatus(loc, s.name);
+      const steps = simulateSteps(loc, s.name);
+      const completedCount = steps.filter(step => effectiveStepStatus(loc, s.name, step, subStatus).status === 'done').length;
+      html += `<div style="margin-bottom:8px;border-bottom:1px solid #e8ecef;padding-bottom:6px;">`;
+      html += `<div style="display:flex;align-items:center;gap:10px;font-weight:600;font-size:12px;">
+                <span class="step-status ${subRes.status} ${subRes.manual?'manual':''}">${statusSymbol[subRes.status]}</span>
+                <span style="flex:1">${s.name}${s.quarterly?' <span class="q-marker">Q</span>':''}</span>
+                <span class="step-meta">${completedCount}/${steps.length}</span>
+              </div>`;
+      // Nested step rows
+      for (const step of steps) {
+        const key = `${loc}|${s.name}|${step.name}`;
+        const ess = effectiveStepStatus(loc, s.name, step, subStatus);
+        const menuId = `menu-${key.replace(/[^a-zA-Z0-9]/g,'_')}`;
+        const overrideNote = ess.manual ? `<div class="step-override-note">👤 Manual: ${ess.override.reason}${ess.override.ticket?' · '+ess.override.ticket:''}</div>` : '';
+        html += `<div class="step-item" style="padding-left:28px;font-size:11px;">
+                   <span class="step-status ${ess.status} ${ess.manual?'manual':''}" style="width:14px;height:14px;font-size:8px;">${statusSymbol[ess.status]}</span>
+                   <span class="step-name">${step.name}${overrideNote}</span>
+                   <span class="step-meta">${ess.status.replace('-',' ')}</span>
+                   <button class="step-menu" onclick="event.stopPropagation();toggleMenu('${menuId}', '${loc}', '${s.name}', '${step.name.replace(/'/g,'&#39;')}', ${ess.manual})">⋯</button>
+                   <div class="step-dropdown" id="${menuId}">
+                     ${ess.manual ? `
+                       <button onclick="revokeOverride('${loc}','${s.name}','${step.name.replace(/'/g,'&#39;')}')"><span class="ic">↺</span> Revoke manual override</button>
+                     ` : `
+                       <button onclick="openOverrideModal('${loc}','${s.name}','${step.name.replace(/'/g,'&#39;')}','complete')"><span class="ic">✓</span> Manually mark complete</button>
+                       <button onclick="openOverrideModal('${loc}','${s.name}','${step.name.replace(/'/g,'&#39;')}','skip')"><span class="ic">⤳</span> Mark as skipped (not needed)</button>
+                       <button onclick="openOverrideModal('${loc}','${s.name}','${step.name.replace(/'/g,'&#39;')}','fail')"><span class="ic">✕</span> Mark as failed (needs rerun)</button>
+                     `}
+                     <div class="divider"></div>
+                     <button onclick="closeMenus()"><span class="ic">◌</span> Cancel</button>
+                   </div>
+                 </div>`;
+      }
+      html += '</div>';
+    }
+    html += '</div>';
+    return html;
+  };
+
+  body += renderSection('Data Ingestion', di);
+  body += renderSection('Main Processes (Monthly)', mp);
+  if (isQuarterEnd && qt.filter(s => !s.quarterly || data.mainProcesses.find(x => x.name===s.name)?.quarterly).length) {
+    body += renderSection('Main Processes (Quarterly)', qt.filter(s => data.mainProcesses.find(x => x.name===s.name)));
+  }
+  body += renderSection('Location Specific', ls);
+  if (isQuarterEnd) body += renderSection('Location Specific (Quarterly)', qt.filter(s => data.locationSpecific.find(x => x.name===s.name)));
+
+  document.getElementById('drawer-body').innerHTML = body;
+  document.getElementById('drawer').classList.add('open');
+  document.getElementById('overlay').classList.add('active');
+  document.getElementById('app').classList.add('drawer-open');
+}
+
+function closeDrawer() {
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('overlay').classList.remove('active');
+  document.getElementById('app').classList.remove('drawer-open');
+  document.querySelectorAll('tr').forEach(r => r.classList.remove('focused'));
+}
+
+function closeMenus() {
+  document.querySelectorAll('.step-dropdown').forEach(d => d.classList.remove('open'));
+}
+function toggleMenu(id) {
+  const el = document.getElementById(id);
+  const wasOpen = el.classList.contains('open');
+  closeMenus();
+  if (!wasOpen) el.classList.add('open');
+}
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.step-dropdown') && !e.target.closest('.step-menu')) closeMenus();
+});
+
+function openOverrideModal(loc, sub, step, action) {
+  closeMenus();
+  pendingOverride = { loc, sub, step, action };
+  document.getElementById('modal-sub').textContent = `${loc} · ${sub} · ${step}`;
+  const title = action === 'complete' ? 'Manually mark step complete' : action === 'skip' ? 'Mark step as skipped' : 'Mark step as failed';
+  document.querySelector('.modal-title').textContent = title;
+  document.getElementById('f-reason').value = '';
+  document.getElementById('f-ticket').value = '';
+  document.getElementById('f-evidence').value = '';
+  document.getElementById('modal-bg').classList.add('open');
+  document.getElementById('f-reason').focus();
+}
+function closeModal() {
+  document.getElementById('modal-bg').classList.remove('open');
+  pendingOverride = null;
+}
+function saveOverride() {
+  const reason = document.getElementById('f-reason').value.trim();
+  if (!reason) { alert('Reason is required'); return; }
+  const ticket = document.getElementById('f-ticket').value.trim();
+  const evidence = document.getElementById('f-evidence').value.trim();
+  const key = `${pendingOverride.loc}|${pendingOverride.sub}|${pendingOverride.step}`;
+  overrides.set(key, { reason, ticket, evidence, operator: 'rose.tuazon (you)', timestamp: Date.now(), action: pendingOverride.action });
+  lastOverrideKey = key;
+  closeModal();
+  showToast(`✓ Manually marked "${pendingOverride.step}" complete for ${pendingOverride.loc}`);
+  render();
+  // Refresh drawer if open
+  const drawerOpen = document.getElementById('drawer').classList.contains('open');
+  if (drawerOpen) openDrawer(pendingOverride.loc);
+}
+function revokeOverride(loc, sub, step) {
+  const key = `${loc}|${sub}|${step}`;
+  overrides.delete(key);
+  closeMenus();
+  showToast(`↺ Override revoked for ${step}`);
+  render();
+  openDrawer(loc);
+}
+function undoOverride() {
+  if (lastOverrideKey) overrides.delete(lastOverrideKey);
+  lastOverrideKey = null;
+  document.getElementById('toast').classList.remove('show');
+  render();
+  const drawerOpen = document.getElementById('drawer').classList.contains('open');
+  if (drawerOpen) { const loc = document.getElementById('drawer-title').textContent; openDrawer(loc); }
+}
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  document.getElementById('toast-msg').textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 5000);
+}
+
+document.getElementById('overlay').addEventListener('click', closeDrawer);
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') { closeDrawer(); closeModal(); closeMenus(); }
+});
+</script>
+</body>
+</html>

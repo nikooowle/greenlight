@@ -44,3 +44,43 @@
 - **Auto-refresh** — Dashboard polls every 2s, simulator status every 1s
 
 **UI approach:** Tabbed phases (user's choice) — one phase visible at a time with horizontal scroll for many columns
+
+---
+
+## UX/UI refinements (designed 2026-04-15, to apply in future pass)
+
+After reviewing the dashboard against the compressed golden mapping (27 subprocesses, highly sparse Location Specific columns), the following design direction was locked in via interactive prototypes under `docs/seed-data/matrix-view/`:
+
+**Dense-by-default matrix:**
+- Matrix shows only **Data Ingestion + Main Processes** (the dense, comparison-relevant columns) — ~20 columns
+- **Location Specific** + sparse data collapsed to a single narrow **"Extras" column** with a status badge (e.g. green `●3`)
+- Badge click → right-side **drawer** slides in showing the location's location-specific + quarterly runs with full step-level detail
+- Location name click → drawer opens with **full focus view** (Data Ingestion + Main + Extras + Quarterly all in one pane)
+- Matrix stays visible during drawer use (padding-right shift, not modal)
+
+**Month-aware rendering:**
+- At **quarter-end** months (Mar/Jun/Sep/Dec), Quarterly subprocesses (PDCE, EVE Optionality, Fair Value) render **inline** with Main Processes marked with a purple `Q` badge + column border
+- At **regular** months, Quarterly columns are hidden entirely — dashboard shrinks visibly
+- The Extras column only ever contains Location Specific items, never Quarterly
+
+**Supporting patterns:**
+- Top KPI cards (Active Locations, In-Scope Completed, Running, At SLA Risk, Failed, Manual Overrides) — clickable filters
+- Pill toggles for each phase group (show/hide)
+- Density switcher: Compact / Comfortable / Spacious
+- Sticky first column (Location) and sticky header row
+- Running status cells pulse visually
+- Hover cell → subprocess name tooltip
+
+**Progress indicator inside cells:** show `N/M` (e.g. `3/4`) when a subprocess is Running/Pending so operators see at-a-glance where the blocker is. Derived from `LocationStepRegistry` completion count.
+
+**Role-aware defaults:**
+| Role | Default view |
+|---|---|
+| Operator (country-level) | Their own location's drawer pre-opened |
+| Coordinator / Lead | Full matrix |
+| Management | KPI summary cards emphasized |
+| Read-only audit | Full matrix, all actions disabled |
+
+All roles can see all locations — dependencies across countries (e.g., ICDB-like consolidated runs) make global visibility valuable even for operators.
+
+**Reference prototype:** `docs/seed-data/matrix-view/compressed-v3.html` (month-aware) — live at `http://localhost:4100/compressed-v3.html` when the preview server runs

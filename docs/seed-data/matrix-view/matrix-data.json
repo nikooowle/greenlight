@@ -1,0 +1,442 @@
+{
+  "locations": [
+    "AUDB",
+    "BEDB",
+    "BEGT",
+    "DEDB",
+    "DEGT",
+    "ESDB",
+    "FRDB",
+    "ICDB",
+    "ITDB",
+    "LUDB",
+    "NLBTR",
+    "NLRB",
+    "PLDB",
+    "RODB",
+    "TRDB",
+    "WBUS"
+  ],
+  "dataIngestion": [
+    {
+      "name": "Delete Portfolio",
+      "phase": "Data Ingestion",
+      "quarterly": false,
+      "order": 1.0217391304347827
+    },
+    {
+      "name": "Model Parameters",
+      "phase": "Data Ingestion",
+      "quarterly": false,
+      "order": 2.0217391304347827
+    },
+    {
+      "name": "Spreads",
+      "phase": "Data Ingestion",
+      "quarterly": false,
+      "order": 3.108695652173913
+    },
+    {
+      "name": "Load Position",
+      "phase": "Data Ingestion",
+      "quarterly": false,
+      "order": 3.543859649122807
+    },
+    {
+      "name": "Import Strategies",
+      "phase": "Data Ingestion",
+      "quarterly": false,
+      "order": 10.122448979591837
+    }
+  ],
+  "mainProcesses": [
+    {
+      "name": "Valuation",
+      "phase": "Processing",
+      "quarterly": false,
+      "order": 4.642857142857143
+    },
+    {
+      "name": "CSRBB (Val)",
+      "phase": "Processing",
+      "quarterly": false,
+      "order": 6.7727272727272725
+    },
+    {
+      "name": "PDCE",
+      "phase": "Processing",
+      "quarterly": true,
+      "order": 7.571428571428571
+    },
+    {
+      "name": "CSRBB (Plan)",
+      "phase": "Processing",
+      "quarterly": false,
+      "order": 8.30952380952381
+    },
+    {
+      "name": "EC",
+      "phase": "Processing",
+      "quarterly": false,
+      "order": 8.382978723404255
+    },
+    {
+      "name": "Gap + Liquidity IR",
+      "phase": "Processing",
+      "quarterly": false,
+      "order": 8.73913043478261
+    },
+    {
+      "name": "KR",
+      "phase": "Processing",
+      "quarterly": false,
+      "order": 8.941176470588236
+    },
+    {
+      "name": "NII / Planning risk",
+      "phase": "Processing",
+      "quarterly": false,
+      "order": 10.63265306122449
+    },
+    {
+      "name": "ITS Planning",
+      "phase": "Processing",
+      "quarterly": false,
+      "order": 11.135135135135135
+    },
+    {
+      "name": "AIC",
+      "phase": "Processing",
+      "quarterly": false,
+      "order": 11.387096774193548
+    },
+    {
+      "name": "CSRBB Export",
+      "phase": "Reporting",
+      "quarterly": false,
+      "order": 12.9
+    },
+    {
+      "name": "EVE Optionality",
+      "phase": "Processing",
+      "quarterly": true,
+      "order": 16.333333333333332
+    }
+  ],
+  "locationSpecific": [
+    {
+      "name": "Cost Pricing",
+      "phase": "Processing",
+      "quarterly": false,
+      "order": 3
+    },
+    {
+      "name": "Load Index History",
+      "phase": "Data Ingestion",
+      "quarterly": false,
+      "order": 4
+    },
+    {
+      "name": "Fair Value",
+      "phase": "Processing",
+      "quarterly": true,
+      "order": 5
+    },
+    {
+      "name": "Load ELP and Mortgages",
+      "phase": "Data Ingestion",
+      "quarterly": false,
+      "order": 5.75
+    },
+    {
+      "name": "Planning Finance",
+      "phase": "Processing",
+      "quarterly": false,
+      "order": 8
+    },
+    {
+      "name": "EVE (Monthly)",
+      "phase": "Processing",
+      "quarterly": false,
+      "order": 12
+    },
+    {
+      "name": "SLM",
+      "phase": "Processing",
+      "quarterly": false,
+      "order": 15.666666666666666
+    },
+    {
+      "name": "SOLO",
+      "phase": "Processing",
+      "quarterly": false,
+      "order": 16
+    },
+    {
+      "name": "FTP EVE SOT",
+      "phase": "Processing",
+      "quarterly": false,
+      "order": 16.333333333333332
+    },
+    {
+      "name": "SOT",
+      "phase": "Processing",
+      "quarterly": false,
+      "order": 17.2
+    }
+  ],
+  "scope": {
+    "AUDB": {
+      "Delete Portfolio": true,
+      "Model Parameters": true,
+      "Spreads": true,
+      "Load Position": true,
+      "Valuation": true,
+      "CSRBB (Val)": true,
+      "CSRBB (Plan)": true,
+      "KR": true,
+      "EC": true,
+      "Import Strategies": true,
+      "NII / Planning risk": true,
+      "ITS Planning": true,
+      "AIC": true
+    },
+    "BEDB": {
+      "Delete Portfolio": true,
+      "Model Parameters": true,
+      "Spreads": true,
+      "Load Position": true,
+      "Valuation": true,
+      "Import Strategies": true,
+      "NII / Planning risk": true,
+      "AIC": true,
+      "EC": true,
+      "KR": true,
+      "Gap + Liquidity IR": true,
+      "EVE (Monthly)": true,
+      "EVE Optionality": true
+    },
+    "BEGT": {
+      "Load Position": true,
+      "Valuation": true,
+      "Gap + Liquidity IR": true,
+      "EC": true,
+      "KR": true,
+      "Import Strategies": true,
+      "NII / Planning risk": true,
+      "ITS Planning": true,
+      "CSRBB (Val)": true,
+      "CSRBB (Plan)": true,
+      "CSRBB Export": true
+    },
+    "DEDB": {
+      "Delete Portfolio": true,
+      "Model Parameters": true,
+      "Spreads": true,
+      "Load Index History": true,
+      "Load Position": true,
+      "Valuation": true,
+      "KR": true,
+      "CSRBB (Val)": true,
+      "AIC": true,
+      "EC": true,
+      "Gap + Liquidity IR": true,
+      "CSRBB (Plan)": true,
+      "Import Strategies": true,
+      "NII / Planning risk": true,
+      "PDCE": true,
+      "ITS Planning": true,
+      "EVE Optionality": true,
+      "SOT": true,
+      "CSRBB Export": true
+    },
+    "DEGT": {
+      "Load Position": true,
+      "Valuation": true,
+      "NII / Planning risk": true,
+      "Import Strategies": true,
+      "Gap + Liquidity IR": true
+    },
+    "ESDB": {
+      "Delete Portfolio": true,
+      "Model Parameters": true,
+      "Spreads": true,
+      "Load Position": true,
+      "Valuation": true,
+      "PDCE": true,
+      "CSRBB (Val)": true,
+      "CSRBB (Plan)": true,
+      "Gap + Liquidity IR": true,
+      "EC": true,
+      "KR": true,
+      "Import Strategies": true,
+      "NII / Planning risk": true,
+      "AIC": true,
+      "ITS Planning": true,
+      "EVE Optionality": true,
+      "CSRBB Export": true
+    },
+    "FRDB": {
+      "Delete Portfolio": true,
+      "Model Parameters": true,
+      "Spreads": true,
+      "Load Position": true,
+      "Valuation": true,
+      "PDCE": true,
+      "CSRBB (Val)": true,
+      "CSRBB (Plan)": true,
+      "ITS Planning": true,
+      "Gap + Liquidity IR": true,
+      "EC": true,
+      "KR": true,
+      "AIC": true,
+      "Import Strategies": true,
+      "NII / Planning risk": true,
+      "EVE Optionality": true
+    },
+    "ICDB": {},
+    "ITDB": {
+      "Delete Portfolio": true,
+      "Model Parameters": true,
+      "Spreads": true,
+      "Load Position": true,
+      "Valuation": true,
+      "PDCE": true,
+      "Gap + Liquidity IR": true,
+      "CSRBB (Val)": true,
+      "CSRBB (Plan)": true,
+      "EC": true,
+      "KR": true,
+      "AIC": true,
+      "ITS Planning": true,
+      "Import Strategies": true,
+      "NII / Planning risk": true,
+      "EVE Optionality": true,
+      "CSRBB Export": true
+    },
+    "LUDB": {
+      "Delete Portfolio": true,
+      "Model Parameters": true,
+      "Spreads": true,
+      "Load Position": true,
+      "Valuation": true,
+      "CSRBB (Val)": true,
+      "CSRBB (Plan)": true,
+      "Gap + Liquidity IR": true,
+      "EC": true,
+      "KR": true,
+      "AIC": true,
+      "PDCE": true,
+      "Import Strategies": true,
+      "NII / Planning risk": true,
+      "EVE Optionality": true,
+      "CSRBB Export": true
+    },
+    "NLBTR": {
+      "Load Position": true,
+      "Valuation": true,
+      "EC": true,
+      "KR": true,
+      "Gap + Liquidity IR": true,
+      "CSRBB (Val)": true,
+      "ITS Planning": true,
+      "Import Strategies": true,
+      "NII / Planning risk": true,
+      "CSRBB (Plan)": true,
+      "CSRBB Export": true
+    },
+    "NLRB": {
+      "Delete Portfolio": true,
+      "Model Parameters": true,
+      "Spreads": true,
+      "Load Position": true,
+      "Load ELP and Mortgages": true,
+      "Fair Value": true,
+      "PDCE": true,
+      "Valuation": true,
+      "Planning Finance": true,
+      "Import Strategies": true,
+      "NII / Planning risk": true,
+      "AIC": true,
+      "KR": true,
+      "EC": true,
+      "ITS Planning": true,
+      "Gap + Liquidity IR": true,
+      "SLM": true,
+      "EVE Optionality": true
+    },
+    "PLDB": {
+      "Delete Portfolio": true,
+      "Model Parameters": true,
+      "Spreads": true,
+      "Load Position": true,
+      "Valuation": true,
+      "PDCE": true,
+      "CSRBB (Val)": true,
+      "CSRBB (Plan)": true,
+      "EC": true,
+      "KR": true,
+      "Gap + Liquidity IR": true,
+      "AIC": true,
+      "Import Strategies": true,
+      "NII / Planning risk": true,
+      "ITS Planning": true,
+      "SOLO": true,
+      "SOT": true,
+      "FTP EVE SOT": true,
+      "EVE Optionality": true,
+      "CSRBB Export": true
+    },
+    "RODB": {
+      "Delete Portfolio": true,
+      "Model Parameters": true,
+      "Spreads": true,
+      "Load Position": true,
+      "Valuation": true,
+      "CSRBB (Val)": true,
+      "CSRBB (Plan)": true,
+      "EC": true,
+      "KR": true,
+      "ITS Planning": true,
+      "Import Strategies": true,
+      "NII / Planning risk": true,
+      "CSRBB Export": true
+    },
+    "TRDB": {
+      "Delete Portfolio": true,
+      "Model Parameters": true,
+      "Cost Pricing": true,
+      "Spreads": true,
+      "Load Position": true,
+      "Valuation": true,
+      "PDCE": true,
+      "CSRBB (Val)": true,
+      "CSRBB (Plan)": true,
+      "Gap + Liquidity IR": true,
+      "EC": true,
+      "KR": true,
+      "AIC": true,
+      "ITS Planning": true,
+      "Import Strategies": true,
+      "NII / Planning risk": true,
+      "EVE Optionality": true,
+      "CSRBB Export": true
+    },
+    "WBUS": {
+      "Delete Portfolio": true,
+      "Model Parameters": true,
+      "Spreads": true,
+      "Load Position": true,
+      "Valuation": true,
+      "CSRBB (Val)": true,
+      "CSRBB (Plan)": true,
+      "Gap + Liquidity IR": true,
+      "KR": true,
+      "AIC": true,
+      "Import Strategies": true,
+      "NII / Planning risk": true,
+      "ITS Planning": true,
+      "CSRBB Export": true
+    }
+  }
+}

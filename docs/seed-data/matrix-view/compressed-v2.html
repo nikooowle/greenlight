@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ALM Greenlight — Dashboard v2 (Badge + Drawer)</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; font-family: 'Segoe UI', Calibri, Arial, sans-serif; background: #f1f4f8; color: #1a1a1a; overflow-x: hidden; }
+  .app { padding: 20px; transition: padding-right 0.25s ease; }
+  .app.drawer-open { padding-right: 440px; }
+
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  .subtitle { color: #6b7684; font-size: 12px; margin-bottom: 18px; }
+
+  /* Role banner */
+  .role-banner { background: #fff8d6; border: 1px solid #f5d84b; border-radius: 6px; padding: 10px 14px; font-size: 12px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; }
+  .role-banner a { color: #1a73e8; text-decoration: none; }
+  .role-banner a:hover { text-decoration: underline; }
+
+  /* KPIs */
+  .kpi-row { display: flex; gap: 12px; margin-bottom: 20px; }
+  .kpi { flex: 1; background: white; border-radius: 8px; padding: 14px 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); cursor: pointer; transition: transform 0.15s; border-left: 4px solid #ccc; }
+  .kpi:hover { transform: translateY(-2px); box-shadow: 0 3px 8px rgba(0,0,0,0.12); }
+  .kpi-value { font-size: 26px; font-weight: 700; line-height: 1; }
+  .kpi-label { font-size: 11px; color: #6b7684; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+  .kpi.ok { border-left-color: #4CAF50; }
+  .kpi.warn { border-left-color: #f5a623; }
+  .kpi.bad { border-left-color: #e74c3c; }
+  .kpi.info { border-left-color: #3498db; }
+
+  /* Toolbar */
+  .toolbar { display: flex; gap: 8px; margin-bottom: 10px; align-items: center; flex-wrap: wrap; }
+  .pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: white; border: 1px solid #d1d9e0; border-radius: 16px; font-size: 12px; cursor: pointer; user-select: none; transition: background 0.15s; }
+  .pill:hover { background: #eef2f6; }
+  .pill.active { background: #1a73e8; color: white; border-color: #1a73e8; }
+  .pill .caret { font-size: 10px; color: #6b7684; }
+  .pill.active .caret { color: white; }
+  .toolbar .sep { flex: 1; }
+  .density { display: inline-flex; background: white; border: 1px solid #d1d9e0; border-radius: 16px; padding: 2px; font-size: 11px; }
+  .density span { padding: 4px 10px; cursor: pointer; border-radius: 12px; color: #6b7684; }
+  .density span.active { background: #1a73e8; color: white; }
+
+  /* Matrix */
+  .matrix-wrap { background: white; border-radius: 8px; overflow: auto; box-shadow: 0 1px 3px rgba(0,0,0,0.08); max-height: calc(100vh - 320px); }
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #e8ecef; padding: 6px 4px; text-align: center; font-size: 11px; }
+  thead th { background: #f5f7fa; color: #3a4450; font-weight: 600; position: sticky; top: 0; z-index: 2; }
+  .group-header { font-size: 12px; padding: 8px 4px; color: #1a1a1a; }
+  .group-header.di { background: #d0e9d0 !important; }
+  .group-header.mp { background: #c8dcf0 !important; }
+  .group-header.ex { background: #e0d0ff !important; }
+  .sub-header { font-size: 9.5px; line-height: 1.1; padding: 6px 3px; max-width: 58px; min-width: 38px; word-wrap: break-word; }
+  .loc-cell { background: #f5f7fa !important; font-weight: 700; text-align: left; padding: 8px 10px; min-width: 70px; font-size: 12px; position: sticky; left: 0; z-index: 1; cursor: pointer; }
+  .loc-cell:hover { background: #eef2f6 !important; color: #1a73e8; }
+  tr.focused .loc-cell { background: #e3f0fc !important; color: #1a73e8; }
+  tr.focused td { background: #f7fbff; }
+
+  /* Density variants */
+  body.compact td, body.compact th { padding: 3px 2px; font-size: 10px; }
+  body.compact .loc-cell { padding: 5px 8px; font-size: 11px; }
+  body.spacious td, body.spacious th { padding: 10px 6px; font-size: 12px; }
+
+  /* Status cells */
+  .cell-not-scope { background: #fdecea; }
+  .cell-done { background: #4CAF50; color: white; font-weight: 700; }
+  .cell-running { background: #f5a623; color: white; font-weight: 700; animation: pulse 2s ease-in-out infinite; }
+  .cell-failed { background: #e74c3c; color: white; font-weight: 700; }
+  .cell-pending { background: #bdc3c7; color: white; font-weight: 700; }
+  .cell-not-started { background: #ecf0f1; color: #6b7684; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+
+  /* Extras badge */
+  .extras-cell { background: #fafbfc; padding: 6px 8px !important; text-align: center; }
+  .badge { display: inline-flex; align-items: center; justify-content: center; min-width: 28px; height: 22px; padding: 0 8px; border-radius: 11px; font-size: 11px; font-weight: 700; color: white; cursor: pointer; transition: transform 0.1s; }
+  .badge:hover { transform: scale(1.1); }
+  .badge.done { background: #4CAF50; }
+  .badge.running { background: #f5a623; }
+  .badge.failed { background: #e74c3c; }
+  .badge.mixed { background: linear-gradient(90deg, #4CAF50 50%, #f5a623 50%); }
+  .badge.pending { background: #bdc3c7; }
+  .badge.none { visibility: hidden; }
+
+  /* Drawer */
+  .drawer { position: fixed; top: 0; right: -440px; width: 440px; height: 100vh; background: white; box-shadow: -4px 0 20px rgba(0,0,0,0.12); transition: right 0.25s ease; z-index: 100; overflow-y: auto; }
+  .drawer.open { right: 0; }
+  .drawer-header { padding: 18px 20px; border-bottom: 1px solid #e8ecef; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; background: white; z-index: 1; }
+  .drawer-title { font-size: 18px; font-weight: 700; margin: 0; }
+  .drawer-sub { font-size: 11px; color: #6b7684; margin-top: 2px; }
+  .drawer-close { background: none; border: none; font-size: 22px; cursor: pointer; color: #6b7684; padding: 4px 8px; border-radius: 4px; }
+  .drawer-close:hover { background: #eef2f6; }
+  .drawer-body { padding: 16px 20px; }
+  .drawer-section { margin-bottom: 24px; }
+  .drawer-section h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; color: #6b7684; margin: 0 0 10px; font-weight: 700; }
+  .drawer-phase { background: #fafbfc; border: 1px solid #e8ecef; border-radius: 6px; padding: 12px; margin-bottom: 10px; }
+  .drawer-phase-title { font-size: 13px; font-weight: 700; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center; }
+  .drawer-phase-counts { font-size: 10px; color: #6b7684; font-weight: normal; }
+  .step-item { display: flex; align-items: center; gap: 10px; padding: 6px 8px; border-radius: 4px; font-size: 12px; }
+  .step-item:hover { background: #eef2f6; }
+  .step-status { width: 18px; height: 18px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 10px; color: white; font-weight: bold; flex-shrink: 0; }
+  .step-status.done { background: #4CAF50; }
+  .step-status.running { background: #f5a623; }
+  .step-status.failed { background: #e74c3c; }
+  .step-status.pending { background: #bdc3c7; }
+  .step-status.not-started { background: #ecf0f1; color: #6b7684; }
+  .step-name { flex: 1; }
+  .step-meta { font-size: 10px; color: #6b7684; }
+
+  /* Legend */
+  .legend { margin-top: 16px; font-size: 11px; display: flex; gap: 16px; flex-wrap: wrap; color: #6b7684; }
+  .legend-item { display: flex; align-items: center; gap: 6px; }
+  .lg-box { width: 14px; height: 14px; border-radius: 3px; border: 1px solid rgba(0,0,0,0.1); display: inline-block; }
+
+  /* Command palette hint */
+  .kbd-hint { display: inline-flex; align-items: center; gap: 4px; padding: 3px 6px; background: white; border: 1px solid #d1d9e0; border-radius: 4px; font-size: 10px; color: #6b7684; font-family: monospace; }
+
+  /* Overlay for drawer */
+  .overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.05); z-index: 50; display: none; }
+  .overlay.active { display: block; }
+</style>
+</head>
+<body>
+
+<div class="app" id="app">
+
+<h1>ALM Greenlight — Dashboard v2</h1>
+<p class="subtitle">Compact matrix + single Extras column + slide-in drawer for location-specific detail. Click any badge or location name.</p>
+
+<div class="role-banner">
+  <span>👤 <b>Coordinator view</b> (all locations) · switch to <a href="#">single-location</a></span>
+  <span>EOM: 31-Mar-26 · Run 2603 · <span class="kbd-hint">Cmd+K</span> to search</span>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi info"><div class="kpi-value">15</div><div class="kpi-label">Active Locations</div></div>
+  <div class="kpi ok"><div class="kpi-value">212<span style="font-size:16px;color:#6b7684"> / 280</span></div><div class="kpi-label">In-Scope Completed</div></div>
+  <div class="kpi warn"><div class="kpi-value">24</div><div class="kpi-label">Running</div></div>
+  <div class="kpi warn"><div class="kpi-value">8</div><div class="kpi-label">At SLA Risk</div></div>
+  <div class="kpi bad"><div class="kpi-value">3</div><div class="kpi-label">Failed</div></div>
+</div>
+
+<div class="toolbar">
+  <span class="pill active" data-toggle="di">✓ Data Ingestion <span class="caret">▾</span></span>
+  <span class="pill active" data-toggle="mp">✓ Main Processes <span class="caret">▾</span></span>
+  <span class="pill active" data-toggle="ex">✓ Extras column <span class="caret">▾</span></span>
+  <span class="sep"></span>
+  <span class="density">
+    <span data-density="compact">Compact</span>
+    <span class="active" data-density="comfortable">Comfortable</span>
+    <span data-density="spacious">Spacious</span>
+  </span>
+</div>
+
+<div class="matrix-wrap">
+  <table id="matrix"></table>
+</div>
+
+<div class="legend">
+  <div class="legend-item"><span class="lg-box" style="background:#4CAF50"></span> Completed</div>
+  <div class="legend-item"><span class="lg-box" style="background:#f5a623"></span> Running</div>
+  <div class="legend-item"><span class="lg-box" style="background:#e74c3c"></span> Failed</div>
+  <div class="legend-item"><span class="lg-box" style="background:#ecf0f1"></span> Not Started</div>
+  <div class="legend-item"><span class="lg-box" style="background:#fdecea"></span> Not in Scope</div>
+  <div class="legend-item"><span class="lg-box" style="background:#4CAF50;border-radius:7px"></span> Extras badge = N location-specific + quarterly items. Click for detail.</div>
+</div>
+
+</div>
+
+<!-- Drawer -->
+<div class="overlay" id="overlay"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-header">
+    <div>
+      <h2 class="drawer-title" id="drawer-title">Location</h2>
+      <div class="drawer-sub" id="drawer-sub">Detail view</div>
+    </div>
+    <button class="drawer-close" onclick="closeDrawer()">×</button>
+  </div>
+  <div class="drawer-body" id="drawer-body"></div>
+</div>
+
+<script>
+function simulateStatus(loc, sub) {
+  const seed = (loc + '|' + sub).split('').reduce((a,c) => a + c.charCodeAt(0), 0);
+  const r = (seed * 9301 + 49297) % 233280;
+  const pct = r / 233280;
+  if (pct < 0.72) return 'done';
+  if (pct < 0.85) return 'running';
+  if (pct < 0.92) return 'pending';
+  if (pct < 0.97) return 'failed';
+  return 'not-started';
+}
+function aggStatus(statuses) {
+  if (statuses.includes('failed')) return 'failed';
+  if (statuses.includes('running')) return 'running';
+  if (statuses.includes('pending') || statuses.includes('not-started')) return 'mixed';
+  if (statuses.every(s => s === 'done')) return 'done';
+  return 'mixed';
+}
+const statusSymbol = { done: '✓', running: '▶', failed: '✕', pending: '◯', 'not-started': '—' };
+let matrixData = null;
+const activeGroups = ['di','mp','ex'];
+
+fetch('matrix-data.json').then(r => r.json()).then(data => {
+  matrixData = data;
+  render();
+
+  document.querySelectorAll('.pill[data-toggle]').forEach(pill => {
+    pill.addEventListener('click', () => {
+      const k = pill.dataset.toggle;
+      const idx = activeGroups.indexOf(k);
+      if (idx >= 0) { activeGroups.splice(idx, 1); pill.classList.remove('active'); pill.querySelector('.caret').textContent = '▸'; }
+      else { activeGroups.push(k); pill.classList.add('active'); pill.querySelector('.caret').textContent = '▾'; }
+      render();
+    });
+  });
+
+  document.querySelectorAll('.density span').forEach(s => {
+    s.addEventListener('click', () => {
+      document.querySelectorAll('.density span').forEach(x => x.classList.remove('active'));
+      s.classList.add('active');
+      document.body.className = s.dataset.density;
+    });
+  });
+});
+
+function render() {
+  const data = matrixData;
+  const groups = {
+    di: { name: 'Data Ingestion', cls: 'di', items: data.dataIngestion.slice().sort((a,b)=>a.order-b.order) },
+    mp: { name: 'Main Processes', cls: 'mp', items: data.mainProcesses.slice().sort((a,b)=>a.order-b.order) },
+  };
+  const extras = [
+    ...data.locationSpecific.map(s => ({...s, extra: true})),
+    ...data.mainProcesses.filter(s => s.quarterly).map(s => ({...s, extra: true, quarterly: true})),
+  ];
+  const showExtras = activeGroups.includes('ex');
+
+  let html = '<thead><tr><th class="loc-cell">Location</th>';
+  if (activeGroups.includes('di')) html += `<th colspan="${groups.di.items.length}" class="group-header di">Data Ingestion</th>`;
+  if (activeGroups.includes('mp')) html += `<th colspan="${groups.mp.items.length}" class="group-header mp">Main Processes</th>`;
+  if (showExtras) html += `<th rowspan="2" class="group-header ex" style="min-width:70px;">Extras ⓘ</th>`;
+  html += '</tr><tr><th class="loc-cell"></th>';
+  if (activeGroups.includes('di')) for (const s of groups.di.items) html += `<th class="sub-header">${s.name.replace(/ /g,'<br>')}</th>`;
+  if (activeGroups.includes('mp')) for (const s of groups.mp.items) html += `<th class="sub-header">${s.name.replace(/ /g,'<br>')}</th>`;
+  html += '</tr></thead><tbody>';
+
+  const locs = data.locations.filter(l => l !== 'ICDB');
+  for (const loc of locs) {
+    html += `<tr data-loc="${loc}"><td class="loc-cell" onclick="openDrawer('${loc}', 'full')">${loc}</td>`;
+    if (activeGroups.includes('di')) for (const s of groups.di.items) {
+      const inScope = data.scope[loc] && data.scope[loc][s.name];
+      if (!inScope) html += `<td class="cell-not-scope"></td>`;
+      else { const st = simulateStatus(loc, s.name); html += `<td class="cell-${st}" title="${s.name}">${statusSymbol[st]}</td>`; }
+    }
+    if (activeGroups.includes('mp')) for (const s of groups.mp.items) {
+      const inScope = data.scope[loc] && data.scope[loc][s.name];
+      if (!inScope) html += `<td class="cell-not-scope"></td>`;
+      else { const st = simulateStatus(loc, s.name); html += `<td class="cell-${st}" title="${s.name}">${statusSymbol[st]}</td>`; }
+    }
+    if (showExtras) {
+      const locExtras = extras.filter(e => data.scope[loc] && data.scope[loc][e.name]);
+      if (locExtras.length === 0) html += `<td class="extras-cell"><span class="badge none">0</span></td>`;
+      else {
+        const statuses = locExtras.map(e => simulateStatus(loc, e.name));
+        const agg = aggStatus(statuses);
+        html += `<td class="extras-cell"><span class="badge ${agg}" onclick="openDrawer('${loc}', 'extras')">${locExtras.length}</span></td>`;
+      }
+    }
+    html += '</tr>';
+  }
+  html += '</tbody>';
+  document.getElementById('matrix').innerHTML = html;
+}
+
+function openDrawer(loc, mode) {
+  const data = matrixData;
+  document.getElementById('drawer-title').textContent = loc;
+  document.querySelectorAll('tr').forEach(r => r.classList.remove('focused'));
+  const row = document.querySelector(`tr[data-loc="${loc}"]`);
+  if (row) row.classList.add('focused');
+
+  let body = '';
+  const di = data.dataIngestion.filter(s => data.scope[loc] && data.scope[loc][s.name]);
+  const mp = data.mainProcesses.filter(s => !s.quarterly && data.scope[loc] && data.scope[loc][s.name]);
+  const qt = [...data.mainProcesses.filter(s=>s.quarterly), ...data.locationSpecific.filter(s=>s.quarterly)].filter(s => data.scope[loc] && data.scope[loc][s.name]);
+  const ls = data.locationSpecific.filter(s => !s.quarterly && data.scope[loc] && data.scope[loc][s.name]);
+
+  const renderSection = (title, items, subtitle) => {
+    if (items.length === 0) return '';
+    const done = items.filter(s => simulateStatus(loc, s.name) === 'done').length;
+    const running = items.filter(s => simulateStatus(loc, s.name) === 'running').length;
+    const failed = items.filter(s => simulateStatus(loc, s.name) === 'failed').length;
+    let countsHtml = `${done}/${items.length} completed`;
+    if (running) countsHtml += ` · ${running} running`;
+    if (failed) countsHtml += ` · ${failed} failed`;
+    let html = `<div class="drawer-phase"><div class="drawer-phase-title">${title}<span class="drawer-phase-counts">${countsHtml}</span></div>`;
+    if (subtitle) html += `<div class="drawer-phase-counts" style="margin-bottom:6px;">${subtitle}</div>`;
+    for (const s of items) {
+      const st = simulateStatus(loc, s.name);
+      const symbol = statusSymbol[st];
+      html += `<div class="step-item"><span class="step-status ${st}">${symbol}</span><span class="step-name">${s.name}${s.quarterly ? ' <span style="color:#8a5a14;font-size:10px;">Quarterly</span>' : ''}</span><span class="step-meta">${st.replace('-',' ')}</span></div>`;
+    }
+    html += '</div>';
+    return html;
+  };
+
+  if (mode === 'extras') {
+    document.getElementById('drawer-sub').textContent = 'Location Specific + Quarterly details';
+    body += '<div class="drawer-section">';
+    body += renderSection('Location Specific', ls);
+    body += renderSection('Quarterly Runs', qt, 'Only run at quarter-end (Dec, Mar, Jun, Sep)');
+    if (!ls.length && !qt.length) body += '<p style="color:#6b7684;font-size:12px;">No location-specific or quarterly runs for ' + loc + '.</p>';
+    body += '</div>';
+  } else {
+    document.getElementById('drawer-sub').textContent = 'Full run detail for this location';
+    body += '<div class="drawer-section">';
+    body += renderSection('Data Ingestion', di);
+    body += renderSection('Main Processes', mp);
+    body += renderSection('Location Specific', ls);
+    body += renderSection('Quarterly Runs', qt, 'Only run at quarter-end');
+    body += '</div>';
+  }
+  document.getElementById('drawer-body').innerHTML = body;
+  document.getElementById('drawer').classList.add('open');
+  document.getElementById('overlay').classList.add('active');
+  document.getElementById('app').classList.add('drawer-open');
+}
+
+function closeDrawer() {
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('overlay').classList.remove('active');
+  document.getElementById('app').classList.remove('drawer-open');
+  document.querySelectorAll('tr').forEach(r => r.classList.remove('focused'));
+}
+document.getElementById('overlay').addEventListener('click', closeDrawer);
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDrawer(); });
+</script>
+</body>
+</html>

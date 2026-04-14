@@ -36,5 +36,24 @@ docs/seed-data/greenlight-data-validation.xlsx
 docs/seed-data/locations.json
 docs/seed-data/~$*
 
+# Intermediate golden-source iterations (only v6 is authoritative)
+docs/seed-data/golden-source-final.xlsx
+docs/seed-data/golden-source-final-v2.xlsx
+docs/seed-data/golden-source-final-v3.xlsx
+docs/seed-data/golden-source-final-v4.xlsx
+docs/seed-data/golden-source-final-v5.xlsx
+docs/seed-data/golden-source-mapping.xlsx
+docs/seed-data/golden-source-mapping-v2.xlsx
+docs/seed-data/golden-source-mapping-v3.xlsx
+docs/seed-data/golden-source-mapping-v4.xlsx
+docs/seed-data/golden-source-mapping-v5.xlsx
+docs/seed-data/golden-source-mapping-q3.xlsx
+docs/seed-data/build-mapping-v4.js
+docs/seed-data/build-mapping-v5.js
+docs/seed-data/build-q3-mapping.js
+docs/seed-data/mapping-analysis.json
+docs/seed-data/take-screenshot.js
+docs/seed-data/Scripts-copy.zip
+
 # Claude
 .claude/

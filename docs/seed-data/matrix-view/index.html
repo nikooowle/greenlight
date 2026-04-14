@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ALM Greenlight — Scope Matrix</title>
+<style>
+  body { font-family: Calibri, Arial, sans-serif; margin: 20px; background: #f7f7f7; }
+  h1 { color: #1a1a1a; margin-bottom: 4px; font-size: 20px; }
+  .subtitle { color: #666; margin-bottom: 16px; font-size: 12px; }
+  table { border-collapse: collapse; background: white; box-shadow: 0 2px 6px rgba(0,0,0,0.08); }
+  th, td { border: 1px solid #ddd; padding: 5px 4px; text-align: center; font-size: 10px; }
+  thead th { background: #e8f1fa; color: #1a1a1a; font-weight: 600; }
+  .phase-header { background: #c8dcf0 !important; font-size: 12px; padding: 6px 4px; }
+  .sub-header { font-size: 9px; line-height: 1.1; max-width: 55px; min-width: 36px; padding: 4px 2px; }
+  .loc-cell { background: #f5f7fa; font-weight: 600; text-align: left; padding: 5px 8px; min-width: 60px; color: #1a1a1a; font-size: 11px; }
+  .in-scope { background: #4CAF50; color: white; font-weight: bold; font-size: 12px; }
+  .not-in-scope { background: #fde7e3; }
+  .quarterly-col { background: #fff3cd !important; }
+  .legend { margin-top: 12px; font-size: 11px; display: flex; gap: 20px; }
+  .legend-item { display: flex; align-items: center; gap: 6px; }
+  .legend-box { width: 18px; height: 14px; border: 1px solid #ccc; display: inline-block; }
+  .stat { color: #666; font-size: 11px; margin-top: 4px; }
+</style>
+</head>
+<body>
+<h1>Daily MCP Runs Tracker — Scope Matrix Preview</h1>
+<p class="subtitle">Based on golden-source-final-v6.xlsx — shows which location × subprocess combos are in-scope</p>
+
+<div id="matrix">Loading…</div>
+
+<div class="legend">
+  <div class="legend-item"><span class="legend-box in-scope"></span> In Scope</div>
+  <div class="legend-item"><span class="legend-box not-in-scope"></span> Not in Scope</div>
+  <div class="legend-item"><span class="legend-box quarterly-col"></span> Quarterly</div>
+</div>
+
+<script>
+fetch('matrix-data.json').then(r => r.json()).then(data => {
+  const allSubs = [
+    ...data.dataIngestion.map(s => ({ ...s, group: 'Data Ingestion' })),
+    ...data.mainProcesses.map(s => ({ ...s, group: 'Main Processes' })),
+    ...data.locationSpecific.map(s => ({ ...s, group: 'Location Specific' })),
+  ];
+  const groups = {};
+  for (const s of allSubs) { (groups[s.group] = groups[s.group] || []).push(s); }
+
+  let html = '<table><thead>';
+  html += '<tr><th rowspan="2" class="loc-cell">Location</th>';
+  for (const g of ['Data Ingestion', 'Main Processes', 'Location Specific']) {
+    if (groups[g]) html += '<th colspan="' + groups[g].length + '" class="phase-header">' + g + '</th>';
+  }
+  html += '</tr><tr>';
+  for (const g of ['Data Ingestion', 'Main Processes', 'Location Specific']) {
+    if (!groups[g]) continue;
+    for (const s of groups[g]) {
+      const cls = s.quarterly ? 'sub-header quarterly-col' : 'sub-header';
+      const qtag = s.quarterly ? ' <small>(Q)</small>' : '';
+      html += '<th class="' + cls + '">' + s.name.replace(/ /g, '<br>') + qtag + '</th>';
+    }
+  }
+  html += '</tr></thead><tbody>';
+  for (const loc of data.locations) {
+    html += '<tr><td class="loc-cell">' + loc + '</td>';
+    for (const g of ['Data Ingestion', 'Main Processes', 'Location Specific']) {
+      if (!groups[g]) continue;
+      for (const s of groups[g]) {
+        const inScope = data.scope[loc] && data.scope[loc][s.name];
+        const qCls = s.quarterly ? ' quarterly-col' : '';
+        html += inScope ? '<td class="in-scope' + qCls + '">&#10003;</td>' : '<td class="not-in-scope' + qCls + '"></td>';
+      }
+    }
+    html += '</tr>';
+  }
+  html += '</tbody></table>';
+
+  let inScopeCount = 0, totalCells = 0;
+  for (const loc of data.locations) for (const s of allSubs) { totalCells++; if (data.scope[loc] && data.scope[loc][s.name]) inScopeCount++; }
+  html += '<div class="stat">' + data.locations.length + ' locations × ' + allSubs.length + ' subprocesses = ' + totalCells + ' cells | ' + inScopeCount + ' in-scope (' + Math.round(inScopeCount/totalCells*100) + '%)</div>';
+
+  document.getElementById('matrix').innerHTML = html;
+});
+</script>
+</body>
+</html>

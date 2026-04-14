@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ALM Greenlight — Compressed Dashboard Prototype</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Calibri, Arial, sans-serif; margin: 0; padding: 20px; background: #f1f4f8; color: #1a1a1a; }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  .subtitle { color: #6b7684; font-size: 12px; margin-bottom: 18px; }
+
+  /* KPI Cards */
+  .kpi-row { display: flex; gap: 12px; margin-bottom: 20px; }
+  .kpi { flex: 1; background: white; border-radius: 8px; padding: 14px 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); cursor: pointer; transition: transform 0.15s; border-left: 4px solid #ccc; }
+  .kpi:hover { transform: translateY(-2px); box-shadow: 0 3px 8px rgba(0,0,0,0.12); }
+  .kpi-value { font-size: 26px; font-weight: 700; line-height: 1; }
+  .kpi-label { font-size: 11px; color: #6b7684; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+  .kpi.ok { border-left-color: #4CAF50; }
+  .kpi.warn { border-left-color: #f5a623; }
+  .kpi.bad { border-left-color: #e74c3c; }
+  .kpi.info { border-left-color: #3498db; }
+
+  /* Section controls */
+  .controls { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; align-items: center; }
+  .pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: white; border: 1px solid #d1d9e0; border-radius: 16px; font-size: 12px; cursor: pointer; user-select: none; transition: background 0.15s; }
+  .pill:hover { background: #eef2f6; }
+  .pill.active { background: #1a73e8; color: white; border-color: #1a73e8; }
+  .pill .caret { font-size: 10px; color: #6b7684; }
+  .pill.active .caret { color: white; }
+
+  /* Matrix */
+  .matrix-wrap { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #e8ecef; padding: 6px 4px; text-align: center; font-size: 11px; }
+  thead th { background: #f5f7fa; color: #3a4450; font-weight: 600; position: sticky; top: 0; z-index: 2; }
+  .group-header { background: #c8dcf0 !important; font-size: 12px; padding: 8px 4px; color: #1a1a1a; }
+  .group-header.di { background: #d0e9d0 !important; }
+  .group-header.mp { background: #c8dcf0 !important; }
+  .group-header.ls { background: #ffe4bc !important; }
+  .group-header.qt { background: #f0d6f0 !important; }
+  .sub-header { font-size: 9.5px; line-height: 1.1; padding: 6px 3px; max-width: 58px; min-width: 38px; word-wrap: break-word; }
+  .loc-cell { background: #f5f7fa !important; font-weight: 700; text-align: left; padding: 8px 10px; min-width: 70px; font-size: 12px; position: sticky; left: 0; z-index: 1; }
+  tr:hover .loc-cell { background: #eef2f6 !important; }
+  tr:hover td { background: #fafbfc; }
+
+  /* Status cells */
+  .cell-not-scope { background: #fdecea; }
+  .cell-done { background: #4CAF50; color: white; font-weight: 700; }
+  .cell-running { background: #f5a623; color: white; font-weight: 700; }
+  .cell-failed { background: #e74c3c; color: white; font-weight: 700; }
+  .cell-pending { background: #bdc3c7; color: white; font-weight: 700; }
+  .cell-not-started { background: #ecf0f1; color: #6b7684; }
+
+  /* Extras chip */
+  .extras-cell { background: #fafbfc; padding: 6px 8px !important; text-align: left; font-size: 10.5px; }
+  .chip { display: inline-block; margin: 1px 3px 1px 0; padding: 2px 7px; border-radius: 10px; background: #eef2f6; color: #3a4450; border: 1px solid #d1d9e0; font-size: 10px; }
+  .chip.done { background: #d6ecd6; color: #2a6b2a; border-color: #8cc48c; }
+  .chip.running { background: #fde0b5; color: #8a5a14; border-color: #f5a623; }
+  .chip.failed { background: #f8d0cc; color: #8a2018; border-color: #e74c3c; }
+  .chip.quarterly { background: #f0e0f0; color: #6b2a6b; border-color: #c687c6; }
+  .chip.not-started { background: #ecf0f1; color: #6b7684; border-color: #bdc3c7; }
+  .extras-count { color: #6b7684; cursor: pointer; text-decoration: none; border-bottom: 1px dashed #6b7684; font-size: 10.5px; }
+  .extras-count:hover { color: #1a73e8; border-bottom-color: #1a73e8; }
+
+  /* Legend */
+  .legend { margin-top: 16px; font-size: 11px; display: flex; gap: 16px; flex-wrap: wrap; color: #6b7684; }
+  .legend-item { display: flex; align-items: center; gap: 6px; }
+  .lg-box { width: 14px; height: 14px; border-radius: 3px; border: 1px solid rgba(0,0,0,0.1); display: inline-block; }
+
+  /* Section panels */
+  .section { margin-top: 20px; }
+  .section-title { font-size: 13px; font-weight: 700; color: #3a4450; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  /* Country-focused view (future) */
+  .role-banner { background: #fff8d6; border: 1px solid #f5d84b; border-radius: 6px; padding: 10px 14px; font-size: 12px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; }
+</style>
+</head>
+<body>
+
+<h1>ALM Greenlight — Compressed Dashboard Prototype</h1>
+<p class="subtitle">Design preview: KPI summary + dense matrix + collapsible groups + per-location chips for sparse data</p>
+
+<!-- Role banner -->
+<div class="role-banner">
+  <span>👤 <b>You are viewing as:</b> Coordinator (all locations) — switch to <a href="#" id="role-single">single-location view</a></span>
+  <span>EOM: 31-Mar-26 · Run 2603</span>
+</div>
+
+<!-- KPI cards -->
+<div class="kpi-row">
+  <div class="kpi info"><div class="kpi-value">15</div><div class="kpi-label">Active Locations</div></div>
+  <div class="kpi ok"><div class="kpi-value">212<span style="font-size:16px;color:#6b7684"> / 280</span></div><div class="kpi-label">In-Scope Completed</div></div>
+  <div class="kpi warn"><div class="kpi-value">24</div><div class="kpi-label">Running</div></div>
+  <div class="kpi warn"><div class="kpi-value">8</div><div class="kpi-label">At SLA Risk</div></div>
+  <div class="kpi bad"><div class="kpi-value">3</div><div class="kpi-label">Failed</div></div>
+</div>
+
+<!-- Controls -->
+<div class="controls">
+  <span class="section-title">Show:</span>
+  <span class="pill active" data-toggle="di">✓ Data Ingestion <span class="caret">▾</span></span>
+  <span class="pill active" data-toggle="mp">✓ Main Processes <span class="caret">▾</span></span>
+  <span class="pill" data-toggle="ls">Location Specific <span class="caret">▸</span></span>
+  <span class="pill" data-toggle="qt">Quarterly (PDCE, EVE) <span class="caret">▸</span></span>
+  <span class="pill" data-toggle="rp">Reporting <span class="caret">▸</span></span>
+  <span style="margin-left:auto;color:#6b7684;font-size:11px;">⚙️ 3 fewer columns shown · 72% screen space saved</span>
+</div>
+
+<!-- Matrix -->
+<div class="matrix-wrap">
+  <table id="matrix"></table>
+</div>
+
+<!-- Legend -->
+<div class="legend">
+  <div class="legend-item"><span class="lg-box" style="background:#4CAF50"></span> Completed</div>
+  <div class="legend-item"><span class="lg-box" style="background:#f5a623"></span> Running</div>
+  <div class="legend-item"><span class="lg-box" style="background:#e74c3c"></span> Failed</div>
+  <div class="legend-item"><span class="lg-box" style="background:#ecf0f1"></span> Not Started</div>
+  <div class="legend-item"><span class="lg-box" style="background:#fdecea"></span> Not in Scope</div>
+  <div class="legend-item"><span class="chip done" style="margin:0">chip</span> = Location Specific (expand per row)</div>
+</div>
+
+<!-- Focus view example -->
+<div class="section">
+  <div class="section-title">Single-location focus view (example: PLDB)</div>
+  <div style="background:white;border-radius:8px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,0.08)">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px">
+      <div><b>Data Ingestion</b><br><small>5 of 5 completed ✓</small><br>
+        <span class="chip done">Delete Port</span><span class="chip done">MP</span><span class="chip done">Spreads</span><span class="chip done">Load Pos</span><span class="chip done">Import Strat</span>
+      </div>
+      <div><b>Main Processes</b><br><small>12 of 14 completed · 1 running · 1 not started</small><br>
+        <span class="chip done">Val</span><span class="chip done">CSRBB Val</span><span class="chip done">CSRBB Plan</span><span class="chip done">EC</span><span class="chip done">KR</span><span class="chip done">Gap</span><span class="chip running">NII</span><span class="chip done">AIC</span><span class="chip done">ITS</span><span class="chip done">CSRBB Export</span><span class="chip not-started">…</span>
+      </div>
+      <div><b>Location Specific</b><br><small>SOT, SOLO, FTP EVE SOT</small><br>
+        <span class="chip done">SOT</span><span class="chip done">SOLO</span><span class="chip running">FTP EVE SOT</span>
+      </div>
+      <div><b>Quarterly</b> <span style="color:#8a5a14;font-size:10px">(this month)</span><br><small>PDCE, EVE Opt</small><br>
+        <span class="chip quarterly">PDCE</span><span class="chip quarterly">EVE Optionality</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Simulated statuses for visual richness
+function simulateStatus(loc, sub) {
+  const seed = (loc + '|' + sub).split('').reduce((a,c) => a + c.charCodeAt(0), 0);
+  const r = (seed * 9301 + 49297) % 233280;
+  const pct = r / 233280;
+  if (pct < 0.72) return 'done';
+  if (pct < 0.85) return 'running';
+  if (pct < 0.92) return 'pending';
+  if (pct < 0.97) return 'failed';
+  return 'not-started';
+}
+const statusSymbol = { done: '✓', running: '▶', failed: '✕', pending: '◯', 'not-started': '—' };
+
+fetch('matrix-data.json').then(r => r.json()).then(data => {
+  const groups = {
+    di: { name: 'Data Ingestion', cls: 'di', items: data.dataIngestion.slice().sort((a,b)=>a.order-b.order) },
+    mp: { name: 'Main Processes', cls: 'mp', items: data.mainProcesses.filter(s => !s.quarterly).sort((a,b)=>a.order-b.order) },
+    qt: { name: 'Quarterly', cls: 'qt', items: [...data.mainProcesses.filter(s => s.quarterly), ...data.locationSpecific.filter(s => s.quarterly)].sort((a,b)=>a.order-b.order) },
+    ls: { name: 'Location Specific', cls: 'ls', items: data.locationSpecific.filter(s => !s.quarterly).sort((a,b)=>a.order-b.order) },
+  };
+
+  const activeGroups = ['di','mp']; // default visible
+
+  const render = () => {
+    const groupsToShow = activeGroups.map(k => ({ key: k, ...groups[k] }));
+    let html = '<thead><tr><th class="loc-cell">Location</th>';
+    for (const g of groupsToShow) {
+      html += `<th colspan="${g.items.length}" class="group-header ${g.cls}">${g.name}</th>`;
+    }
+    if (!activeGroups.includes('ls')) {
+      html += '<th rowspan="2" class="sub-header" style="background:#ffe4bc;">Location Specific</th>';
+    }
+    if (!activeGroups.includes('qt')) {
+      html += '<th rowspan="2" class="sub-header" style="background:#f0d6f0;">Quarterly</th>';
+    }
+    html += '</tr><tr><th class="loc-cell"></th>';
+    for (const g of groupsToShow) {
+      for (const s of g.items) {
+        html += `<th class="sub-header ${s.quarterly?'quarterly-col':''}">${s.name.replace(/ /g,'<br>')}</th>`;
+      }
+    }
+    html += '</tr></thead><tbody>';
+
+    const locs = data.locations.filter(l => l !== 'ICDB');
+    for (const loc of locs) {
+      html += `<tr><td class="loc-cell">${loc}</td>`;
+      for (const g of groupsToShow) {
+        for (const s of g.items) {
+          const inScope = data.scope[loc] && data.scope[loc][s.name];
+          if (!inScope) {
+            html += `<td class="cell-not-scope"></td>`;
+          } else {
+            const st = simulateStatus(loc, s.name);
+            html += `<td class="cell-${st}" title="${s.name}">${statusSymbol[st]}</td>`;
+          }
+        }
+      }
+      // Collapsed Location Specific summary as chips
+      if (!activeGroups.includes('ls')) {
+        const lsItems = groups.ls.items.filter(s => data.scope[loc] && data.scope[loc][s.name]);
+        if (lsItems.length === 0) {
+          html += `<td class="extras-cell" style="color:#bdc3c7">—</td>`;
+        } else {
+          let chips = lsItems.map(s => {
+            const st = simulateStatus(loc, s.name);
+            return `<span class="chip ${st}">${s.name}</span>`;
+          }).join('');
+          html += `<td class="extras-cell">${chips}</td>`;
+        }
+      }
+      // Collapsed Quarterly summary
+      if (!activeGroups.includes('qt')) {
+        const qtItems = groups.qt.items.filter(s => data.scope[loc] && data.scope[loc][s.name]);
+        if (qtItems.length === 0) {
+          html += `<td class="extras-cell" style="color:#bdc3c7">—</td>`;
+        } else {
+          let chips = qtItems.map(s => {
+            const st = simulateStatus(loc, s.name);
+            return `<span class="chip quarterly">${s.name}</span>`;
+          }).join('');
+          html += `<td class="extras-cell">${chips}</td>`;
+        }
+      }
+      html += '</tr>';
+    }
+    html += '</tbody>';
+    document.getElementById('matrix').innerHTML = html;
+  };
+
+  render();
+
+  // Pills toggle
+  document.querySelectorAll('.pill[data-toggle]').forEach(pill => {
+    pill.addEventListener('click', () => {
+      const k = pill.dataset.toggle;
+      const idx = activeGroups.indexOf(k);
+      if (idx >= 0) {
+        activeGroups.splice(idx, 1);
+        pill.classList.remove('active');
+        pill.querySelector('.caret').textContent = '▸';
+      } else {
+        activeGroups.push(k);
+        pill.classList.add('active');
+        pill.querySelector('.caret').textContent = '▾';
+      }
+      render();
+    });
+  });
+});
+</script>
+</body>
+</html>
