@@ -1,0 +1,5622 @@
+{
+  "version": "v6",
+  "generatedAt": "2026-04-14T17:02:10.975Z",
+  "totalLocations": 15,
+  "totalSubprocesses": 27,
+  "mappings": [
+    {
+      "location": "AUDB",
+      "subprocess": "Delete Portfolio",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 1,
+      "avgRank": 1.02,
+      "steps": [
+        "Delete portfolio from"
+      ],
+      "scripts": [
+        "Delete_Portfolio_AU_MCP"
+      ],
+      "monthsSeen": [
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "AUDB",
+      "subprocess": "Model Parameters",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 2,
+      "avgRank": 2.02,
+      "steps": [
+        "load Model parameters",
+        "Model parameters comparison"
+      ],
+      "scripts": [
+        "Load_compare_MP_AU_MCP"
+      ],
+      "monthsSeen": [
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "AUDB",
+      "subprocess": "Spreads",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 4,
+      "avgRank": 3.11,
+      "steps": [
+        "load Spreads",
+        "Spreads comparison"
+      ],
+      "scripts": [
+        "Load_compare_Spreads_AU_MCP"
+      ],
+      "monthsSeen": [
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "AUDB",
+      "subprocess": "Load Position",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 5,
+      "avgRank": 3.54,
+      "steps": [
+        "load",
+        "Stratification",
+        "Position report OLAP exports",
+        "copy from"
+      ],
+      "scripts": [
+        "Load_POS_AU_MCP"
+      ],
+      "monthsSeen": [
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "AUDB",
+      "subprocess": "Valuation",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 7,
+      "avgRank": 4.64,
+      "steps": [
+        "portfolio valuation run",
+        "export to ara",
+        "Light Maintenance",
+        "valuation report OLAP exports",
+        "valuation run QRM Reporter exports",
+        "Light Maintenance Portfolio Valuation"
+      ],
+      "scripts": [
+        "Valuation_AU_MCP"
+      ],
+      "monthsSeen": [
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "AUDB",
+      "subprocess": "CSRBB (Val)",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 9,
+      "avgRank": 6.77,
+      "steps": [
+        "CSRBB Portfolio Valuation",
+        "Light Maintenance",
+        "Light Maintenance CSRBB valuation"
+      ],
+      "scripts": [
+        "CSRBB_Valuation_AU_MCP"
+      ],
+      "monthsSeen": [
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "AUDB",
+      "subprocess": "CSRBB (Plan)",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 11,
+      "avgRank": 8.31,
+      "steps": [
+        "Light Maintenance",
+        "import CSRBB strategies",
+        "CSRBB Planning Run",
+        "export to ara",
+        "CSRBB Planning Light Maintenance",
+        "CSRBB Planning export to ara"
+      ],
+      "scripts": [
+        "CSRBB_Planning_AU_MCP"
+      ],
+      "monthsSeen": [
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "AUDB",
+      "subprocess": "EC",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 12,
+      "avgRank": 8.38,
+      "steps": [
+        "ing-ec valuation",
+        "Light Maintenance",
+        "ing-ec valuation QRM Reporter exports",
+        "Light Maintenance ing-ec valuation"
+      ],
+      "scripts": [
+        "EC_AU_MCP"
+      ],
+      "monthsSeen": [
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "AUDB",
+      "subprocess": "KR",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 14,
+      "avgRank": 8.94,
+      "steps": [
+        "Light Maintenance",
+        "bpv-kr valuation",
+        "bpv-kr valuation QRM Reporter exports",
+        "Light Maintenance bpv-kr valuation"
+      ],
+      "scripts": [
+        "KR_AU_MCP",
+        "KR_AU_MCP rr due to tech issue",
+        "KR_AU_MCP_rr"
+      ],
+      "monthsSeen": [
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "AUDB",
+      "subprocess": "Import Strategies",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 15,
+      "avgRank": 10.12,
+      "steps": [
+        "import strategies"
+      ],
+      "scripts": [
+        "Import_Strategies_AU_MCP",
+        "Import_Strategies_AU_MCP import updated strategies",
+        "Import_Strategies_AU_MCP rr "
+      ],
+      "monthsSeen": [
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "AUDB",
+      "subprocess": "NII / Planning risk",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 16,
+      "avgRank": 10.63,
+      "steps": [
+        "planning run01",
+        "MDL Processing",
+        "planning run02",
+        "export to ara",
+        "planning run QRM Reporter exports",
+        "export to ara NII"
+      ],
+      "scripts": [
+        "Planning_AU_MCP"
+      ],
+      "monthsSeen": [
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "AUDB",
+      "subprocess": "ITS Planning",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 17,
+      "avgRank": 11.14,
+      "steps": [
+        "Light Maintenance",
+        "ITS planning run",
+        "Light Maintenance ITS planning"
+      ],
+      "scripts": [
+        "ITS_AU_MCP"
+      ],
+      "monthsSeen": [
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "AUDB",
+      "subprocess": "AIC",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 18,
+      "avgRank": 11.39,
+      "steps": [
+        "load AIC Spreads",
+        "portfolio valuation AIC"
+      ],
+      "scripts": [
+        "Valuation_AIC_AU_MCP"
+      ],
+      "monthsSeen": [
+        "2602"
+      ]
+    },
+    {
+      "location": "BEDB",
+      "subprocess": "Delete Portfolio",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 1,
+      "avgRank": 1.02,
+      "steps": [
+        "Delete portfolio from"
+      ],
+      "scripts": [
+        "Delete_Portfolio_BE_MCP",
+        "Delete_Portfolio_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "BEDB",
+      "subprocess": "Model Parameters",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 2,
+      "avgRank": 2.02,
+      "steps": [
+        "load Model parameters",
+        "Model parameters comparison"
+      ],
+      "scripts": [
+        "Load_MP_ATTRIB_BE_MCP",
+        "Load_MP_MCP",
+        "Load_compare_MP_BE_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "BEDB",
+      "subprocess": "Spreads",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 4,
+      "avgRank": 3.11,
+      "steps": [
+        "load Spreads",
+        "Spreads comparison"
+      ],
+      "scripts": [
+        "Load_Spreads_MCP",
+        "Load_compare_Spreads_ATTRIB_BE_MCP",
+        "Load_compare_Spreads_BE_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "BEDB",
+      "subprocess": "Load Position",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 5,
+      "avgRank": 3.54,
+      "steps": [
+        "load",
+        "Stratification",
+        "Position report exports",
+        "export to ara",
+        "copy from",
+        "load Portfolio",
+        "load NTG"
+      ],
+      "scripts": [
+        "Load_POS_ATTRIB_BE_MCP",
+        "Load_POS_BE_MCP",
+        "Load_POS_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "BEDB",
+      "subprocess": "Valuation",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 7,
+      "avgRank": 4.64,
+      "steps": [
+        "portfolio valuation run",
+        "export to ara",
+        "Light Maintenance",
+        "valuation report OLAP exports",
+        "valuation report QRM Reporter exports",
+        "export to ara valuation",
+        "Light Maintenance valuation",
+        "export to ara Portfolio Valuation"
+      ],
+      "scripts": [
+        "Valuation_BE_MCP",
+        "Valuation_MCP",
+        "Valuation_MCP ara",
+        "Valuation_MCP_Export"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "BEDB",
+      "subprocess": "EC",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 12,
+      "avgRank": 8.38,
+      "steps": [
+        "Full Maintenance",
+        "ing-ec valuation",
+        "ing-ec valuation exports"
+      ],
+      "scripts": [
+        "EC_BE_MCP",
+        "EC_BE_MCP rr",
+        "EC_MCP",
+        "EC_NPV_Export"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "BEDB",
+      "subprocess": "Gap + Liquidity IR",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 13,
+      "avgRank": 8.74,
+      "steps": [
+        "gap planning"
+      ],
+      "scripts": [
+        "GAP_BE_MCP",
+        "GAP_BE_MCP rr",
+        "GAP_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "BEDB",
+      "subprocess": "KR",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 14,
+      "avgRank": 8.94,
+      "steps": [
+        "Light Maintenance",
+        "bpv-kr valuation",
+        "export to ara",
+        "bpv-kr valuation exports"
+      ],
+      "scripts": [
+        "KR_BE_MCP",
+        "KR_BPV_Export",
+        "KR_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "BEDB",
+      "subprocess": "Import Strategies",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 15,
+      "avgRank": 10.12,
+      "steps": [
+        "import strategies",
+        "import strategies Risk"
+      ],
+      "scripts": [
+        "Import_Strategies_BE_MCP",
+        "Import_Strategies_Risk_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "BEDB",
+      "subprocess": "NII / Planning risk",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 16,
+      "avgRank": 10.63,
+      "steps": [
+        "combined planning run",
+        "export to ara",
+        "planning run QRM Reporter exports",
+        "Light Maintenance",
+        "planning run QRM reporter exports",
+        "export to ara NII",
+        "Light Maintenance NII",
+        "planning run OLAP exports"
+      ],
+      "scripts": [
+        "Combined_Planning_BE_MCP",
+        "Combined_Planning_BE_MCP (rr for missing scen IR_S120_CR_Up)",
+        "Planning_MCP",
+        "Planning_MCP BE RR",
+        "Planning_MCP BE rr only missing scenario",
+        "Planning_MCP BE rr only missing scenario rr",
+        "Planning_MCP_Export",
+        "Planning_MCP_Export BE with the rerun"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "BEDB",
+      "subprocess": "AIC",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 18,
+      "avgRank": 11.39,
+      "steps": [
+        "load AIC Spreads",
+        "AIC portfolio valuation run"
+      ],
+      "scripts": [
+        "Valuation_AIC_BE_MCP",
+        "Valuation_AIC_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "BEDB",
+      "subprocess": "EVE (Monthly)",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Location Specific",
+      "quarterly": false,
+      "globalSeq": 19,
+      "avgRank": 12,
+      "steps": [
+        "eve optionality mc Be valuation",
+        "eve optionality copy run parameters",
+        "EVE Optionality SCF BE Valuation run",
+        "eve optionality mc Be valuation monthly",
+        "eve optionality copy run parameters monthly",
+        "EVE Optionality SCF BE Valuation run monthly"
+      ],
+      "scripts": [
+        "EVE_Monthly_BE_MCP",
+        "EVE_Monthly_BE_MCP (rr)",
+        "EVE_Monthly_BE_MCP (rr2)"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "BEDB",
+      "subprocess": "EVE Optionality",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": true,
+      "globalSeq": 27,
+      "avgRank": 16.33,
+      "steps": [
+        "EVE Optionality MC Valuation",
+        "EVE Optionality copy run parameters",
+        "EVE Optionality SCF Valuation",
+        "EVE Optionality SCF report",
+        "Light Maintenance"
+      ],
+      "scripts": [
+        "EVE_BE_MCP",
+        "EVE_BE_MCP rr export using new workflow",
+        "EVE_BE_MCP rr export using new workflow rr 2"
+      ],
+      "monthsSeen": [
+        "2512"
+      ]
+    },
+    {
+      "location": "BEGT",
+      "subprocess": "Load Position",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 5,
+      "avgRank": 3.54,
+      "steps": [
+        "load",
+        "Light Maintenance",
+        "export to ara",
+        "Stratification",
+        "Position report OLAP exports",
+        "copy from",
+        "Light Maintenance Load Portfolio"
+      ],
+      "scripts": [
+        "Load_POS_BEGT_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "BEGT",
+      "subprocess": "Valuation",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 7,
+      "avgRank": 4.64,
+      "steps": [
+        "portfolio valuation run",
+        "export to ara",
+        "Light Maintenance",
+        "valuation report exports",
+        "AIC portfolio valuation run",
+        "export to ara valuation",
+        "light maintenance valuation"
+      ],
+      "scripts": [
+        "Valuation_BEGT_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "BEGT",
+      "subprocess": "CSRBB (Val)",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 9,
+      "avgRank": 6.77,
+      "steps": [
+        "CSRBB Portfolio Valuation",
+        "Light Maintenance",
+        "CSRBB Portfolio Valuation Qtr",
+        "Light Maintenance CSRBB Portfolio Valuation Qtr",
+        "Light Maintenance CSRBB Valuation"
+      ],
+      "scripts": [
+        "CSRBB_Valuation_BEGT_MCP",
+        "CSRBB_Valuation_BEGT_MCP (rr)",
+        "CSRBB_Valuation_BEGT_MCP rr (INC14661577)",
+        "CSRBB_Valuation_Qtr_BEGT_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "BEGT",
+      "subprocess": "CSRBB (Plan)",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 11,
+      "avgRank": 8.31,
+      "steps": [
+        "import CSRBB strategies",
+        "CSRBB Planning Run",
+        "export to ara",
+        "CSRBB Planning Run Qtr",
+        "export to ara CSRBB Planning"
+      ],
+      "scripts": [
+        "CSRBB_Planning_BEGT_MCP",
+        "CSRBB_Planning_BEGT_MCP (run from line 42 down)",
+        "CSRBB_Planning_BEGT_MCP (run only to set defaults line 38",
+        "CSRBB_Planning_Qtr_BEGT_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "BEGT",
+      "subprocess": "EC",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 12,
+      "avgRank": 8.38,
+      "steps": [
+        "Light Maintenance",
+        "ing-ec valuation",
+        "ing-ec valuation OLAP exports",
+        "ing-ec valuation QRM Reporter exports",
+        "Light Maintenance ing-ec valuation"
+      ],
+      "scripts": [
+        "EC_BEGT_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "BEGT",
+      "subprocess": "Gap + Liquidity IR",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 13,
+      "avgRank": 8.74,
+      "steps": [
+        "gap planning"
+      ],
+      "scripts": [
+        "GAP_BEGT_MCP",
+        "GAP_BEGT_MCP rr",
+        "GAP_BEGT_MCP rr (Export)",
+        "GAP_BEGT_MCP rr2 (INC14485851)"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "BEGT",
+      "subprocess": "KR",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 14,
+      "avgRank": 8.94,
+      "steps": [
+        "Light Maintenance",
+        "bpv-kr valuation",
+        "bpv-kr valuation OLAP exports",
+        "bpv-kr valuation QRM Reporter exports",
+        "Light Maintenance BPV KR valuation"
+      ],
+      "scripts": [
+        "KR_BEGT_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "BEGT",
+      "subprocess": "Import Strategies",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 15,
+      "avgRank": 10.12,
+      "steps": [
+        "import strategies"
+      ],
+      "scripts": [
+        "Import_Strategies_BEGT_MCP",
+        "Import_Strategies_BEGT_MCP (rr Run 2)",
+        "Import_Strategies_BEGT_MCP rr"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "BEGT",
+      "subprocess": "NII / Planning risk",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 16,
+      "avgRank": 10.63,
+      "steps": [
+        "planning run01",
+        "MDL Processing",
+        "planning run02",
+        "export to ara",
+        "planning run exports",
+        "export to ara NII"
+      ],
+      "scripts": [
+        "Planning_BEGT_MCP_2",
+        "Planning_BEGT_MCP_2 (Export)",
+        "Planning_BEGT_MCP_2 (rr Run 2)",
+        "Planning_BEGT_MCP_2 (rr line 72 down)",
+        "Planning_BEGT_MCP_2 rr (Plan run exports)",
+        "Planning_BEGT_MCP_2 rr INC14661577",
+        "Planning_BEGT_MCP_2 rr2 (Plan Run 2)",
+        "Planning_BEGT_MCP_2 rr3 (Plan run exports)",
+        "Planning_BEGT_MCP_2 rr4 (PlanRun2 and Export after Manual MDL import)"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "BEGT",
+      "subprocess": "ITS Planning",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 17,
+      "avgRank": 11.14,
+      "steps": [
+        "ITS planning run"
+      ],
+      "scripts": [
+        "ITS_BEGT_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "BEGT",
+      "subprocess": "CSRBB Export",
+      "phase": "Reporting",
+      "phaseDisplay": "Reporting",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 20,
+      "avgRank": 12.9,
+      "steps": [
+        "CSRBB exports"
+      ],
+      "scripts": [
+        "BEGT_CSRBB_Export_updated"
+      ],
+      "monthsSeen": [
+        "2602"
+      ]
+    },
+    {
+      "location": "DEDB",
+      "subprocess": "Delete Portfolio",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 1,
+      "avgRank": 1.02,
+      "steps": [
+        "Delete portfolio from"
+      ],
+      "scripts": [
+        "Delete_Portfolio_DE_MCP",
+        "Delete_Portfolio_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "DEDB",
+      "subprocess": "Model Parameters",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 2,
+      "avgRank": 2.02,
+      "steps": [
+        "load Model parameters",
+        "Model parameters comparison"
+      ],
+      "scripts": [
+        "Load_MP_MCP",
+        "Load_compare_MP_DE_MCP",
+        "Load_compare_MP_DE_MCP rr removed import workflow",
+        "Load_compare_MP_DE_MCP rr updated workflow path"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "DEDB",
+      "subprocess": "Spreads",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 4,
+      "avgRank": 3.11,
+      "steps": [
+        "load Spreads",
+        "Spreads comparison"
+      ],
+      "scripts": [
+        "Load_Spreads_MCP",
+        "Load_compare_Spreads_DE_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "DEDB",
+      "subprocess": "Load Position",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 5,
+      "avgRank": 3.54,
+      "steps": [
+        "load",
+        "Stratification",
+        "copy from",
+        "export to ara",
+        "export to ara Load Portfolio",
+        "load NTG",
+        "Position report OLAP exports"
+      ],
+      "scripts": [
+        "Load_POS_DE_MCP",
+        "Load_POS_MCP",
+        "POS_MCP_Export"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "DEDB",
+      "subprocess": "Load Index History",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Location Specific",
+      "quarterly": false,
+      "globalSeq": 6,
+      "avgRank": 4,
+      "steps": [
+        "index history"
+      ],
+      "scripts": [
+        "Load_Index_History_DE_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "DEDB",
+      "subprocess": "Valuation",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 7,
+      "avgRank": 4.64,
+      "steps": [
+        "portfolio valuation run",
+        "export to ara",
+        "Light Maintenance",
+        "valuation report exports from ARA",
+        "valuation report QRM Reporter exports",
+        "export to ara valuation",
+        "Light Maintenance valuation",
+        "export to ara Portfolio Valuation",
+        "valuation report OLAP exports"
+      ],
+      "scripts": [
+        "Valuation_DE_MCP",
+        "Valuation_DE_MCP rerun, new spreads",
+        "Valuation_DE_MCP_rr",
+        "Valuation_MCP",
+        "Valuation_MCP_Export",
+        "Valuation_MCP_Export (copy)"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "DEDB",
+      "subprocess": "CSRBB (Val)",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 9,
+      "avgRank": 6.77,
+      "steps": [
+        "CSRBB Portfolio Valuation",
+        "CSRBB Portfolio Valuation Qtr",
+        "Light Maintenance CSRBB Portfolio Valuation Qtr"
+      ],
+      "scripts": [
+        "CSRBB_Valuation_DE_MCP",
+        "CSRBB_Valuation_MCP",
+        "CSRBB_Valuation_Qtr_DE_MCP",
+        "CSRBB_Valuation_Qtr_MCP",
+        "CSRBB_Valuation_Qtr_MCP_rr after email failure"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "DEDB",
+      "subprocess": "CSRBB (Plan)",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 11,
+      "avgRank": 8.31,
+      "steps": [
+        "import CSRBB strategies",
+        "CSRBB Planning Run",
+        "export to ara",
+        "CSRBB Planning Run Qtr",
+        "export to ara EC"
+      ],
+      "scripts": [
+        "CSRBB_Planning_DE_MCP",
+        "CSRBB_Planning_DE_MCP rr",
+        "CSRBB_Planning_DE_MCP rr 2",
+        "CSRBB_Planning_Qtr_DE_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "DEDB",
+      "subprocess": "EC",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 12,
+      "avgRank": 8.38,
+      "steps": [
+        "Light Maintenance",
+        "ing-ec valuation",
+        "export to ara",
+        "ing-ec valuation QRM reporter exports",
+        "ing-ec valuation exports from ARA",
+        "Full Maintenance",
+        "Light Maintenance CSRBB valuation",
+        "export to ara ec",
+        "Light Maintenance EC",
+        "export to ara EC"
+      ],
+      "scripts": [
+        "EC_DE_MCP",
+        "EC_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "DEDB",
+      "subprocess": "Gap + Liquidity IR",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 13,
+      "avgRank": 8.74,
+      "steps": [
+        "gap planning",
+        "export to ara"
+      ],
+      "scripts": [
+        "GAP_DE_MCP",
+        "GAP_DE_MCP (copy)"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "DEDB",
+      "subprocess": "KR",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 14,
+      "avgRank": 8.94,
+      "steps": [
+        "Light Maintenance",
+        "bpv-kr valuation",
+        "export to ara",
+        "bpv-kr valuation QRM reporter exports",
+        "bpv-kr valuation exports from ARA",
+        "Light Maintenance KR valuation",
+        "export to ara KR"
+      ],
+      "scripts": [
+        "KR_DE_MCP",
+        "KR_DE_MCP rerun, new spreads",
+        "KR_DE_MCP rr",
+        "KR_MCP",
+        "KR_MCP Germany"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "DEDB",
+      "subprocess": "Import Strategies",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 15,
+      "avgRank": 10.12,
+      "steps": [
+        "import strategies",
+        "import strategies Risk",
+        "import strategies Finance",
+        "import strategies CBS"
+      ],
+      "scripts": [
+        "Import_Strategies_CBS_MCP",
+        "Import_Strategies_DE_MCP",
+        "Import_Strategies_Finance_MCP",
+        "Import_Strategies_Risk_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "DEDB",
+      "subprocess": "NII / Planning risk",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 16,
+      "avgRank": 10.63,
+      "steps": [
+        "planning run",
+        "export to ara",
+        "planning run QRM reporter exports",
+        "planning run exports from ARA",
+        "planning run OLAP exports",
+        "export to ara NII",
+        "Light Maintenance NII"
+      ],
+      "scripts": [
+        "Planning_DE_MCP ",
+        "Planning_DE_MCP FIN rerun (Export)",
+        "Planning_DE_MCP csv exports",
+        "Planning_DE_MCP rr",
+        "Planning_DE_MCP rr 2",
+        "Planning_DE_MCP rr missing scenarios",
+        "Planning_MCP",
+        "Planning_MCP_Export"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "DEDB",
+      "subprocess": "ITS Planning",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 17,
+      "avgRank": 11.14,
+      "steps": [
+        "Light Maintenance",
+        "ITS planning run",
+        "Light Maintenance its"
+      ],
+      "scripts": [
+        "ITS_DE_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "DEDB",
+      "subprocess": "AIC",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 18,
+      "avgRank": 11.39,
+      "steps": [
+        "load AIC Spreads",
+        "AIC portfolio valuation run"
+      ],
+      "scripts": [
+        "Valuation_AIC_DE_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "DEDB",
+      "subprocess": "CSRBB Export",
+      "phase": "Reporting",
+      "phaseDisplay": "Reporting",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 20,
+      "avgRank": 12.9,
+      "steps": [
+        "CSRBB exports"
+      ],
+      "scripts": [
+        "DEDB_CSRBB_Export_updated",
+        "DEDB_CSRBB_Export_updated (copy)"
+      ],
+      "monthsSeen": [
+        "2602"
+      ]
+    },
+    {
+      "location": "DEDB",
+      "subprocess": "SOT",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Location Specific",
+      "quarterly": false,
+      "globalSeq": 24,
+      "avgRank": 17.2,
+      "steps": [
+        "SOT",
+        "SOT QRM reporter exports"
+      ],
+      "scripts": [
+        "SOT_DE_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601"
+      ]
+    },
+    {
+      "location": "DEDB",
+      "subprocess": "PDCE",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": true,
+      "globalSeq": 26,
+      "avgRank": 7.57,
+      "steps": [
+        "pdce planning",
+        "of script",
+        "Quarterly valuation"
+      ],
+      "scripts": [
+        "DEDB_R2601_1_MCP2512_2_P_PDCE (SOT FX rerun",
+        "DEDB_R2601_1_MCP2512_2_P_PDCE (SOT FX rerun 2)",
+        "DEDB_R2601_1_MCP2512_2_P_PDCE stratification",
+        "DEDB_R2601_1_MCP2512_2_P_PDCE val strat pdce",
+        "Quarter_Valuation_DE_MCP",
+        "Quarter_Valuation_DE_MCP_ESM0534743"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2603"
+      ]
+    },
+    {
+      "location": "DEDB",
+      "subprocess": "EVE Optionality",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": true,
+      "globalSeq": 27,
+      "avgRank": 16.33,
+      "steps": [
+        "EVE Optionality MC Valuation",
+        "EVE Optionality copy run parameters",
+        "EVE Optionality SCF Valuation",
+        "EVE Optionality SCF report",
+        "Light Maintenance"
+      ],
+      "scripts": [
+        "EVE_DE_MCP"
+      ],
+      "monthsSeen": [
+        "2512"
+      ]
+    },
+    {
+      "location": "DEGT",
+      "subprocess": "Load Position",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 5,
+      "avgRank": 3.54,
+      "steps": [
+        "load",
+        "Stratification",
+        "Light Maintenance",
+        "Position report OLAP exports",
+        "export to ara",
+        "copy from",
+        "Light Maintenance valuation",
+        "Light Maintenance Load Portfolio"
+      ],
+      "scripts": [
+        "Load_POS_DEGT_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "DEGT",
+      "subprocess": "Valuation",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 7,
+      "avgRank": 4.64,
+      "steps": [
+        "portfolio valuation run",
+        "export to ara",
+        "Light Maintenance",
+        "export to ara valuation",
+        "Light Maintenance valuation",
+        "valuation report exports"
+      ],
+      "scripts": [
+        "Valuation_DEGT_MCP",
+        "Valuation_DEGT_MCP (Export)"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "DEGT",
+      "subprocess": "Gap + Liquidity IR",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 13,
+      "avgRank": 8.74,
+      "steps": [
+        "gap planning"
+      ],
+      "scripts": [
+        "GAP_DEGT_MCP",
+        "GAP_DEGT_MCP (rr from line 43 down)",
+        "GAP_DEGT_MCP (rr)",
+        "GAP_DEGT_MCP rr",
+        "GAP_DEGT_MCP rr2",
+        "GAP_DEGT_MCP rr2 (Export)",
+        "GAP_DEGT_MCP rr2 (INC14485851)"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "DEGT",
+      "subprocess": "Import Strategies",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 15,
+      "avgRank": 10.12,
+      "steps": [
+        "import strategies"
+      ],
+      "scripts": [
+        "Import_Strategies_DEGT_MCP",
+        "Import_Strategies_DEGT_MCP (rr Run 2)"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "DEGT",
+      "subprocess": "NII / Planning risk",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 16,
+      "avgRank": 10.63,
+      "steps": [
+        "planning run",
+        "planning run01",
+        "MDL Processing",
+        "planning run02",
+        "export to ara",
+        "planning run exports",
+        "                ",
+        "export to ara NII"
+      ],
+      "scripts": [
+        "Planning_DEGT_MCP",
+        "Planning_DEGT_MCP_2",
+        "Planning_DEGT_MCP_2 (Export)",
+        "Planning_DEGT_MCP_2 (rr after run 1 crash due to primary key viol)",
+        "Planning_DEGT_MCP_2 (rr export only WF update untick remove unn data)",
+        "Planning_DEGT_MCP_2 (rr from line 73 down)",
+        "Planning_DEGT_MCP_2 (rr line 75 down)",
+        "Planning_DEGT_MCP_2 (rr planning run 2 for S118 and S119)",
+        "Planning_DEGT_MCP_2 (rr run 2)",
+        "Planning_DEGT_MCP_2 (rr2 from line 75 down)",
+        "Planning_DEGT_MCP_2 (rr2 planning run 2 for S118 and S119) ",
+        "Planning_DEGT_MCP_2 (rr3 due to incorrect comment out in rr)",
+        "Planning_DEGT_MCP_2 (rr4 from line 84 down)",
+        "Planning_DEGT_MCP_2 rr (MDL)",
+        "Planning_DEGT_MCP_2 rr (missing S118 S119)",
+        "Planning_DEGT_MCP_2 rr (plan run export)",
+        "Planning_DEGT_MCP_2 rr2 (missing S118 S119)"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "ESDB",
+      "subprocess": "Delete Portfolio",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 1,
+      "avgRank": 1.02,
+      "steps": [
+        "Delete portfolio from"
+      ],
+      "scripts": [
+        "Delete_Portfolio_ES_MCP",
+        "Delete_Portfolio_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "ESDB",
+      "subprocess": "Model Parameters",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 2,
+      "avgRank": 2.02,
+      "steps": [
+        "load Model parameters",
+        "Model parameters comparison"
+      ],
+      "scripts": [
+        "Load_MP_MCP",
+        "Load_MP_MCP download from papi",
+        "Load_MP_MCP rr",
+        "Load_MP_MCP rr 2",
+        "Load_compare_MP_ES_MCP",
+        "Load_compare_MP_ES_MCP rr",
+        "Load_compare_MP_ES_MCP rr2"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "ESDB",
+      "subprocess": "Spreads",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 4,
+      "avgRank": 3.11,
+      "steps": [
+        "load Spreads",
+        "Spreads comparison"
+      ],
+      "scripts": [
+        "Load_Spreads_MCP",
+        "Load_Spreads_MCP RR",
+        "Load_compare_Spreads_ES_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "ESDB",
+      "subprocess": "Load Position",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 5,
+      "avgRank": 3.54,
+      "steps": [
+        "Generate NTG",
+        "load",
+        "Stratification",
+        "Position report OLAP exports",
+        "copy from",
+        "load NTG"
+      ],
+      "scripts": [
+        "Load_POS_ES_MCP",
+        "Load_POS_ES_MCP rr NTG only (capital pos)",
+        "Load_POS_ES_MCP rr2 stratification+export only",
+        "Load_POS_MCP",
+        "Load_POS_MCP ntg",
+        "POS_MCP_Export"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "ESDB",
+      "subprocess": "Valuation",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 7,
+      "avgRank": 4.64,
+      "steps": [
+        "portfolio valuation run",
+        "export to ara",
+        "Light Maintenance",
+        "valuation report OLAP exports",
+        "valuation report QRM reporter exports",
+        "export to ara valuation",
+        "Light Maintenance valuation"
+      ],
+      "scripts": [
+        "Valuation_ES_MCP",
+        "Valuation_ES_MCP (SOT FX rerun)",
+        "Valuation_ES_MCP (SOT FX rerun2)",
+        "Valuation_ES_MCP rr",
+        "Valuation_ES_MCP rr2",
+        "Valuation_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "ESDB",
+      "subprocess": "CSRBB (Val)",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 9,
+      "avgRank": 6.77,
+      "steps": [
+        "CSRBB Portfolio Valuation",
+        "Light Maintenance",
+        "CSRBB Portfolio Valuation Qtr",
+        "Light Maintenance CSRBB valuation"
+      ],
+      "scripts": [
+        "CSRBB_Valuation_ES_MCP",
+        "CSRBB_Valuation_Qtr_ES_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "ESDB",
+      "subprocess": "CSRBB (Plan)",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 11,
+      "avgRank": 8.31,
+      "steps": [
+        "import CSRBB strategies",
+        "CSRBB Planning Run",
+        "export to ara",
+        "CSRBB Planning Run Qtr",
+        "export to ara CSRBB Planning"
+      ],
+      "scripts": [
+        "CSRBB_Planning_ES_MCP",
+        "CSRBB_Planning_Qtr_ES_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "ESDB",
+      "subprocess": "EC",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 12,
+      "avgRank": 8.38,
+      "steps": [
+        "Light Maintenance",
+        "ing-ec valuation",
+        "ing-ec valuation exports from ARA",
+        "ing-ec valuation QRM reporter exports",
+        "Light Maintenance EC",
+        "Light Maintenance ec"
+      ],
+      "scripts": [
+        "EC_ES_MCP",
+        "EC_ES_MCP rr"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "ESDB",
+      "subprocess": "Gap + Liquidity IR",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 13,
+      "avgRank": 8.74,
+      "steps": [
+        "gap planning"
+      ],
+      "scripts": [
+        "GAP_ES_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "ESDB",
+      "subprocess": "KR",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 14,
+      "avgRank": 8.94,
+      "steps": [
+        "Light Maintenance",
+        "bpv-kr valuation",
+        "bpv-kr valuation QRM Reporter exports",
+        "Light Maintenance KR",
+        "Light Maintenance kr"
+      ],
+      "scripts": [
+        "KR_ES_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "ESDB",
+      "subprocess": "Import Strategies",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 15,
+      "avgRank": 10.12,
+      "steps": [
+        "import strategies"
+      ],
+      "scripts": [
+        "Import_Strategies_ES_MCP",
+        "Import_Strategies_ES_MCP rr for redelivery of Run2 strat"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "ESDB",
+      "subprocess": "NII / Planning risk",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 16,
+      "avgRank": 10.63,
+      "steps": [
+        "planning run01",
+        "MDL Processing",
+        "planning run02",
+        "Full Maintenance",
+        "planning run QRM reporter exports",
+        "planning run OLAP exports",
+        "Full Maintenance planning"
+      ],
+      "scripts": [
+        "Planning_ES_MCP",
+        "Planning_ES_MCP RR",
+        "Planning_ES_MCP rr",
+        "Planning_ES_MCP rr for redelivery of Run2 strat"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "ESDB",
+      "subprocess": "ITS Planning",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 17,
+      "avgRank": 11.14,
+      "steps": [
+        "Light Maintenance",
+        "ITS planning run",
+        "Light Maintenance ITS planning"
+      ],
+      "scripts": [
+        "ITS_ES_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "ESDB",
+      "subprocess": "AIC",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 18,
+      "avgRank": 11.39,
+      "steps": [
+        "load AIC Spreads",
+        "AIC portfolio valuation run"
+      ],
+      "scripts": [
+        "Valuation_AIC_ES_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "ESDB",
+      "subprocess": "CSRBB Export",
+      "phase": "Reporting",
+      "phaseDisplay": "Reporting",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 20,
+      "avgRank": 12.9,
+      "steps": [
+        "CSRBB exports"
+      ],
+      "scripts": [
+        "ESDB_CSRBB_Export_updated"
+      ],
+      "monthsSeen": [
+        "2602"
+      ]
+    },
+    {
+      "location": "ESDB",
+      "subprocess": "PDCE",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": true,
+      "globalSeq": 26,
+      "avgRank": 7.57,
+      "steps": [
+        "PDCE planning",
+        "PDCE report OLAP exports"
+      ],
+      "scripts": [
+        "PDCE_ES_MCP",
+        "PDCE_ES_MCP (SOT FX rerun)",
+        "PDCE_ES_MCP (SOT FX rerun3)",
+        "PDCE_ES_MCP (SOT FX rerun4)",
+        "PDCE_ES_MCP (SOT FX rerun5)"
+      ],
+      "monthsSeen": [
+        "2512"
+      ]
+    },
+    {
+      "location": "ESDB",
+      "subprocess": "EVE Optionality",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": true,
+      "globalSeq": 27,
+      "avgRank": 16.33,
+      "steps": [
+        "EVE Optionality MC Valuation",
+        "EVE Optionality copy run parameters",
+        "EVE Optionality SCF Valuation",
+        "EVE Optionality SCF report",
+        "Light Maintenance"
+      ],
+      "scripts": [
+        "EVE_ES_MCP"
+      ],
+      "monthsSeen": [
+        "2512"
+      ]
+    },
+    {
+      "location": "FRDB",
+      "subprocess": "Delete Portfolio",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 1,
+      "avgRank": 1.02,
+      "steps": [
+        "Delete portfolio from"
+      ],
+      "scripts": [
+        "Delete_Portfolio_FR_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "FRDB",
+      "subprocess": "Model Parameters",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 2,
+      "avgRank": 2.02,
+      "steps": [
+        "load Model parameters",
+        "Model parameters comparison"
+      ],
+      "scripts": [
+        "Load_compare_MP_FR_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "FRDB",
+      "subprocess": "Spreads",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 4,
+      "avgRank": 3.11,
+      "steps": [
+        "load Spreads",
+        "Spreads comparison"
+      ],
+      "scripts": [
+        "Load_compare_Spreads_FR_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "FRDB",
+      "subprocess": "Load Position",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 5,
+      "avgRank": 3.54,
+      "steps": [
+        "load",
+        "Stratification",
+        "Position report exports",
+        "copy from"
+      ],
+      "scripts": [
+        "Load_POS_FR_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "FRDB",
+      "subprocess": "Valuation",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 7,
+      "avgRank": 4.64,
+      "steps": [
+        "portfolio valuation run",
+        "export to ara",
+        "Light Maintenance",
+        "valuation report QRM Reporter exports",
+        "valuation report exports",
+        "export to ara Portfolio Valuation",
+        "Light Maintenance Portfolio Valuation"
+      ],
+      "scripts": [
+        "Valuation_FR_MCP",
+        "Valuation_FR_MCP (SOT FX rerun)",
+        "Valuation_FR_MCP Export Only requested by user"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "FRDB",
+      "subprocess": "CSRBB (Val)",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 9,
+      "avgRank": 6.77,
+      "steps": [
+        "CSRBB Portfolio Valuation",
+        "Light Maintenance",
+        "CSRBB Portfolio Valuation Qtr",
+        "Light Maintenance CSRBB Valuation"
+      ],
+      "scripts": [
+        "CSRBB_Valuation_FR_MCP",
+        "CSRBB_Valuation_Qtr_FR_MCP",
+        "CSRBB_Valuation_Qtr_FR_MCP rr"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "FRDB",
+      "subprocess": "CSRBB (Plan)",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 11,
+      "avgRank": 8.31,
+      "steps": [
+        "import CSRBB strategies",
+        "CSRBB Planning Run",
+        "export to ara",
+        "CSRBB Planning Run Qtr",
+        "export to ara CSRBB Planning"
+      ],
+      "scripts": [
+        "CSRBB_Planning_FR_MCP",
+        "CSRBB_Planning_Qtr_FR_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "FRDB",
+      "subprocess": "EC",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 12,
+      "avgRank": 8.38,
+      "steps": [
+        "Light Maintenance",
+        "ing-ec valuation",
+        "ing-ec valuation QRM reporter exports",
+        "Light Maintenance ing-ec valuation"
+      ],
+      "scripts": [
+        "EC_FR_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "FRDB",
+      "subprocess": "Gap + Liquidity IR",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 13,
+      "avgRank": 8.74,
+      "steps": [
+        "gap planning"
+      ],
+      "scripts": [
+        "GAP_FR_MCP",
+        "GAP_FR_MCP ",
+        "GAP_FR_MCP rr print marker"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "FRDB",
+      "subprocess": "KR",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 14,
+      "avgRank": 8.94,
+      "steps": [
+        "Light Maintenance",
+        "bpv-kr valuation",
+        "bpv-kr valuation QRM reporter exports",
+        "Light Maintenance bpv-kr valuation"
+      ],
+      "scripts": [
+        "KR_FR_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "FRDB",
+      "subprocess": "Import Strategies",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 15,
+      "avgRank": 10.12,
+      "steps": [
+        "import strategies"
+      ],
+      "scripts": [
+        "Import_Strategies_FR_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "FRDB",
+      "subprocess": "NII / Planning risk",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 16,
+      "avgRank": 10.63,
+      "steps": [
+        "planning run01",
+        "MDL Processing",
+        "planning run02",
+        "export to ara",
+        "planning run QRM reporter exports",
+        "planning run OLAP exports",
+        "planning run01 mail only",
+        "export to ara NII",
+        "Light Maintenance NII"
+      ],
+      "scripts": [
+        "Planning_FR_MCP",
+        "Planning_FR_MCP NII EXPORT",
+        "Planning_FR_MCP rr",
+        "Planning_FR_MCP rr2 (after manual QRM run for Run 1 INC14544643)",
+        "Planning_FR_MCP rr2 (manual QRM run for Run 1 INC14544643)"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "FRDB",
+      "subprocess": "ITS Planning",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 17,
+      "avgRank": 11.14,
+      "steps": [
+        "Light Maintenance",
+        "ITS planning run",
+        "Light Maintenance ITS planning"
+      ],
+      "scripts": [
+        "ITS_FR_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "FRDB",
+      "subprocess": "AIC",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 18,
+      "avgRank": 11.39,
+      "steps": [
+        "load AIC Spreads",
+        "AIC portfolio valuation run"
+      ],
+      "scripts": [
+        "Valuation_AIC_FR_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "FRDB",
+      "subprocess": "PDCE",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": true,
+      "globalSeq": 26,
+      "avgRank": 7.57,
+      "steps": [
+        "PDCE planning",
+        "PDCE report QRM reporter exports"
+      ],
+      "scripts": [
+        "PDCE_FR_MCP",
+        "PDCE_FR_MCP (SOT FX rerun)",
+        "PDCE_FR_MCP (SOT FX rerun2)"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2603"
+      ]
+    },
+    {
+      "location": "FRDB",
+      "subprocess": "EVE Optionality",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": true,
+      "globalSeq": 27,
+      "avgRank": 16.33,
+      "steps": [
+        "EVE Optionality MC Valuation",
+        "EVE Optionality copy run parameters",
+        "EVE Optionality SCF Valuation",
+        "EVE Optionality SCF report",
+        "Light Maintenance"
+      ],
+      "scripts": [
+        "EVE_FR_MCP"
+      ],
+      "monthsSeen": [
+        "2512"
+      ]
+    },
+    {
+      "location": "ITDB",
+      "subprocess": "Delete Portfolio",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 1,
+      "avgRank": 1.02,
+      "steps": [
+        "Delete portfolio from"
+      ],
+      "scripts": [
+        "Delete_Portfolio_IT_MCP",
+        "Delete_Portfolio_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "ITDB",
+      "subprocess": "Model Parameters",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 2,
+      "avgRank": 2.02,
+      "steps": [
+        "load Model parameters",
+        "Model parameters comparison"
+      ],
+      "scripts": [
+        "Load_MP_MCP",
+        "Load_compare_MP_IT_MCP",
+        "Load_compare_MP_IT_MCP rr",
+        "Load_compare_MP_IT_MCP rr removed import workflow",
+        "Load_compare_MP_IT_MCP rr updated workflow path ",
+        "Load_compare_MP_IT_MCP users signoff in PAPI"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "ITDB",
+      "subprocess": "Spreads",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 4,
+      "avgRank": 3.11,
+      "steps": [
+        "load Spreads",
+        "Spreads comparison"
+      ],
+      "scripts": [
+        "Load_Spreads_MCP",
+        "Load_compare_Spreads_IT_MCP",
+        "Load_compare_Spreads_IT_MCP rr"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "ITDB",
+      "subprocess": "Load Position",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 5,
+      "avgRank": 3.54,
+      "steps": [
+        "load",
+        "Stratification",
+        "Position report OLAP exports",
+        "copy from",
+        "load NTG"
+      ],
+      "scripts": [
+        "LOAD_POS_IT_MCP_VOS_UPGRADE",
+        "Load_POS_IT_MCP",
+        "Load_POS_IT_MCP NTG load only",
+        "Load_POS_IT_MCP copydbruns",
+        "Load_POS_IT_MCP rr",
+        "Load_POS_IT_MCP rr mismatch in NTG file name",
+        "Load_POS_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "ITDB",
+      "subprocess": "Valuation",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 7,
+      "avgRank": 4.64,
+      "steps": [
+        "portfolio valuation run",
+        "export to ara",
+        "Light Maintenance",
+        "valuation report OLAP exports",
+        "valuation report QRM reporter exports",
+        "export to ara Portfolio Valuation",
+        "Light Maintenance valuation",
+        "valuation report QRM Reporter exports",
+        "Light Maintenance valuation ",
+        "Light Maintenance Portfolio Valuation"
+      ],
+      "scripts": [
+        "Valuation_IT_MCP",
+        "Valuation_MCP",
+        "Valuation_MCP_Export"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "ITDB",
+      "subprocess": "CSRBB (Val)",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 9,
+      "avgRank": 6.77,
+      "steps": [
+        "CSRBB Portfolio Valuation",
+        "Light Maintenance",
+        "CSRBB Portfolio Valuation Qtr",
+        "Light Maintenance CSRBB Portfolio Valuation Qtr"
+      ],
+      "scripts": [
+        "CSRBB_Valuation_IT_MCP",
+        "CSRBB_Valuation_MCP",
+        "CSRBB_Valuation_Qtr_IT_MCP",
+        "CSRBB_Valuation_Qtr_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "ITDB",
+      "subprocess": "CSRBB (Plan)",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 11,
+      "avgRank": 8.31,
+      "steps": [
+        "import CSRBB strategies",
+        "CSRBB Planning Run",
+        "export to ara",
+        "CSRBB Planning Run Qtr",
+        "export to ara CSRBB Planning"
+      ],
+      "scripts": [
+        "CSRBB_Planning_IT_MCP",
+        "CSRBB_Planning_IT_MCP (copy)",
+        "CSRBB_Planning_Qtr_IT_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "ITDB",
+      "subprocess": "EC",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 12,
+      "avgRank": 8.38,
+      "steps": [
+        "Light Maintenance",
+        "ing-ec valuation",
+        "export to ara",
+        "ing-ec valuation exports"
+      ],
+      "scripts": [
+        "EC_IT_MCP",
+        "EC_MCP",
+        "EC_NPV_Export"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "ITDB",
+      "subprocess": "Gap + Liquidity IR",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 13,
+      "avgRank": 8.74,
+      "steps": [
+        "gap planning"
+      ],
+      "scripts": [
+        "GAP_IT_MCP",
+        "GAP_MCP",
+        "GAP_MCP IT Printmarkers"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "ITDB",
+      "subprocess": "KR",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 14,
+      "avgRank": 8.94,
+      "steps": [
+        "Light Maintenance",
+        "bpv-kr valuation",
+        "export to ara",
+        "bpv-kr valuation exports",
+        "Light Maintenance KR"
+      ],
+      "scripts": [
+        "KR_BPV_Export",
+        "KR_IT_MCP",
+        "KR_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "ITDB",
+      "subprocess": "Import Strategies",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 15,
+      "avgRank": 10.12,
+      "steps": [
+        "import strategies"
+      ],
+      "scripts": [
+        "Import_Strategies_IT_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "ITDB",
+      "subprocess": "NII / Planning risk",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 16,
+      "avgRank": 10.63,
+      "steps": [
+        "planning run01",
+        "MDL Processing",
+        "planning run02",
+        "export to ara",
+        "planning run QRM reporter exports",
+        "planning run OLAP exports",
+        "export to ara planning"
+      ],
+      "scripts": [
+        "Planning_IT_MCP",
+        "Planning_IT_MCP rr file in use"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "ITDB",
+      "subprocess": "ITS Planning",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 17,
+      "avgRank": 11.14,
+      "steps": [
+        "Light Maintenance",
+        "ITS planning run"
+      ],
+      "scripts": [
+        "ITS_IT_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "ITDB",
+      "subprocess": "AIC",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 18,
+      "avgRank": 11.39,
+      "steps": [
+        "load AIC Spreads",
+        "AIC portfolio valuation run"
+      ],
+      "scripts": [
+        "Valuation_AIC_IT_MCP",
+        "Valuation_AIC_IT_MCP rr",
+        "Valuation_AIC_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "ITDB",
+      "subprocess": "CSRBB Export",
+      "phase": "Reporting",
+      "phaseDisplay": "Reporting",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 20,
+      "avgRank": 12.9,
+      "steps": [
+        "CSRBB exports"
+      ],
+      "scripts": [
+        "ITDB_CSRBB_Export_updated"
+      ],
+      "monthsSeen": [
+        "2602"
+      ]
+    },
+    {
+      "location": "ITDB",
+      "subprocess": "PDCE",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": true,
+      "globalSeq": 26,
+      "avgRank": 7.57,
+      "steps": [
+        "PDCE planning",
+        "PDCE report QRM reporter exports"
+      ],
+      "scripts": [
+        "PDCE_IT_MCP",
+        "PDCE_IT_MCP (SOT FX rerun)"
+      ],
+      "monthsSeen": [
+        "2512"
+      ]
+    },
+    {
+      "location": "ITDB",
+      "subprocess": "EVE Optionality",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": true,
+      "globalSeq": 27,
+      "avgRank": 16.33,
+      "steps": [
+        "EVE Optionality MC Valuation",
+        "EVE Optionality copy run parameters",
+        "EVE Optionality SCF Valuation",
+        "EVE Optionality SCF report",
+        "Light Maintenance"
+      ],
+      "scripts": [
+        "EVE_IT_MCP"
+      ],
+      "monthsSeen": [
+        "2512"
+      ]
+    },
+    {
+      "location": "LUDB",
+      "subprocess": "Delete Portfolio",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 1,
+      "avgRank": 1.02,
+      "steps": [
+        "Delete portfolio from"
+      ],
+      "scripts": [
+        "Delete_Portfolio_LU_MCP",
+        "Delete_Portfolio_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "LUDB",
+      "subprocess": "Model Parameters",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 2,
+      "avgRank": 2.02,
+      "steps": [
+        "load Model parameters",
+        "Model parameters comparison"
+      ],
+      "scripts": [
+        "Load_MP_MCP",
+        "Load_compare_MP_LU_MCP",
+        "Load_compare_MP_LU_MCP rr"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "LUDB",
+      "subprocess": "Spreads",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 4,
+      "avgRank": 3.11,
+      "steps": [
+        "load Spreads",
+        "Spreads comparison"
+      ],
+      "scripts": [
+        "Load_Spreads_MCP",
+        "Load_compare_Spreads_LU_MCP",
+        "Load_compare_Spreads_LU_MCP rr"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "LUDB",
+      "subprocess": "Load Position",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 5,
+      "avgRank": 3.54,
+      "steps": [
+        "load",
+        "Stratification",
+        "Position report OLAP exports",
+        "copy from",
+        "Position report exports",
+        "load NTG",
+        "export to ara"
+      ],
+      "scripts": [
+        "Load_POS_LU_MCP",
+        "Load_POS_LU_MCP rr INC14698835",
+        "Load_POS_MCP",
+        "POS_MCP_Export"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "LUDB",
+      "subprocess": "Valuation",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 7,
+      "avgRank": 4.64,
+      "steps": [
+        "portfolio valuation run",
+        "export to ara",
+        "Light Maintenance",
+        "valuation report OLAP exports",
+        "valuation report QRM Reporter exports",
+        "export to ara Portfolio Valuation",
+        "Light Maintenance valuation",
+        "export to ara valuation"
+      ],
+      "scripts": [
+        "Valuation_LU_MCP",
+        "Valuation_LU_MCP (SOT FX rerun)",
+        "Valuation_MCP",
+        "Valuation_MCP_Export",
+        "Valuation_MCP_Export valshock"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "LUDB",
+      "subprocess": "CSRBB (Val)",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 9,
+      "avgRank": 6.77,
+      "steps": [
+        "CSRBB Portfolio Valuation",
+        "Light Maintenance",
+        "CSRBB Portfolio Valuation Qtr",
+        "Light Maintenance csrbb valuation"
+      ],
+      "scripts": [
+        "CSRBB_Valuation_LU_MCP",
+        "CSRBB_Valuation_MCP",
+        "CSRBB_Valuation_Qtr_LU_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "LUDB",
+      "subprocess": "CSRBB (Plan)",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 11,
+      "avgRank": 8.31,
+      "steps": [
+        "import CSRBB strategies",
+        "CSRBB Planning Run",
+        "export to ara",
+        "CSRBB Planning Run Qtr"
+      ],
+      "scripts": [
+        "CSRBB_Planning_LU_MCP",
+        "CSRBB_Planning_LU_MCP rr",
+        "CSRBB_Planning_LU_MCP rr2",
+        "CSRBB_Planning_MCP",
+        "CSRBB_Planning_Qtr_LU_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "LUDB",
+      "subprocess": "EC",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 12,
+      "avgRank": 8.38,
+      "steps": [
+        "Light Maintenance",
+        "ing-ec valuation",
+        "ing-ec valuation exports",
+        "Full Maintenance",
+        "Light Maintenance EC"
+      ],
+      "scripts": [
+        "EC_LU_MCP",
+        "EC_MCP",
+        "EC_NPV_Export",
+        "EC_NPV_Export rr"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "LUDB",
+      "subprocess": "Gap + Liquidity IR",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 13,
+      "avgRank": 8.74,
+      "steps": [
+        "gap planning"
+      ],
+      "scripts": [
+        "GAP_LU_MCP",
+        "GAP_LU_MCP rr",
+        "GAP_LU_MCP rr3",
+        "GAP_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "LUDB",
+      "subprocess": "KR",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 14,
+      "avgRank": 8.94,
+      "steps": [
+        "Light Maintenance",
+        "bpv-kr valuation",
+        "bpv-kr valuation exports",
+        "Light Maintenance KR"
+      ],
+      "scripts": [
+        "KR_BPV_Export",
+        "KR_BPV_Export valshock",
+        "KR_LU_MCP",
+        "KR_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "LUDB",
+      "subprocess": "Import Strategies",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 15,
+      "avgRank": 10.12,
+      "steps": [
+        "import strategies",
+        "import strategies IG",
+        "import strategies Risk"
+      ],
+      "scripts": [
+        "Import_Strategies_IG_MCP",
+        "Import_Strategies_LU_MCP",
+        "Import_Strategies_Risk_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "LUDB",
+      "subprocess": "NII / Planning risk",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 16,
+      "avgRank": 10.63,
+      "steps": [
+        "planning run01",
+        "MDL Processing",
+        "planning run02",
+        "export to ara",
+        "planning run QRM reporter exports",
+        "planning run OLAP exports",
+        "Light Maintenance",
+        "export to ara NII",
+        "Light Maintenance NII",
+        "export to ara nii"
+      ],
+      "scripts": [
+        "Planning_LU_MCP",
+        "Planning_MCP",
+        "Planning_MCP_Export"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "LUDB",
+      "subprocess": "AIC",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 18,
+      "avgRank": 11.39,
+      "steps": [
+        "load AIC Spreads",
+        "AIC portfolio valuation run"
+      ],
+      "scripts": [
+        "Valuation_AIC_LU_MCP",
+        "Valuation_AIC_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601"
+      ]
+    },
+    {
+      "location": "LUDB",
+      "subprocess": "CSRBB Export",
+      "phase": "Reporting",
+      "phaseDisplay": "Reporting",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 20,
+      "avgRank": 12.9,
+      "steps": [
+        "CSRBB exports"
+      ],
+      "scripts": [
+        "LUDB_CSRBB_Export_updated",
+        "LUDB_CSRBB_Export_updated (copy)"
+      ],
+      "monthsSeen": [
+        "2602"
+      ]
+    },
+    {
+      "location": "LUDB",
+      "subprocess": "PDCE",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": true,
+      "globalSeq": 26,
+      "avgRank": 7.57,
+      "steps": [
+        "PDCE planning",
+        "PDCE report QRM Reporter exports",
+        "PDCE planning QTR",
+        "PDCE report QTR OLAP exports"
+      ],
+      "scripts": [
+        "PDCE_LU_MCP",
+        "PDCE_LU_MCP (SOT FX rerun)",
+        "PDCE_MCP",
+        "PDCE_MCP_Export"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2603"
+      ]
+    },
+    {
+      "location": "LUDB",
+      "subprocess": "EVE Optionality",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": true,
+      "globalSeq": 27,
+      "avgRank": 16.33,
+      "steps": [
+        "EVE Optionality MC Valuation",
+        "EVE Optionality copy run parameters",
+        "EVE Optionality SCF Valuation",
+        "EVE Optionality SCF report",
+        "Light Maintenance"
+      ],
+      "scripts": [
+        "EVE_LU_MCP"
+      ],
+      "monthsSeen": [
+        "2512"
+      ]
+    },
+    {
+      "location": "NLBTR",
+      "subprocess": "Load Position",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 5,
+      "avgRank": 3.54,
+      "steps": [
+        "load",
+        "Stratification",
+        "Light Maintenance",
+        "Position report OLAP exports",
+        "export to ara",
+        "copy from",
+        "Light Maintenance Load Portfolio",
+        "export to ara Load Portfolio"
+      ],
+      "scripts": [
+        "Load_POS_NLBTR_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "NLBTR",
+      "subprocess": "Valuation",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 7,
+      "avgRank": 4.64,
+      "steps": [
+        "portfolio valuation run",
+        "export to ara",
+        "Light Maintenance",
+        "valuation report OLAP exports",
+        "valuation report QRM Reporter exports",
+        "AIC portfolio valuation run",
+        "Light Maintenance portfolio valuation"
+      ],
+      "scripts": [
+        "Valuation_NLBTR_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "NLBTR",
+      "subprocess": "CSRBB (Val)",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 9,
+      "avgRank": 6.77,
+      "steps": [
+        "CSRBB Portfolio Valuation",
+        "Light Maintenance",
+        "CSRBB Portfolio Valuation Qtr",
+        "Light Maintenance CSRBB valuation",
+        "Light Maintenance CSRBB Portfolio Valuation Qtr"
+      ],
+      "scripts": [
+        "CSRBB_Valuation_NLBTR_MCP",
+        "CSRBB_Valuation_NLBTR_MCP rr",
+        "CSRBB_Valuation_Qtr_NLBTR_MCP",
+        "CSRBB_Valuation_Qtr_NLBTR_MCP (rr)",
+        "CSRBB_Valuation_Qtr_NLBTR_MCP rr (resume after send mail failure)"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "NLBTR",
+      "subprocess": "CSRBB (Plan)",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 11,
+      "avgRank": 8.31,
+      "steps": [
+        "import CSRBB strategies",
+        "CSRBB Planning Run",
+        "export to ara",
+        "CSRBB Planning Run Qtr",
+        "CSRBB Planning Run  Qtr",
+        "export to ara CSRBB Planning"
+      ],
+      "scripts": [
+        "CSRBB_Planning_NLBTR_MCP",
+        "CSRBB_Planning_NLBTR_MCP (run from line 42 down)",
+        "CSRBB_Planning_NLBTR_MCP (run up to line 38 set defaults)",
+        "CSRBB_Planning_NLBTR_MCP rr",
+        "CSRBB_Planning_NLBTR_MCP rr creation of uncorrupted strategy",
+        "CSRBB_Planning_NLBTR_MCP rr from line 42 down",
+        "CSRBB_Planning_NLBTR_MCP rr2",
+        "CSRBB_Planning_Qtr_NLBTR_MCP",
+        "CSRBB_Planning_Qtr_NLBTR_MCP (rr)"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "NLBTR",
+      "subprocess": "EC",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 12,
+      "avgRank": 8.38,
+      "steps": [
+        "Light Maintenance",
+        "ing-ec valuation",
+        "ing-ec valuation OLAP exports",
+        "ing-ec valuation QRM Reporter exports",
+        "Light Maintenance ing-ec valuation"
+      ],
+      "scripts": [
+        "EC_NLBTR_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "NLBTR",
+      "subprocess": "Gap + Liquidity IR",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 13,
+      "avgRank": 8.74,
+      "steps": [
+        "gap planning"
+      ],
+      "scripts": [
+        "GAP_NLBTR_MCP",
+        "GAP_NLBTR_MCP rr",
+        "GAP_NLBTR_MCP rr (Export)"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "NLBTR",
+      "subprocess": "KR",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 14,
+      "avgRank": 8.94,
+      "steps": [
+        "Light Maintenance",
+        "bpv-kr valuation",
+        "bpv-kr valuation OLAP exports",
+        "bpv-kr valuation QRM Reporter exports",
+        "Light Maintenance KR valuation"
+      ],
+      "scripts": [
+        "KR_NLBTR_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "NLBTR",
+      "subprocess": "Import Strategies",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 15,
+      "avgRank": 10.12,
+      "steps": [
+        "import strategies"
+      ],
+      "scripts": [
+        "Import_Strategies_NLBTR_MCP",
+        "Import_Strategies_NLBTR_MCP_2",
+        "Import_Strategies_NLBTR_MCP_2 (test)",
+        "Import_Strategies_NLBTR_MCP_2 rr (post test)",
+        "Import_Strategies_NLBTR_MCP_2 rr (strat 1 corrected try 2)",
+        "Import_Strategies_NLBTR_MCP_2 rr (strat 1 corrected)"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "NLBTR",
+      "subprocess": "NII / Planning risk",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 16,
+      "avgRank": 10.63,
+      "steps": [
+        "planning run01",
+        "MDL Processing",
+        "planning run02",
+        "export to ara",
+        "planning run exports",
+        "planning run",
+        "planning run QRM Reporter exports",
+        "Full Maintenance",
+        "planning run OLAP exports",
+        "export to ara NII"
+      ],
+      "scripts": [
+        "Planning_NLBTR_MCP",
+        "Planning_NLBTR_MCP_2",
+        "Planning_NLBTR_MCP_2 (rr export only WF update untick remove unn data)",
+        "Planning_NLBTR_MCP_2 (rr from line 72 down)",
+        "Planning_NLBTR_MCP_2 (rr2 INC14346514 memory issue)",
+        "Planning_NLBTR_MCP_2 (rr2 export only WF update untick remove unn data)",
+        "Planning_NLBTR_MCP_2 (rr3 export only WF update untick remove unn data)",
+        "Planning_NLBTR_MCP_2 (rr4 split reports + export only WF update untick remove unn data)",
+        "Planning_NLBTR_MCP_2 rr (MDL)",
+        "Planning_NLBTR_MCP_2 rr (strat 1 corrected try2)",
+        "Planning_NLBTR_MCP_2 rr (strat 1 corrected)",
+        "Planning_NLBTR_MCP_2 rr IN14692534"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "NLBTR",
+      "subprocess": "ITS Planning",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 17,
+      "avgRank": 11.14,
+      "steps": [
+        "ITS planning run"
+      ],
+      "scripts": [
+        "ITS_NLBTR_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "NLBTR",
+      "subprocess": "CSRBB Export",
+      "phase": "Reporting",
+      "phaseDisplay": "Reporting",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 20,
+      "avgRank": 12.9,
+      "steps": [
+        "CSRBB exports"
+      ],
+      "scripts": [
+        "NLBTR_CSRBB_Export_updated"
+      ],
+      "monthsSeen": [
+        "2602"
+      ]
+    },
+    {
+      "location": "NLRB",
+      "subprocess": "Delete Portfolio",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 1,
+      "avgRank": 1.02,
+      "steps": [
+        "Delete portfolio from"
+      ],
+      "scripts": [
+        "Delete_Portfolio_NL_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "NLRB",
+      "subprocess": "Model Parameters",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 2,
+      "avgRank": 2.02,
+      "steps": [
+        "load Model parameters",
+        "Model parameters comparison"
+      ],
+      "scripts": [
+        "Load_compare_MP_NL_MCP",
+        "Load_compare_MP_NL_MCP_2601",
+        "Load_compare_MP_NL_MCP_2601_1"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "NLRB",
+      "subprocess": "Spreads",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 4,
+      "avgRank": 3.11,
+      "steps": [
+        "load Spreads",
+        "Spreads comparison"
+      ],
+      "scripts": [
+        "Load_compare_Spreads_NL_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "NLRB",
+      "subprocess": "Load Position",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 5,
+      "avgRank": 3.54,
+      "steps": [
+        "load",
+        "Stratification",
+        "copy from"
+      ],
+      "scripts": [
+        "Load_POS_NL_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "NLRB",
+      "subprocess": "Valuation",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 7,
+      "avgRank": 4.64,
+      "steps": [
+        "portfolio valuation run",
+        "export to ara",
+        "Light Maintenance",
+        "valuation report OLAP exports",
+        "export to ara valuation",
+        "Light Maintenance Portfolio Valuation"
+      ],
+      "scripts": [
+        "Valuation_NL_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "NLRB",
+      "subprocess": "Load ELP and Mortgages",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Location Specific",
+      "quarterly": false,
+      "globalSeq": 8,
+      "avgRank": 5.75,
+      "steps": [
+        "load ELP and Mortgages"
+      ],
+      "scripts": [
+        "Load_ELP and mortgages_NL_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "NLRB",
+      "subprocess": "Planning Finance",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Location Specific",
+      "quarterly": false,
+      "globalSeq": 10,
+      "avgRank": 8,
+      "steps": [
+        "import finance strategies",
+        "Finance planning",
+        "Finance planning OLAP export",
+        "Light Maintenance",
+        "Light Maintenance Finance planning",
+        "export to ara"
+      ],
+      "scripts": [
+        "Finance_Planning_NL_MCP",
+        "Finance_Planning_NL_MCP report extract",
+        "Finance_Planning_NL_MCP rr",
+        "Finance_Strategies_NL_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "NLRB",
+      "subprocess": "EC",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 12,
+      "avgRank": 8.38,
+      "steps": [
+        "Light Maintenance",
+        "ing-ec valuation",
+        "export to ara",
+        "Light Maintenance ing-ec valuation",
+        "export to ara ing-ec valuation"
+      ],
+      "scripts": [
+        "EC_NL_MCP",
+        "EC_NL_MCP rerun after stuck run"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "NLRB",
+      "subprocess": "Gap + Liquidity IR",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 13,
+      "avgRank": 8.74,
+      "steps": [
+        "gap planning"
+      ],
+      "scripts": [
+        "GAP_NL_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "NLRB",
+      "subprocess": "KR",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 14,
+      "avgRank": 8.94,
+      "steps": [
+        "Light Maintenance",
+        "bpv-kr valuation",
+        "export to ara",
+        "Light Maintenance BPV KR valuation"
+      ],
+      "scripts": [
+        "KR_NL_MCP",
+        "KR_NL_MCP ",
+        "KR_NL_MCP rr workaround"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "NLRB",
+      "subprocess": "Import Strategies",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 15,
+      "avgRank": 10.12,
+      "steps": [
+        "import strategies"
+      ],
+      "scripts": [
+        "Import_Strategies_NL_MCP",
+        "Import_Strategies_NL_MCP Feb26 rerun"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "NLRB",
+      "subprocess": "NII / Planning risk",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 16,
+      "avgRank": 10.63,
+      "steps": [
+        "combined planning run",
+        "export to ara",
+        "planning run exports from ARA",
+        "export to ara combined planning"
+      ],
+      "scripts": [
+        "Combined_Planning_NL_MCP",
+        "Combined_Planning_NL_MCP Feb26 rerun",
+        "Combined_Planning_NL_MCP rr w/ updated strategies"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "NLRB",
+      "subprocess": "ITS Planning",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 17,
+      "avgRank": 11.14,
+      "steps": [
+        "Light Maintenance",
+        "ITS planning run",
+        "Light Maintenance ITS planning"
+      ],
+      "scripts": [
+        "ITS_NL_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "NLRB",
+      "subprocess": "AIC",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 18,
+      "avgRank": 11.39,
+      "steps": [
+        "load AIC Spreads",
+        "AIC portfolio valuation run"
+      ],
+      "scripts": [
+        "Valuation_AIC_NL_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "NLRB",
+      "subprocess": "SLM",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Location Specific",
+      "quarterly": false,
+      "globalSeq": 21,
+      "avgRank": 15.67,
+      "steps": [
+        "copy PORTM portfolio",
+        "load SLM",
+        "SLM run",
+        "export to ara"
+      ],
+      "scripts": [
+        "Copy_Portfolio_SLM_NL_MCP",
+        "SLM_NL_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "NLRB",
+      "subprocess": "Fair Value",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Location Specific",
+      "quarterly": true,
+      "globalSeq": 25,
+      "avgRank": 5,
+      "steps": [
+        "load FV Spreads",
+        "FV Spreads comparison",
+        "FV valuation",
+        "export to ara",
+        "FV valuation OLAP export",
+        "export to ara FV valuation"
+      ],
+      "scripts": [
+        "Fair_Value_NL_MCP",
+        "Load_compare_QTR_FV_Spreads_NL_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2603"
+      ]
+    },
+    {
+      "location": "NLRB",
+      "subprocess": "PDCE",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": true,
+      "globalSeq": 26,
+      "avgRank": 7.57,
+      "steps": [
+        "PDCE planning",
+        "export to ara",
+        "PDCE report exports from ARA",
+        "export to ara PDCE QTR"
+      ],
+      "scripts": [
+        "PDCE_NL_MCP",
+        "PDCE_NL_MCP (SOT FX rerun)"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2603"
+      ]
+    },
+    {
+      "location": "NLRB",
+      "subprocess": "EVE Optionality",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": true,
+      "globalSeq": 27,
+      "avgRank": 16.33,
+      "steps": [
+        "EVE Optionality MC Valuation",
+        "EVE Optionality copy run parameters",
+        "EVE Optionality SCF Valuation",
+        "EVE Optionality SCF report",
+        "Light Maintenance"
+      ],
+      "scripts": [
+        "EVE_NL_MCP"
+      ],
+      "monthsSeen": [
+        "2512"
+      ]
+    },
+    {
+      "location": "PLDB",
+      "subprocess": "Delete Portfolio",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 1,
+      "avgRank": 1.02,
+      "steps": [
+        "Delete portfolio from"
+      ],
+      "scripts": [
+        "Delete_Portfolio_MCP",
+        "Delete_Portfolio_PL_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "PLDB",
+      "subprocess": "Model Parameters",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 2,
+      "avgRank": 2.02,
+      "steps": [
+        "load Model parameters",
+        "Model parameters comparison"
+      ],
+      "scripts": [
+        "Load_MP_MCP",
+        "Load_MP_MCP RR",
+        "Load_compare_MP_PL_MCP",
+        "Load_compare_MP_PL_MCP (copy)",
+        "Load_compare_MP_PL_MCP ESM0548459"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "PLDB",
+      "subprocess": "Spreads",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 4,
+      "avgRank": 3.11,
+      "steps": [
+        "load Spreads",
+        "Spreads comparison"
+      ],
+      "scripts": [
+        "Load_Spreads_MCP",
+        "Load_compare_Spreads_PL_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "PLDB",
+      "subprocess": "Load Position",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 5,
+      "avgRank": 3.54,
+      "steps": [
+        "load",
+        "Stratification",
+        "Position report OLAP exports",
+        "copy from",
+        "load NTG",
+        "export to ara"
+      ],
+      "scripts": [
+        "Load_POS_MCP",
+        "Load_POS_PL_MCP",
+        "POS_MCP_Export"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "PLDB",
+      "subprocess": "Valuation",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 7,
+      "avgRank": 4.64,
+      "steps": [
+        "portfolio valuation run",
+        "export to ara",
+        "Light Maintenance",
+        "valuation report OLAP exports",
+        "valuation report QRM Reporter exports",
+        "Quarterly Regulatory Valuation",
+        "Quarterly Regulatory Valuation QRM reporter exports",
+        "export to ara Portfolio Valuation",
+        "Light Maintenance valuation",
+        "Light Maintenance Portfolio Valuation"
+      ],
+      "scripts": [
+        "Valuation_MCP",
+        "Valuation_MCP PL RR",
+        "Valuation_MCP_Export",
+        "Valuation_MCP_Export NPV reports",
+        "Valuation_MCP_Export PL rr",
+        "Valuation_PL_MCP",
+        "Valuation_PL_MCP ESM0548459 ",
+        "Valuation_RegQ_PL_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "PLDB",
+      "subprocess": "CSRBB (Val)",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 9,
+      "avgRank": 6.77,
+      "steps": [
+        "CSRBB Portfolio Valuation",
+        "Light Maintenance",
+        "CSRBB Portfolio Valuation Qtr"
+      ],
+      "scripts": [
+        "CSRBB_Valuation_MCP",
+        "CSRBB_Valuation_PL_MCP",
+        "CSRBB_Valuation_Qtr_PL_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "PLDB",
+      "subprocess": "CSRBB (Plan)",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 11,
+      "avgRank": 8.31,
+      "steps": [
+        "import CSRBB strategies",
+        "CSRBB Planning Run",
+        "export to ara",
+        "CSRBB Planning Run Qtr"
+      ],
+      "scripts": [
+        "CSRBB_Planning_MCP",
+        "CSRBB_Planning_MCP rr",
+        "CSRBB_Planning_PL_MCP",
+        "CSRBB_Planning_PL_MCP RR3",
+        "CSRBB_Planning_Qtr_PL_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "PLDB",
+      "subprocess": "EC",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 12,
+      "avgRank": 8.38,
+      "steps": [
+        "Light Maintenance",
+        "ing-ec valuation exports",
+        "ing-ec valuation",
+        "ing-ec valuation QRM reporter exports",
+        "export to ara"
+      ],
+      "scripts": [
+        "EC_MCP",
+        "EC_NPV_Export",
+        "EC_NPV_Export NPV PL",
+        "EC_PL_MCP",
+        "EC_PL_MCP ESM0548459 "
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "PLDB",
+      "subprocess": "Gap + Liquidity IR",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 13,
+      "avgRank": 8.74,
+      "steps": [
+        "gap planning",
+        "export to ara"
+      ],
+      "scripts": [
+        "GAP_MCP",
+        "GAP_PL_MCP",
+        "GAP_PL_MCP LAD_SF only",
+        "GAP_PL_MCP LAD_SF only ",
+        "GAP_PL_MCP rr due to Q3 stopped working (INC14536561)"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "PLDB",
+      "subprocess": "KR",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 14,
+      "avgRank": 8.94,
+      "steps": [
+        "Light Maintenance",
+        "bpv-kr valuation",
+        "bpv-kr valuation QRM reporter exports",
+        "bpv-kr valuation exports"
+      ],
+      "scripts": [
+        "KR_BPV_Export",
+        "KR_BPV_Export NPV PL ",
+        "KR_MCP",
+        "KR_PL_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "PLDB",
+      "subprocess": "Import Strategies",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 15,
+      "avgRank": 10.12,
+      "steps": [
+        "import strategies"
+      ],
+      "scripts": [
+        "Import_Strategies_PL_MCP",
+        "Import_Strategies_PL_MCP ESM0549311"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "PLDB",
+      "subprocess": "NII / Planning risk",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 16,
+      "avgRank": 10.63,
+      "steps": [
+        "planning run QRM reporter exports",
+        "planning run01",
+        "MDL Processing",
+        "planning run02",
+        "export to ara",
+        "Light Maintenance",
+        "Planning (Quarterly Regulatory Stress test)",
+        "MDL Processing (Quarterly Regulatory Stress test)",
+        "planning run02 (Quarterly Regulatory Stress test)",
+        "planning run QRM reporter exports (Quarterly Regulatory Stress test)",
+        "export to ara NII",
+        "Light Maintenance NII",
+        "planning run OLAP exports"
+      ],
+      "scripts": [
+        "Planning_MCP",
+        "Planning_MCP_Export",
+        "Planning_PL_MCP",
+        "Planning_PL_MCP ESM0549311",
+        "Planning_PL_MCP MDS",
+        "Planning_PL_MCP Run1",
+        "Planning_PL_MCP Run2",
+        "Planning_PL_MCP Run3",
+        "Planning_PL_MCP S118",
+        "Planning_PL_MCP rr post aftercare",
+        "Planning_RSS_PL_MCP",
+        "Planning_RSS_PL_MCP Fordet",
+        "Planning_RSS_PL_MCP Rerun",
+        "Planning_RSS_PL_MCP rr IG onwards"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "PLDB",
+      "subprocess": "ITS Planning",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 17,
+      "avgRank": 11.14,
+      "steps": [
+        "Light Maintenance",
+        "ITS planning run",
+        "Light Maintenance ITS planning"
+      ],
+      "scripts": [
+        "ITS_MCP",
+        "ITS_PL_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "PLDB",
+      "subprocess": "AIC",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 18,
+      "avgRank": 11.39,
+      "steps": [
+        "load AIC Spreads",
+        "AIC portfolio valuation run"
+      ],
+      "scripts": [
+        "Valuation_AIC_MCP",
+        "Valuation_AIC_PL_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "PLDB",
+      "subprocess": "CSRBB Export",
+      "phase": "Reporting",
+      "phaseDisplay": "Reporting",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 20,
+      "avgRank": 12.9,
+      "steps": [
+        "CSRBB exports"
+      ],
+      "scripts": [
+        "PLDB_CSRBB_Export_updated"
+      ],
+      "monthsSeen": [
+        "2602"
+      ]
+    },
+    {
+      "location": "PLDB",
+      "subprocess": "SOLO",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Location Specific",
+      "quarterly": false,
+      "globalSeq": 22,
+      "avgRank": 16,
+      "steps": [
+        "import SOLO strategies",
+        "SOLO planning",
+        "Light Maintenance",
+        "SOLO planning QRM reporter exports",
+        "SOLO planning OLAP exports",
+        "Light Maintenance solo"
+      ],
+      "scripts": [
+        "SOLO_PL_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "PLDB",
+      "subprocess": "FTP EVE SOT",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Location Specific",
+      "quarterly": false,
+      "globalSeq": 23,
+      "avgRank": 16.33,
+      "steps": [
+        "FTP EVE SOT analysis"
+      ],
+      "scripts": [
+        "FTP_EVE_SOT_PL_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "PLDB",
+      "subprocess": "SOT",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Location Specific",
+      "quarterly": false,
+      "globalSeq": 24,
+      "avgRank": 17.2,
+      "steps": [
+        "NII SOT planning trees creation",
+        "import NII SOT planning import",
+        "NII SOT planning run import",
+        "SOT planning",
+        "Light Maintenance",
+        "SOT planning OLAP exports"
+      ],
+      "scripts": [
+        "SOT_Create_PL_MCP",
+        "SOT_Create_PL_MCP after NII+Solo reruns",
+        "SOT_PL_MCP",
+        "SOT_PL_MCP rr export only (INC14544643)"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "PLDB",
+      "subprocess": "PDCE",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": true,
+      "globalSeq": 26,
+      "avgRank": 7.57,
+      "steps": [
+        "PDCE planning",
+        "PDCE report QRM reporter exports",
+        "PDCE planning QTR",
+        "PDCE report QTR OLAP exports"
+      ],
+      "scripts": [
+        "PDCE_MCP",
+        "PDCE_MCP_Export",
+        "PDCE_PL_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2603"
+      ]
+    },
+    {
+      "location": "PLDB",
+      "subprocess": "EVE Optionality",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": true,
+      "globalSeq": 27,
+      "avgRank": 16.33,
+      "steps": [
+        "EVE Optionality MC Valuation",
+        "EVE Optionality copy run parameters",
+        "EVE Optionality SCF Valuation",
+        "EVE Optionality SCF report",
+        "Light Maintenance"
+      ],
+      "scripts": [
+        "EVE_PL_MCP"
+      ],
+      "monthsSeen": [
+        "2512"
+      ]
+    },
+    {
+      "location": "RODB",
+      "subprocess": "Delete Portfolio",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 1,
+      "avgRank": 1.02,
+      "steps": [
+        "Delete portfolio from"
+      ],
+      "scripts": [
+        "Delete_Portfolio_RO_MCP"
+      ],
+      "monthsSeen": [
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "RODB",
+      "subprocess": "Model Parameters",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 2,
+      "avgRank": 2.02,
+      "steps": [
+        "load Model parameters",
+        "Model parameters comparison"
+      ],
+      "scripts": [
+        "Load_compare_MP_RO_MCP"
+      ],
+      "monthsSeen": [
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "RODB",
+      "subprocess": "Spreads",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 4,
+      "avgRank": 3.11,
+      "steps": [
+        "load Spreads",
+        "Spreads comparison"
+      ],
+      "scripts": [
+        "Load_compare_Spreads_RO_MCP"
+      ],
+      "monthsSeen": [
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "RODB",
+      "subprocess": "Load Position",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 5,
+      "avgRank": 3.54,
+      "steps": [
+        "load",
+        "Stratification",
+        "copy from"
+      ],
+      "scripts": [
+        "Load_POS_RO_MCP",
+        "Load_POS_RO_MCP (copy)"
+      ],
+      "monthsSeen": [
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "RODB",
+      "subprocess": "Valuation",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 7,
+      "avgRank": 4.64,
+      "steps": [
+        "portfolio valuation run",
+        "Light Maintenance",
+        "valuation report exports",
+        "Light Maintenance valuation"
+      ],
+      "scripts": [
+        "Valuation_RO_MCP"
+      ],
+      "monthsSeen": [
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "RODB",
+      "subprocess": "CSRBB (Val)",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 9,
+      "avgRank": 6.77,
+      "steps": [
+        "CSRBB Portfolio Valuation",
+        "Light Maintenance",
+        "Light Maintenance CSRBB valuation"
+      ],
+      "scripts": [
+        "CSRBB_Valuation_RO_MCP"
+      ],
+      "monthsSeen": [
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "RODB",
+      "subprocess": "CSRBB (Plan)",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 11,
+      "avgRank": 8.31,
+      "steps": [
+        "import CSRBB strategies",
+        "CSRBB Planning Run",
+        "export to ara",
+        "export to ara CSRBB Planning"
+      ],
+      "scripts": [
+        "CSRBB_Planning_RO_MCP"
+      ],
+      "monthsSeen": [
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "RODB",
+      "subprocess": "EC",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 12,
+      "avgRank": 8.38,
+      "steps": [
+        "Light Maintenance",
+        "ing-ec valuation",
+        "ing-ec valuation exports",
+        "Light Maintenance EC"
+      ],
+      "scripts": [
+        "EC_RO_MCP",
+        "EC_RO_MCP _incorrect EC WF"
+      ],
+      "monthsSeen": [
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "RODB",
+      "subprocess": "KR",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 14,
+      "avgRank": 8.94,
+      "steps": [
+        "Light Maintenance",
+        "bpv-kr valuation",
+        "bpv-kr valuation exports",
+        "Light Maintenance kr"
+      ],
+      "scripts": [
+        "KR_RO_MCP"
+      ],
+      "monthsSeen": [
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "RODB",
+      "subprocess": "Import Strategies",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 15,
+      "avgRank": 10.12,
+      "steps": [
+        "import strategies"
+      ],
+      "scripts": [
+        "Import_Strategies_RO_MCP"
+      ],
+      "monthsSeen": [
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "RODB",
+      "subprocess": "NII / Planning risk",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 16,
+      "avgRank": 10.63,
+      "steps": [
+        "planning run01",
+        "MDL Processing",
+        "planning run02",
+        "export to ara",
+        "planning run exports",
+        "export to ara NII"
+      ],
+      "scripts": [
+        "Planning_RO_MCP"
+      ],
+      "monthsSeen": [
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "RODB",
+      "subprocess": "ITS Planning",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 17,
+      "avgRank": 11.14,
+      "steps": [
+        "Light Maintenance",
+        "ITS planning run",
+        "Light Maintenance ITS planning"
+      ],
+      "scripts": [
+        "ITS_RO_MCP"
+      ],
+      "monthsSeen": [
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "RODB",
+      "subprocess": "CSRBB Export",
+      "phase": "Reporting",
+      "phaseDisplay": "Reporting",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 20,
+      "avgRank": 12.9,
+      "steps": [
+        "CSRBB exports"
+      ],
+      "scripts": [
+        "RODB_CSRBB_Export_updated"
+      ],
+      "monthsSeen": [
+        "2602"
+      ]
+    },
+    {
+      "location": "TRDB",
+      "subprocess": "Delete Portfolio",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 1,
+      "avgRank": 1.02,
+      "steps": [
+        "Delete portfolio from"
+      ],
+      "scripts": [
+        "Delete_Portfolio_TR_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "TRDB",
+      "subprocess": "Model Parameters",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 2,
+      "avgRank": 2.02,
+      "steps": [
+        "load Model parameters",
+        "Model parameters comparison"
+      ],
+      "scripts": [
+        "Load_compare_MP_TR_MCP",
+        "Load_compare_MP_TR_MCP (copy)"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "TRDB",
+      "subprocess": "Cost Pricing",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Location Specific",
+      "quarterly": false,
+      "globalSeq": 3,
+      "avgRank": 3,
+      "steps": [
+        "Generate Ex-ante DD NTG",
+        "load dummy deals",
+        "Ex-ante valuation"
+      ],
+      "scripts": [
+        "Cost_Pricing_TR_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "TRDB",
+      "subprocess": "Spreads",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 4,
+      "avgRank": 3.11,
+      "steps": [
+        "load Spreads",
+        "Spreads comparison"
+      ],
+      "scripts": [
+        "Load_compare_Spreads_TR_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "TRDB",
+      "subprocess": "Load Position",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 5,
+      "avgRank": 3.54,
+      "steps": [
+        "load",
+        "Stratification",
+        "Position report exports",
+        "copy from"
+      ],
+      "scripts": [
+        "Load_POS_TR_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "TRDB",
+      "subprocess": "Valuation",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 7,
+      "avgRank": 4.64,
+      "steps": [
+        "portfolio valuation run",
+        "export to ara",
+        "Light Maintenance",
+        "valuation report OLAP exports",
+        "valuation report QRM report exports",
+        "export to ara Portfolio Valuation",
+        "Light Maintenance Portfolio Valuation"
+      ],
+      "scripts": [
+        "Valuation_TR_MCP",
+        "Valuation_TR_MCP (SOT FX rerun)",
+        "Valuation_TR_MCP (copy)",
+        "Valuation_TR_MCP INC14517289",
+        "Valuation_TR_MCP files missing in the folder",
+        "Valuation_TR_MCP rr"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "TRDB",
+      "subprocess": "CSRBB (Val)",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 9,
+      "avgRank": 6.77,
+      "steps": [
+        "CSRBB Portfolio Valuation",
+        "Light Maintenance",
+        "CSRBB Portfolio Valuation Qtr",
+        "Light Maintenance CSRBB valuation"
+      ],
+      "scripts": [
+        "CSRBB_Valuation_Qtr_TR_MCP",
+        "CSRBB_Valuation_TR_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "TRDB",
+      "subprocess": "CSRBB (Plan)",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 11,
+      "avgRank": 8.31,
+      "steps": [
+        "import CSRBB strategies",
+        "CSRBB Planning Run",
+        "export to ara",
+        "CSRBB Planning Run Qtr",
+        "export to ara CSRBB Planning"
+      ],
+      "scripts": [
+        "CSRBB_Planning_Qtr_TR_MCP",
+        "CSRBB_Planning_TR_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "TRDB",
+      "subprocess": "EC",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 12,
+      "avgRank": 8.38,
+      "steps": [
+        "Light Maintenance",
+        "ing-ec valuation",
+        "ing-ec valuation QRM Report exports",
+        "Light Maintenance ing-ec valuation"
+      ],
+      "scripts": [
+        "EC_TR_MCP",
+        "EC_TR_MCP_incorrect EC WF"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "TRDB",
+      "subprocess": "Gap + Liquidity IR",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 13,
+      "avgRank": 8.74,
+      "steps": [
+        "gap planning"
+      ],
+      "scripts": [
+        "GAP_TR_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "TRDB",
+      "subprocess": "KR",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 14,
+      "avgRank": 8.94,
+      "steps": [
+        "Light Maintenance",
+        "bpv-kr valuation",
+        "bpv-kr valuation exports",
+        "Light Maintenance bpv-kr valuation"
+      ],
+      "scripts": [
+        "KR_TR_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "TRDB",
+      "subprocess": "Import Strategies",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 15,
+      "avgRank": 10.12,
+      "steps": [
+        "import strategies"
+      ],
+      "scripts": [
+        "Import_Strategies_TR_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "TRDB",
+      "subprocess": "NII / Planning risk",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 16,
+      "avgRank": 10.63,
+      "steps": [
+        "planning run01",
+        "MDL Processing",
+        "planning run02",
+        "export to ara",
+        "planning run QRM reporter exports",
+        "planning run OLAP exports",
+        "export to ara NII"
+      ],
+      "scripts": [
+        "Planning_TR_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "TRDB",
+      "subprocess": "ITS Planning",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 17,
+      "avgRank": 11.14,
+      "steps": [
+        "Light Maintenance",
+        "ITS planning run",
+        "Light Maintenance ITS planning"
+      ],
+      "scripts": [
+        "ITS_TR_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "TRDB",
+      "subprocess": "AIC",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 18,
+      "avgRank": 11.39,
+      "steps": [
+        "load AIC Spreads",
+        "AIC portfolio valuation run",
+        "export to ara AIC portfolio valuation"
+      ],
+      "scripts": [
+        "Valuation_AIC_TR_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "TRDB",
+      "subprocess": "CSRBB Export",
+      "phase": "Reporting",
+      "phaseDisplay": "Reporting",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 20,
+      "avgRank": 12.9,
+      "steps": [
+        "CSRBB exports"
+      ],
+      "scripts": [
+        "TRDB_CSRBB_Export_updated"
+      ],
+      "monthsSeen": [
+        "2602"
+      ]
+    },
+    {
+      "location": "TRDB",
+      "subprocess": "PDCE",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": true,
+      "globalSeq": 26,
+      "avgRank": 7.57,
+      "steps": [
+        "PDCE planning",
+        "PDCE report QRM reporter exports"
+      ],
+      "scripts": [
+        "PDCE_TR_MCP",
+        "PDCE_TR_MCP (SOT FX rerun)"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2603"
+      ]
+    },
+    {
+      "location": "TRDB",
+      "subprocess": "EVE Optionality",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": true,
+      "globalSeq": 27,
+      "avgRank": 16.33,
+      "steps": [
+        "EVE Optionality MC Valuation",
+        "EVE Optionality copy run parameters",
+        "EVE Optionality SCF Valuation",
+        "EVE Optionality SCF report",
+        "Light Maintenance"
+      ],
+      "scripts": [
+        "EVE_TR_MCP",
+        "EVE_TR_MCP rr"
+      ],
+      "monthsSeen": [
+        "2512"
+      ]
+    },
+    {
+      "location": "WBUS",
+      "subprocess": "Delete Portfolio",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 1,
+      "avgRank": 1.02,
+      "steps": [
+        "Delete portfolio from"
+      ],
+      "scripts": [
+        "Delete_Portfolio_US_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "WBUS",
+      "subprocess": "Model Parameters",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 2,
+      "avgRank": 2.02,
+      "steps": [
+        "load Model parameters",
+        "Model parameters comparison"
+      ],
+      "scripts": [
+        "Load_compare_MP_US_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "WBUS",
+      "subprocess": "Spreads",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 4,
+      "avgRank": 3.11,
+      "steps": [
+        "load Spreads",
+        "Spreads comparison"
+      ],
+      "scripts": [
+        "Load_compare_Spreads_US_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "WBUS",
+      "subprocess": "Load Position",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 5,
+      "avgRank": 3.54,
+      "steps": [
+        "load",
+        "Stratification",
+        "copy from"
+      ],
+      "scripts": [
+        "Load_POS_US_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602",
+        "2603"
+      ]
+    },
+    {
+      "location": "WBUS",
+      "subprocess": "Valuation",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 7,
+      "avgRank": 4.64,
+      "steps": [
+        "portfolio valuation run",
+        "export to ara",
+        "Light Maintenance",
+        "valuation report OLAP exports",
+        "Light Maintenance Portfolio Valuation"
+      ],
+      "scripts": [
+        "Valuation_US_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "WBUS",
+      "subprocess": "CSRBB (Val)",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 9,
+      "avgRank": 6.77,
+      "steps": [
+        "CSRBB Portfolio Valuation",
+        "CSRBB Portfolio Valuation Qtr"
+      ],
+      "scripts": [
+        "CSRBB_Valuation_Qtr_US_MCP",
+        "CSRBB_Valuation_US_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "WBUS",
+      "subprocess": "CSRBB (Plan)",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 11,
+      "avgRank": 8.31,
+      "steps": [
+        "import CSRBB strategies",
+        "CSRBB Planning Run",
+        "export to ara",
+        "CSRBB Planning Run Qtr"
+      ],
+      "scripts": [
+        "CSRBB_Planning_Qtr_US_MCP",
+        "CSRBB_Planning_US_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "WBUS",
+      "subprocess": "Gap + Liquidity IR",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 13,
+      "avgRank": 8.74,
+      "steps": [
+        "gap planning"
+      ],
+      "scripts": [
+        "GAP_US_MCP",
+        "GAP_US_MCP rr"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "WBUS",
+      "subprocess": "KR",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 14,
+      "avgRank": 8.94,
+      "steps": [
+        "Light Maintenance",
+        "bpv-kr valuation",
+        "export to ara",
+        "Light Maintenance bpv-kr valuation"
+      ],
+      "scripts": [
+        "KR_US_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "WBUS",
+      "subprocess": "Import Strategies",
+      "phase": "DataIngestion",
+      "phaseDisplay": "Data Ingestion",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 15,
+      "avgRank": 10.12,
+      "steps": [
+        "import strategies"
+      ],
+      "scripts": [
+        "Import_Strategies_US_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "WBUS",
+      "subprocess": "NII / Planning risk",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 16,
+      "avgRank": 10.63,
+      "steps": [
+        "planning run01",
+        "MDL Processing",
+        "planning run02",
+        "export to ara",
+        "planning run OLAP exports"
+      ],
+      "scripts": [
+        "Planning_US_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "WBUS",
+      "subprocess": "ITS Planning",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 17,
+      "avgRank": 11.14,
+      "steps": [
+        "Light Maintenance",
+        "ITS planning run",
+        "Light Maintenance ITS planning"
+      ],
+      "scripts": [
+        "ITS_US_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "WBUS",
+      "subprocess": "AIC",
+      "phase": "Processing",
+      "phaseDisplay": "Processing",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 18,
+      "avgRank": 11.39,
+      "steps": [
+        "load AIC Spreads",
+        "AIC portfolio valuation run"
+      ],
+      "scripts": [
+        "Valuation_AIC_US_MCP"
+      ],
+      "monthsSeen": [
+        "2512",
+        "2601",
+        "2602"
+      ]
+    },
+    {
+      "location": "WBUS",
+      "subprocess": "CSRBB Export",
+      "phase": "Reporting",
+      "phaseDisplay": "Reporting",
+      "scope": "Main Process",
+      "quarterly": false,
+      "globalSeq": 20,
+      "avgRank": 12.9,
+      "steps": [
+        "CSRBB exports"
+      ],
+      "scripts": [
+        "WBUS_CSRBB_Export_updated"
+      ],
+      "monthsSeen": [
+        "2602"
+      ]
+    }
+  ]
+}

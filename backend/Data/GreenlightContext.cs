@@ -16,6 +16,7 @@ public class GreenlightContext : DbContext
     public DbSet<SlaTarget> SlaTargets => Set<SlaTarget>();
     public DbSet<LocationStepRegistry> LocationStepRegistry => Set<LocationStepRegistry>();
     public DbSet<Issue> Issues => Set<Issue>();
+    public DbSet<OperatorOverride> OperatorOverrides => Set<OperatorOverride>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -105,6 +106,15 @@ public class GreenlightContext : DbContext
         {
             e.HasOne(i => i.SubprocessRun).WithMany()
                 .HasForeignKey(i => i.SubprocessRunId);
+        });
+
+        // OperatorOverride
+        modelBuilder.Entity<OperatorOverride>(e =>
+        {
+            e.HasOne(o => o.McpRun).WithMany().HasForeignKey(o => o.McpRunId);
+            e.HasOne(o => o.Location).WithMany().HasForeignKey(o => o.LocationId);
+            e.HasOne(o => o.Subprocess).WithMany().HasForeignKey(o => o.SubprocessId);
+            e.HasIndex(o => new { o.McpRunId, o.LocationId, o.SubprocessId, o.StepName });
         });
     }
 }

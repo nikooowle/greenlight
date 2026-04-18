@@ -2,36 +2,143 @@
 
 ## Plan
 
-**Delivers:** A live data simulation engine so the dashboard refreshes like a real MCP run is progressing — essential for demos and testing.
+**Delivers:** A live data simulation engine grounded in 4 months of real production history. Produces realistic fake MCP runs with correct runtime cost fields, so the dashboard (M4) and future SLA prediction / ETA work (M5) have authentic data to display.
 
-**Implementation:**
-- .NET `BackgroundService` that creates a new MCP run and progressively advances subprocesses through their lifecycle
-- Uses real Jan 2026 data as a template: which location+subprocess combos are in scope, realistic phase ordering
-- Simulates DataIngestion → Processing → Reporting phase order with realistic durations
-- ~8% random failure rate with production-like error messages
-- Configurable speed (default 60x, supports 1x–1000x)
-- Play/pause/speed controls via API
+---
 
-**Simulator API Endpoints:**
-- `GET /api/simulator/status` — current state (running/paused, speed, progress %, current subprocess)
-- `POST /api/simulator/start` — begin a new simulated run
-- `POST /api/simulator/pause` — pause simulation
-- `POST /api/simulator/resume` — resume simulation
-- `POST /api/simulator/speed/{multiplier}` — change speed (e.g. 60, 300, 500)
-- `POST /api/simulator/reset` — stop and clean up simulated run
+## Part A — Initial simulator (built 2026-04-12)
 
-**Files created:**
-- `backend/Services/SimulatorState.cs` — Thread-safe singleton holding sim state
-- `backend/Services/SimulatorService.cs` — BackgroundService with simulation loop
+.NET `BackgroundService` that creates a new MCP run and progressively advances subprocesses through their lifecycle. Used hardcoded 8% failure rate, random per-phase durations (2-15/10-120/5-30 min), 8 hardcoded error messages.
 
-**Files modified:**
-- `backend/Program.cs` — Register services + 6 new control endpoints
+**Simulator API endpoints:**
+- `GET /api/simulator/status` — current state
+- `POST /api/simulator/start` — begin a simulated run
+- `POST /api/simulator/pause` / `resume`
+- `POST /api/simulator/speed/{multiplier}`
+- `POST /api/simulator/reset`
 
-**Behavior:**
-- Auto-starts on server launch (creates next month's run)
-- Pre-creates all SubprocessRun rows matching real data scoping (in-scope vs "Not in Scope")
-- Steps progress: Not Started → Running → Completed (or Failed)
-- Updates CompletedSteps/TotalRequiredSteps for progress bars
-- Sets run status to "Completed with Failures" if any subprocess failed
+---
 
-## Status: ✅ Done — 2026-04-12
+## Part B — Refactor for realism (2026-04-15)
+
+After M2 golden mapping refinement, the simulator was rebuilt from the ground up to use real production patterns.
+
+### Key behavior changes
+
+1. **Data-driven durations, failure rates, rerun counts** — sourced from 4 months of production (2512, 2601, 2602, 2603) via a new `HistoricalStatsService` that loads JSON at startup. Per (location, subprocess): avg step durations (2601 baseline — cleanest month), failure rate across all 4 months, average rerun count, sample error messages.
+2. **Canonical-iteration rule** (the critical semantic refinement):
+   - For each (location, subprocess): `EfficientRuntimeHours` = sum of step durations in the **canonical iteration** (the latest iteration where no step failed)
+   - **All prior iterations — whether failed outright OR completed-but-superseded** — count as `FailedRuntimeHours`. They consumed resources but produced no final output.
+   - Matches the real-world operator reality: rerunning because of wrong data/config means the first "completed" iteration was wasted work
+3. **Month toggle** — `POST /api/simulator/target-month/{2604|2606}`:
+   - `2604` = April 2026 (regular month) — quarterly subprocesses hidden
+   - `2606` = June 2026 (Q2 end) — PDCE, EVE Optionality, Fair Value appear inline
+   - `SimulatorState.IsQuarterEnd` computes this automatically from the month number
+4. **Two kinds of reruns modeled** — ~60% failure-triggered (a step fails) + ~40% supersede-triggered (all steps complete but operator reruns anyway). Proportions match the "rerun despite success" pattern observed in historical data.
+5. **Business-hour opportunity cost** — Mon-Fri 05:00-17:00 local wall-clock (Manila/Poland team coverage). Implemented in `BusinessHoursCalculator.BusinessHoursBetween()`.
+6. **All runtime cost fields computed correctly:**
+   - `TotalQ3RuntimeHours`, `FailedRuntimeHours`, `EfficientRuntimeHours`
+   - `OpportunityCostHours` (business-hour gap between iteration boundaries)
+   - `InefficientRuntimeHours` = Failed + OpportunityCost
+   - `E2ERuntimeHours` = Total + OpportunityCost
+7. **Default speed 1000x** (full run ~20 min, tunable up to 5000x for demos).
+8. **Deterministic seeding** — `new Random(targetMonth.GetHashCode())` so reruns of the same month produce the same data (reproducible demos).
+
+### Files created / modified in the refactor
+
+**New files:**
+- `backend/Services/BusinessHoursCalculator.cs` — Mon-Fri 5am-5pm opportunity cost math
+- `backend/Services/HistoricalStatsService.cs` — singleton loading `historical-stats.json` at startup
+- `backend/Data/SeedData/golden-mapping.json` — per (location, subprocess) v6 mapping (generated by JS)
+- `backend/Data/SeedData/historical-stats.json` — per (location, subprocess) stats (generated by JS)
+- EF migration `Subprocess_ScopeQuarterly` — adds `Scope` (string) + `IsQuarterly` (bool) columns
+
+**Modified:**
+- `backend/Services/SimulatorState.cs` — added `TargetMonth`, `IsQuarterEnd`, bumped default speed 60 → 1000, clamp raised to 5000
+- `backend/Services/SimulatorService.cs` — full rewrite: reads stats + registry, canonical-iteration runtime computation, month filtering via `Subprocess.IsQuarterly × IsQuarterEnd`, business-hour opportunity cost, deterministic RNG seed
+- `backend/Data/SeedData.cs` — consumes `golden-mapping.json` (no more hardcoded prefix rules), populates `LocationStepRegistry`, imports all 4 months of ProcessLogEntry rows (runtime fields pre-computed by JS)
+- `backend/Models/Subprocess.cs` — `Scope` + `IsQuarterly`
+- `backend/Program.cs` — `HistoricalStatsService` singleton + new `POST /api/simulator/target-month/{month}` endpoint
+- `docs/seed-data/build-final-mapping.js` — emits 3 new artifacts (golden-mapping.json, historical-stats.json, refreshed log-entries.json with canonical-iteration runtime computation)
+
+### New artifacts
+
+| File | Purpose |
+|---|---|
+| `golden-mapping.json` | 221 (location × subprocess) rows with phase, scope, quarterly flag, ordered mandatory steps, script variants |
+| `historical-stats.json` | 221 entries with avg step durations, failure rates, rerun averages, sample errors |
+| Refreshed `log-entries.json` | 2,775 ProcessLogEntry rows across 4 months with runtime fields computed using canonical-iteration rule |
+
+### Verification (performed 2026-04-15)
+
+Sample run of June 2026 (Q2 end):
+- Seed loaded 15 locations + 27 subprocesses + 221 registry entries + 2,775 log rows
+- Simulator pre-seeded 480 SubprocessRun rows (16 × 30, marking 221 as "Not Started" and the rest as "Not in Scope")
+- **Canonical-iteration verified on DEDB Valuation** with 4 simulated iterations:
+  - iter 1: 8.08h total, **0h efficient, 8.08h failed** (superseded-by-rerun)
+  - iter 2: 3.33h total, 0h efficient, 3.33h failed (step-level Failed)
+  - iter 3: 7.60h total, 0h efficient, 7.60h failed (superseded)
+  - iter 4: 7.01h total, **7.01h efficient, 0h failed** (canonical)
+- PDCE / EVE Optionality / Fair Value appear as Not Started for their in-scope locations at June 2026 (Q-end), and would not appear at all at April 2026 (regular)
+
+### API additions
+
+- `POST /api/simulator/target-month/{month}` — validates `2604` or `2606`, rejects mid-run, returns `{ message, isQuarterEnd }`
+- `GET /api/simulator/status` — now includes `targetMonth` and `isQuarterEnd`
+- `GET /api/mcp-runs/{reportMonth}/overrides` — lists operator overrides for a run (used by M5 UI later)
+- `GET /api/mcp-runs/{reportMonth}/matrix` — each cell now also includes `scope`, `isQuarterly`, `hasOverrides`
+- Simulator no longer auto-starts; operator picks month then starts
+
+---
+
+## Part C — Operator override scenarios (added 2026-04-15)
+
+### The scenario
+
+In real ops, Q3 occasionally has bugs where a step's work is actually done but logs aren't written (e.g., operator manually ran the export via QRM UI). The simulator now reproduces this: **~15% of subprocesses skip 1-2 mandatory steps** and those steps are filled in by `OperatorOverride` rows. The demo end state is "everything Completed, but with a lot of issues along the way" — exactly what Rose asked for.
+
+### New schema (migration `OperatorOverride_AndSubprocessRunHasOverrides`)
+
+- **`OperatorOverride`** table — one row per manually-resolved step:
+  - `McpRunId`, `LocationId`, `SubprocessId`, `StepName`, `Action` (complete | skip | fail)
+  - `Reason` (required), `TicketRef` (optional), `EvidenceUrl` (optional), `Operator`, `CreatedAt`, `RevokedAt`
+- **`SubprocessRun.HasOverrides`** — boolean flag. True if any mandatory step of this (location × subprocess) was resolved via override rather than a log entry.
+
+### Simulator behavior
+
+- For each in-scope (location × subprocess) with at least 2 mandatory steps: 15% chance of being an "override scenario"
+- When selected: 1-2 random steps are skipped entirely during the canonical iteration (no `ProcessLogEntry` created), but an `OperatorOverride` row is inserted with a realistic reason (sampled from 5 production-style reasons) and ~60% chance of a ticket reference like `INC14513134`
+- The subprocess still completes — `SubprocessRun.Status = "Completed"`, `HasOverrides = true`
+- Prior iterations (failed/superseded) still generate ProcessLogEntry rows normally
+
+### Demo end state (verified)
+
+Every in-scope SubprocessRun ends `Status = "Completed"` — no Pending, no Failed at the subprocess level, matching the user's "lots of issues but still done" picture. Failures live in the historical iterations (intermediate `ProcessLogEntry` rows with `stateName = "Failed"` and non-zero `failedRuntimeHours`), and manual overrides live as rows in `OperatorOverride`. The dashboard in M5 can surface both via the drawer's step-level view.
+
+---
+
+## Open items — revisit in next session
+
+Flagged during Rose's review on 2026-04-18 but deferred for a future iteration:
+
+1. **Backend seed uses stale 2601 data**
+   The backend's `log-entries.json` was generated from `production data 1 month.xlsx` (old Q3 export). A newer `q3 logs.ods` now contains all 4 months including a corrected 2601 with real step durations (e.g., FRDB `Planning_FR_MCP rr2` step `planning run01` = 28.72h instead of 0.00h in the old file).
+   → Update `build-final-mapping.js` to read 2601 from `q3 logs.ods` (sheet `2601`) instead of `log-entries.json`, regenerate all three seed JSONs, and re-run backend seed.
+
+2. **Good vs Bad month toggle**
+   Rose approved adding a `simMode: "normal" | "stress"` parameter: `normal` uses only 2601's failure rates (cleanest month baseline), `stress` uses the 4-month average (current behavior). Not implemented yet.
+   → Add to `SimulatorState` + new POST endpoint + wire through `HistoricalStatsService` lookup.
+
+3. **Historical stats need regeneration with corrected 2601 data**
+   Because of #1, current `historical-stats.json` derives failure rates and step durations partly from the old 2601 numbers. Regenerate after step 1.
+
+4. **Opportunity cost calibration**
+   Current OC gap for normal reruns: 0.25-3h random. Real data shows some cases with 100h+ OC (e.g., DEDB EC 2602 = 262h OC). Consider sampling from historical OC distribution rather than a fixed range, or parameterize per subprocess.
+
+5. **Simulator reset mid-run**
+   `POST /api/simulator/reset` flag is only checked between simulations, not during. Mid-run reset doesn't interrupt. Add a cancellation token check inside the main loop.
+
+6. **Step-level efficient runtime definition**
+   During review, Rose clarified that "efficient" per step = MAX duration across Completed iterations for that step (not canonical-iteration only). My code uses canonical iteration; the extract `prod-efficient-runtime-by-step-v3.xlsx` uses her MAX rule. Decide whether the backend's `EfficientRuntimeHours` should flip to MAX-per-step semantics for consistency.
+
+## Status: ✅ Done — 2026-04-12 (initial), refactored 2026-04-15 (v6-aligned, realistic data, operator overrides, DQ blocker). ⚠ 6 open items to revisit.

@@ -8,8 +8,15 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<GreenlightContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("Greenlight")));
 
-// Simulator
+// Simulator + historical stats
 builder.Services.AddSingleton<SimulatorState>();
+builder.Services.AddSingleton<HistoricalStatsService>(sp =>
+{
+    var log = sp.GetRequiredService<ILogger<HistoricalStatsService>>();
+    var svc = new HistoricalStatsService(log);
+    svc.Load(Path.Combine(AppContext.BaseDirectory, "Data", "SeedData", "historical-stats.json"));
+    return svc;
+});
 builder.Services.AddHostedService<SimulatorService>();
 
 // Enable CORS for frontend
@@ -97,16 +104,46 @@ app.MapGet("/api/mcp-runs/{reportMonth}/matrix", async (string reportMonth, Gree
             location = sr.Location.Code,
             subprocess = sr.Subprocess.Name,
             phase = sr.Subprocess.Phase,
+            scope = sr.Subprocess.Scope,
+            isQuarterly = sr.Subprocess.IsQuarterly,
             sr.Status,
             sr.StartedAt,
             sr.CompletedAt,
             sr.ElapsedMinutes,
             sr.CompletedSteps,
-            sr.TotalRequiredSteps
+            sr.TotalRequiredSteps,
+            sr.HasOverrides
         })
         .ToListAsync();
 
     return Results.Ok(matrix);
+});
+
+// Operator overrides for a given MCP run
+app.MapGet("/api/mcp-runs/{reportMonth}/overrides", async (string reportMonth, GreenlightContext db) =>
+{
+    var run = await db.McpRuns.FirstOrDefaultAsync(r => r.ReportMonth == reportMonth);
+    if (run is null) return Results.NotFound();
+    var overrides = await db.OperatorOverrides
+        .Where(o => o.McpRunId == run.Id && o.RevokedAt == null)
+        .Include(o => o.Location)
+        .Include(o => o.Subprocess)
+        .OrderBy(o => o.Location.Code)
+        .ThenBy(o => o.Subprocess.Name)
+        .Select(o => new
+        {
+            location = o.Location.Code,
+            subprocess = o.Subprocess.Name,
+            stepName = o.StepName,
+            action = o.Action,
+            reason = o.Reason,
+            ticketRef = o.TicketRef,
+            evidenceUrl = o.EvidenceUrl,
+            @operator = o.Operator,
+            createdAt = o.CreatedAt,
+        })
+        .ToListAsync();
+    return Results.Ok(overrides);
 });
 
 // Process log entries for a specific run + location
@@ -204,6 +241,17 @@ app.MapPost("/api/simulator/reset", (SimulatorState sim) =>
     sim.IsPaused = false;
     sim.ResetRequested = true;
     return Results.Ok(new { message = "Simulation reset requested" });
+});
+
+// Target month: 2604 (Apr 2026 regular) or 2606 (Jun 2026 quarter-end)
+app.MapPost("/api/simulator/target-month/{month}", (string month, SimulatorState sim) =>
+{
+    if (sim.IsRunning)
+        return Results.BadRequest(new { error = "Cannot change target month while simulation is running. Reset first." });
+    if (month != "2604" && month != "2606")
+        return Results.BadRequest(new { error = "Only '2604' (Apr 2026) and '2606' (Jun 2026) are supported in the prototype." });
+    sim.TargetMonth = month;
+    return Results.Ok(new { message = $"Target month set to {month}", isQuarterEnd = sim.IsQuarterEnd });
 });
 
 app.Run();

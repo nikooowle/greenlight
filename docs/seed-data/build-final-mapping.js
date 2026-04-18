@@ -529,8 +529,281 @@ for (const c of Object.values(combined)) {
 }
 fs.writeFileSync('matrix-data.json', JSON.stringify(matrixData, null, 2));
 
+// ============================================================================
+// M3 ARTIFACTS: golden-mapping.json + historical-stats.json + refreshed log-entries.json
+// ============================================================================
+
+// Business-hours calculator (Mon-Fri 5am-5pm) for opportunity cost
+function computeBusinessHourGap(startISO, endISO) {
+  if (!startISO || !endISO) return 0;
+  const start = new Date(startISO);
+  const end = new Date(endISO);
+  if (end <= start) return 0;
+  const BUSINESS_START_HOUR = 5;
+  const BUSINESS_END_HOUR = 17;
+  let totalMs = 0;
+  let cursor = new Date(start);
+  while (cursor < end) {
+    const dow = cursor.getUTCDay(); // 0=Sun, 1-5=Mon-Fri, 6=Sat
+    if (dow >= 1 && dow <= 5) {
+      const dayStart = new Date(Date.UTC(cursor.getUTCFullYear(), cursor.getUTCMonth(), cursor.getUTCDate(), BUSINESS_START_HOUR, 0, 0));
+      const dayEnd = new Date(Date.UTC(cursor.getUTCFullYear(), cursor.getUTCMonth(), cursor.getUTCDate(), BUSINESS_END_HOUR, 0, 0));
+      const overlapStart = cursor > dayStart ? cursor : dayStart;
+      const overlapEnd = end < dayEnd ? end : dayEnd;
+      if (overlapEnd > overlapStart) totalMs += (overlapEnd - overlapStart);
+    }
+    // advance to next day midnight UTC
+    cursor = new Date(Date.UTC(cursor.getUTCFullYear(), cursor.getUTCMonth(), cursor.getUTCDate() + 1));
+  }
+  return totalMs / (1000 * 60 * 60); // hours
+}
+
+// Find canonical iteration for (location, subprocess) = latest iteration where
+// EVERY step that ran within that iteration ended Completed (self-consistent, no Failed/Stopped/Unfinished).
+// Rationale: the mandatory-step list from v6 is a UNION across months; a given month may not have run
+// all union steps. Operator's "did this iteration successfully finish what it tried to do" is the right
+// signal — equivalent to: no step in the iteration ended in Failed/Stopped/Unfinished.
+function findCanonicalIteration(entries) {
+  if (!entries || entries.length === 0) return null;
+  const byIter = {};
+  for (const e of entries) {
+    const k = e.iteration || 1;
+    if (!byIter[k]) byIter[k] = [];
+    byIter[k].push(e);
+  }
+  const iterNums = Object.keys(byIter).map(Number).sort((a,b) => b - a); // highest first
+  const FAIL_STATES = new Set(['Failed', 'Stopped', 'Unfinished']);
+  for (const n of iterNums) {
+    const steps = byIter[n];
+    if (steps.length === 0) continue;
+    const hasFailure = steps.some(e => FAIL_STATES.has(e.stateName));
+    if (!hasFailure) return n;
+  }
+  return null;
+}
+
+// ===== Build golden-mapping.json =====
+const goldenMappings = [];
+for (const loc of Object.keys(byLocation).sort()) {
+  const entries = byLocation[loc].sort((a,b) => (rankMap[a.subprocess]?.globalSeq||999) - (rankMap[b.subprocess]?.globalSeq||999));
+  for (const c of entries) {
+    const finalSteps = unionStepsAcrossMonths(c);
+    const monthsWithData = allMonths.filter(m => c.byMonth[m]);
+    const rm = rankMap[c.subprocess] || {};
+    goldenMappings.push({
+      location: c.location,
+      subprocess: c.subprocess,
+      phase: c.phase.replace(/ /g, ''),   // "Data Ingestion" -> "DataIngestion" for C# compatibility
+      phaseDisplay: c.phase,                // keep original for UI
+      scope: rm.scope || 'Location Specific',
+      quarterly: !!rm.quarterly,
+      globalSeq: rm.globalSeq || 999,
+      avgRank: parseFloat((rm.avgRank || 999).toFixed(2)),
+      steps: finalSteps,
+      scripts: [...c.scripts].sort(),
+      monthsSeen: monthsWithData,
+    });
+  }
+}
+
+const goldenOut = {
+  version: 'v6',
+  generatedAt: new Date().toISOString(),
+  totalLocations: Object.keys(byLocation).length,
+  totalSubprocesses: new Set(goldenMappings.map(m => m.subprocess)).size,
+  mappings: goldenMappings,
+};
+fs.writeFileSync('golden-mapping.json', JSON.stringify(goldenOut, null, 2));
+
+// ===== Build historical-stats.json =====
+// For each (location, subprocess):
+//   - step duration averages from CANONICAL iteration (2601 baseline preferred for cleanliness)
+//   - failure rate (fraction of historical iterations that were NOT the canonical) across all 4 months
+//   - rerun count distribution (max iteration per month where subprocess ran)
+//   - top-5 sample error messages
+const statsOut = {
+  version: 'v6',
+  generatedAt: new Date().toISOString(),
+  businessHours: { startHour: 5, endHour: 17, workdays: [1, 2, 3, 4, 5] },
+  note: 'Step durations from canonical iteration (2601 baseline). Failure rate across all 4 months. Prior completed-but-superseded iterations count as failed.',
+  stats: [],
+};
+
+for (const m of goldenMappings) {
+  // Gather entries from all months for this (location, subprocess)
+  const allEntries = [];
+  for (const month of allMonths) {
+    for (const e of processedByMonth[month]) {
+      if (e.location === m.location && e._subprocess === m.subprocess) allEntries.push({ ...e, _month: month });
+    }
+  }
+
+  // Per-month canonical iteration + rerun counts
+  const rerunsPerMonth = {};
+  const failedIterationsCount = { total: 0, failed: 0 };
+  for (const month of m.monthsSeen) {
+    const monthEntries = allEntries.filter(e => e._month === month);
+    if (monthEntries.length === 0) continue;
+    const maxIter = Math.max(...monthEntries.map(e => e.iteration || 1));
+    rerunsPerMonth[month] = maxIter;
+    const canonicalIter = findCanonicalIteration(monthEntries);
+    // Count iterations: 1..maxIter
+    failedIterationsCount.total += maxIter;
+    failedIterationsCount.failed += canonicalIter ? (maxIter - 1) : maxIter; // prior iters all count as failed
+  }
+
+  // Step durations — 2601 canonical iteration preferred, fall back to any month's canonical
+  const stepDurations = {};
+  const monthPrefs = ['2601', '2602', '2512', '2603'];
+  for (const monthPref of monthPrefs) {
+    if (Object.keys(stepDurations).length === m.steps.length) break;
+    const monthEntries = allEntries.filter(e => e._month === monthPref);
+    if (monthEntries.length === 0) continue;
+    const canonIter = findCanonicalIteration(monthEntries);
+    if (!canonIter) continue;
+    const canonEntries = monthEntries.filter(e => (e.iteration || 1) === canonIter);
+    for (const step of m.steps) {
+      if (stepDurations[step]) continue;
+      const stepEntries = canonEntries.filter(e => e.stepName === step && e.startedAt && e.endedAt && e.stateName === 'Completed');
+      if (stepEntries.length === 0) continue;
+      const durations = stepEntries.map(e => (new Date(e.endedAt) - new Date(e.startedAt)) / 60000);
+      const avgMin = durations.reduce((a,b) => a+b, 0) / durations.length;
+      stepDurations[step] = { avgMinutes: Math.max(0.25, parseFloat(avgMin.toFixed(2))) };
+    }
+  }
+
+  // Fill any missing step durations with a sensible fallback based on phase
+  const phaseFallbackMin = { 'Data Ingestion': 8, 'Processing': 25, 'Reporting': 10 }[m.phase.replace(/(\w+)([A-Z])/g, '$1 $2')] || 10;
+  for (const step of m.steps) {
+    if (!stepDurations[step]) stepDurations[step] = { avgMinutes: phaseFallbackMin };
+  }
+
+  // Sample error messages (top by frequency, max 5)
+  const errCounts = {};
+  for (const e of allEntries) {
+    if (e.errorMessage && e.errorMessage !== 'NULL') {
+      const trimmed = e.errorMessage.length > 200 ? e.errorMessage.slice(0, 200) + '...' : e.errorMessage;
+      errCounts[trimmed] = (errCounts[trimmed] || 0) + 1;
+    }
+  }
+  const sampleErrors = Object.entries(errCounts)
+    .sort((a,b) => b[1] - a[1])
+    .slice(0, 5)
+    .map(([msg]) => msg);
+
+  const rerunCounts = Object.values(rerunsPerMonth);
+  const rerunAvg = rerunCounts.length > 0 ? rerunCounts.reduce((a,b) => a+b, 0) / rerunCounts.length : 1;
+  const failureRate = failedIterationsCount.total > 0 ? failedIterationsCount.failed / failedIterationsCount.total : 0;
+
+  statsOut.stats.push({
+    location: m.location,
+    subprocess: m.subprocess,
+    stepDurations,
+    failureRate: parseFloat(failureRate.toFixed(3)),
+    rerunCountAvg: parseFloat(rerunAvg.toFixed(2)),
+    rerunsPerMonth,
+    sampleErrors,
+  });
+}
+
+fs.writeFileSync('historical-stats.json', JSON.stringify(statsOut, null, 2));
+
+// ===== Refresh backend log-entries.json with all 4 months =====
+// Apply canonical-iteration runtime classification per (location, subprocess)
+// Keep the shape SeedData.cs currently consumes (LogEntryJson in C#)
+const backendLogPath = '../../backend/Data/SeedData/log-entries.json';
+const refreshedLog = [];
+
+// Group all entries by (month, location, subprocess) so we can compute canonical per group
+const groupKey = e => `${e._month}|${e.location}|${e._subprocess}`;
+const byGroup = {};
+for (const month of allMonths) {
+  for (const e of processedByMonth[month]) {
+    if (e._subprocess === 'ADHOC - REMOVE' || e._subprocess === '** UNMAPPED **') continue;
+    if (e.location === 'ICDB') continue;
+    const withMonth = { ...e, _month: month };
+    const k = groupKey(withMonth);
+    if (!byGroup[k]) byGroup[k] = [];
+    byGroup[k].push(withMonth);
+  }
+}
+
+// Lookup: mandatory steps per (location, subprocess) from golden mapping
+const mandLookup = {};
+for (const m of goldenMappings) mandLookup[`${m.location}|${m.subprocess}`] = m.steps;
+
+for (const [k, entries] of Object.entries(byGroup)) {
+  const [month, loc, sub] = k.split('|');
+  const canonIter = findCanonicalIteration(entries);
+  entries.sort((a,b) => (a.startedAt||'').localeCompare(b.startedAt||''));
+  // Precompute opportunity-cost gaps per iteration boundary (between last entry of iter N and first entry of iter N+1)
+  const iterLastEnd = {};
+  const iterFirstStart = {};
+  for (const e of entries) {
+    const it = e.iteration || 1;
+    if (e.endedAt && (!iterLastEnd[it] || e.endedAt > iterLastEnd[it])) iterLastEnd[it] = e.endedAt;
+    if (e.startedAt && (!iterFirstStart[it] || e.startedAt < iterFirstStart[it])) iterFirstStart[it] = e.startedAt;
+  }
+  // For each entry, produce the log row
+  for (const e of entries) {
+    const iter = e.iteration || 1;
+    const durHours = (e.startedAt && e.endedAt) ? ((new Date(e.endedAt) - new Date(e.startedAt)) / 3600000) : 0;
+    const isCanonical = canonIter !== null && iter === canonIter;
+    const failedRuntimeHours = isCanonical ? 0 : durHours;
+    const efficientRuntimeHours = isCanonical ? durHours : 0;
+    // Opportunity cost: business-hour gap between this iteration's end and next iteration's start (only computed on last entry of iteration)
+    let opportunityCostHours = 0;
+    const iterEndCandidates = Object.keys(iterLastEnd).map(Number).filter(n => n > iter).sort((a,b) => a-b);
+    if (iterLastEnd[iter] && iterEndCandidates.length > 0 && e.endedAt === iterLastEnd[iter]) {
+      const nextIter = iterEndCandidates[0];
+      if (iterFirstStart[nextIter]) {
+        opportunityCostHours = parseFloat(computeBusinessHourGap(iterLastEnd[iter], iterFirstStart[nextIter]).toFixed(3));
+      }
+    }
+    const inefficientRuntimeHours = parseFloat((failedRuntimeHours + opportunityCostHours).toFixed(3));
+    const e2eRuntimeHours = parseFloat((durHours + opportunityCostHours).toFixed(3));
+
+    refreshedLog.push({
+      reportMonth: e.reportMonth,
+      location: e.location,
+      process: e.process,
+      startMarker: e.startMarker || null,
+      endMarker: e.endMarker === 'NULL' ? null : (e.endMarker || null),
+      startedAt: e.startedAt,
+      endedAt: e.endedAt,
+      nextStarted: e.nextStarted,
+      errorMessage: e.errorMessage,
+      stateName: e.stateName,
+      scriptName: e.scriptName,
+      iteration: iter,
+      stepName: e.stepName,
+      totalRuntimeHours: parseFloat(durHours.toFixed(3)),
+      failedRuntimeHours: parseFloat(failedRuntimeHours.toFixed(3)),
+      efficientRuntimeHours: parseFloat(efficientRuntimeHours.toFixed(3)),
+      opportunityCostHours,
+      inefficientRuntimeHours,
+      e2eRuntimeHours,
+      subprocess: sub,  // pre-resolved — saves C# from re-mapping
+      phase: goldenMappings.find(m => m.location === loc && m.subprocess === sub)?.phase || 'Processing',
+    });
+  }
+}
+
+// Ensure backend folder exists
+const backendSeedDir = '../../backend/Data/SeedData';
+if (!fs.existsSync(backendSeedDir)) {
+  console.warn('  (backend seed dir not found, skipping log-entries write)');
+} else {
+  fs.writeFileSync(backendSeedDir + '/log-entries.json', JSON.stringify(refreshedLog, null, 2));
+  fs.writeFileSync(backendSeedDir + '/golden-mapping.json', JSON.stringify(goldenOut, null, 2));
+  fs.writeFileSync(backendSeedDir + '/historical-stats.json', JSON.stringify(statsOut, null, 2));
+}
+
 console.log('Created: golden-source-final-v6.xlsx');
 console.log('Created: matrix-data.json');
+console.log('Created: golden-mapping.json (' + goldenMappings.length + ' mappings)');
+console.log('Created: historical-stats.json (' + statsOut.stats.length + ' stat entries)');
+console.log('Refreshed: backend/Data/SeedData/log-entries.json (' + refreshedLog.length + ' entries across ' + allMonths.length + ' months)');
 console.log('  Final Mapping: ' + (sheet1.length-1));
 console.log('  Subprocess Order: ' + (sheet2.length-1));
 console.log('  Step Evolution: ' + (sheet3.length-1));

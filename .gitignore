@@ -55,5 +55,13 @@ docs/seed-data/mapping-analysis.json
 docs/seed-data/take-screenshot.js
 docs/seed-data/Scripts-copy.zip
 
+# Intermediate analysis extracts (only v3 is authoritative)
+docs/seed-data/prod-efficient-runtime-by-step.xlsx
+docs/seed-data/prod-efficient-runtime-by-step-v2.xlsx
+docs/seed-data/dedb-real-data-extract.xlsx
+docs/seed-data/dedb-efficient-evolution.xlsx
+docs/seed-data/.~lock.*
+presentations/
+
 # Claude
 .claude/

@@ -1,0 +1,5748 @@
+{
+  "version": "v6",
+  "generatedAt": "2026-04-14T17:02:10.977Z",
+  "businessHours": {
+    "startHour": 5,
+    "endHour": 17,
+    "workdays": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  "note": "Step durations from canonical iteration (2601 baseline). Failure rate across all 4 months. Prior completed-but-superseded iterations count as failed.",
+  "stats": [
+    {
+      "location": "AUDB",
+      "subprocess": "Delete Portfolio",
+      "stepDurations": {
+        "Delete portfolio from": {
+          "avgMinutes": 2
+        }
+      },
+      "failureRate": 0.4,
+      "rerunCountAvg": 1.67,
+      "rerunsPerMonth": {
+        "2601": 1,
+        "2602": 2,
+        "2603": 2
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "AUDB",
+      "subprocess": "Model Parameters",
+      "stepDurations": {
+        "load Model parameters": {
+          "avgMinutes": 3
+        },
+        "Model parameters comparison": {
+          "avgMinutes": 0.25
+        }
+      },
+      "failureRate": 0.5,
+      "rerunCountAvg": 1.33,
+      "rerunsPerMonth": {
+        "2601": 1,
+        "2602": 1,
+        "2603": 2
+      },
+      "sampleErrors": [
+        "Exception Info: User 'PA40FE' has no access to database 'AUDB_R2601_1_MCP2512_1_P' (line: 56)  "
+      ]
+    },
+    {
+      "location": "AUDB",
+      "subprocess": "Spreads",
+      "stepDurations": {
+        "load Spreads": {
+          "avgMinutes": 7
+        },
+        "Spreads comparison": {
+          "avgMinutes": 1
+        }
+      },
+      "failureRate": 0.5,
+      "rerunCountAvg": 1.33,
+      "rerunsPerMonth": {
+        "2601": 1,
+        "2602": 1,
+        "2603": 2
+      },
+      "sampleErrors": [
+        "Exception Info: User 'PA40FE' has no access to database 'AUDB_R2601_1_MCP2512_1_P' (line: 61)  "
+      ]
+    },
+    {
+      "location": "AUDB",
+      "subprocess": "Load Position",
+      "stepDurations": {
+        "load": {
+          "avgMinutes": 28
+        },
+        "Stratification": {
+          "avgMinutes": 7
+        },
+        "Position report OLAP exports": {
+          "avgMinutes": 10
+        },
+        "copy from": {
+          "avgMinutes": 2
+        }
+      },
+      "failureRate": 0.25,
+      "rerunCountAvg": 1.33,
+      "rerunsPerMonth": {
+        "2601": 1,
+        "2602": 1,
+        "2603": 2
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "AUDB",
+      "subprocess": "Valuation",
+      "stepDurations": {
+        "portfolio valuation run": {
+          "avgMinutes": 32
+        },
+        "export to ara": {
+          "avgMinutes": 1
+        },
+        "Light Maintenance": {
+          "avgMinutes": 27
+        },
+        "valuation report OLAP exports": {
+          "avgMinutes": 12
+        },
+        "valuation run QRM Reporter exports": {
+          "avgMinutes": 1
+        },
+        "Light Maintenance Portfolio Valuation": {
+          "avgMinutes": 8
+        }
+      },
+      "failureRate": 0.25,
+      "rerunCountAvg": 1.33,
+      "rerunsPerMonth": {
+        "2601": 1,
+        "2602": 1,
+        "2603": 2
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "AUDB",
+      "subprocess": "CSRBB (Val)",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 13
+        },
+        "CSRBB Portfolio Valuation": {
+          "avgMinutes": 12
+        },
+        "Light Maintenance CSRBB valuation": {
+          "avgMinutes": 4
+        }
+      },
+      "failureRate": 0.4,
+      "rerunCountAvg": 1.67,
+      "rerunsPerMonth": {
+        "2601": 2,
+        "2602": 1,
+        "2603": 2
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "AUDB",
+      "subprocess": "CSRBB (Plan)",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 6
+        },
+        "import CSRBB strategies": {
+          "avgMinutes": 55
+        },
+        "CSRBB Planning Run": {
+          "avgMinutes": 42
+        },
+        "CSRBB Planning Light Maintenance": {
+          "avgMinutes": 4
+        },
+        "CSRBB Planning export to ara": {
+          "avgMinutes": 1
+        },
+        "export to ara": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.5,
+      "rerunCountAvg": 2,
+      "rerunsPerMonth": {
+        "2601": 3,
+        "2602": 1,
+        "2603": 2
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "AUDB",
+      "subprocess": "EC",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 12
+        },
+        "ing-ec valuation": {
+          "avgMinutes": 46
+        },
+        "ing-ec valuation QRM Reporter exports": {
+          "avgMinutes": 0.25
+        },
+        "Light Maintenance ing-ec valuation": {
+          "avgMinutes": 4
+        }
+      },
+      "failureRate": 0.7,
+      "rerunCountAvg": 3.33,
+      "rerunsPerMonth": {
+        "2601": 7,
+        "2602": 1,
+        "2603": 2
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "AUDB",
+      "subprocess": "KR",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 9
+        },
+        "bpv-kr valuation": {
+          "avgMinutes": 65
+        },
+        "Light Maintenance bpv-kr valuation": {
+          "avgMinutes": 5
+        },
+        "bpv-kr valuation QRM Reporter exports": {
+          "avgMinutes": 0.25
+        }
+      },
+      "failureRate": 0.7,
+      "rerunCountAvg": 3.33,
+      "rerunsPerMonth": {
+        "2601": 6,
+        "2602": 2,
+        "2603": 2
+      },
+      "sampleErrors": [
+        "Exception Info: Workflow finished with errors. (line: 40)  ",
+        "- Activity Instance ID: 2 | Activity: Export report or report book: ING_KR_BPV_REPORT | Status: Process skipped. | Started: 3/10/2026 1:35:07 PM | Completed: 3/10/2026 1:36:34 PM | HPC Job ID: 168490"
+      ]
+    },
+    {
+      "location": "AUDB",
+      "subprocess": "Import Strategies",
+      "stepDurations": {
+        "import strategies": {
+          "avgMinutes": 5
+        }
+      },
+      "failureRate": 0.5,
+      "rerunCountAvg": 2,
+      "rerunsPerMonth": {
+        "2601": 2,
+        "2602": 2
+      },
+      "sampleErrors": [
+        "Exception from QRM: Exception calling ImportPlanningStrategy: Exception calling ImportPlanningStrategy: Cell 'E1128' in sheet 'Pricing - 2' contains no data.  -- Details available: Y. -- Warnings avai..."
+      ]
+    },
+    {
+      "location": "AUDB",
+      "subprocess": "NII / Planning risk",
+      "stepDurations": {
+        "export to ara": {
+          "avgMinutes": 0.25
+        },
+        "planning run01": {
+          "avgMinutes": 60
+        },
+        "MDL Processing": {
+          "avgMinutes": 12
+        },
+        "planning run02": {
+          "avgMinutes": 136
+        },
+        "planning run QRM Reporter exports": {
+          "avgMinutes": 25
+        },
+        "export to ara NII": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.6,
+      "rerunCountAvg": 2.5,
+      "rerunsPerMonth": {
+        "2601": 3,
+        "2602": 2
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "AUDB",
+      "subprocess": "ITS Planning",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 98
+        },
+        "Light Maintenance ITS planning": {
+          "avgMinutes": 4
+        },
+        "ITS planning run": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.818,
+      "rerunCountAvg": 5.5,
+      "rerunsPerMonth": {
+        "2601": 8,
+        "2602": 3
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "AUDB",
+      "subprocess": "AIC",
+      "stepDurations": {
+        "load AIC Spreads": {
+          "avgMinutes": 7
+        },
+        "portfolio valuation AIC": {
+          "avgMinutes": 21
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2602": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "BEDB",
+      "subprocess": "Delete Portfolio",
+      "stepDurations": {
+        "Delete portfolio from": {
+          "avgMinutes": 1
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "BEDB",
+      "subprocess": "Model Parameters",
+      "stepDurations": {
+        "load Model parameters": {
+          "avgMinutes": 2
+        },
+        "Model parameters comparison": {
+          "avgMinutes": 0.25
+        }
+      },
+      "failureRate": 0.333,
+      "rerunCountAvg": 1.5,
+      "rerunsPerMonth": {
+        "2512": 2,
+        "2601": 1,
+        "2602": 2,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "BEDB",
+      "subprocess": "Spreads",
+      "stepDurations": {
+        "load Spreads": {
+          "avgMinutes": 11
+        },
+        "Spreads comparison": {
+          "avgMinutes": 1
+        }
+      },
+      "failureRate": 0.333,
+      "rerunCountAvg": 1.5,
+      "rerunsPerMonth": {
+        "2512": 2,
+        "2601": 2,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "BEDB",
+      "subprocess": "Load Position",
+      "stepDurations": {
+        "load": {
+          "avgMinutes": 67
+        },
+        "Stratification": {
+          "avgMinutes": 7
+        },
+        "export to ara": {
+          "avgMinutes": 0.25
+        },
+        "load NTG": {
+          "avgMinutes": 8
+        },
+        "Position report exports": {
+          "avgMinutes": 8
+        },
+        "copy from": {
+          "avgMinutes": 8
+        },
+        "load Portfolio": {
+          "avgMinutes": 8
+        }
+      },
+      "failureRate": 0.2,
+      "rerunCountAvg": 1.25,
+      "rerunsPerMonth": {
+        "2512": 2,
+        "2601": 1,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "BEDB",
+      "subprocess": "Valuation",
+      "stepDurations": {
+        "portfolio valuation run": {
+          "avgMinutes": 1
+        },
+        "valuation report OLAP exports": {
+          "avgMinutes": 84
+        },
+        "valuation report QRM Reporter exports": {
+          "avgMinutes": 8
+        },
+        "Light Maintenance valuation": {
+          "avgMinutes": 128
+        },
+        "export to ara Portfolio Valuation": {
+          "avgMinutes": 2
+        },
+        "export to ara": {
+          "avgMinutes": 1
+        },
+        "Light Maintenance": {
+          "avgMinutes": 25
+        },
+        "export to ara valuation": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.429,
+      "rerunCountAvg": 1.75,
+      "rerunsPerMonth": {
+        "2512": 2,
+        "2601": 2,
+        "2602": 2,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "BEDB",
+      "subprocess": "EC",
+      "stepDurations": {
+        "ing-ec valuation": {
+          "avgMinutes": 1524
+        },
+        "Full Maintenance": {
+          "avgMinutes": 743
+        },
+        "ing-ec valuation exports": {
+          "avgMinutes": 8
+        }
+      },
+      "failureRate": 0.4,
+      "rerunCountAvg": 1.67,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 2,
+        "2602": 2
+      },
+      "sampleErrors": [
+        "Exception Info: Workflow finished with errors. (line: 39)  "
+      ]
+    },
+    {
+      "location": "BEDB",
+      "subprocess": "Gap + Liquidity IR",
+      "stepDurations": {
+        "gap planning": {
+          "avgMinutes": 124
+        }
+      },
+      "failureRate": 0.25,
+      "rerunCountAvg": 1.33,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 2
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "BEDB",
+      "subprocess": "KR",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 37
+        },
+        "export to ara": {
+          "avgMinutes": 0.25
+        },
+        "bpv-kr valuation": {
+          "avgMinutes": 469
+        },
+        "bpv-kr valuation exports": {
+          "avgMinutes": 131
+        }
+      },
+      "failureRate": 0.636,
+      "rerunCountAvg": 2.75,
+      "rerunsPerMonth": {
+        "2512": 5,
+        "2601": 4,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "BEDB",
+      "subprocess": "Import Strategies",
+      "stepDurations": {
+        "import strategies Risk": {
+          "avgMinutes": 6
+        },
+        "import strategies": {
+          "avgMinutes": 3
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "BEDB",
+      "subprocess": "NII / Planning risk",
+      "stepDurations": {
+        "combined planning run": {
+          "avgMinutes": 1199
+        },
+        "export to ara": {
+          "avgMinutes": 0.25
+        },
+        "Light Maintenance": {
+          "avgMinutes": 59
+        },
+        "planning run QRM Reporter exports": {
+          "avgMinutes": 25
+        },
+        "planning run QRM reporter exports": {
+          "avgMinutes": 25
+        },
+        "export to ara NII": {
+          "avgMinutes": 25
+        },
+        "Light Maintenance NII": {
+          "avgMinutes": 25
+        },
+        "planning run OLAP exports": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.733,
+      "rerunCountAvg": 3.75,
+      "rerunsPerMonth": {
+        "2512": 4,
+        "2601": 3,
+        "2602": 7,
+        "2603": 1
+      },
+      "sampleErrors": [
+        "running workflow PROD_Common_Planning_Run_BE failed.",
+        "- Activity Instance ID: 30 | Activity: Forecast: ?V_Strategy, S120_PRL_+XXR (74/75), AS-CBR-IRRBB-Attr-S604: (74/75) | Status: Process failed. | Started: 3/9/2026 12:51:01 PM | Completed: 3/9/2026 12:...",
+        "- Activity Instance ID: 33 | Activity: Forecast: ?V_Strategy, S121_PRL_-XXR (74/75), AS-CBR-IRRBB-Attr-S604: (74/75) | Status: Process failed. | Started: 3/9/2026 2:47:54 PM | Completed: 3/9/2026 2:55...",
+        "- Activity Instance ID: 33 | Activity: Forecast: ?V_Strategy, S121_PRL_-XXR (74/75), AS-CBR-IRRBB-Attr-S604: (74/75) | Status: Process failed. | Started: 3/12/2026 3:21:23 AM | Completed: 3/13/2026 4:...",
+        "running workflow PROD_Common_Planning_Run_2_BE_NII failed."
+      ]
+    },
+    {
+      "location": "BEDB",
+      "subprocess": "AIC",
+      "stepDurations": {
+        "load AIC Spreads": {
+          "avgMinutes": 11
+        },
+        "AIC portfolio valuation run": {
+          "avgMinutes": 113
+        }
+      },
+      "failureRate": 0.4,
+      "rerunCountAvg": 1.67,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 3
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "BEDB",
+      "subprocess": "EVE (Monthly)",
+      "stepDurations": {
+        "eve optionality copy run parameters": {
+          "avgMinutes": 0.25
+        },
+        "EVE Optionality SCF BE Valuation run": {
+          "avgMinutes": 156
+        },
+        "eve optionality mc Be valuation monthly": {
+          "avgMinutes": 623
+        },
+        "eve optionality copy run parameters monthly": {
+          "avgMinutes": 0.25
+        },
+        "EVE Optionality SCF BE Valuation run monthly": {
+          "avgMinutes": 142
+        },
+        "eve optionality mc Be valuation": {
+          "avgMinutes": 1077
+        }
+      },
+      "failureRate": 0.4,
+      "rerunCountAvg": 1.67,
+      "rerunsPerMonth": {
+        "2512": 3,
+        "2601": 1,
+        "2602": 1
+      },
+      "sampleErrors": [
+        "Exception Info: Workflow finished with errors. (line: 75)  "
+      ]
+    },
+    {
+      "location": "BEDB",
+      "subprocess": "EVE Optionality",
+      "stepDurations": {
+        "EVE Optionality SCF report": {
+          "avgMinutes": 51
+        },
+        "Light Maintenance": {
+          "avgMinutes": 89
+        },
+        "EVE Optionality MC Valuation": {
+          "avgMinutes": 25
+        },
+        "EVE Optionality copy run parameters": {
+          "avgMinutes": 25
+        },
+        "EVE Optionality SCF Valuation": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.667,
+      "rerunCountAvg": 3,
+      "rerunsPerMonth": {
+        "2512": 3
+      },
+      "sampleErrors": [
+        "Exception Info: Object reference not set to an instance of an object. (line: 118)  ",
+        "Exception Info: Workflow finished with errors. (line: 124)  "
+      ]
+    },
+    {
+      "location": "BEGT",
+      "subprocess": "Load Position",
+      "stepDurations": {
+        "load": {
+          "avgMinutes": 44
+        },
+        "Light Maintenance": {
+          "avgMinutes": 15
+        },
+        "export to ara": {
+          "avgMinutes": 1
+        },
+        "Stratification": {
+          "avgMinutes": 6
+        },
+        "Position report OLAP exports": {
+          "avgMinutes": 15
+        },
+        "copy from": {
+          "avgMinutes": 4
+        },
+        "Light Maintenance Load Portfolio": {
+          "avgMinutes": 36
+        }
+      },
+      "failureRate": 0.2,
+      "rerunCountAvg": 1.25,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 2,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "BEGT",
+      "subprocess": "Valuation",
+      "stepDurations": {
+        "export to ara": {
+          "avgMinutes": 2
+        },
+        "Light Maintenance": {
+          "avgMinutes": 17
+        },
+        "portfolio valuation run": {
+          "avgMinutes": 14
+        },
+        "valuation report exports": {
+          "avgMinutes": 38
+        },
+        "AIC portfolio valuation run": {
+          "avgMinutes": 33
+        },
+        "export to ara valuation": {
+          "avgMinutes": 0.25
+        },
+        "light maintenance valuation": {
+          "avgMinutes": 6.5
+        }
+      },
+      "failureRate": 0.429,
+      "rerunCountAvg": 1.75,
+      "rerunsPerMonth": {
+        "2512": 2,
+        "2601": 2,
+        "2602": 2,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "BEGT",
+      "subprocess": "CSRBB (Val)",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 21
+        },
+        "CSRBB Portfolio Valuation": {
+          "avgMinutes": 16
+        },
+        "CSRBB Portfolio Valuation Qtr": {
+          "avgMinutes": 10
+        },
+        "Light Maintenance CSRBB Portfolio Valuation Qtr": {
+          "avgMinutes": 39
+        },
+        "Light Maintenance CSRBB Valuation": {
+          "avgMinutes": 6
+        }
+      },
+      "failureRate": 0.75,
+      "rerunCountAvg": 4,
+      "rerunsPerMonth": {
+        "2512": 7,
+        "2601": 5,
+        "2602": 3,
+        "2603": 1
+      },
+      "sampleErrors": [
+        "- Activity Instance ID: 1 | Activity: Analyze portfolio - no approximation: (33/75) | Status: Process failed. | Started: 3/9/2026 11:10:02 AM | Completed: 3/9/2026 11:10:30 AM | HPC Job ID: 168028"
+      ]
+    },
+    {
+      "location": "BEGT",
+      "subprocess": "CSRBB (Plan)",
+      "stepDurations": {
+        "export to ara": {
+          "avgMinutes": 0.25
+        },
+        "import CSRBB strategies": {
+          "avgMinutes": 203
+        },
+        "CSRBB Planning Run": {
+          "avgMinutes": 100
+        },
+        "export to ara CSRBB Planning": {
+          "avgMinutes": 2
+        },
+        "CSRBB Planning Run Qtr": {
+          "avgMinutes": 59
+        }
+      },
+      "failureRate": 0.636,
+      "rerunCountAvg": 2.75,
+      "rerunsPerMonth": {
+        "2512": 4,
+        "2601": 4,
+        "2602": 2,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "BEGT",
+      "subprocess": "EC",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 86
+        },
+        "ing-ec valuation": {
+          "avgMinutes": 15
+        },
+        "ing-ec valuation OLAP exports": {
+          "avgMinutes": 88
+        },
+        "ing-ec valuation QRM Reporter exports": {
+          "avgMinutes": 0.25
+        },
+        "Light Maintenance ing-ec valuation": {
+          "avgMinutes": 4
+        }
+      },
+      "failureRate": 0.556,
+      "rerunCountAvg": 2.25,
+      "rerunsPerMonth": {
+        "2512": 3,
+        "2601": 3,
+        "2602": 2,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "BEGT",
+      "subprocess": "Gap + Liquidity IR",
+      "stepDurations": {
+        "gap planning": {
+          "avgMinutes": 122
+        }
+      },
+      "failureRate": 0.6,
+      "rerunCountAvg": 2.5,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 3,
+        "2602": 4,
+        "2603": 2
+      },
+      "sampleErrors": [
+        "Exception Info: Workflow finished with errors. (line: 42)  ",
+        "Exception Info: Workflow finished with errors. (line: 33)  ",
+        "- Activity Instance ID: 3 | Activity: Export report or report book: Liquidity - Line Item Calculations | Status: Process skipped. | Started: 3/5/2026 7:12:54 AM | Completed: 3/5/2026 7:15:50 AM | HPC ...",
+        "- Activity Instance ID: 3 | Activity: Export report or report book: Liquidity - Line Item Calculations | Status: Process skipped. | Started: 3/14/2026 3:19:32 PM | Completed: 3/14/2026 3:21:22 PM | HP..."
+      ]
+    },
+    {
+      "location": "BEGT",
+      "subprocess": "KR",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 18
+        },
+        "bpv-kr valuation": {
+          "avgMinutes": 12
+        },
+        "bpv-kr valuation OLAP exports": {
+          "avgMinutes": 57
+        },
+        "bpv-kr valuation QRM Reporter exports": {
+          "avgMinutes": 0.25
+        },
+        "Light Maintenance BPV KR valuation": {
+          "avgMinutes": 6
+        }
+      },
+      "failureRate": 0.636,
+      "rerunCountAvg": 2.75,
+      "rerunsPerMonth": {
+        "2512": 4,
+        "2601": 4,
+        "2602": 2,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "BEGT",
+      "subprocess": "Import Strategies",
+      "stepDurations": {
+        "import strategies": {
+          "avgMinutes": 22
+        }
+      },
+      "failureRate": 0.5,
+      "rerunCountAvg": 2,
+      "rerunsPerMonth": {
+        "2512": 2,
+        "2601": 1,
+        "2602": 4,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "BEGT",
+      "subprocess": "NII / Planning risk",
+      "stepDurations": {
+        "export to ara": {
+          "avgMinutes": 2
+        },
+        "planning run exports": {
+          "avgMinutes": 42
+        },
+        "planning run01": {
+          "avgMinutes": 221
+        },
+        "MDL Processing": {
+          "avgMinutes": 72
+        },
+        "planning run02": {
+          "avgMinutes": 196
+        },
+        "export to ara NII": {
+          "avgMinutes": 2
+        }
+      },
+      "failureRate": 0.765,
+      "rerunCountAvg": 4.25,
+      "rerunsPerMonth": {
+        "2512": 5,
+        "2601": 3,
+        "2602": 8,
+        "2603": 1
+      },
+      "sampleErrors": [
+        "Exception Info: Index was outside the bounds of the array. (line: 69)  "
+      ]
+    },
+    {
+      "location": "BEGT",
+      "subprocess": "ITS Planning",
+      "stepDurations": {
+        "ITS planning run": {
+          "avgMinutes": 22
+        }
+      },
+      "failureRate": 0.2,
+      "rerunCountAvg": 1.25,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 2,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "BEGT",
+      "subprocess": "CSRBB Export",
+      "stepDurations": {
+        "CSRBB exports": {
+          "avgMinutes": 7
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2602": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "DEDB",
+      "subprocess": "Delete Portfolio",
+      "stepDurations": {
+        "Delete portfolio from": {
+          "avgMinutes": 3
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "DEDB",
+      "subprocess": "Model Parameters",
+      "stepDurations": {
+        "load Model parameters": {
+          "avgMinutes": 3
+        },
+        "Model parameters comparison": {
+          "avgMinutes": 0.25
+        }
+      },
+      "failureRate": 0.333,
+      "rerunCountAvg": 1.5,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 3,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": [
+        "Exception from QRM: Exception calling ImportSavedWorkflow: Exception calling ImportSavedWorkflow: There is already a workflow with the name 'PROD_MPs_Load_DE'  -- Details available: Y. -- Warnings ava...",
+        "Exception Info: Workflow finished with errors. (line: 43)  "
+      ]
+    },
+    {
+      "location": "DEDB",
+      "subprocess": "Spreads",
+      "stepDurations": {
+        "load Spreads": {
+          "avgMinutes": 19
+        },
+        "Spreads comparison": {
+          "avgMinutes": 2
+        }
+      },
+      "failureRate": 0.2,
+      "rerunCountAvg": 1.25,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 2,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "DEDB",
+      "subprocess": "Load Position",
+      "stepDurations": {
+        "load": {
+          "avgMinutes": 55
+        },
+        "Stratification": {
+          "avgMinutes": 9
+        },
+        "copy from": {
+          "avgMinutes": 1
+        },
+        "export to ara": {
+          "avgMinutes": 2
+        },
+        "load NTG": {
+          "avgMinutes": 0.25
+        },
+        "export to ara Load Portfolio": {
+          "avgMinutes": 8
+        },
+        "Position report OLAP exports": {
+          "avgMinutes": 8
+        }
+      },
+      "failureRate": 0.429,
+      "rerunCountAvg": 1.75,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 3,
+        "2603": 2
+      },
+      "sampleErrors": [
+        "Exception Info: Workflow finished with errors. (line: 13)  "
+      ]
+    },
+    {
+      "location": "DEDB",
+      "subprocess": "Load Index History",
+      "stepDurations": {
+        "index history": {
+          "avgMinutes": 1
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "DEDB",
+      "subprocess": "Valuation",
+      "stepDurations": {
+        "export to ara": {
+          "avgMinutes": 2
+        },
+        "portfolio valuation run": {
+          "avgMinutes": 207
+        },
+        "Light Maintenance": {
+          "avgMinutes": 3
+        },
+        "valuation report OLAP exports": {
+          "avgMinutes": 89
+        },
+        "valuation report exports from ARA": {
+          "avgMinutes": 25
+        },
+        "valuation report QRM Reporter exports": {
+          "avgMinutes": 25
+        },
+        "export to ara valuation": {
+          "avgMinutes": 25
+        },
+        "Light Maintenance valuation": {
+          "avgMinutes": 25
+        },
+        "export to ara Portfolio Valuation": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.765,
+      "rerunCountAvg": 4.25,
+      "rerunsPerMonth": {
+        "2512": 2,
+        "2601": 8,
+        "2602": 5,
+        "2603": 2
+      },
+      "sampleErrors": [
+        "Exception Info: Workflow finished with errors. (line: 34)  ",
+        "- Activity Instance ID: 1 | Activity: Analyze portfolio - no approximation: (65/75) | Status: Process failed. | Started: 3/6/2026 11:02:22 AM | Completed: 3/6/2026 11:18:10 AM | HPC Job ID: 167798,167...",
+        "- Activity Instance ID: 1 | Activity: Analyze portfolio - no approximation: (66/75) | Status: Process failed. | Started: 3/16/2026 10:47:02 AM | Completed: 3/16/2026 4:07:42 PM | HPC Job ID: 170461,17..."
+      ]
+    },
+    {
+      "location": "DEDB",
+      "subprocess": "CSRBB (Val)",
+      "stepDurations": {
+        "CSRBB Portfolio Valuation": {
+          "avgMinutes": 47
+        },
+        "CSRBB Portfolio Valuation Qtr": {
+          "avgMinutes": 17
+        },
+        "Light Maintenance CSRBB Portfolio Valuation Qtr": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.333,
+      "rerunCountAvg": 1.5,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 2,
+        "2603": 2
+      },
+      "sampleErrors": [
+        "Exception Info: Failure sending mail. (line: 26)  "
+      ]
+    },
+    {
+      "location": "DEDB",
+      "subprocess": "CSRBB (Plan)",
+      "stepDurations": {
+        "export to ara": {
+          "avgMinutes": 2
+        },
+        "import CSRBB strategies": {
+          "avgMinutes": 49
+        },
+        "CSRBB Planning Run": {
+          "avgMinutes": 110
+        },
+        "export to ara EC": {
+          "avgMinutes": 2
+        },
+        "CSRBB Planning Run Qtr": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.75,
+      "rerunCountAvg": 4,
+      "rerunsPerMonth": {
+        "2512": 7,
+        "2601": 4,
+        "2602": 1
+      },
+      "sampleErrors": [
+        "Exception from QRM: Exception calling ImportPlanningStrategy: Exception calling ImportPlanningStrategy: Period value must be >= -100 and <= 1000.  -- Details available: Y. -- Warnings available: N. (l...",
+        "Exception Info: The process cannot access the file '\\\\sx9000079291\\DEDB\\Work\\STRATEGIES_POPULATED\\EOM202512\\CSRBB Strategy.xlsx' because it is being used by another process. (line: 34)  "
+      ]
+    },
+    {
+      "location": "DEDB",
+      "subprocess": "EC",
+      "stepDurations": {
+        "export to ara": {
+          "avgMinutes": 2
+        },
+        "ing-ec valuation": {
+          "avgMinutes": 311
+        },
+        "ing-ec valuation QRM reporter exports": {
+          "avgMinutes": 0.25
+        },
+        "ing-ec valuation exports from ARA": {
+          "avgMinutes": 8
+        },
+        "Light Maintenance EC": {
+          "avgMinutes": 128
+        },
+        "export to ara EC": {
+          "avgMinutes": 2
+        },
+        "Light Maintenance": {
+          "avgMinutes": 26
+        },
+        "Full Maintenance": {
+          "avgMinutes": 25
+        },
+        "Light Maintenance CSRBB valuation": {
+          "avgMinutes": 25
+        },
+        "export to ara ec": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.765,
+      "rerunCountAvg": 4.25,
+      "rerunsPerMonth": {
+        "2512": 4,
+        "2601": 10,
+        "2602": 2,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "DEDB",
+      "subprocess": "Gap + Liquidity IR",
+      "stepDurations": {
+        "export to ara": {
+          "avgMinutes": 2
+        },
+        "gap planning": {
+          "avgMinutes": 0.25
+        }
+      },
+      "failureRate": 0.786,
+      "rerunCountAvg": 4.67,
+      "rerunsPerMonth": {
+        "2512": 5,
+        "2601": 6,
+        "2602": 3
+      },
+      "sampleErrors": [
+        "- Activity Instance ID: 3 | Activity: Export report or report book: Liquidity - Line Item Calculations | Status: Process skipped. | Started: 3/10/2026 6:58:16 AM | Completed: 3/10/2026 7:01:14 AM | HP...",
+        "- Activity Instance ID: 3 | Activity: Export report or report book: Liquidity - Line Item Calculations | Status: Process skipped. | Started: 3/18/2026 2:25:16 PM | Completed: 3/18/2026 2:27:11 PM | HP..."
+      ]
+    },
+    {
+      "location": "DEDB",
+      "subprocess": "KR",
+      "stepDurations": {
+        "export to ara": {
+          "avgMinutes": 2
+        },
+        "bpv-kr valuation": {
+          "avgMinutes": 292
+        },
+        "bpv-kr valuation QRM reporter exports": {
+          "avgMinutes": 0.25
+        },
+        "bpv-kr valuation exports from ARA": {
+          "avgMinutes": 0.25
+        },
+        "Light Maintenance KR valuation": {
+          "avgMinutes": 85
+        },
+        "export to ara KR": {
+          "avgMinutes": 0.25
+        },
+        "Light Maintenance": {
+          "avgMinutes": 8
+        }
+      },
+      "failureRate": 0.733,
+      "rerunCountAvg": 3.75,
+      "rerunsPerMonth": {
+        "2512": 3,
+        "2601": 9,
+        "2602": 2,
+        "2603": 1
+      },
+      "sampleErrors": [
+        "Exception Info: Workflow finished with errors. (line: 43)  "
+      ]
+    },
+    {
+      "location": "DEDB",
+      "subprocess": "Import Strategies",
+      "stepDurations": {
+        "import strategies": {
+          "avgMinutes": 8
+        },
+        "import strategies Risk": {
+          "avgMinutes": 2
+        },
+        "import strategies Finance": {
+          "avgMinutes": 1
+        },
+        "import strategies CBS": {
+          "avgMinutes": 2
+        }
+      },
+      "failureRate": 0.25,
+      "rerunCountAvg": 1.33,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 2
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "DEDB",
+      "subprocess": "NII / Planning risk",
+      "stepDurations": {
+        "export to ara": {
+          "avgMinutes": 2
+        },
+        "planning run": {
+          "avgMinutes": 1378
+        },
+        "planning run QRM reporter exports": {
+          "avgMinutes": 0.25
+        },
+        "planning run exports from ARA": {
+          "avgMinutes": 0.25
+        },
+        "planning run OLAP exports": {
+          "avgMinutes": 296
+        },
+        "export to ara NII": {
+          "avgMinutes": 1
+        },
+        "Light Maintenance NII": {
+          "avgMinutes": 100
+        }
+      },
+      "failureRate": 0.8,
+      "rerunCountAvg": 5,
+      "rerunsPerMonth": {
+        "2512": 6,
+        "2601": 7,
+        "2602": 2
+      },
+      "sampleErrors": [
+        "Exception Info: Workflow finished with errors. (line: 108)  "
+      ]
+    },
+    {
+      "location": "DEDB",
+      "subprocess": "ITS Planning",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 229
+        },
+        "ITS planning run": {
+          "avgMinutes": 25
+        },
+        "Light Maintenance its": {
+          "avgMinutes": 27
+        }
+      },
+      "failureRate": 0.667,
+      "rerunCountAvg": 3,
+      "rerunsPerMonth": {
+        "2512": 5,
+        "2601": 3,
+        "2602": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "DEDB",
+      "subprocess": "AIC",
+      "stepDurations": {
+        "load AIC Spreads": {
+          "avgMinutes": 27
+        },
+        "AIC portfolio valuation run": {
+          "avgMinutes": 77
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "DEDB",
+      "subprocess": "CSRBB Export",
+      "stepDurations": {
+        "CSRBB exports": {
+          "avgMinutes": 3
+        }
+      },
+      "failureRate": 0.5,
+      "rerunCountAvg": 2,
+      "rerunsPerMonth": {
+        "2602": 2
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "DEDB",
+      "subprocess": "SOT",
+      "stepDurations": {
+        "SOT": {
+          "avgMinutes": 145
+        },
+        "SOT QRM reporter exports": {
+          "avgMinutes": 13
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "DEDB",
+      "subprocess": "PDCE",
+      "stepDurations": {
+        "of script": {
+          "avgMinutes": 355
+        },
+        "pdce planning": {
+          "avgMinutes": 25
+        },
+        "Quarterly valuation": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.6,
+      "rerunCountAvg": 2.5,
+      "rerunsPerMonth": {
+        "2512": 3,
+        "2603": 2
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "DEDB",
+      "subprocess": "EVE Optionality",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 46
+        },
+        "EVE Optionality MC Valuation": {
+          "avgMinutes": 25
+        },
+        "EVE Optionality copy run parameters": {
+          "avgMinutes": 25
+        },
+        "EVE Optionality SCF Valuation": {
+          "avgMinutes": 25
+        },
+        "EVE Optionality SCF report": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.833,
+      "rerunCountAvg": 6,
+      "rerunsPerMonth": {
+        "2512": 6
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "DEGT",
+      "subprocess": "Load Position",
+      "stepDurations": {
+        "load": {
+          "avgMinutes": 47
+        },
+        "Stratification": {
+          "avgMinutes": 7
+        },
+        "Light Maintenance": {
+          "avgMinutes": 15
+        },
+        "Position report OLAP exports": {
+          "avgMinutes": 6
+        },
+        "export to ara": {
+          "avgMinutes": 2
+        },
+        "copy from": {
+          "avgMinutes": 6
+        },
+        "Light Maintenance Load Portfolio": {
+          "avgMinutes": 5
+        },
+        "Light Maintenance valuation": {
+          "avgMinutes": 8
+        }
+      },
+      "failureRate": 0.5,
+      "rerunCountAvg": 2,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 4,
+        "2603": 2
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "DEGT",
+      "subprocess": "Valuation",
+      "stepDurations": {
+        "export to ara": {
+          "avgMinutes": 0.25
+        },
+        "Light Maintenance": {
+          "avgMinutes": 15
+        },
+        "portfolio valuation run": {
+          "avgMinutes": 28
+        },
+        "export to ara valuation": {
+          "avgMinutes": 2
+        },
+        "Light Maintenance valuation": {
+          "avgMinutes": 5
+        },
+        "valuation report exports": {
+          "avgMinutes": 81
+        }
+      },
+      "failureRate": 0.556,
+      "rerunCountAvg": 2.25,
+      "rerunsPerMonth": {
+        "2512": 2,
+        "2601": 2,
+        "2602": 3,
+        "2603": 2
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "DEGT",
+      "subprocess": "Gap + Liquidity IR",
+      "stepDurations": {
+        "gap planning": {
+          "avgMinutes": 63
+        }
+      },
+      "failureRate": 0.765,
+      "rerunCountAvg": 4.25,
+      "rerunsPerMonth": {
+        "2512": 3,
+        "2601": 3,
+        "2602": 8,
+        "2603": 3
+      },
+      "sampleErrors": [
+        "- Activity Instance ID: 3 | Activity: Export report or report book: Liquidity - Line Item Calculations | Status: Process skipped. | Started: 3/5/2026 6:40:27 AM | Completed: 3/5/2026 6:43:16 AM | HPC ...",
+        "Exception Info: Workflow finished with errors. (line: 44)  ",
+        "Exception Info: Workflow finished with errors. (line: 42)  ",
+        "running workflow PROD_LAD_SF failed: Invalid folder path: '\\\\sx9000077420\\ALMFD\\Asim\\CSRBB Internal Deals'. | Error Details: System.Exception: Invalid folder path: '\\\\sx9000077420\\ALMFD\\Asim\\CSRBB Int...",
+        "Exception Info: Workflow finished with errors. (line: 35)  "
+      ]
+    },
+    {
+      "location": "DEGT",
+      "subprocess": "Import Strategies",
+      "stepDurations": {
+        "import strategies": {
+          "avgMinutes": 21
+        }
+      },
+      "failureRate": 0.5,
+      "rerunCountAvg": 2,
+      "rerunsPerMonth": {
+        "2512": 2,
+        "2601": 2,
+        "2602": 3,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "DEGT",
+      "subprocess": "NII / Planning risk",
+      "stepDurations": {
+        "export to ara": {
+          "avgMinutes": 1
+        },
+        "planning run exports": {
+          "avgMinutes": 28
+        },
+        "planning run02": {
+          "avgMinutes": 62
+        },
+        "export to ara NII": {
+          "avgMinutes": 2
+        },
+        "planning run": {
+          "avgMinutes": 25
+        },
+        "planning run01": {
+          "avgMinutes": 25
+        },
+        "MDL Processing": {
+          "avgMinutes": 25
+        },
+        "                ": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.818,
+      "rerunCountAvg": 5.5,
+      "rerunsPerMonth": {
+        "2512": 8,
+        "2601": 3,
+        "2602": 9,
+        "2603": 2
+      },
+      "sampleErrors": [
+        "Exception Info: Index was outside the bounds of the array. (line: 72)  ",
+        "running workflow PROD_Common_Planning_Run_DEGT failed: Could not find saved workflow with name PROD_Common_Planning_Run_DEGT | Error Details: System.ApplicationException: Could not find saved workflow...",
+        "Exception Info: Number of rows in Allocated Growth worksheet is not correct. (line: 72)  "
+      ]
+    },
+    {
+      "location": "ESDB",
+      "subprocess": "Delete Portfolio",
+      "stepDurations": {
+        "Delete portfolio from": {
+          "avgMinutes": 3
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "ESDB",
+      "subprocess": "Model Parameters",
+      "stepDurations": {
+        "load Model parameters": {
+          "avgMinutes": 3
+        },
+        "Model parameters comparison": {
+          "avgMinutes": 0.25
+        }
+      },
+      "failureRate": 0.556,
+      "rerunCountAvg": 2.25,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 4,
+        "2603": 3
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "ESDB",
+      "subprocess": "Spreads",
+      "stepDurations": {
+        "load Spreads": {
+          "avgMinutes": 22
+        },
+        "Spreads comparison": {
+          "avgMinutes": 2
+        }
+      },
+      "failureRate": 0.2,
+      "rerunCountAvg": 1.25,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 2,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "ESDB",
+      "subprocess": "Load Position",
+      "stepDurations": {
+        "Generate NTG": {
+          "avgMinutes": 14
+        },
+        "load": {
+          "avgMinutes": 62
+        },
+        "Stratification": {
+          "avgMinutes": 7
+        },
+        "Position report OLAP exports": {
+          "avgMinutes": 12
+        },
+        "copy from": {
+          "avgMinutes": 2
+        },
+        "load NTG": {
+          "avgMinutes": 8
+        }
+      },
+      "failureRate": 0.727,
+      "rerunCountAvg": 3.67,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 2,
+        "2602": 8
+      },
+      "sampleErrors": [
+        "Exception from QRM: Exception calling RunCycleWithOverride: Exception calling RunCycleWithOverride: The component: 'Executing SQL Statement Task (49ef4192-653e-484a-9228-56b05a496901)' failed.  Conver..."
+      ]
+    },
+    {
+      "location": "ESDB",
+      "subprocess": "Valuation",
+      "stepDurations": {
+        "portfolio valuation run": {
+          "avgMinutes": 241
+        },
+        "export to ara": {
+          "avgMinutes": 0.25
+        },
+        "Light Maintenance": {
+          "avgMinutes": 39
+        },
+        "valuation report OLAP exports": {
+          "avgMinutes": 49
+        },
+        "valuation report QRM reporter exports": {
+          "avgMinutes": 3
+        },
+        "export to ara valuation": {
+          "avgMinutes": 25
+        },
+        "Light Maintenance valuation": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.667,
+      "rerunCountAvg": 3,
+      "rerunsPerMonth": {
+        "2512": 3,
+        "2601": 1,
+        "2602": 5
+      },
+      "sampleErrors": [
+        "Exception Info: Workflow finished with errors. (line: 29)  "
+      ]
+    },
+    {
+      "location": "ESDB",
+      "subprocess": "CSRBB (Val)",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 22
+        },
+        "CSRBB Portfolio Valuation": {
+          "avgMinutes": 45
+        },
+        "Light Maintenance CSRBB valuation": {
+          "avgMinutes": 6
+        },
+        "CSRBB Portfolio Valuation Qtr": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.7,
+      "rerunCountAvg": 3.33,
+      "rerunsPerMonth": {
+        "2512": 7,
+        "2601": 2,
+        "2602": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "ESDB",
+      "subprocess": "CSRBB (Plan)",
+      "stepDurations": {
+        "export to ara": {
+          "avgMinutes": 0.25
+        },
+        "import CSRBB strategies": {
+          "avgMinutes": 59
+        },
+        "CSRBB Planning Run": {
+          "avgMinutes": 87
+        },
+        "export to ara CSRBB Planning": {
+          "avgMinutes": 2
+        },
+        "CSRBB Planning Run Qtr": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.4,
+      "rerunCountAvg": 1.67,
+      "rerunsPerMonth": {
+        "2512": 2,
+        "2601": 2,
+        "2602": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "ESDB",
+      "subprocess": "EC",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 35
+        },
+        "ing-ec valuation": {
+          "avgMinutes": 191
+        },
+        "ing-ec valuation exports from ARA": {
+          "avgMinutes": 0.25
+        },
+        "ing-ec valuation QRM reporter exports": {
+          "avgMinutes": 1
+        },
+        "Light Maintenance ec": {
+          "avgMinutes": 12
+        },
+        "Light Maintenance EC": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.667,
+      "rerunCountAvg": 3,
+      "rerunsPerMonth": {
+        "2512": 3,
+        "2601": 3,
+        "2602": 3
+      },
+      "sampleErrors": [
+        "- Activity Instance ID: 1 | Activity: Analyze portfolio - no approximation: (66/75) | Status: Process failed. | Started: 3/18/2026 5:40:13 PM | Completed: 3/18/2026 6:19:05 PM | HPC Job ID: 171146,171..."
+      ]
+    },
+    {
+      "location": "ESDB",
+      "subprocess": "Gap + Liquidity IR",
+      "stepDurations": {
+        "gap planning": {
+          "avgMinutes": 278
+        }
+      },
+      "failureRate": 0.5,
+      "rerunCountAvg": 1.33,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 2
+      },
+      "sampleErrors": [
+        "- Activity Instance ID: 3 | Activity: Export report or report book: Liquidity - Line Item Calculations | Status: Process skipped. | Started: 3/13/2026 2:24:51 AM | Completed: 3/13/2026 2:27:26 AM | HP...",
+        "- Activity Instance ID: 3 | Activity: Export report or report book: Liquidity - Line Item Calculations | Status: Process skipped. | Started: 3/19/2026 1:48:06 AM | Completed: 3/19/2026 1:50:21 AM | HP..."
+      ]
+    },
+    {
+      "location": "ESDB",
+      "subprocess": "KR",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 20
+        },
+        "bpv-kr valuation": {
+          "avgMinutes": 125
+        },
+        "bpv-kr valuation QRM Reporter exports": {
+          "avgMinutes": 0.25
+        },
+        "Light Maintenance kr": {
+          "avgMinutes": 5
+        },
+        "Light Maintenance KR": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.7,
+      "rerunCountAvg": 3.33,
+      "rerunsPerMonth": {
+        "2512": 4,
+        "2601": 4,
+        "2602": 2
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "ESDB",
+      "subprocess": "Import Strategies",
+      "stepDurations": {
+        "import strategies": {
+          "avgMinutes": 9
+        }
+      },
+      "failureRate": 0.571,
+      "rerunCountAvg": 2.33,
+      "rerunsPerMonth": {
+        "2512": 3,
+        "2601": 3,
+        "2602": 1
+      },
+      "sampleErrors": [
+        "Exception from QRM: Exception calling ImportPlanningStrategy: Exception calling ImportPlanningStrategy: Equation text cannot be parsed: 1000*([BSN:ING - L - Variable Rate - AC - MC (1680280)][Growth E..."
+      ]
+    },
+    {
+      "location": "ESDB",
+      "subprocess": "NII / Planning risk",
+      "stepDurations": {
+        "planning run01": {
+          "avgMinutes": 306
+        },
+        "MDL Processing": {
+          "avgMinutes": 89
+        },
+        "planning run02": {
+          "avgMinutes": 416
+        },
+        "Full Maintenance": {
+          "avgMinutes": 609
+        },
+        "planning run QRM reporter exports": {
+          "avgMinutes": 89
+        },
+        "planning run OLAP exports": {
+          "avgMinutes": 301
+        },
+        "Full Maintenance planning": {
+          "avgMinutes": 150
+        }
+      },
+      "failureRate": 0.5,
+      "rerunCountAvg": 2,
+      "rerunsPerMonth": {
+        "2512": 3,
+        "2601": 1,
+        "2602": 2
+      },
+      "sampleErrors": [
+        "Exception Info: Workflow finished with errors. (line: 135)  "
+      ]
+    },
+    {
+      "location": "ESDB",
+      "subprocess": "ITS Planning",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 21
+        },
+        "ITS planning run": {
+          "avgMinutes": 35
+        },
+        "Light Maintenance ITS planning": {
+          "avgMinutes": 70
+        }
+      },
+      "failureRate": 0.813,
+      "rerunCountAvg": 5.33,
+      "rerunsPerMonth": {
+        "2512": 9,
+        "2601": 5,
+        "2602": 2
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "ESDB",
+      "subprocess": "AIC",
+      "stepDurations": {
+        "load AIC Spreads": {
+          "avgMinutes": 21
+        },
+        "AIC portfolio valuation run": {
+          "avgMinutes": 86
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "ESDB",
+      "subprocess": "CSRBB Export",
+      "stepDurations": {
+        "CSRBB exports": {
+          "avgMinutes": 6
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2602": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "ESDB",
+      "subprocess": "PDCE",
+      "stepDurations": {
+        "PDCE planning": {
+          "avgMinutes": 367
+        },
+        "PDCE report OLAP exports": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.8,
+      "rerunCountAvg": 5,
+      "rerunsPerMonth": {
+        "2512": 5
+      },
+      "sampleErrors": [
+        "Exception Info: Workflow finished with errors. (line: 28)  "
+      ]
+    },
+    {
+      "location": "ESDB",
+      "subprocess": "EVE Optionality",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 32
+        },
+        "EVE Optionality MC Valuation": {
+          "avgMinutes": 25
+        },
+        "EVE Optionality copy run parameters": {
+          "avgMinutes": 25
+        },
+        "EVE Optionality SCF Valuation": {
+          "avgMinutes": 25
+        },
+        "EVE Optionality SCF report": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.875,
+      "rerunCountAvg": 8,
+      "rerunsPerMonth": {
+        "2512": 8
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "FRDB",
+      "subprocess": "Delete Portfolio",
+      "stepDurations": {
+        "Delete portfolio from": {
+          "avgMinutes": 3
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "FRDB",
+      "subprocess": "Model Parameters",
+      "stepDurations": {
+        "load Model parameters": {
+          "avgMinutes": 3
+        },
+        "Model parameters comparison": {
+          "avgMinutes": 0.25
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "FRDB",
+      "subprocess": "Spreads",
+      "stepDurations": {
+        "load Spreads": {
+          "avgMinutes": 11
+        },
+        "Spreads comparison": {
+          "avgMinutes": 3
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "FRDB",
+      "subprocess": "Load Position",
+      "stepDurations": {
+        "load": {
+          "avgMinutes": 39
+        },
+        "Stratification": {
+          "avgMinutes": 5
+        },
+        "Position report exports": {
+          "avgMinutes": 11
+        },
+        "copy from": {
+          "avgMinutes": 2
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "FRDB",
+      "subprocess": "Valuation",
+      "stepDurations": {
+        "portfolio valuation run": {
+          "avgMinutes": 93
+        },
+        "export to ara": {
+          "avgMinutes": 1
+        },
+        "Light Maintenance": {
+          "avgMinutes": 31
+        },
+        "valuation report QRM Reporter exports": {
+          "avgMinutes": 9
+        },
+        "export to ara Portfolio Valuation": {
+          "avgMinutes": 0.25
+        },
+        "Light Maintenance Portfolio Valuation": {
+          "avgMinutes": 8
+        },
+        "valuation report exports": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.333,
+      "rerunCountAvg": 1.5,
+      "rerunsPerMonth": {
+        "2512": 3,
+        "2601": 1,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "FRDB",
+      "subprocess": "CSRBB (Val)",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 18
+        },
+        "CSRBB Portfolio Valuation": {
+          "avgMinutes": 19
+        },
+        "Light Maintenance CSRBB Valuation": {
+          "avgMinutes": 6
+        },
+        "CSRBB Portfolio Valuation Qtr": {
+          "avgMinutes": 11
+        }
+      },
+      "failureRate": 0.429,
+      "rerunCountAvg": 1.75,
+      "rerunsPerMonth": {
+        "2512": 3,
+        "2601": 2,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": [
+        "Exception Info: Workflow finished with errors. (line: 30)  "
+      ]
+    },
+    {
+      "location": "FRDB",
+      "subprocess": "CSRBB (Plan)",
+      "stepDurations": {
+        "export to ara": {
+          "avgMinutes": 0.25
+        },
+        "import CSRBB strategies": {
+          "avgMinutes": 60
+        },
+        "CSRBB Planning Run": {
+          "avgMinutes": 64
+        },
+        "export to ara CSRBB Planning": {
+          "avgMinutes": 1
+        },
+        "CSRBB Planning Run Qtr": {
+          "avgMinutes": 36
+        }
+      },
+      "failureRate": 0.333,
+      "rerunCountAvg": 1.5,
+      "rerunsPerMonth": {
+        "2512": 2,
+        "2601": 2,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "FRDB",
+      "subprocess": "EC",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 15
+        },
+        "ing-ec valuation": {
+          "avgMinutes": 70
+        },
+        "ing-ec valuation QRM reporter exports": {
+          "avgMinutes": 4
+        },
+        "Light Maintenance ing-ec valuation": {
+          "avgMinutes": 5
+        }
+      },
+      "failureRate": 0.556,
+      "rerunCountAvg": 2.25,
+      "rerunsPerMonth": {
+        "2512": 4,
+        "2601": 3,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "FRDB",
+      "subprocess": "Gap + Liquidity IR",
+      "stepDurations": {
+        "gap planning": {
+          "avgMinutes": 95
+        }
+      },
+      "failureRate": 0.333,
+      "rerunCountAvg": 1.5,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 2,
+        "2603": 2
+      },
+      "sampleErrors": [
+        "- Activity Instance ID: 3 | Activity: Export report or report book: Liquidity - Line Item Calculations | Status: Process skipped. | Started: 3/11/2026 7:26:37 AM | Completed: 3/11/2026 7:29:40 AM | HP...",
+        "Exception Info: Workflow finished with errors. (line: 40)  "
+      ]
+    },
+    {
+      "location": "FRDB",
+      "subprocess": "KR",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 12
+        },
+        "bpv-kr valuation": {
+          "avgMinutes": 44
+        },
+        "bpv-kr valuation QRM reporter exports": {
+          "avgMinutes": 0.25
+        },
+        "Light Maintenance bpv-kr valuation": {
+          "avgMinutes": 4
+        }
+      },
+      "failureRate": 0.636,
+      "rerunCountAvg": 2.75,
+      "rerunsPerMonth": {
+        "2512": 5,
+        "2601": 4,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "FRDB",
+      "subprocess": "Import Strategies",
+      "stepDurations": {
+        "import strategies": {
+          "avgMinutes": 8
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "FRDB",
+      "subprocess": "NII / Planning risk",
+      "stepDurations": {
+        "export to ara": {
+          "avgMinutes": 2
+        },
+        "planning run OLAP exports": {
+          "avgMinutes": 32
+        },
+        "planning run01": {
+          "avgMinutes": 25
+        },
+        "MDL Processing": {
+          "avgMinutes": 25
+        },
+        "planning run02": {
+          "avgMinutes": 25
+        },
+        "planning run QRM reporter exports": {
+          "avgMinutes": 25
+        },
+        "planning run01 mail only": {
+          "avgMinutes": 25
+        },
+        "export to ara NII": {
+          "avgMinutes": 25
+        },
+        "Light Maintenance NII": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.7,
+      "rerunCountAvg": 2.5,
+      "rerunsPerMonth": {
+        "2512": 4,
+        "2601": 3,
+        "2602": 2,
+        "2603": 1
+      },
+      "sampleErrors": [
+        "Exception Info: Workflow finished with errors. (line: 37)  ",
+        "- Activity Instance ID: 1 | Activity: Export report or report book: ING_NII_REPORT | Status: Process failed. | Started: 3/10/2026 4:35:24 PM | Completed: 3/10/2026 5:47:14 PM | HPC Job ID: 168531",
+        "Exception Info: Workflow finished with errors. (line: 62)  "
+      ]
+    },
+    {
+      "location": "FRDB",
+      "subprocess": "ITS Planning",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 21
+        },
+        "ITS planning run": {
+          "avgMinutes": 19
+        },
+        "Light Maintenance ITS planning": {
+          "avgMinutes": 5
+        }
+      },
+      "failureRate": 0.6,
+      "rerunCountAvg": 2.5,
+      "rerunsPerMonth": {
+        "2512": 3,
+        "2601": 5,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "FRDB",
+      "subprocess": "AIC",
+      "stepDurations": {
+        "load AIC Spreads": {
+          "avgMinutes": 12
+        },
+        "AIC portfolio valuation run": {
+          "avgMinutes": 14
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "FRDB",
+      "subprocess": "PDCE",
+      "stepDurations": {
+        "PDCE planning": {
+          "avgMinutes": 14
+        },
+        "PDCE report QRM reporter exports": {
+          "avgMinutes": 3
+        }
+      },
+      "failureRate": 0.5,
+      "rerunCountAvg": 2,
+      "rerunsPerMonth": {
+        "2512": 3,
+        "2603": 1
+      },
+      "sampleErrors": [
+        "Exception Info: Workflow finished with errors. (line: 33)  "
+      ]
+    },
+    {
+      "location": "FRDB",
+      "subprocess": "EVE Optionality",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 22
+        },
+        "EVE Optionality MC Valuation": {
+          "avgMinutes": 25
+        },
+        "EVE Optionality copy run parameters": {
+          "avgMinutes": 25
+        },
+        "EVE Optionality SCF Valuation": {
+          "avgMinutes": 25
+        },
+        "EVE Optionality SCF report": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.857,
+      "rerunCountAvg": 7,
+      "rerunsPerMonth": {
+        "2512": 7
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "ITDB",
+      "subprocess": "Delete Portfolio",
+      "stepDurations": {
+        "Delete portfolio from": {
+          "avgMinutes": 3
+        }
+      },
+      "failureRate": 0.333,
+      "rerunCountAvg": 1.5,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 3,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "ITDB",
+      "subprocess": "Model Parameters",
+      "stepDurations": {
+        "load Model parameters": {
+          "avgMinutes": 3
+        },
+        "Model parameters comparison": {
+          "avgMinutes": 0.25
+        }
+      },
+      "failureRate": 0.636,
+      "rerunCountAvg": 2.75,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 4,
+        "2602": 4,
+        "2603": 2
+      },
+      "sampleErrors": [
+        "Exception from QRM: Exception calling ImportSavedWorkflow: Exception calling ImportSavedWorkflow: There is already a workflow with the name 'PROD_MPs_Load_IT'  -- Details available: Y. -- Warnings ava...",
+        "Exception Info: Workflow finished with errors. (line: 44)  "
+      ]
+    },
+    {
+      "location": "ITDB",
+      "subprocess": "Spreads",
+      "stepDurations": {
+        "load Spreads": {
+          "avgMinutes": 10
+        },
+        "Spreads comparison": {
+          "avgMinutes": 1
+        }
+      },
+      "failureRate": 0.429,
+      "rerunCountAvg": 1.75,
+      "rerunsPerMonth": {
+        "2512": 2,
+        "2601": 1,
+        "2602": 3,
+        "2603": 1
+      },
+      "sampleErrors": [
+        "Exception Info: File  '\\\\sx9000079291\\ITDB\\Work\\Locations input files\\2025-12\\ING_SPREAD_DELIVERY_TEMPLATE_MCP_202512.xlsm' does not exist. (line: 38)  "
+      ]
+    },
+    {
+      "location": "ITDB",
+      "subprocess": "Load Position",
+      "stepDurations": {
+        "load": {
+          "avgMinutes": 21
+        },
+        "Stratification": {
+          "avgMinutes": 6
+        },
+        "Position report OLAP exports": {
+          "avgMinutes": 8
+        },
+        "copy from": {
+          "avgMinutes": 8
+        },
+        "load NTG": {
+          "avgMinutes": 8
+        }
+      },
+      "failureRate": 0.556,
+      "rerunCountAvg": 2.25,
+      "rerunsPerMonth": {
+        "2512": 2,
+        "2601": 2,
+        "2602": 2,
+        "2603": 3
+      },
+      "sampleErrors": [
+        "Exception Info: File  '\\\\sx9000079291\\ITDB\\Work\\Locations input files\\2026-03\\IT_MCP_NTG.xlsx' does not exist. (line: 54)  ",
+        "Exception Info: File  '\\\\sx9000079291\\ITDB\\Work\\Locations input files\\2025-12\\IT_MCP_NTG.xlsx' does not exist. (line: 54)  ",
+        "Exception Info: File  '\\\\sx9000079291\\ITDB\\Work\\Locations input files\\2025-01\\IT_MCP_NTG.xlsx' does not exist. (line: 54)  "
+      ]
+    },
+    {
+      "location": "ITDB",
+      "subprocess": "Valuation",
+      "stepDurations": {
+        "portfolio valuation run": {
+          "avgMinutes": 174
+        },
+        "export to ara": {
+          "avgMinutes": 2
+        },
+        "Light Maintenance": {
+          "avgMinutes": 34
+        },
+        "valuation report OLAP exports": {
+          "avgMinutes": 23
+        },
+        "valuation report QRM reporter exports": {
+          "avgMinutes": 2
+        },
+        "export to ara Portfolio Valuation": {
+          "avgMinutes": 25
+        },
+        "Light Maintenance valuation": {
+          "avgMinutes": 25
+        },
+        "valuation report QRM Reporter exports": {
+          "avgMinutes": 25
+        },
+        "Light Maintenance valuation ": {
+          "avgMinutes": 25
+        },
+        "Light Maintenance Portfolio Valuation": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.571,
+      "rerunCountAvg": 1.75,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 4,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "ITDB",
+      "subprocess": "CSRBB (Val)",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 27
+        },
+        "CSRBB Portfolio Valuation": {
+          "avgMinutes": 27
+        },
+        "CSRBB Portfolio Valuation Qtr": {
+          "avgMinutes": 47
+        },
+        "Light Maintenance CSRBB Portfolio Valuation Qtr": {
+          "avgMinutes": 7
+        }
+      },
+      "failureRate": 0.636,
+      "rerunCountAvg": 2.75,
+      "rerunsPerMonth": {
+        "2512": 6,
+        "2601": 2,
+        "2602": 2,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "ITDB",
+      "subprocess": "CSRBB (Plan)",
+      "stepDurations": {
+        "export to ara": {
+          "avgMinutes": 2
+        },
+        "import CSRBB strategies": {
+          "avgMinutes": 25
+        },
+        "CSRBB Planning Run": {
+          "avgMinutes": 25
+        },
+        "CSRBB Planning Run Qtr": {
+          "avgMinutes": 25
+        },
+        "export to ara CSRBB Planning": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.571,
+      "rerunCountAvg": 2.33,
+      "rerunsPerMonth": {
+        "2512": 2,
+        "2601": 2,
+        "2602": 3
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "ITDB",
+      "subprocess": "EC",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 14
+        },
+        "export to ara": {
+          "avgMinutes": 2
+        },
+        "ing-ec valuation": {
+          "avgMinutes": 107
+        },
+        "ing-ec valuation exports": {
+          "avgMinutes": 107
+        }
+      },
+      "failureRate": 0.6,
+      "rerunCountAvg": 2.5,
+      "rerunsPerMonth": {
+        "2512": 3,
+        "2601": 3,
+        "2602": 3,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "ITDB",
+      "subprocess": "Gap + Liquidity IR",
+      "stepDurations": {
+        "gap planning": {
+          "avgMinutes": 159
+        }
+      },
+      "failureRate": 0.571,
+      "rerunCountAvg": 1.75,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 3,
+        "2603": 2
+      },
+      "sampleErrors": [
+        "Exception Info: Workflow finished with errors. (line: 56)  "
+      ]
+    },
+    {
+      "location": "ITDB",
+      "subprocess": "KR",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 20
+        },
+        "export to ara": {
+          "avgMinutes": 2
+        },
+        "bpv-kr valuation": {
+          "avgMinutes": 74
+        },
+        "bpv-kr valuation exports": {
+          "avgMinutes": 0.25
+        },
+        "Light Maintenance KR": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.636,
+      "rerunCountAvg": 2.75,
+      "rerunsPerMonth": {
+        "2512": 4,
+        "2601": 4,
+        "2602": 2,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "ITDB",
+      "subprocess": "Import Strategies",
+      "stepDurations": {
+        "import strategies": {
+          "avgMinutes": 3
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "ITDB",
+      "subprocess": "NII / Planning risk",
+      "stepDurations": {
+        "export to ara": {
+          "avgMinutes": 2
+        },
+        "planning run01": {
+          "avgMinutes": 92
+        },
+        "MDL Processing": {
+          "avgMinutes": 12
+        },
+        "planning run02": {
+          "avgMinutes": 246
+        },
+        "planning run QRM reporter exports": {
+          "avgMinutes": 21
+        },
+        "planning run OLAP exports": {
+          "avgMinutes": 128
+        },
+        "export to ara planning": {
+          "avgMinutes": 1
+        }
+      },
+      "failureRate": 0.727,
+      "rerunCountAvg": 3.67,
+      "rerunsPerMonth": {
+        "2512": 5,
+        "2601": 5,
+        "2602": 1
+      },
+      "sampleErrors": [
+        "Exception Info: Workflow finished with errors. (line: 37)  "
+      ]
+    },
+    {
+      "location": "ITDB",
+      "subprocess": "ITS Planning",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 20
+        },
+        "ITS planning run": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.786,
+      "rerunCountAvg": 4.67,
+      "rerunsPerMonth": {
+        "2512": 5,
+        "2601": 5,
+        "2602": 4
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "ITDB",
+      "subprocess": "AIC",
+      "stepDurations": {
+        "load AIC Spreads": {
+          "avgMinutes": 10
+        },
+        "AIC portfolio valuation run": {
+          "avgMinutes": 32
+        }
+      },
+      "failureRate": 0.25,
+      "rerunCountAvg": 1.33,
+      "rerunsPerMonth": {
+        "2512": 2,
+        "2601": 1,
+        "2602": 1
+      },
+      "sampleErrors": [
+        "Exception Info: File  '\\\\sx9000079291\\ITDB\\Work\\Locations input files\\2025-12\\ING_SPREAD_DELIVERY_TEMPLATE_MCP_AIC_202512.xlsm' does not exist. (line: 43)  "
+      ]
+    },
+    {
+      "location": "ITDB",
+      "subprocess": "CSRBB Export",
+      "stepDurations": {
+        "CSRBB exports": {
+          "avgMinutes": 1
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2602": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "ITDB",
+      "subprocess": "PDCE",
+      "stepDurations": {
+        "PDCE planning": {
+          "avgMinutes": 32
+        },
+        "PDCE report QRM reporter exports": {
+          "avgMinutes": 20
+        }
+      },
+      "failureRate": 0.5,
+      "rerunCountAvg": 2,
+      "rerunsPerMonth": {
+        "2512": 2
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "ITDB",
+      "subprocess": "EVE Optionality",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 27
+        },
+        "EVE Optionality MC Valuation": {
+          "avgMinutes": 25
+        },
+        "EVE Optionality copy run parameters": {
+          "avgMinutes": 25
+        },
+        "EVE Optionality SCF Valuation": {
+          "avgMinutes": 25
+        },
+        "EVE Optionality SCF report": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.857,
+      "rerunCountAvg": 7,
+      "rerunsPerMonth": {
+        "2512": 7
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "LUDB",
+      "subprocess": "Delete Portfolio",
+      "stepDurations": {
+        "Delete portfolio from": {
+          "avgMinutes": 2
+        }
+      },
+      "failureRate": 0.333,
+      "rerunCountAvg": 1.5,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 2,
+        "2602": 2,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "LUDB",
+      "subprocess": "Model Parameters",
+      "stepDurations": {
+        "load Model parameters": {
+          "avgMinutes": 3
+        },
+        "Model parameters comparison": {
+          "avgMinutes": 0.25
+        }
+      },
+      "failureRate": 0.636,
+      "rerunCountAvg": 2.75,
+      "rerunsPerMonth": {
+        "2512": 2,
+        "2601": 5,
+        "2602": 3,
+        "2603": 1
+      },
+      "sampleErrors": [
+        "Exception Info: File  or folder '\\\\sx9000079291\\LUDB\\Work\\Q3_COMPARE_FILES_MCP\\202601' does not exist. (line: 47)  ",
+        "Exception Info: Parameter for alm process is empty (line: 18)  "
+      ]
+    },
+    {
+      "location": "LUDB",
+      "subprocess": "Spreads",
+      "stepDurations": {
+        "load Spreads": {
+          "avgMinutes": 9
+        },
+        "Spreads comparison": {
+          "avgMinutes": 1
+        }
+      },
+      "failureRate": 0.556,
+      "rerunCountAvg": 2.25,
+      "rerunsPerMonth": {
+        "2512": 2,
+        "2601": 4,
+        "2602": 2,
+        "2603": 1
+      },
+      "sampleErrors": [
+        "Exception Info: Object reference not set to an instance of an object. (line: 50)  ",
+        "Exception Info: File  '\\\\sx9000079291\\Datafiles\\Source\\Logs\\QAST\\PARAMETERFILES\\LQMA\\Tooling Config\\SandwichSpreadConfig.xlsx' does not exist. (line: 22)  ",
+        "Exception Info: Folder '\\\\sx9000079291\\BAS\\Work\\MCP\\2026-01-31\\05 - Spreads' does not exist. (line: 22)  "
+      ]
+    },
+    {
+      "location": "LUDB",
+      "subprocess": "Load Position",
+      "stepDurations": {
+        "Position report exports": {
+          "avgMinutes": 14
+        },
+        "load": {
+          "avgMinutes": 5
+        },
+        "Stratification": {
+          "avgMinutes": 5
+        },
+        "Position report OLAP exports": {
+          "avgMinutes": 7
+        },
+        "copy from": {
+          "avgMinutes": 2
+        },
+        "load NTG": {
+          "avgMinutes": 0.25
+        },
+        "export to ara": {
+          "avgMinutes": 2
+        }
+      },
+      "failureRate": 0.556,
+      "rerunCountAvg": 2.25,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 4,
+        "2602": 3,
+        "2603": 1
+      },
+      "sampleErrors": [
+        "Exception Info: Workflow finished with errors. (line: 13)  "
+      ]
+    },
+    {
+      "location": "LUDB",
+      "subprocess": "Valuation",
+      "stepDurations": {
+        "valuation report QRM Reporter exports": {
+          "avgMinutes": 1
+        },
+        "portfolio valuation run": {
+          "avgMinutes": 64
+        },
+        "valuation report OLAP exports": {
+          "avgMinutes": 27
+        },
+        "Light Maintenance valuation": {
+          "avgMinutes": 8
+        },
+        "export to ara valuation": {
+          "avgMinutes": 1
+        },
+        "Light Maintenance": {
+          "avgMinutes": 10
+        },
+        "export to ara Portfolio Valuation": {
+          "avgMinutes": 1
+        },
+        "export to ara": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.556,
+      "rerunCountAvg": 2.25,
+      "rerunsPerMonth": {
+        "2512": 2,
+        "2601": 3,
+        "2602": 3,
+        "2603": 1
+      },
+      "sampleErrors": [
+        "Exception Info: Conversion failed when converting date and/or time from character string.  17:47:08 @JobNameToRun: RA_Q3Call_QRM @ToServer:  @L_PRD2UAT_LoadType:  @SourceEnvFromDatabaseName: PRD @Targ..."
+      ]
+    },
+    {
+      "location": "LUDB",
+      "subprocess": "CSRBB (Val)",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 18
+        },
+        "CSRBB Portfolio Valuation": {
+          "avgMinutes": 15
+        },
+        "Light Maintenance csrbb valuation": {
+          "avgMinutes": 5
+        },
+        "CSRBB Portfolio Valuation Qtr": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.667,
+      "rerunCountAvg": 3,
+      "rerunsPerMonth": {
+        "2512": 5,
+        "2601": 3,
+        "2602": 3,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "LUDB",
+      "subprocess": "CSRBB (Plan)",
+      "stepDurations": {
+        "import CSRBB strategies": {
+          "avgMinutes": 87
+        },
+        "CSRBB Planning Run": {
+          "avgMinutes": 55
+        },
+        "export to ara": {
+          "avgMinutes": 2
+        },
+        "CSRBB Planning Run Qtr": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.5,
+      "rerunCountAvg": 2,
+      "rerunsPerMonth": {
+        "2512": 2,
+        "2601": 1,
+        "2602": 3,
+        "2603": 2
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "LUDB",
+      "subprocess": "EC",
+      "stepDurations": {
+        "ing-ec valuation exports": {
+          "avgMinutes": 35
+        },
+        "ing-ec valuation": {
+          "avgMinutes": 97
+        },
+        "Light Maintenance": {
+          "avgMinutes": 11
+        },
+        "Full Maintenance": {
+          "avgMinutes": 25
+        },
+        "Light Maintenance EC": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.556,
+      "rerunCountAvg": 2.25,
+      "rerunsPerMonth": {
+        "2512": 3,
+        "2601": 2,
+        "2602": 3,
+        "2603": 1
+      },
+      "sampleErrors": [
+        "Exception Info: File  or folder 'LUDB\\Work\\TRISS' does not exist. (line: 26)  "
+      ]
+    },
+    {
+      "location": "LUDB",
+      "subprocess": "Gap + Liquidity IR",
+      "stepDurations": {
+        "gap planning": {
+          "avgMinutes": 45
+        }
+      },
+      "failureRate": 0.625,
+      "rerunCountAvg": 2,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 5,
+        "2603": 1
+      },
+      "sampleErrors": [
+        "Exception Info: Workflow finished with errors. (line: 56)  "
+      ]
+    },
+    {
+      "location": "LUDB",
+      "subprocess": "KR",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 13
+        },
+        "bpv-kr valuation": {
+          "avgMinutes": 65
+        },
+        "bpv-kr valuation exports": {
+          "avgMinutes": 0.25
+        },
+        "Light Maintenance KR": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.667,
+      "rerunCountAvg": 3,
+      "rerunsPerMonth": {
+        "2512": 4,
+        "2601": 4,
+        "2602": 3,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "LUDB",
+      "subprocess": "Import Strategies",
+      "stepDurations": {
+        "import strategies IG": {
+          "avgMinutes": 2
+        },
+        "import strategies Risk": {
+          "avgMinutes": 2
+        },
+        "import strategies": {
+          "avgMinutes": 5
+        }
+      },
+      "failureRate": 0.25,
+      "rerunCountAvg": 1.33,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 2
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "LUDB",
+      "subprocess": "NII / Planning risk",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 10
+        },
+        "planning run01": {
+          "avgMinutes": 160
+        },
+        "MDL Processing": {
+          "avgMinutes": 11
+        },
+        "planning run02": {
+          "avgMinutes": 52
+        },
+        "planning run QRM reporter exports": {
+          "avgMinutes": 0.25
+        },
+        "planning run OLAP exports": {
+          "avgMinutes": 188
+        },
+        "export to ara nii": {
+          "avgMinutes": 2
+        },
+        "export to ara": {
+          "avgMinutes": 2
+        },
+        "export to ara NII": {
+          "avgMinutes": 25
+        },
+        "Light Maintenance NII": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.727,
+      "rerunCountAvg": 3.67,
+      "rerunsPerMonth": {
+        "2512": 3,
+        "2601": 6,
+        "2602": 2
+      },
+      "sampleErrors": [
+        "Exception Info: Workflow finished with errors. (line: 29)  "
+      ]
+    },
+    {
+      "location": "LUDB",
+      "subprocess": "AIC",
+      "stepDurations": {
+        "load AIC Spreads": {
+          "avgMinutes": 9
+        },
+        "AIC portfolio valuation run": {
+          "avgMinutes": 26
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "LUDB",
+      "subprocess": "CSRBB Export",
+      "stepDurations": {
+        "CSRBB exports": {
+          "avgMinutes": 6
+        }
+      },
+      "failureRate": 0.5,
+      "rerunCountAvg": 2,
+      "rerunsPerMonth": {
+        "2602": 2
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "LUDB",
+      "subprocess": "PDCE",
+      "stepDurations": {
+        "PDCE planning": {
+          "avgMinutes": 20
+        },
+        "PDCE report QRM Reporter exports": {
+          "avgMinutes": 9
+        },
+        "PDCE planning QTR": {
+          "avgMinutes": 29
+        },
+        "PDCE report QTR OLAP exports": {
+          "avgMinutes": 1
+        }
+      },
+      "failureRate": 0.5,
+      "rerunCountAvg": 2,
+      "rerunsPerMonth": {
+        "2512": 2,
+        "2603": 2
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "LUDB",
+      "subprocess": "EVE Optionality",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 18
+        },
+        "EVE Optionality MC Valuation": {
+          "avgMinutes": 25
+        },
+        "EVE Optionality copy run parameters": {
+          "avgMinutes": 25
+        },
+        "EVE Optionality SCF Valuation": {
+          "avgMinutes": 25
+        },
+        "EVE Optionality SCF report": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.833,
+      "rerunCountAvg": 6,
+      "rerunsPerMonth": {
+        "2512": 6
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "NLBTR",
+      "subprocess": "Load Position",
+      "stepDurations": {
+        "load": {
+          "avgMinutes": 58
+        },
+        "Stratification": {
+          "avgMinutes": 7
+        },
+        "Light Maintenance": {
+          "avgMinutes": 20
+        },
+        "Position report OLAP exports": {
+          "avgMinutes": 15
+        },
+        "export to ara": {
+          "avgMinutes": 2
+        },
+        "copy from": {
+          "avgMinutes": 11
+        },
+        "Light Maintenance Load Portfolio": {
+          "avgMinutes": 106
+        },
+        "export to ara Load Portfolio": {
+          "avgMinutes": 2
+        }
+      },
+      "failureRate": 0.2,
+      "rerunCountAvg": 1.25,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 2,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "NLBTR",
+      "subprocess": "Valuation",
+      "stepDurations": {
+        "export to ara": {
+          "avgMinutes": 0.25
+        },
+        "Light Maintenance": {
+          "avgMinutes": 22
+        },
+        "portfolio valuation run": {
+          "avgMinutes": 17
+        },
+        "valuation report OLAP exports": {
+          "avgMinutes": 100
+        },
+        "valuation report QRM Reporter exports": {
+          "avgMinutes": 0.25
+        },
+        "AIC portfolio valuation run": {
+          "avgMinutes": 1
+        },
+        "Light Maintenance portfolio valuation": {
+          "avgMinutes": 10
+        }
+      },
+      "failureRate": 0.429,
+      "rerunCountAvg": 1.75,
+      "rerunsPerMonth": {
+        "2512": 2,
+        "2601": 2,
+        "2602": 2,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "NLBTR",
+      "subprocess": "CSRBB (Val)",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 301
+        },
+        "CSRBB Portfolio Valuation": {
+          "avgMinutes": 34
+        },
+        "CSRBB Portfolio Valuation Qtr": {
+          "avgMinutes": 25
+        },
+        "Light Maintenance CSRBB valuation": {
+          "avgMinutes": 25
+        },
+        "Light Maintenance CSRBB Portfolio Valuation Qtr": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.842,
+      "rerunCountAvg": 4.75,
+      "rerunsPerMonth": {
+        "2512": 11,
+        "2601": 5,
+        "2602": 2,
+        "2603": 1
+      },
+      "sampleErrors": [
+        "Exception Info: Failure sending mail. (line: 42)  "
+      ]
+    },
+    {
+      "location": "NLBTR",
+      "subprocess": "CSRBB (Plan)",
+      "stepDurations": {
+        "import CSRBB strategies": {
+          "avgMinutes": 71
+        },
+        "export to ara": {
+          "avgMinutes": 0.25
+        },
+        "CSRBB Planning Run": {
+          "avgMinutes": 188
+        },
+        "export to ara CSRBB Planning": {
+          "avgMinutes": 1
+        },
+        "CSRBB Planning Run Qtr": {
+          "avgMinutes": 125
+        },
+        "CSRBB Planning Run  Qtr": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.636,
+      "rerunCountAvg": 2.75,
+      "rerunsPerMonth": {
+        "2512": 4,
+        "2601": 4,
+        "2602": 2,
+        "2603": 1
+      },
+      "sampleErrors": [
+        "Exception from QRM: Exception calling ImportPlanningStrategy: Exception calling ImportPlanningStrategy: The file is corrupted.  -- Details available: Y. -- Warnings available: N. (line: 43)  QRM error...",
+        "Exception from QRM: Exception calling ImportPlanningStrategy: Exception calling ImportPlanningStrategy: The object named 'CSRBB Strategy' cannot be edited because QRM User AD\\NPX9-QRM_DB_P on the mach..."
+      ]
+    },
+    {
+      "location": "NLBTR",
+      "subprocess": "EC",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 14
+        },
+        "ing-ec valuation": {
+          "avgMinutes": 129
+        },
+        "ing-ec valuation OLAP exports": {
+          "avgMinutes": 275
+        },
+        "ing-ec valuation QRM Reporter exports": {
+          "avgMinutes": 0.25
+        },
+        "Light Maintenance ing-ec valuation": {
+          "avgMinutes": 260
+        }
+      },
+      "failureRate": 0.556,
+      "rerunCountAvg": 2.25,
+      "rerunsPerMonth": {
+        "2512": 3,
+        "2601": 3,
+        "2602": 2,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "NLBTR",
+      "subprocess": "Gap + Liquidity IR",
+      "stepDurations": {
+        "gap planning": {
+          "avgMinutes": 234
+        }
+      },
+      "failureRate": 0.5,
+      "rerunCountAvg": 2,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 4,
+        "2603": 2
+      },
+      "sampleErrors": [
+        "Exception Info: Workflow finished with errors. (line: 44)  "
+      ]
+    },
+    {
+      "location": "NLBTR",
+      "subprocess": "KR",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 26
+        },
+        "bpv-kr valuation": {
+          "avgMinutes": 22
+        },
+        "bpv-kr valuation OLAP exports": {
+          "avgMinutes": 160
+        },
+        "bpv-kr valuation QRM Reporter exports": {
+          "avgMinutes": 0.25
+        },
+        "Light Maintenance KR valuation": {
+          "avgMinutes": 11
+        }
+      },
+      "failureRate": 0.636,
+      "rerunCountAvg": 2.75,
+      "rerunsPerMonth": {
+        "2512": 4,
+        "2601": 4,
+        "2602": 2,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "NLBTR",
+      "subprocess": "Import Strategies",
+      "stepDurations": {
+        "import strategies": {
+          "avgMinutes": 57
+        }
+      },
+      "failureRate": 0.692,
+      "rerunCountAvg": 3.25,
+      "rerunsPerMonth": {
+        "2512": 3,
+        "2601": 2,
+        "2602": 3,
+        "2603": 5
+      },
+      "sampleErrors": [
+        "Exception from QRM: Exception calling ImportPlanningStrategy: Exception calling ImportPlanningStrategy: Mismatch in planning tree during import: Expected Planning Tree 27 - NLGT Planning Tree  -- Deta...",
+        "Exception from QRM: Exception calling SetPortfolioSet: Exception calling SetPortfolioSet: Portfolio with name [RAS] not found  -- Details available: Y. -- Warnings available: N. (line: 28)  QRM error ..."
+      ]
+    },
+    {
+      "location": "NLBTR",
+      "subprocess": "NII / Planning risk",
+      "stepDurations": {
+        "export to ara": {
+          "avgMinutes": 0.25
+        },
+        "planning run01": {
+          "avgMinutes": 838
+        },
+        "MDL Processing": {
+          "avgMinutes": 25
+        },
+        "planning run02": {
+          "avgMinutes": 25
+        },
+        "planning run exports": {
+          "avgMinutes": 25
+        },
+        "planning run": {
+          "avgMinutes": 25
+        },
+        "planning run QRM Reporter exports": {
+          "avgMinutes": 25
+        },
+        "Full Maintenance": {
+          "avgMinutes": 25
+        },
+        "planning run OLAP exports": {
+          "avgMinutes": 25
+        },
+        "export to ara NII": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.75,
+      "rerunCountAvg": 4,
+      "rerunsPerMonth": {
+        "2512": 6,
+        "2601": 3,
+        "2602": 4,
+        "2603": 3
+      },
+      "sampleErrors": [
+        "Exception Info: Workflow finished with errors. (line: 112)  ",
+        "Exception Info: Workflow finished with errors. (line: 91)  ",
+        "Exception Info: Workflow finished with errors. (line: 37)  ",
+        "Exception Info: Index was outside the bounds of the array. (line: 69)  "
+      ]
+    },
+    {
+      "location": "NLBTR",
+      "subprocess": "ITS Planning",
+      "stepDurations": {
+        "ITS planning run": {
+          "avgMinutes": 42
+        }
+      },
+      "failureRate": 0.2,
+      "rerunCountAvg": 1.25,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 2,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "NLBTR",
+      "subprocess": "CSRBB Export",
+      "stepDurations": {
+        "CSRBB exports": {
+          "avgMinutes": 9
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2602": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "NLRB",
+      "subprocess": "Delete Portfolio",
+      "stepDurations": {
+        "Delete portfolio from": {
+          "avgMinutes": 2
+        }
+      },
+      "failureRate": 0.2,
+      "rerunCountAvg": 1.25,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 2,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "NLRB",
+      "subprocess": "Model Parameters",
+      "stepDurations": {
+        "load Model parameters": {
+          "avgMinutes": 6
+        },
+        "Model parameters comparison": {
+          "avgMinutes": 0.25
+        }
+      },
+      "failureRate": 0.429,
+      "rerunCountAvg": 1.75,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 4,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": [
+        "Exception from QRM: Exception calling ImportLookupTable: Exception calling ImportLookupTable: Worksheet \"ING_PF_4factor_DAF\" import terminated: \"1.67594E-05\" is an invalid numeric value for row 46.  -...",
+        "Exception from QRM: Exception calling ImportLookupTable: Exception calling ImportLookupTable: Sheet ING_PF_4factor_SpreadPerTenor is missing  -- Details available: Y. -- Warnings available: N. (line: ..."
+      ]
+    },
+    {
+      "location": "NLRB",
+      "subprocess": "Spreads",
+      "stepDurations": {
+        "load Spreads": {
+          "avgMinutes": 11
+        },
+        "Spreads comparison": {
+          "avgMinutes": 1
+        }
+      },
+      "failureRate": 0.2,
+      "rerunCountAvg": 1.25,
+      "rerunsPerMonth": {
+        "2512": 2,
+        "2601": 1,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "NLRB",
+      "subprocess": "Load Position",
+      "stepDurations": {
+        "load": {
+          "avgMinutes": 125
+        },
+        "Stratification": {
+          "avgMinutes": 10
+        },
+        "copy from": {
+          "avgMinutes": 2
+        }
+      },
+      "failureRate": 0.5,
+      "rerunCountAvg": 2,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 5,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "NLRB",
+      "subprocess": "Valuation",
+      "stepDurations": {
+        "portfolio valuation run": {
+          "avgMinutes": 494
+        },
+        "export to ara": {
+          "avgMinutes": 2
+        },
+        "Light Maintenance": {
+          "avgMinutes": 34
+        },
+        "valuation report OLAP exports": {
+          "avgMinutes": 14
+        },
+        "Light Maintenance Portfolio Valuation": {
+          "avgMinutes": 10
+        },
+        "export to ara valuation": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.692,
+      "rerunCountAvg": 3.25,
+      "rerunsPerMonth": {
+        "2512": 3,
+        "2601": 1,
+        "2602": 7,
+        "2603": 2
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "NLRB",
+      "subprocess": "Load ELP and Mortgages",
+      "stepDurations": {
+        "load ELP and Mortgages": {
+          "avgMinutes": 36
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "NLRB",
+      "subprocess": "Planning Finance",
+      "stepDurations": {
+        "import finance strategies": {
+          "avgMinutes": 5
+        },
+        "Finance planning": {
+          "avgMinutes": 827
+        },
+        "Light Maintenance": {
+          "avgMinutes": 37
+        },
+        "Finance planning OLAP export": {
+          "avgMinutes": 15
+        },
+        "Light Maintenance Finance planning": {
+          "avgMinutes": 10
+        },
+        "export to ara": {
+          "avgMinutes": 0.25
+        }
+      },
+      "failureRate": 0.571,
+      "rerunCountAvg": 1.75,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 2,
+        "2602": 1,
+        "2603": 3
+      },
+      "sampleErrors": [
+        "Exception Info: Workflow finished with errors. (line: 42)  ",
+        "Exception from QRM: Exception calling ImportPlanningStrategy: Exception calling ImportPlanningStrategy: The strategy cannot be imported because the node, ING - R - Variable Rate - AC - SCF, located in..."
+      ]
+    },
+    {
+      "location": "NLRB",
+      "subprocess": "EC",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 8
+        },
+        "ing-ec valuation": {
+          "avgMinutes": 481
+        },
+        "Light Maintenance ing-ec valuation": {
+          "avgMinutes": 11
+        },
+        "export to ara": {
+          "avgMinutes": 25
+        },
+        "export to ara ing-ec valuation": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.786,
+      "rerunCountAvg": 4.67,
+      "rerunsPerMonth": {
+        "2512": 6,
+        "2601": 6,
+        "2602": 2
+      },
+      "sampleErrors": [
+        "Exception Info: Workflow finished with errors. (line: 40)  "
+      ]
+    },
+    {
+      "location": "NLRB",
+      "subprocess": "Gap + Liquidity IR",
+      "stepDurations": {
+        "gap planning": {
+          "avgMinutes": 81
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "NLRB",
+      "subprocess": "KR",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 224
+        },
+        "bpv-kr valuation": {
+          "avgMinutes": 294
+        },
+        "Light Maintenance BPV KR valuation": {
+          "avgMinutes": 125
+        },
+        "export to ara": {
+          "avgMinutes": 2
+        }
+      },
+      "failureRate": 0.7,
+      "rerunCountAvg": 3.33,
+      "rerunsPerMonth": {
+        "2512": 5,
+        "2601": 3,
+        "2602": 2
+      },
+      "sampleErrors": [
+        "Exception Info: Workflow finished with errors. (line: 40)  "
+      ]
+    },
+    {
+      "location": "NLRB",
+      "subprocess": "Import Strategies",
+      "stepDurations": {
+        "import strategies": {
+          "avgMinutes": 4
+        }
+      },
+      "failureRate": 0.5,
+      "rerunCountAvg": 1.5,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 3,
+        "2603": 1
+      },
+      "sampleErrors": [
+        "Exception Info: Failure sending mail. (line: 35)  "
+      ]
+    },
+    {
+      "location": "NLRB",
+      "subprocess": "NII / Planning risk",
+      "stepDurations": {
+        "export to ara": {
+          "avgMinutes": 2
+        },
+        "combined planning run": {
+          "avgMinutes": 2159
+        },
+        "planning run exports from ARA": {
+          "avgMinutes": 25
+        },
+        "export to ara combined planning": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.692,
+      "rerunCountAvg": 3.25,
+      "rerunsPerMonth": {
+        "2512": 4,
+        "2601": 2,
+        "2602": 6,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "NLRB",
+      "subprocess": "ITS Planning",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 28
+        },
+        "ITS planning run": {
+          "avgMinutes": 44
+        },
+        "Light Maintenance ITS planning": {
+          "avgMinutes": 13
+        }
+      },
+      "failureRate": 0.8,
+      "rerunCountAvg": 5,
+      "rerunsPerMonth": {
+        "2512": 7,
+        "2601": 7,
+        "2602": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "NLRB",
+      "subprocess": "AIC",
+      "stepDurations": {
+        "load AIC Spreads": {
+          "avgMinutes": 8
+        },
+        "AIC portfolio valuation run": {
+          "avgMinutes": 75
+        }
+      },
+      "failureRate": 0.25,
+      "rerunCountAvg": 1.33,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 2
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "NLRB",
+      "subprocess": "SLM",
+      "stepDurations": {
+        "copy PORTM portfolio": {
+          "avgMinutes": 76
+        },
+        "load SLM": {
+          "avgMinutes": 72
+        },
+        "SLM run": {
+          "avgMinutes": 52
+        },
+        "export to ara": {
+          "avgMinutes": 2
+        }
+      },
+      "failureRate": 0.625,
+      "rerunCountAvg": 2.67,
+      "rerunsPerMonth": {
+        "2512": 6,
+        "2601": 1,
+        "2602": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "NLRB",
+      "subprocess": "Fair Value",
+      "stepDurations": {
+        "load FV Spreads": {
+          "avgMinutes": 9
+        },
+        "FV Spreads comparison": {
+          "avgMinutes": 1
+        },
+        "FV valuation": {
+          "avgMinutes": 56
+        },
+        "export to ara": {
+          "avgMinutes": 0.25
+        },
+        "FV valuation OLAP export": {
+          "avgMinutes": 9
+        },
+        "export to ara FV valuation": {
+          "avgMinutes": 0.25
+        }
+      },
+      "failureRate": 0.333,
+      "rerunCountAvg": 1.5,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2603": 2
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "NLRB",
+      "subprocess": "PDCE",
+      "stepDurations": {
+        "export to ara": {
+          "avgMinutes": 0.25
+        },
+        "PDCE planning": {
+          "avgMinutes": 64
+        },
+        "PDCE report exports from ARA": {
+          "avgMinutes": 0.25
+        },
+        "export to ara PDCE QTR": {
+          "avgMinutes": 0.25
+        }
+      },
+      "failureRate": 0.778,
+      "rerunCountAvg": 4.5,
+      "rerunsPerMonth": {
+        "2512": 7,
+        "2603": 2
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "NLRB",
+      "subprocess": "EVE Optionality",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 69
+        },
+        "EVE Optionality MC Valuation": {
+          "avgMinutes": 25
+        },
+        "EVE Optionality copy run parameters": {
+          "avgMinutes": 25
+        },
+        "EVE Optionality SCF Valuation": {
+          "avgMinutes": 25
+        },
+        "EVE Optionality SCF report": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.875,
+      "rerunCountAvg": 8,
+      "rerunsPerMonth": {
+        "2512": 8
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "PLDB",
+      "subprocess": "Delete Portfolio",
+      "stepDurations": {
+        "Delete portfolio from": {
+          "avgMinutes": 3
+        }
+      },
+      "failureRate": 0.2,
+      "rerunCountAvg": 1.25,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 1,
+        "2603": 2
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "PLDB",
+      "subprocess": "Model Parameters",
+      "stepDurations": {
+        "load Model parameters": {
+          "avgMinutes": 5
+        },
+        "Model parameters comparison": {
+          "avgMinutes": 1
+        }
+      },
+      "failureRate": 0.429,
+      "rerunCountAvg": 1.75,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 2,
+        "2602": 2,
+        "2603": 2
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "PLDB",
+      "subprocess": "Spreads",
+      "stepDurations": {
+        "load Spreads": {
+          "avgMinutes": 18
+        },
+        "Spreads comparison": {
+          "avgMinutes": 2
+        }
+      },
+      "failureRate": 0.2,
+      "rerunCountAvg": 1.25,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 1,
+        "2603": 2
+      },
+      "sampleErrors": [
+        "ac"
+      ]
+    },
+    {
+      "location": "PLDB",
+      "subprocess": "Load Position",
+      "stepDurations": {
+        "load": {
+          "avgMinutes": 106
+        },
+        "Stratification": {
+          "avgMinutes": 87
+        },
+        "Position report OLAP exports": {
+          "avgMinutes": 16
+        },
+        "copy from": {
+          "avgMinutes": 2
+        },
+        "export to ara": {
+          "avgMinutes": 1
+        },
+        "load NTG": {
+          "avgMinutes": 8
+        }
+      },
+      "failureRate": 0.5,
+      "rerunCountAvg": 1.5,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 1,
+        "2603": 3
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "PLDB",
+      "subprocess": "Valuation",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 37
+        },
+        "valuation report OLAP exports": {
+          "avgMinutes": 74
+        },
+        "valuation report QRM Reporter exports": {
+          "avgMinutes": 0.25
+        },
+        "portfolio valuation run": {
+          "avgMinutes": 94
+        },
+        "export to ara": {
+          "avgMinutes": 2
+        },
+        "Quarterly Regulatory Valuation": {
+          "avgMinutes": 111
+        },
+        "Quarterly Regulatory Valuation QRM reporter exports": {
+          "avgMinutes": 104
+        },
+        "export to ara Portfolio Valuation": {
+          "avgMinutes": 25
+        },
+        "Light Maintenance valuation": {
+          "avgMinutes": 25
+        },
+        "Light Maintenance Portfolio Valuation": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.765,
+      "rerunCountAvg": 4.25,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 9,
+        "2602": 4,
+        "2603": 3
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "PLDB",
+      "subprocess": "CSRBB (Val)",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 21
+        },
+        "CSRBB Portfolio Valuation": {
+          "avgMinutes": 48
+        },
+        "CSRBB Portfolio Valuation Qtr": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.714,
+      "rerunCountAvg": 3.5,
+      "rerunsPerMonth": {
+        "2512": 9,
+        "2601": 2,
+        "2602": 1,
+        "2603": 2
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "PLDB",
+      "subprocess": "CSRBB (Plan)",
+      "stepDurations": {
+        "import CSRBB strategies": {
+          "avgMinutes": 77
+        },
+        "CSRBB Planning Run": {
+          "avgMinutes": 134
+        },
+        "export to ara": {
+          "avgMinutes": 2
+        },
+        "CSRBB Planning Run Qtr": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.556,
+      "rerunCountAvg": 2.25,
+      "rerunsPerMonth": {
+        "2512": 2,
+        "2601": 1,
+        "2602": 2,
+        "2603": 4
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "PLDB",
+      "subprocess": "EC",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 14
+        },
+        "ing-ec valuation exports": {
+          "avgMinutes": 166
+        },
+        "ing-ec valuation": {
+          "avgMinutes": 101
+        },
+        "ing-ec valuation QRM reporter exports": {
+          "avgMinutes": 25
+        },
+        "export to ara": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.75,
+      "rerunCountAvg": 4,
+      "rerunsPerMonth": {
+        "2512": 3,
+        "2601": 10,
+        "2602": 2,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "PLDB",
+      "subprocess": "Gap + Liquidity IR",
+      "stepDurations": {
+        "gap planning": {
+          "avgMinutes": 286
+        },
+        "export to ara": {
+          "avgMinutes": 0.25
+        }
+      },
+      "failureRate": 0.667,
+      "rerunCountAvg": 2.25,
+      "rerunsPerMonth": {
+        "2512": 3,
+        "2601": 2,
+        "2602": 3,
+        "2603": 1
+      },
+      "sampleErrors": [
+        "Exception Info: Workflow finished with errors. (line: 33)  ",
+        "Exception Info: Workflow finished with errors. (line: 22)  "
+      ]
+    },
+    {
+      "location": "PLDB",
+      "subprocess": "KR",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 14
+        },
+        "bpv-kr valuation exports": {
+          "avgMinutes": 142
+        },
+        "bpv-kr valuation": {
+          "avgMinutes": 102
+        },
+        "bpv-kr valuation QRM reporter exports": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.667,
+      "rerunCountAvg": 3,
+      "rerunsPerMonth": {
+        "2512": 4,
+        "2601": 5,
+        "2602": 2,
+        "2603": 1
+      },
+      "sampleErrors": [
+        "Exception Info: Workflow finished with errors. (line: 41)  "
+      ]
+    },
+    {
+      "location": "PLDB",
+      "subprocess": "Import Strategies",
+      "stepDurations": {
+        "import strategies": {
+          "avgMinutes": 13
+        }
+      },
+      "failureRate": 0.625,
+      "rerunCountAvg": 2.67,
+      "rerunsPerMonth": {
+        "2512": 2,
+        "2601": 4,
+        "2602": 2
+      },
+      "sampleErrors": [
+        "Exception from QRM: Exception calling ImportPlanningStrategy: Exception calling ImportPlanningStrategy: Not a numeric value in Cell Pricing!EF2218  -- Details available: Y. -- Warnings available: N. (...",
+        "Exception from QRM: Exception calling ImportPlanningStrategy: Exception calling ImportPlanningStrategy: Equation text cannot be parsed: 1000* ([BSN:ING - L - Variable Rate - AC - MC (1727236)][Growth ...",
+        "Exception from QRM: Exception calling ImportPlanningStrategy: Exception calling ImportPlanningStrategy: Violation of PRIMARY KEY constraint 'PK__portsprd__3DFFA055'. Cannot insert duplicate key in obj..."
+      ]
+    },
+    {
+      "location": "PLDB",
+      "subprocess": "NII / Planning risk",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 189
+        },
+        "planning run01": {
+          "avgMinutes": 483
+        },
+        "MDL Processing": {
+          "avgMinutes": 46
+        },
+        "planning run02": {
+          "avgMinutes": 315
+        },
+        "export to ara NII": {
+          "avgMinutes": 0.25
+        },
+        "Light Maintenance NII": {
+          "avgMinutes": 91
+        },
+        "planning run OLAP exports": {
+          "avgMinutes": 516
+        },
+        "planning run QRM reporter exports": {
+          "avgMinutes": 25
+        },
+        "export to ara": {
+          "avgMinutes": 25
+        },
+        "Planning (Quarterly Regulatory Stress test)": {
+          "avgMinutes": 25
+        },
+        "MDL Processing (Quarterly Regulatory Stress test)": {
+          "avgMinutes": 25
+        },
+        "planning run02 (Quarterly Regulatory Stress test)": {
+          "avgMinutes": 25
+        },
+        "planning run QRM reporter exports (Quarterly Regulatory Stress test)": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.864,
+      "rerunCountAvg": 7.33,
+      "rerunsPerMonth": {
+        "2512": 10,
+        "2601": 11,
+        "2602": 1
+      },
+      "sampleErrors": [
+        "Exception Info: Workflow finished with errors. (line: 96)  ",
+        "Exception Info: Workflow finished with errors. (line: 116)  ",
+        "Exception Info: File  '\\\\sx9000079291\\PLDB\\Work\\PLDB_R2601_1_SOT2512_1_P\\NPX9-QRM_DB_P\\ING_IG_REPORT.xlsm' does not exist. (line: 67)  "
+      ]
+    },
+    {
+      "location": "PLDB",
+      "subprocess": "ITS Planning",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 11
+        },
+        "ITS planning run": {
+          "avgMinutes": 34
+        },
+        "Light Maintenance ITS planning": {
+          "avgMinutes": 5
+        }
+      },
+      "failureRate": 0.786,
+      "rerunCountAvg": 4.67,
+      "rerunsPerMonth": {
+        "2512": 6,
+        "2601": 7,
+        "2602": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "PLDB",
+      "subprocess": "AIC",
+      "stepDurations": {
+        "load AIC Spreads": {
+          "avgMinutes": 20
+        },
+        "AIC portfolio valuation run": {
+          "avgMinutes": 63
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "PLDB",
+      "subprocess": "CSRBB Export",
+      "stepDurations": {
+        "CSRBB exports": {
+          "avgMinutes": 1
+        }
+      },
+      "failureRate": 0.5,
+      "rerunCountAvg": 2,
+      "rerunsPerMonth": {
+        "2602": 2
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "PLDB",
+      "subprocess": "SOLO",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 115
+        },
+        "import SOLO strategies": {
+          "avgMinutes": 6
+        },
+        "SOLO planning": {
+          "avgMinutes": 164
+        },
+        "SOLO planning QRM reporter exports": {
+          "avgMinutes": 47
+        },
+        "SOLO planning OLAP exports": {
+          "avgMinutes": 93
+        },
+        "Light Maintenance solo": {
+          "avgMinutes": 45
+        }
+      },
+      "failureRate": 0.857,
+      "rerunCountAvg": 7,
+      "rerunsPerMonth": {
+        "2512": 8,
+        "2601": 12,
+        "2602": 1
+      },
+      "sampleErrors": [
+        "Exception Info: Workflow finished with errors. (line: 49)  "
+      ]
+    },
+    {
+      "location": "PLDB",
+      "subprocess": "FTP EVE SOT",
+      "stepDurations": {
+        "FTP EVE SOT analysis": {
+          "avgMinutes": 814
+        }
+      },
+      "failureRate": 0.5,
+      "rerunCountAvg": 2,
+      "rerunsPerMonth": {
+        "2512": 2,
+        "2601": 2,
+        "2602": 2
+      },
+      "sampleErrors": [
+        "Exception Info: Workflow finished with errors. (line: 40)  "
+      ]
+    },
+    {
+      "location": "PLDB",
+      "subprocess": "SOT",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 31
+        },
+        "NII SOT planning trees creation": {
+          "avgMinutes": 25
+        },
+        "import NII SOT planning import": {
+          "avgMinutes": 25
+        },
+        "NII SOT planning run import": {
+          "avgMinutes": 25
+        },
+        "SOT planning": {
+          "avgMinutes": 25
+        },
+        "SOT planning OLAP exports": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.893,
+      "rerunCountAvg": 9.33,
+      "rerunsPerMonth": {
+        "2512": 11,
+        "2601": 13,
+        "2602": 4
+      },
+      "sampleErrors": [
+        "Exception Info: Workflow finished with errors. (line: 78)  "
+      ]
+    },
+    {
+      "location": "PLDB",
+      "subprocess": "PDCE",
+      "stepDurations": {
+        "PDCE planning": {
+          "avgMinutes": 62
+        },
+        "PDCE report QRM reporter exports": {
+          "avgMinutes": 34
+        },
+        "PDCE planning QTR": {
+          "avgMinutes": 92
+        },
+        "PDCE report QTR OLAP exports": {
+          "avgMinutes": 35
+        }
+      },
+      "failureRate": 0.333,
+      "rerunCountAvg": 1.5,
+      "rerunsPerMonth": {
+        "2512": 2,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "PLDB",
+      "subprocess": "EVE Optionality",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 33
+        },
+        "EVE Optionality MC Valuation": {
+          "avgMinutes": 25
+        },
+        "EVE Optionality copy run parameters": {
+          "avgMinutes": 25
+        },
+        "EVE Optionality SCF Valuation": {
+          "avgMinutes": 25
+        },
+        "EVE Optionality SCF report": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.917,
+      "rerunCountAvg": 12,
+      "rerunsPerMonth": {
+        "2512": 12
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "RODB",
+      "subprocess": "Delete Portfolio",
+      "stepDurations": {
+        "Delete portfolio from": {
+          "avgMinutes": 2
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2601": 1,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "RODB",
+      "subprocess": "Model Parameters",
+      "stepDurations": {
+        "load Model parameters": {
+          "avgMinutes": 5
+        },
+        "Model parameters comparison": {
+          "avgMinutes": 0.25
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2601": 1,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "RODB",
+      "subprocess": "Spreads",
+      "stepDurations": {
+        "load Spreads": {
+          "avgMinutes": 11
+        },
+        "Spreads comparison": {
+          "avgMinutes": 1
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2601": 1,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "RODB",
+      "subprocess": "Load Position",
+      "stepDurations": {
+        "copy from": {
+          "avgMinutes": 23
+        },
+        "load": {
+          "avgMinutes": 23
+        },
+        "Stratification": {
+          "avgMinutes": 7
+        }
+      },
+      "failureRate": 0.4,
+      "rerunCountAvg": 1.67,
+      "rerunsPerMonth": {
+        "2601": 3,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": [
+        "Exception Info: There is not enough space on the disk.   (line: 99)  "
+      ]
+    },
+    {
+      "location": "RODB",
+      "subprocess": "Valuation",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 257
+        },
+        "portfolio valuation run": {
+          "avgMinutes": 106
+        },
+        "valuation report exports": {
+          "avgMinutes": 7
+        },
+        "Light Maintenance valuation": {
+          "avgMinutes": 11
+        }
+      },
+      "failureRate": 0.625,
+      "rerunCountAvg": 2.67,
+      "rerunsPerMonth": {
+        "2601": 6,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "RODB",
+      "subprocess": "CSRBB (Val)",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 12
+        },
+        "CSRBB Portfolio Valuation": {
+          "avgMinutes": 23
+        },
+        "Light Maintenance CSRBB valuation": {
+          "avgMinutes": 4
+        }
+      },
+      "failureRate": 0.4,
+      "rerunCountAvg": 1.67,
+      "rerunsPerMonth": {
+        "2601": 2,
+        "2602": 1,
+        "2603": 2
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "RODB",
+      "subprocess": "CSRBB (Plan)",
+      "stepDurations": {
+        "import CSRBB strategies": {
+          "avgMinutes": 95
+        },
+        "CSRBB Planning Run": {
+          "avgMinutes": 65
+        },
+        "export to ara": {
+          "avgMinutes": 2
+        },
+        "export to ara CSRBB Planning": {
+          "avgMinutes": 2
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2601": 1,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "RODB",
+      "subprocess": "EC",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 15
+        },
+        "ing-ec valuation": {
+          "avgMinutes": 289
+        },
+        "ing-ec valuation exports": {
+          "avgMinutes": 2
+        },
+        "Light Maintenance EC": {
+          "avgMinutes": 4
+        }
+      },
+      "failureRate": 0.75,
+      "rerunCountAvg": 4,
+      "rerunsPerMonth": {
+        "2601": 8,
+        "2602": 1,
+        "2603": 3
+      },
+      "sampleErrors": [
+        "Exception Info: Workflow finished with errors. (line: 43)  "
+      ]
+    },
+    {
+      "location": "RODB",
+      "subprocess": "KR",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 16
+        },
+        "bpv-kr valuation": {
+          "avgMinutes": 158
+        },
+        "bpv-kr valuation exports": {
+          "avgMinutes": 0.25
+        },
+        "Light Maintenance kr": {
+          "avgMinutes": 6
+        }
+      },
+      "failureRate": 0.786,
+      "rerunCountAvg": 4.67,
+      "rerunsPerMonth": {
+        "2601": 9,
+        "2602": 1,
+        "2603": 4
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "RODB",
+      "subprocess": "Import Strategies",
+      "stepDurations": {
+        "import strategies": {
+          "avgMinutes": 8
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2601": 1,
+        "2602": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "RODB",
+      "subprocess": "NII / Planning risk",
+      "stepDurations": {
+        "export to ara": {
+          "avgMinutes": 0.25
+        },
+        "planning run01": {
+          "avgMinutes": 482
+        },
+        "MDL Processing": {
+          "avgMinutes": 23
+        },
+        "planning run02": {
+          "avgMinutes": 127
+        },
+        "planning run exports": {
+          "avgMinutes": 51
+        },
+        "export to ara NII": {
+          "avgMinutes": 0.25
+        }
+      },
+      "failureRate": 0.5,
+      "rerunCountAvg": 2,
+      "rerunsPerMonth": {
+        "2601": 3,
+        "2602": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "RODB",
+      "subprocess": "ITS Planning",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 6
+        },
+        "ITS planning run": {
+          "avgMinutes": 9
+        },
+        "Light Maintenance ITS planning": {
+          "avgMinutes": 5
+        }
+      },
+      "failureRate": 0.75,
+      "rerunCountAvg": 4,
+      "rerunsPerMonth": {
+        "2601": 7,
+        "2602": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "RODB",
+      "subprocess": "CSRBB Export",
+      "stepDurations": {
+        "CSRBB exports": {
+          "avgMinutes": 2
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2602": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "TRDB",
+      "subprocess": "Delete Portfolio",
+      "stepDurations": {
+        "Delete portfolio from": {
+          "avgMinutes": 2
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "TRDB",
+      "subprocess": "Model Parameters",
+      "stepDurations": {
+        "load Model parameters": {
+          "avgMinutes": 4
+        },
+        "Model parameters comparison": {
+          "avgMinutes": 0.25
+        }
+      },
+      "failureRate": 0.2,
+      "rerunCountAvg": 1.25,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 2,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "TRDB",
+      "subprocess": "Cost Pricing",
+      "stepDurations": {
+        "Generate Ex-ante DD NTG": {
+          "avgMinutes": 2
+        },
+        "load dummy deals": {
+          "avgMinutes": 7
+        },
+        "Ex-ante valuation": {
+          "avgMinutes": 17
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "TRDB",
+      "subprocess": "Spreads",
+      "stepDurations": {
+        "load Spreads": {
+          "avgMinutes": 43
+        },
+        "Spreads comparison": {
+          "avgMinutes": 5
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "TRDB",
+      "subprocess": "Load Position",
+      "stepDurations": {
+        "load": {
+          "avgMinutes": 51
+        },
+        "Stratification": {
+          "avgMinutes": 6
+        },
+        "Position report exports": {
+          "avgMinutes": 11
+        },
+        "copy from": {
+          "avgMinutes": 2
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "TRDB",
+      "subprocess": "Valuation",
+      "stepDurations": {
+        "portfolio valuation run": {
+          "avgMinutes": 88
+        },
+        "export to ara": {
+          "avgMinutes": 25
+        },
+        "Light Maintenance": {
+          "avgMinutes": 25
+        },
+        "valuation report OLAP exports": {
+          "avgMinutes": 25
+        },
+        "valuation report QRM report exports": {
+          "avgMinutes": 25
+        },
+        "export to ara Portfolio Valuation": {
+          "avgMinutes": 25
+        },
+        "Light Maintenance Portfolio Valuation": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.5,
+      "rerunCountAvg": 2,
+      "rerunsPerMonth": {
+        "2512": 2,
+        "2601": 2,
+        "2602": 2,
+        "2603": 2
+      },
+      "sampleErrors": [
+        "Exception Info: Workflow finished with errors. (line: 47)  ",
+        "Exception Info: File  '\\\\sx9000079291\\TRDB\\Work\\TRDB_R2602_1_MCP2601_1_P\\NPX9-QRM_DB_P\\Report Books\\\\ING_PRE_ANALYSIS_REPORT_STRATIFIED Adjusted.xlsm' does not exist. (line: 109)  "
+      ]
+    },
+    {
+      "location": "TRDB",
+      "subprocess": "CSRBB (Val)",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 17
+        },
+        "CSRBB Portfolio Valuation": {
+          "avgMinutes": 22
+        },
+        "Light Maintenance CSRBB valuation": {
+          "avgMinutes": 5
+        },
+        "CSRBB Portfolio Valuation Qtr": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.6,
+      "rerunCountAvg": 2.5,
+      "rerunsPerMonth": {
+        "2512": 6,
+        "2601": 2,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "TRDB",
+      "subprocess": "CSRBB (Plan)",
+      "stepDurations": {
+        "export to ara": {
+          "avgMinutes": 2
+        },
+        "import CSRBB strategies": {
+          "avgMinutes": 51
+        },
+        "CSRBB Planning Run": {
+          "avgMinutes": 115
+        },
+        "export to ara CSRBB Planning": {
+          "avgMinutes": 0.25
+        },
+        "CSRBB Planning Run Qtr": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.333,
+      "rerunCountAvg": 1.5,
+      "rerunsPerMonth": {
+        "2512": 2,
+        "2601": 2,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "TRDB",
+      "subprocess": "EC",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 144
+        },
+        "ing-ec valuation": {
+          "avgMinutes": 127
+        },
+        "Light Maintenance ing-ec valuation": {
+          "avgMinutes": 4
+        },
+        "ing-ec valuation QRM Report exports": {
+          "avgMinutes": 18
+        }
+      },
+      "failureRate": 0.6,
+      "rerunCountAvg": 2.5,
+      "rerunsPerMonth": {
+        "2512": 3,
+        "2601": 4,
+        "2602": 2,
+        "2603": 1
+      },
+      "sampleErrors": [
+        "Exception Info: Workflow finished with errors. (line: 48)  "
+      ]
+    },
+    {
+      "location": "TRDB",
+      "subprocess": "Gap + Liquidity IR",
+      "stepDurations": {
+        "gap planning": {
+          "avgMinutes": 111
+        }
+      },
+      "failureRate": 0.333,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "TRDB",
+      "subprocess": "KR",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 13
+        },
+        "bpv-kr valuation": {
+          "avgMinutes": 75
+        },
+        "bpv-kr valuation exports": {
+          "avgMinutes": 0.25
+        },
+        "Light Maintenance bpv-kr valuation": {
+          "avgMinutes": 4
+        }
+      },
+      "failureRate": 0.636,
+      "rerunCountAvg": 2.75,
+      "rerunsPerMonth": {
+        "2512": 4,
+        "2601": 5,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "TRDB",
+      "subprocess": "Import Strategies",
+      "stepDurations": {
+        "import strategies": {
+          "avgMinutes": 10
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "TRDB",
+      "subprocess": "NII / Planning risk",
+      "stepDurations": {
+        "export to ara": {
+          "avgMinutes": 2
+        },
+        "planning run01": {
+          "avgMinutes": 212
+        },
+        "MDL Processing": {
+          "avgMinutes": 31
+        },
+        "planning run02": {
+          "avgMinutes": 470
+        },
+        "planning run QRM reporter exports": {
+          "avgMinutes": 15
+        },
+        "planning run OLAP exports": {
+          "avgMinutes": 75
+        },
+        "export to ara NII": {
+          "avgMinutes": 1
+        }
+      },
+      "failureRate": 0.571,
+      "rerunCountAvg": 2.33,
+      "rerunsPerMonth": {
+        "2512": 3,
+        "2601": 3,
+        "2602": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "TRDB",
+      "subprocess": "ITS Planning",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 19
+        },
+        "ITS planning run": {
+          "avgMinutes": 13
+        },
+        "Light Maintenance ITS planning": {
+          "avgMinutes": 13
+        }
+      },
+      "failureRate": 0.75,
+      "rerunCountAvg": 4,
+      "rerunsPerMonth": {
+        "2512": 5,
+        "2601": 6,
+        "2602": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "TRDB",
+      "subprocess": "AIC",
+      "stepDurations": {
+        "load AIC Spreads": {
+          "avgMinutes": 51
+        },
+        "AIC portfolio valuation run": {
+          "avgMinutes": 25
+        },
+        "export to ara AIC portfolio valuation": {
+          "avgMinutes": 0.25
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "TRDB",
+      "subprocess": "CSRBB Export",
+      "stepDurations": {
+        "CSRBB exports": {
+          "avgMinutes": 4
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2602": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "TRDB",
+      "subprocess": "PDCE",
+      "stepDurations": {
+        "PDCE planning": {
+          "avgMinutes": 59
+        },
+        "PDCE report QRM reporter exports": {
+          "avgMinutes": 16
+        }
+      },
+      "failureRate": 0.333,
+      "rerunCountAvg": 1.5,
+      "rerunsPerMonth": {
+        "2512": 2,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "TRDB",
+      "subprocess": "EVE Optionality",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 20
+        },
+        "EVE Optionality MC Valuation": {
+          "avgMinutes": 25
+        },
+        "EVE Optionality copy run parameters": {
+          "avgMinutes": 25
+        },
+        "EVE Optionality SCF Valuation": {
+          "avgMinutes": 25
+        },
+        "EVE Optionality SCF report": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.857,
+      "rerunCountAvg": 7,
+      "rerunsPerMonth": {
+        "2512": 7
+      },
+      "sampleErrors": [
+        "Exception Info: Object reference not set to an instance of an object. (line: 147)  "
+      ]
+    },
+    {
+      "location": "WBUS",
+      "subprocess": "Delete Portfolio",
+      "stepDurations": {
+        "Delete portfolio from": {
+          "avgMinutes": 3
+        }
+      },
+      "failureRate": 0.2,
+      "rerunCountAvg": 1.25,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 2,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "WBUS",
+      "subprocess": "Model Parameters",
+      "stepDurations": {
+        "load Model parameters": {
+          "avgMinutes": 2
+        },
+        "Model parameters comparison": {
+          "avgMinutes": 1
+        }
+      },
+      "failureRate": 0.2,
+      "rerunCountAvg": 1.25,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 2,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "WBUS",
+      "subprocess": "Spreads",
+      "stepDurations": {
+        "load Spreads": {
+          "avgMinutes": 23
+        },
+        "Spreads comparison": {
+          "avgMinutes": 1
+        }
+      },
+      "failureRate": 0.2,
+      "rerunCountAvg": 1.25,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 2,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "WBUS",
+      "subprocess": "Load Position",
+      "stepDurations": {
+        "load": {
+          "avgMinutes": 35
+        },
+        "Stratification": {
+          "avgMinutes": 5
+        },
+        "copy from": {
+          "avgMinutes": 2
+        }
+      },
+      "failureRate": 0.2,
+      "rerunCountAvg": 1.25,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 2,
+        "2602": 1,
+        "2603": 1
+      },
+      "sampleErrors": [
+        "Exception Info: There is not enough space on the disk.   (line: 96)  "
+      ]
+    },
+    {
+      "location": "WBUS",
+      "subprocess": "Valuation",
+      "stepDurations": {
+        "portfolio valuation run": {
+          "avgMinutes": 16
+        },
+        "Light Maintenance": {
+          "avgMinutes": 23
+        },
+        "valuation report OLAP exports": {
+          "avgMinutes": 17
+        },
+        "Light Maintenance Portfolio Valuation": {
+          "avgMinutes": 7
+        },
+        "export to ara": {
+          "avgMinutes": 1
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "WBUS",
+      "subprocess": "CSRBB (Val)",
+      "stepDurations": {
+        "CSRBB Portfolio Valuation": {
+          "avgMinutes": 20
+        },
+        "CSRBB Portfolio Valuation Qtr": {
+          "avgMinutes": 9
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "WBUS",
+      "subprocess": "CSRBB (Plan)",
+      "stepDurations": {
+        "import CSRBB strategies": {
+          "avgMinutes": 118
+        },
+        "CSRBB Planning Run": {
+          "avgMinutes": 110
+        },
+        "export to ara": {
+          "avgMinutes": 1
+        },
+        "CSRBB Planning Run Qtr": {
+          "avgMinutes": 25
+        }
+      },
+      "failureRate": 0.25,
+      "rerunCountAvg": 1.33,
+      "rerunsPerMonth": {
+        "2512": 2,
+        "2601": 1,
+        "2602": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "WBUS",
+      "subprocess": "Gap + Liquidity IR",
+      "stepDurations": {
+        "gap planning": {
+          "avgMinutes": 111
+        }
+      },
+      "failureRate": 0.4,
+      "rerunCountAvg": 1.67,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 3
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "WBUS",
+      "subprocess": "KR",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 13
+        },
+        "bpv-kr valuation": {
+          "avgMinutes": 14
+        },
+        "Light Maintenance bpv-kr valuation": {
+          "avgMinutes": 4
+        },
+        "export to ara": {
+          "avgMinutes": 0.25
+        }
+      },
+      "failureRate": 0.5,
+      "rerunCountAvg": 2,
+      "rerunsPerMonth": {
+        "2512": 3,
+        "2601": 2,
+        "2602": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "WBUS",
+      "subprocess": "Import Strategies",
+      "stepDurations": {
+        "import strategies": {
+          "avgMinutes": 5
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "WBUS",
+      "subprocess": "NII / Planning risk",
+      "stepDurations": {
+        "planning run01": {
+          "avgMinutes": 58
+        },
+        "MDL Processing": {
+          "avgMinutes": 7
+        },
+        "planning run02": {
+          "avgMinutes": 50
+        },
+        "planning run OLAP exports": {
+          "avgMinutes": 32
+        },
+        "export to ara": {
+          "avgMinutes": 0.25
+        }
+      },
+      "failureRate": 0.5,
+      "rerunCountAvg": 2,
+      "rerunsPerMonth": {
+        "2512": 4,
+        "2601": 1,
+        "2602": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "WBUS",
+      "subprocess": "ITS Planning",
+      "stepDurations": {
+        "Light Maintenance": {
+          "avgMinutes": 46
+        },
+        "ITS planning run": {
+          "avgMinutes": 15
+        },
+        "Light Maintenance ITS planning": {
+          "avgMinutes": 9
+        }
+      },
+      "failureRate": 0.571,
+      "rerunCountAvg": 2.33,
+      "rerunsPerMonth": {
+        "2512": 3,
+        "2601": 3,
+        "2602": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "WBUS",
+      "subprocess": "AIC",
+      "stepDurations": {
+        "load AIC Spreads": {
+          "avgMinutes": 25
+        },
+        "AIC portfolio valuation run": {
+          "avgMinutes": 11
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2512": 1,
+        "2601": 1,
+        "2602": 1
+      },
+      "sampleErrors": []
+    },
+    {
+      "location": "WBUS",
+      "subprocess": "CSRBB Export",
+      "stepDurations": {
+        "CSRBB exports": {
+          "avgMinutes": 5
+        }
+      },
+      "failureRate": 0,
+      "rerunCountAvg": 1,
+      "rerunsPerMonth": {
+        "2602": 1
+      },
+      "sampleErrors": []
+    }
+  ]
+}

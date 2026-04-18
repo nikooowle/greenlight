@@ -29,4 +29,7 @@ public class SubprocessRun
     /// <summary>Count of completed mandatory steps vs total required.</summary>
     public int CompletedSteps { get; set; }
     public int TotalRequiredSteps { get; set; }
+
+    /// <summary>True if any mandatory step was completed via OperatorOverride (not a Q3 log entry).</summary>
+    public bool HasOverrides { get; set; }
 }

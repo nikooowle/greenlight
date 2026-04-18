@@ -3,6 +3,7 @@ using System;
 using Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace backend.Migrations
 {
     [DbContext(typeof(GreenlightContext))]
-    partial class GreenlightContextModelSnapshot : ModelSnapshot
+    [Migration("20260414170340_Subprocess_ScopeQuarterly")]
+    partial class Subprocess_ScopeQuarterly
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.25");
@@ -156,60 +159,6 @@ namespace backend.Migrations
                         .IsUnique();
 
                     b.ToTable("McpRuns");
-                });
-
-            modelBuilder.Entity("Backend.Models.OperatorOverride", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("EvidenceUrl")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("LocationId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("McpRunId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Operator")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Reason")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime?>("RevokedAt")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("StepName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("SubprocessId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("TicketRef")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("LocationId");
-
-                    b.HasIndex("SubprocessId");
-
-                    b.HasIndex("McpRunId", "LocationId", "SubprocessId", "StepName");
-
-                    b.ToTable("OperatorOverrides");
                 });
 
             modelBuilder.Entity("Backend.Models.ProcessLogEntry", b =>
@@ -399,9 +348,6 @@ namespace backend.Migrations
                     b.Property<double?>("ElapsedMinutes")
                         .HasColumnType("REAL");
 
-                    b.Property<bool>("HasOverrides")
-                        .HasColumnType("INTEGER");
-
                     b.Property<int>("LocationId")
                         .HasColumnType("INTEGER");
 
@@ -459,33 +405,6 @@ namespace backend.Migrations
                         .IsRequired();
 
                     b.Navigation("Location");
-
-                    b.Navigation("Subprocess");
-                });
-
-            modelBuilder.Entity("Backend.Models.OperatorOverride", b =>
-                {
-                    b.HasOne("Backend.Models.Location", "Location")
-                        .WithMany()
-                        .HasForeignKey("LocationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Backend.Models.McpRun", "McpRun")
-                        .WithMany()
-                        .HasForeignKey("McpRunId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Backend.Models.Subprocess", "Subprocess")
-                        .WithMany()
-                        .HasForeignKey("SubprocessId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Location");
-
-                    b.Navigation("McpRun");
 
                     b.Navigation("Subprocess");
                 });
