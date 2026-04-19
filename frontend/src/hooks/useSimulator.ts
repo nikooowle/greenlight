@@ -1,5 +1,6 @@
 import { useCallback } from "react"
 import { api } from "@/lib/api"
+import type { SimMode } from "@/types"
 import { usePolling } from "./usePolling"
 
 export function useSimulator() {
@@ -13,6 +14,7 @@ export function useSimulator() {
   const resume = useCallback(async () => { await api.simulator.resume(); refresh() }, [refresh])
   const reset = useCallback(async () => { await api.simulator.reset(); refresh() }, [refresh])
   const setSpeed = useCallback(async (n: number) => { await api.simulator.speed(n); refresh() }, [refresh])
+  const setMode = useCallback(async (m: SimMode) => { await api.simulator.mode(m); refresh() }, [refresh])
 
-  return { status, error, start, pause, resume, reset, setSpeed }
+  return { status, error, start, pause, resume, reset, setSpeed, setMode }
 }

@@ -2,15 +2,30 @@ const fs = require('fs');
 const XLSX = require('xlsx');
 
 function excelDateToISO(serial) {
-  if (!serial || serial === '' || serial === 'NULL' || typeof serial !== 'number') return null;
-  const epoch = new Date(1899, 11, 30);
-  return new Date(epoch.getTime() + serial * 86400000).toISOString();
+  if (!serial || serial === '' || serial === 'NULL') return null;
+  if (typeof serial === 'number') {
+    const epoch = new Date(1899, 11, 30);
+    return new Date(epoch.getTime() + serial * 86400000).toISOString();
+  }
+  if (typeof serial === 'string') {
+    // Manual-entry format seen in the ODS: "DD MM YYYY  HH:MM:SS" (1-2 spaces between date and time).
+    const m = serial.match(/^(\d{1,2})\s+(\d{1,2})\s+(\d{4})\s+(\d{1,2}):(\d{2}):(\d{2})$/);
+    if (m) {
+      const [, d, mo, y, h, mi, s] = m;
+      return new Date(+y, +mo - 1, +d, +h, +mi, +s).toISOString();
+    }
+  }
+  return null;
 }
 
 // ===== Read all 4 months =====
+// 2512/2602/2603 come from q3 logs.xlsx; 2601 comes from q3 logs.ods (corrected
+// data with real step durations — the earlier 2601 source had 0.00h placeholders
+// for several multi-iteration FRDB Planning steps, e.g. planning run01 = 28.72h).
 const q3wb = XLSX.readFile('q3 logs.xlsx');
-function parseQ3Sheet(sheetName) {
-  const ws = q3wb.Sheets[sheetName];
+const odsWb = XLSX.readFile('q3 logs.ods');
+function parseSheet(wb, sheetName) {
+  const ws = wb.Sheets[sheetName];
   const data = XLSX.utils.sheet_to_json(ws, {header:1, defval:''});
   const headers = data[0];
   const idx = {};
@@ -35,13 +50,11 @@ function parseQ3Sheet(sheetName) {
   return entries;
 }
 
-const oldLogs = JSON.parse(fs.readFileSync('log-entries.json','utf8'));
-
 const allLogs = {
-  '2512': parseQ3Sheet('2512'),
-  '2601': oldLogs,
-  '2602': parseQ3Sheet('2602'),
-  '2603': parseQ3Sheet('2603'),
+  '2512': parseSheet(q3wb, '2512'),
+  '2601': parseSheet(odsWb, '2601'),
+  '2602': parseSheet(q3wb, '2602'),
+  '2603': parseSheet(q3wb, '2603'),
 };
 const allMonths = ['2512','2601','2602','2603'];
 const quarterEndMonths = new Set(['2512','2603']); // end of quarters in our data
@@ -616,20 +629,31 @@ const goldenOut = {
 fs.writeFileSync('golden-mapping.json', JSON.stringify(goldenOut, null, 2));
 
 // ===== Build historical-stats.json =====
-// For each (location, subprocess):
-//   - step duration averages from CANONICAL iteration (2601 baseline preferred for cleanliness)
-//   - failure rate (fraction of historical iterations that were NOT the canonical) across all 4 months
-//   - rerun count distribution (max iteration per month where subprocess ran)
-//   - top-5 sample error messages
+// Per (location, subprocess):
+//   - step durations: MAX across Completed iterations in the reference month only.
+//       Regular subs  -> 2602 (most believable recent monthly run)
+//       Quarterly subs -> 2512 (2603 is incomplete — many quarterly rows still Running)
+//     Steps with no Completed data in the reference month are OMITTED (simulator skips them).
+//   - failure rate, rerun count, sample errors: aggregated across 2512+2601+2602 only
+//     (2603 excluded as incomplete — most quarterly rows are mid-run).
+const REGULAR_REF_MONTH = '2602';
+const QUARTERLY_REF_MONTH = '2512';
+const AGGREG_MONTHS = ['2512', '2601', '2602']; // 2603 excluded (incomplete)
+// If the reference month has no Completed non-zero runtime for a step (e.g. "operator did it
+// manually, Q3 logged only a done-marker at 0h"), fall back one step chronologically.
+const FALLBACK_FOR_REF = { '2602': '2601', '2512': null };
+
 const statsOut = {
   version: 'v6',
   generatedAt: new Date().toISOString(),
   businessHours: { startHour: 5, endHour: 17, workdays: [1, 2, 3, 4, 5] },
-  note: 'Step durations from canonical iteration (2601 baseline). Failure rate across all 4 months. Prior completed-but-superseded iterations count as failed.',
+  note: 'Step durations: MAX per step in reference month (regular=2602, quarterly=2512). Failure/rerun/errors aggregated across 2512+2601+2602 (2603 excluded as incomplete).',
   stats: [],
 };
 
 for (const m of goldenMappings) {
+  const refMonth = m.quarterly ? QUARTERLY_REF_MONTH : REGULAR_REF_MONTH;
+
   // Gather entries from all months for this (location, subprocess)
   const allEntries = [];
   for (const month of allMonths) {
@@ -638,49 +662,58 @@ for (const m of goldenMappings) {
     }
   }
 
-  // Per-month canonical iteration + rerun counts
+  // Step durations: MAX across Completed iterations in the reference month.
+  // Step-level rule: if a step had zero runtime in the ref month, it STAYS zero (the step
+  // is retired as of that month).
+  // Subprocess-level fallback: if the ENTIRE subprocess has zero runtime in the ref month
+  // (operator-did-it-manually pattern — rare), fall back to the prior month so the sub
+  // still appears in the simulator.
+  function maxCompletedInMonth(step, month) {
+    let maxHours = 0;
+    for (const e of allEntries) {
+      if (e._month !== month) continue;
+      if (e.stepName !== step) continue;
+      if (e.stateName !== 'Completed') continue;
+      if (!e.startedAt || !e.endedAt) continue;
+      const durHours = (new Date(e.endedAt) - new Date(e.startedAt)) / 3600000;
+      if (durHours > maxHours) maxHours = durHours;
+    }
+    return maxHours;
+  }
+  function buildStepDurations(month) {
+    const out = {};
+    for (const step of m.steps) {
+      const maxHours = maxCompletedInMonth(step, month);
+      if (maxHours > 0) {
+        out[step] = { avgMinutes: parseFloat((maxHours * 60).toFixed(2)), sourceMonth: month };
+      }
+    }
+    return out;
+  }
+  let stepDurations = buildStepDurations(refMonth);
+  if (Object.keys(stepDurations).length === 0 && FALLBACK_FOR_REF[refMonth]) {
+    // Whole subprocess is empty in the ref month — fall back once to the prior month.
+    stepDurations = buildStepDurations(FALLBACK_FOR_REF[refMonth]);
+  }
+
+  // Failure rate + rerun count from the 3-month aggregate window
   const rerunsPerMonth = {};
   const failedIterationsCount = { total: 0, failed: 0 };
   for (const month of m.monthsSeen) {
+    if (!AGGREG_MONTHS.includes(month)) continue;
     const monthEntries = allEntries.filter(e => e._month === month);
     if (monthEntries.length === 0) continue;
     const maxIter = Math.max(...monthEntries.map(e => e.iteration || 1));
     rerunsPerMonth[month] = maxIter;
     const canonicalIter = findCanonicalIteration(monthEntries);
-    // Count iterations: 1..maxIter
     failedIterationsCount.total += maxIter;
-    failedIterationsCount.failed += canonicalIter ? (maxIter - 1) : maxIter; // prior iters all count as failed
+    failedIterationsCount.failed += canonicalIter ? (maxIter - 1) : maxIter;
   }
 
-  // Step durations — 2601 canonical iteration preferred, fall back to any month's canonical
-  const stepDurations = {};
-  const monthPrefs = ['2601', '2602', '2512', '2603'];
-  for (const monthPref of monthPrefs) {
-    if (Object.keys(stepDurations).length === m.steps.length) break;
-    const monthEntries = allEntries.filter(e => e._month === monthPref);
-    if (monthEntries.length === 0) continue;
-    const canonIter = findCanonicalIteration(monthEntries);
-    if (!canonIter) continue;
-    const canonEntries = monthEntries.filter(e => (e.iteration || 1) === canonIter);
-    for (const step of m.steps) {
-      if (stepDurations[step]) continue;
-      const stepEntries = canonEntries.filter(e => e.stepName === step && e.startedAt && e.endedAt && e.stateName === 'Completed');
-      if (stepEntries.length === 0) continue;
-      const durations = stepEntries.map(e => (new Date(e.endedAt) - new Date(e.startedAt)) / 60000);
-      const avgMin = durations.reduce((a,b) => a+b, 0) / durations.length;
-      stepDurations[step] = { avgMinutes: Math.max(0.25, parseFloat(avgMin.toFixed(2))) };
-    }
-  }
-
-  // Fill any missing step durations with a sensible fallback based on phase
-  const phaseFallbackMin = { 'Data Ingestion': 8, 'Processing': 25, 'Reporting': 10 }[m.phase.replace(/(\w+)([A-Z])/g, '$1 $2')] || 10;
-  for (const step of m.steps) {
-    if (!stepDurations[step]) stepDurations[step] = { avgMinutes: phaseFallbackMin };
-  }
-
-  // Sample error messages (top by frequency, max 5)
+  // Sample error messages: only from 3-month aggregate window
   const errCounts = {};
   for (const e of allEntries) {
+    if (!AGGREG_MONTHS.includes(e._month)) continue;
     if (e.errorMessage && e.errorMessage !== 'NULL') {
       const trimmed = e.errorMessage.length > 200 ? e.errorMessage.slice(0, 200) + '...' : e.errorMessage;
       errCounts[trimmed] = (errCounts[trimmed] || 0) + 1;
@@ -698,6 +731,7 @@ for (const m of goldenMappings) {
   statsOut.stats.push({
     location: m.location,
     subprocess: m.subprocess,
+    referenceMonth: refMonth,
     stepDurations,
     failureRate: parseFloat(failureRate.toFixed(3)),
     rerunCountAvg: parseFloat(rerunAvg.toFixed(2)),
@@ -732,32 +766,53 @@ for (const month of allMonths) {
 const mandLookup = {};
 for (const m of goldenMappings) mandLookup[`${m.location}|${m.subprocess}`] = m.steps;
 
+// Build LOCATION-LEVEL activity timelines (sorted startedAt per loc+month across ALL subs at that loc).
+// Opportunity cost = business-hour gap between a failed iter's last end and the NEXT activity at the
+// location (any sub). Time spent on other productive subs doesn't count as idle / OC.
+const locActivityStarts = {}; // key: "loc|month" -> sorted string[] of startedAt values
+for (const month of allMonths) {
+  for (const e of processedByMonth[month]) {
+    if (e._subprocess === 'ADHOC - REMOVE' || e._subprocess === '** UNMAPPED **') continue;
+    if (e.location === 'ICDB') continue;
+    if (!e.startedAt) continue;
+    const k = `${e.location}|${month}`;
+    if (!locActivityStarts[k]) locActivityStarts[k] = [];
+    locActivityStarts[k].push(e.startedAt);
+  }
+}
+for (const k of Object.keys(locActivityStarts)) locActivityStarts[k].sort();
+
+function findNextLocActivityStart(loc, month, afterIso) {
+  const starts = locActivityStarts[`${loc}|${month}`];
+  if (!starts) return null;
+  for (const s of starts) if (s > afterIso) return s;
+  return null;
+}
+
 for (const [k, entries] of Object.entries(byGroup)) {
   const [month, loc, sub] = k.split('|');
   const canonIter = findCanonicalIteration(entries);
   entries.sort((a,b) => (a.startedAt||'').localeCompare(b.startedAt||''));
-  // Precompute opportunity-cost gaps per iteration boundary (between last entry of iter N and first entry of iter N+1)
+  // Track per-iteration last-entry end (still needed so we only attribute OC once per failed iter)
   const iterLastEnd = {};
-  const iterFirstStart = {};
   for (const e of entries) {
     const it = e.iteration || 1;
     if (e.endedAt && (!iterLastEnd[it] || e.endedAt > iterLastEnd[it])) iterLastEnd[it] = e.endedAt;
-    if (e.startedAt && (!iterFirstStart[it] || e.startedAt < iterFirstStart[it])) iterFirstStart[it] = e.startedAt;
   }
-  // For each entry, produce the log row
   for (const e of entries) {
     const iter = e.iteration || 1;
     const durHours = (e.startedAt && e.endedAt) ? ((new Date(e.endedAt) - new Date(e.startedAt)) / 3600000) : 0;
     const isCanonical = canonIter !== null && iter === canonIter;
     const failedRuntimeHours = isCanonical ? 0 : durHours;
     const efficientRuntimeHours = isCanonical ? durHours : 0;
-    // Opportunity cost: business-hour gap between this iteration's end and next iteration's start (only computed on last entry of iteration)
+    // Opportunity cost — attributed to the LAST entry of a NON-canonical iteration.
+    // OC = business-hour gap from this entry's end to the next activity at the location (any sub).
+    // Time spent running other subs in between is NOT counted as OC (they're productive work, not dead time).
     let opportunityCostHours = 0;
-    const iterEndCandidates = Object.keys(iterLastEnd).map(Number).filter(n => n > iter).sort((a,b) => a-b);
-    if (iterLastEnd[iter] && iterEndCandidates.length > 0 && e.endedAt === iterLastEnd[iter]) {
-      const nextIter = iterEndCandidates[0];
-      if (iterFirstStart[nextIter]) {
-        opportunityCostHours = parseFloat(computeBusinessHourGap(iterLastEnd[iter], iterFirstStart[nextIter]).toFixed(3));
+    if (!isCanonical && e.endedAt && e.endedAt === iterLastEnd[iter]) {
+      const nextStart = findNextLocActivityStart(loc, month, e.endedAt);
+      if (nextStart) {
+        opportunityCostHours = parseFloat(computeBusinessHourGap(e.endedAt, nextStart).toFixed(3));
       }
     }
     const inefficientRuntimeHours = parseFloat((failedRuntimeHours + opportunityCostHours).toFixed(3));

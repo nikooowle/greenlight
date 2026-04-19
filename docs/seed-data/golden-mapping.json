@@ -1,6 +1,6 @@
 {
   "version": "v6",
-  "generatedAt": "2026-04-14T17:02:10.975Z",
+  "generatedAt": "2026-04-19T11:21:49.157Z",
   "totalLocations": 15,
   "totalSubprocesses": 27,
   "mappings": [
@@ -12,7 +12,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 1,
-      "avgRank": 1.02,
+      "avgRank": 1,
       "steps": [
         "Delete portfolio from"
       ],
@@ -33,7 +33,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 2,
-      "avgRank": 2.02,
+      "avgRank": 2,
       "steps": [
         "load Model parameters",
         "Model parameters comparison"
@@ -55,7 +55,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 4,
-      "avgRank": 3.11,
+      "avgRank": 3.09,
       "steps": [
         "load Spreads",
         "Spreads comparison"
@@ -77,7 +77,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 5,
-      "avgRank": 3.54,
+      "avgRank": 3.53,
       "steps": [
         "load",
         "Stratification",
@@ -101,7 +101,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 7,
-      "avgRank": 4.64,
+      "avgRank": 4.63,
       "steps": [
         "portfolio valuation run",
         "export to ara",
@@ -127,7 +127,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 9,
-      "avgRank": 6.77,
+      "avgRank": 6.75,
       "steps": [
         "CSRBB Portfolio Valuation",
         "Light Maintenance",
@@ -150,7 +150,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 11,
-      "avgRank": 8.31,
+      "avgRank": 8.29,
       "steps": [
         "Light Maintenance",
         "import CSRBB strategies",
@@ -176,7 +176,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 12,
-      "avgRank": 8.38,
+      "avgRank": 8.36,
       "steps": [
         "ing-ec valuation",
         "Light Maintenance",
@@ -200,7 +200,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 14,
-      "avgRank": 8.94,
+      "avgRank": 8.92,
       "steps": [
         "Light Maintenance",
         "bpv-kr valuation",
@@ -226,14 +226,14 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 15,
-      "avgRank": 10.12,
+      "avgRank": 10.1,
       "steps": [
         "import strategies"
       ],
       "scripts": [
         "Import_Strategies_AU_MCP",
         "Import_Strategies_AU_MCP import updated strategies",
-        "Import_Strategies_AU_MCP rr "
+        "Import_Strategies_AU_MCP rr"
       ],
       "monthsSeen": [
         "2601",
@@ -248,7 +248,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 16,
-      "avgRank": 10.63,
+      "avgRank": 10.9,
       "steps": [
         "planning run01",
         "MDL Processing",
@@ -273,7 +273,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 17,
-      "avgRank": 11.14,
+      "avgRank": 11.11,
       "steps": [
         "Light Maintenance",
         "ITS planning run",
@@ -295,7 +295,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 18,
-      "avgRank": 11.39,
+      "avgRank": 11.35,
       "steps": [
         "load AIC Spreads",
         "portfolio valuation AIC"
@@ -315,7 +315,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 1,
-      "avgRank": 1.02,
+      "avgRank": 1,
       "steps": [
         "Delete portfolio from"
       ],
@@ -338,7 +338,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 2,
-      "avgRank": 2.02,
+      "avgRank": 2,
       "steps": [
         "load Model parameters",
         "Model parameters comparison"
@@ -363,7 +363,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 4,
-      "avgRank": 3.11,
+      "avgRank": 3.09,
       "steps": [
         "load Spreads",
         "Spreads comparison"
@@ -388,7 +388,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 5,
-      "avgRank": 3.54,
+      "avgRank": 3.53,
       "steps": [
         "load",
         "Stratification",
@@ -418,7 +418,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 7,
-      "avgRank": 4.64,
+      "avgRank": 4.63,
       "steps": [
         "portfolio valuation run",
         "export to ara",
@@ -450,7 +450,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 12,
-      "avgRank": 8.38,
+      "avgRank": 8.36,
       "steps": [
         "Full Maintenance",
         "ing-ec valuation",
@@ -476,7 +476,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 13,
-      "avgRank": 8.74,
+      "avgRank": 8.72,
       "steps": [
         "gap planning"
       ],
@@ -499,7 +499,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 14,
-      "avgRank": 8.94,
+      "avgRank": 8.92,
       "steps": [
         "Light Maintenance",
         "bpv-kr valuation",
@@ -526,7 +526,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 15,
-      "avgRank": 10.12,
+      "avgRank": 10.1,
       "steps": [
         "import strategies",
         "import strategies Risk"
@@ -550,7 +550,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 16,
-      "avgRank": 10.63,
+      "avgRank": 10.9,
       "steps": [
         "combined planning run",
         "export to ara",
@@ -586,7 +586,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 18,
-      "avgRank": 11.39,
+      "avgRank": 11.35,
       "steps": [
         "load AIC Spreads",
         "AIC portfolio valuation run"
@@ -662,7 +662,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 5,
-      "avgRank": 3.54,
+      "avgRank": 3.53,
       "steps": [
         "load",
         "Light Maintenance",
@@ -690,7 +690,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 7,
-      "avgRank": 4.64,
+      "avgRank": 4.63,
       "steps": [
         "portfolio valuation run",
         "export to ara",
@@ -718,7 +718,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 9,
-      "avgRank": 6.77,
+      "avgRank": 6.75,
       "steps": [
         "CSRBB Portfolio Valuation",
         "Light Maintenance",
@@ -747,7 +747,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 11,
-      "avgRank": 8.31,
+      "avgRank": 8.29,
       "steps": [
         "import CSRBB strategies",
         "CSRBB Planning Run",
@@ -776,7 +776,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 12,
-      "avgRank": 8.38,
+      "avgRank": 8.36,
       "steps": [
         "Light Maintenance",
         "ing-ec valuation",
@@ -802,7 +802,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 13,
-      "avgRank": 8.74,
+      "avgRank": 8.72,
       "steps": [
         "gap planning"
       ],
@@ -827,7 +827,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 14,
-      "avgRank": 8.94,
+      "avgRank": 8.92,
       "steps": [
         "Light Maintenance",
         "bpv-kr valuation",
@@ -853,7 +853,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 15,
-      "avgRank": 10.12,
+      "avgRank": 10.1,
       "steps": [
         "import strategies"
       ],
@@ -877,7 +877,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 16,
-      "avgRank": 10.63,
+      "avgRank": 10.9,
       "steps": [
         "planning run01",
         "MDL Processing",
@@ -912,7 +912,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 17,
-      "avgRank": 11.14,
+      "avgRank": 11.11,
       "steps": [
         "ITS planning run"
       ],
@@ -953,7 +953,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 1,
-      "avgRank": 1.02,
+      "avgRank": 1,
       "steps": [
         "Delete portfolio from"
       ],
@@ -976,7 +976,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 2,
-      "avgRank": 2.02,
+      "avgRank": 2,
       "steps": [
         "load Model parameters",
         "Model parameters comparison"
@@ -1002,7 +1002,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 4,
-      "avgRank": 3.11,
+      "avgRank": 3.09,
       "steps": [
         "load Spreads",
         "Spreads comparison"
@@ -1026,7 +1026,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 5,
-      "avgRank": 3.54,
+      "avgRank": 3.53,
       "steps": [
         "load",
         "Stratification",
@@ -1078,7 +1078,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 7,
-      "avgRank": 4.64,
+      "avgRank": 4.63,
       "steps": [
         "portfolio valuation run",
         "export to ara",
@@ -1113,7 +1113,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 9,
-      "avgRank": 6.77,
+      "avgRank": 6.75,
       "steps": [
         "CSRBB Portfolio Valuation",
         "CSRBB Portfolio Valuation Qtr",
@@ -1141,7 +1141,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 11,
-      "avgRank": 8.31,
+      "avgRank": 8.29,
       "steps": [
         "import CSRBB strategies",
         "CSRBB Planning Run",
@@ -1169,7 +1169,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 12,
-      "avgRank": 8.38,
+      "avgRank": 8.36,
       "steps": [
         "Light Maintenance",
         "ing-ec valuation",
@@ -1201,7 +1201,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 13,
-      "avgRank": 8.74,
+      "avgRank": 8.72,
       "steps": [
         "gap planning",
         "export to ara"
@@ -1224,7 +1224,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 14,
-      "avgRank": 8.94,
+      "avgRank": 8.92,
       "steps": [
         "Light Maintenance",
         "bpv-kr valuation",
@@ -1256,7 +1256,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 15,
-      "avgRank": 10.12,
+      "avgRank": 10.1,
       "steps": [
         "import strategies",
         "import strategies Risk",
@@ -1283,7 +1283,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 16,
-      "avgRank": 10.63,
+      "avgRank": 10.9,
       "steps": [
         "planning run",
         "export to ara",
@@ -1294,6 +1294,7 @@
         "Light Maintenance NII"
       ],
       "scripts": [
+        "Planning_DE_MCP",
         "Planning_DE_MCP ",
         "Planning_DE_MCP FIN rerun (Export)",
         "Planning_DE_MCP csv exports",
@@ -1317,7 +1318,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 17,
-      "avgRank": 11.14,
+      "avgRank": 11.11,
       "steps": [
         "Light Maintenance",
         "ITS planning run",
@@ -1340,7 +1341,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 18,
-      "avgRank": 11.39,
+      "avgRank": 11.35,
       "steps": [
         "load AIC Spreads",
         "AIC portfolio valuation run"
@@ -1453,7 +1454,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 5,
-      "avgRank": 3.54,
+      "avgRank": 3.53,
       "steps": [
         "load",
         "Stratification",
@@ -1482,7 +1483,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 7,
-      "avgRank": 4.64,
+      "avgRank": 4.63,
       "steps": [
         "portfolio valuation run",
         "export to ara",
@@ -1510,7 +1511,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 13,
-      "avgRank": 8.74,
+      "avgRank": 8.72,
       "steps": [
         "gap planning"
       ],
@@ -1538,7 +1539,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 15,
-      "avgRank": 10.12,
+      "avgRank": 10.1,
       "steps": [
         "import strategies"
       ],
@@ -1561,7 +1562,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 16,
-      "avgRank": 10.63,
+      "avgRank": 10.9,
       "steps": [
         "planning run",
         "planning run01",
@@ -1606,7 +1607,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 1,
-      "avgRank": 1.02,
+      "avgRank": 1,
       "steps": [
         "Delete portfolio from"
       ],
@@ -1629,7 +1630,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 2,
-      "avgRank": 2.02,
+      "avgRank": 2,
       "steps": [
         "load Model parameters",
         "Model parameters comparison"
@@ -1658,7 +1659,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 4,
-      "avgRank": 3.11,
+      "avgRank": 3.09,
       "steps": [
         "load Spreads",
         "Spreads comparison"
@@ -1683,7 +1684,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 5,
-      "avgRank": 3.54,
+      "avgRank": 3.53,
       "steps": [
         "Generate NTG",
         "load",
@@ -1714,7 +1715,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 7,
-      "avgRank": 4.64,
+      "avgRank": 4.63,
       "steps": [
         "portfolio valuation run",
         "export to ara",
@@ -1746,7 +1747,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 9,
-      "avgRank": 6.77,
+      "avgRank": 6.75,
       "steps": [
         "CSRBB Portfolio Valuation",
         "Light Maintenance",
@@ -1771,7 +1772,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 11,
-      "avgRank": 8.31,
+      "avgRank": 8.29,
       "steps": [
         "import CSRBB strategies",
         "CSRBB Planning Run",
@@ -1797,7 +1798,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 12,
-      "avgRank": 8.38,
+      "avgRank": 8.36,
       "steps": [
         "Light Maintenance",
         "ing-ec valuation",
@@ -1824,7 +1825,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 13,
-      "avgRank": 8.74,
+      "avgRank": 8.72,
       "steps": [
         "gap planning"
       ],
@@ -1845,7 +1846,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 14,
-      "avgRank": 8.94,
+      "avgRank": 8.92,
       "steps": [
         "Light Maintenance",
         "bpv-kr valuation",
@@ -1870,7 +1871,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 15,
-      "avgRank": 10.12,
+      "avgRank": 10.1,
       "steps": [
         "import strategies"
       ],
@@ -1892,7 +1893,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 16,
-      "avgRank": 10.63,
+      "avgRank": 10.9,
       "steps": [
         "planning run01",
         "MDL Processing",
@@ -1922,7 +1923,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 17,
-      "avgRank": 11.14,
+      "avgRank": 11.11,
       "steps": [
         "Light Maintenance",
         "ITS planning run",
@@ -1945,7 +1946,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 18,
-      "avgRank": 11.39,
+      "avgRank": 11.35,
       "steps": [
         "load AIC Spreads",
         "AIC portfolio valuation run"
@@ -2033,7 +2034,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 1,
-      "avgRank": 1.02,
+      "avgRank": 1,
       "steps": [
         "Delete portfolio from"
       ],
@@ -2055,7 +2056,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 2,
-      "avgRank": 2.02,
+      "avgRank": 2,
       "steps": [
         "load Model parameters",
         "Model parameters comparison"
@@ -2078,7 +2079,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 4,
-      "avgRank": 3.11,
+      "avgRank": 3.09,
       "steps": [
         "load Spreads",
         "Spreads comparison"
@@ -2101,7 +2102,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 5,
-      "avgRank": 3.54,
+      "avgRank": 3.53,
       "steps": [
         "load",
         "Stratification",
@@ -2126,7 +2127,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 7,
-      "avgRank": 4.64,
+      "avgRank": 4.63,
       "steps": [
         "portfolio valuation run",
         "export to ara",
@@ -2156,7 +2157,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 9,
-      "avgRank": 6.77,
+      "avgRank": 6.75,
       "steps": [
         "CSRBB Portfolio Valuation",
         "Light Maintenance",
@@ -2183,7 +2184,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 11,
-      "avgRank": 8.31,
+      "avgRank": 8.29,
       "steps": [
         "import CSRBB strategies",
         "CSRBB Planning Run",
@@ -2210,7 +2211,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 12,
-      "avgRank": 8.38,
+      "avgRank": 8.36,
       "steps": [
         "Light Maintenance",
         "ing-ec valuation",
@@ -2235,7 +2236,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 13,
-      "avgRank": 8.74,
+      "avgRank": 8.72,
       "steps": [
         "gap planning"
       ],
@@ -2259,7 +2260,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 14,
-      "avgRank": 8.94,
+      "avgRank": 8.92,
       "steps": [
         "Light Maintenance",
         "bpv-kr valuation",
@@ -2284,7 +2285,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 15,
-      "avgRank": 10.12,
+      "avgRank": 10.1,
       "steps": [
         "import strategies"
       ],
@@ -2306,7 +2307,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 16,
-      "avgRank": 10.63,
+      "avgRank": 10.9,
       "steps": [
         "planning run01",
         "MDL Processing",
@@ -2340,7 +2341,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 17,
-      "avgRank": 11.14,
+      "avgRank": 11.11,
       "steps": [
         "Light Maintenance",
         "ITS planning run",
@@ -2364,7 +2365,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 18,
-      "avgRank": 11.39,
+      "avgRank": 11.35,
       "steps": [
         "load AIC Spreads",
         "AIC portfolio valuation run"
@@ -2433,7 +2434,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 1,
-      "avgRank": 1.02,
+      "avgRank": 1,
       "steps": [
         "Delete portfolio from"
       ],
@@ -2456,7 +2457,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 2,
-      "avgRank": 2.02,
+      "avgRank": 2,
       "steps": [
         "load Model parameters",
         "Model parameters comparison"
@@ -2466,7 +2467,7 @@
         "Load_compare_MP_IT_MCP",
         "Load_compare_MP_IT_MCP rr",
         "Load_compare_MP_IT_MCP rr removed import workflow",
-        "Load_compare_MP_IT_MCP rr updated workflow path ",
+        "Load_compare_MP_IT_MCP rr updated workflow path",
         "Load_compare_MP_IT_MCP users signoff in PAPI"
       ],
       "monthsSeen": [
@@ -2484,7 +2485,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 4,
-      "avgRank": 3.11,
+      "avgRank": 3.09,
       "steps": [
         "load Spreads",
         "Spreads comparison"
@@ -2509,7 +2510,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 5,
-      "avgRank": 3.54,
+      "avgRank": 3.53,
       "steps": [
         "load",
         "Stratification",
@@ -2541,7 +2542,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 7,
-      "avgRank": 4.64,
+      "avgRank": 4.63,
       "steps": [
         "portfolio valuation run",
         "export to ara",
@@ -2574,7 +2575,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 9,
-      "avgRank": 6.77,
+      "avgRank": 6.75,
       "steps": [
         "CSRBB Portfolio Valuation",
         "Light Maintenance",
@@ -2602,7 +2603,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 11,
-      "avgRank": 8.31,
+      "avgRank": 8.29,
       "steps": [
         "import CSRBB strategies",
         "CSRBB Planning Run",
@@ -2629,7 +2630,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 12,
-      "avgRank": 8.38,
+      "avgRank": 8.36,
       "steps": [
         "Light Maintenance",
         "ing-ec valuation",
@@ -2656,7 +2657,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 13,
-      "avgRank": 8.74,
+      "avgRank": 8.72,
       "steps": [
         "gap planning"
       ],
@@ -2680,7 +2681,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 14,
-      "avgRank": 8.94,
+      "avgRank": 8.92,
       "steps": [
         "Light Maintenance",
         "bpv-kr valuation",
@@ -2708,7 +2709,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 15,
-      "avgRank": 10.12,
+      "avgRank": 10.1,
       "steps": [
         "import strategies"
       ],
@@ -2729,7 +2730,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 16,
-      "avgRank": 10.63,
+      "avgRank": 10.9,
       "steps": [
         "planning run01",
         "MDL Processing",
@@ -2757,7 +2758,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 17,
-      "avgRank": 11.14,
+      "avgRank": 11.11,
       "steps": [
         "Light Maintenance",
         "ITS planning run"
@@ -2779,7 +2780,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 18,
-      "avgRank": 11.39,
+      "avgRank": 11.35,
       "steps": [
         "load AIC Spreads",
         "AIC portfolio valuation run"
@@ -2866,7 +2867,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 1,
-      "avgRank": 1.02,
+      "avgRank": 1,
       "steps": [
         "Delete portfolio from"
       ],
@@ -2889,7 +2890,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 2,
-      "avgRank": 2.02,
+      "avgRank": 2,
       "steps": [
         "load Model parameters",
         "Model parameters comparison"
@@ -2914,7 +2915,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 4,
-      "avgRank": 3.11,
+      "avgRank": 3.09,
       "steps": [
         "load Spreads",
         "Spreads comparison"
@@ -2939,7 +2940,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 5,
-      "avgRank": 3.54,
+      "avgRank": 3.53,
       "steps": [
         "load",
         "Stratification",
@@ -2970,7 +2971,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 7,
-      "avgRank": 4.64,
+      "avgRank": 4.63,
       "steps": [
         "portfolio valuation run",
         "export to ara",
@@ -3003,7 +3004,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 9,
-      "avgRank": 6.77,
+      "avgRank": 6.75,
       "steps": [
         "CSRBB Portfolio Valuation",
         "Light Maintenance",
@@ -3030,7 +3031,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 11,
-      "avgRank": 8.31,
+      "avgRank": 8.29,
       "steps": [
         "import CSRBB strategies",
         "CSRBB Planning Run",
@@ -3059,7 +3060,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 12,
-      "avgRank": 8.38,
+      "avgRank": 8.36,
       "steps": [
         "Light Maintenance",
         "ing-ec valuation",
@@ -3088,7 +3089,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 13,
-      "avgRank": 8.74,
+      "avgRank": 8.72,
       "steps": [
         "gap planning"
       ],
@@ -3113,7 +3114,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 14,
-      "avgRank": 8.94,
+      "avgRank": 8.92,
       "steps": [
         "Light Maintenance",
         "bpv-kr valuation",
@@ -3141,7 +3142,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 15,
-      "avgRank": 10.12,
+      "avgRank": 10.1,
       "steps": [
         "import strategies",
         "import strategies IG",
@@ -3166,7 +3167,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 16,
-      "avgRank": 10.63,
+      "avgRank": 10.9,
       "steps": [
         "planning run01",
         "MDL Processing",
@@ -3198,7 +3199,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 18,
-      "avgRank": 11.39,
+      "avgRank": 11.35,
       "steps": [
         "load AIC Spreads",
         "AIC portfolio valuation run"
@@ -3289,7 +3290,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 5,
-      "avgRank": 3.54,
+      "avgRank": 3.53,
       "steps": [
         "load",
         "Stratification",
@@ -3318,7 +3319,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 7,
-      "avgRank": 4.64,
+      "avgRank": 4.63,
       "steps": [
         "portfolio valuation run",
         "export to ara",
@@ -3346,7 +3347,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 9,
-      "avgRank": 6.77,
+      "avgRank": 6.75,
       "steps": [
         "CSRBB Portfolio Valuation",
         "Light Maintenance",
@@ -3376,7 +3377,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 11,
-      "avgRank": 8.31,
+      "avgRank": 8.29,
       "steps": [
         "import CSRBB strategies",
         "CSRBB Planning Run",
@@ -3411,7 +3412,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 12,
-      "avgRank": 8.38,
+      "avgRank": 8.36,
       "steps": [
         "Light Maintenance",
         "ing-ec valuation",
@@ -3437,7 +3438,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 13,
-      "avgRank": 8.74,
+      "avgRank": 8.72,
       "steps": [
         "gap planning"
       ],
@@ -3461,7 +3462,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 14,
-      "avgRank": 8.94,
+      "avgRank": 8.92,
       "steps": [
         "Light Maintenance",
         "bpv-kr valuation",
@@ -3487,7 +3488,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 15,
-      "avgRank": 10.12,
+      "avgRank": 10.1,
       "steps": [
         "import strategies"
       ],
@@ -3514,7 +3515,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 16,
-      "avgRank": 10.63,
+      "avgRank": 10.9,
       "steps": [
         "planning run01",
         "MDL Processing",
@@ -3556,7 +3557,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 17,
-      "avgRank": 11.14,
+      "avgRank": 11.11,
       "steps": [
         "ITS planning run"
       ],
@@ -3597,7 +3598,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 1,
-      "avgRank": 1.02,
+      "avgRank": 1,
       "steps": [
         "Delete portfolio from"
       ],
@@ -3619,7 +3620,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 2,
-      "avgRank": 2.02,
+      "avgRank": 2,
       "steps": [
         "load Model parameters",
         "Model parameters comparison"
@@ -3644,7 +3645,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 4,
-      "avgRank": 3.11,
+      "avgRank": 3.09,
       "steps": [
         "load Spreads",
         "Spreads comparison"
@@ -3667,7 +3668,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 5,
-      "avgRank": 3.54,
+      "avgRank": 3.53,
       "steps": [
         "load",
         "Stratification",
@@ -3691,7 +3692,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 7,
-      "avgRank": 4.64,
+      "avgRank": 4.63,
       "steps": [
         "portfolio valuation run",
         "export to ara",
@@ -3770,7 +3771,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 12,
-      "avgRank": 8.38,
+      "avgRank": 8.36,
       "steps": [
         "Light Maintenance",
         "ing-ec valuation",
@@ -3796,7 +3797,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 13,
-      "avgRank": 8.74,
+      "avgRank": 8.72,
       "steps": [
         "gap planning"
       ],
@@ -3817,7 +3818,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 14,
-      "avgRank": 8.94,
+      "avgRank": 8.92,
       "steps": [
         "Light Maintenance",
         "bpv-kr valuation",
@@ -3843,7 +3844,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 15,
-      "avgRank": 10.12,
+      "avgRank": 10.1,
       "steps": [
         "import strategies"
       ],
@@ -3866,7 +3867,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 16,
-      "avgRank": 10.63,
+      "avgRank": 10.9,
       "steps": [
         "combined planning run",
         "export to ara",
@@ -3893,7 +3894,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 17,
-      "avgRank": 11.14,
+      "avgRank": 11.11,
       "steps": [
         "Light Maintenance",
         "ITS planning run",
@@ -3916,7 +3917,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 18,
-      "avgRank": 11.39,
+      "avgRank": 11.35,
       "steps": [
         "load AIC Spreads",
         "AIC portfolio valuation run"
@@ -4036,7 +4037,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 1,
-      "avgRank": 1.02,
+      "avgRank": 1,
       "steps": [
         "Delete portfolio from"
       ],
@@ -4059,7 +4060,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 2,
-      "avgRank": 2.02,
+      "avgRank": 2,
       "steps": [
         "load Model parameters",
         "Model parameters comparison"
@@ -4086,7 +4087,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 4,
-      "avgRank": 3.11,
+      "avgRank": 3.09,
       "steps": [
         "load Spreads",
         "Spreads comparison"
@@ -4110,7 +4111,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 5,
-      "avgRank": 3.54,
+      "avgRank": 3.53,
       "steps": [
         "load",
         "Stratification",
@@ -4139,7 +4140,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 7,
-      "avgRank": 4.64,
+      "avgRank": 4.63,
       "steps": [
         "portfolio valuation run",
         "export to ara",
@@ -4159,7 +4160,7 @@
         "Valuation_MCP_Export NPV reports",
         "Valuation_MCP_Export PL rr",
         "Valuation_PL_MCP",
-        "Valuation_PL_MCP ESM0548459 ",
+        "Valuation_PL_MCP ESM0548459",
         "Valuation_RegQ_PL_MCP"
       ],
       "monthsSeen": [
@@ -4177,7 +4178,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 9,
-      "avgRank": 6.77,
+      "avgRank": 6.75,
       "steps": [
         "CSRBB Portfolio Valuation",
         "Light Maintenance",
@@ -4203,7 +4204,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 11,
-      "avgRank": 8.31,
+      "avgRank": 8.29,
       "steps": [
         "import CSRBB strategies",
         "CSRBB Planning Run",
@@ -4232,7 +4233,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 12,
-      "avgRank": 8.38,
+      "avgRank": 8.36,
       "steps": [
         "Light Maintenance",
         "ing-ec valuation exports",
@@ -4245,7 +4246,7 @@
         "EC_NPV_Export",
         "EC_NPV_Export NPV PL",
         "EC_PL_MCP",
-        "EC_PL_MCP ESM0548459 "
+        "EC_PL_MCP ESM0548459"
       ],
       "monthsSeen": [
         "2512",
@@ -4262,7 +4263,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 13,
-      "avgRank": 8.74,
+      "avgRank": 8.72,
       "steps": [
         "gap planning",
         "export to ara"
@@ -4289,7 +4290,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 14,
-      "avgRank": 8.94,
+      "avgRank": 8.92,
       "steps": [
         "Light Maintenance",
         "bpv-kr valuation",
@@ -4317,7 +4318,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 15,
-      "avgRank": 10.12,
+      "avgRank": 10.1,
       "steps": [
         "import strategies"
       ],
@@ -4339,7 +4340,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 16,
-      "avgRank": 10.63,
+      "avgRank": 10.9,
       "steps": [
         "planning run QRM reporter exports",
         "planning run01",
@@ -4385,7 +4386,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 17,
-      "avgRank": 11.14,
+      "avgRank": 11.11,
       "steps": [
         "Light Maintenance",
         "ITS planning run",
@@ -4409,7 +4410,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 18,
-      "avgRank": 11.39,
+      "avgRank": 11.35,
       "steps": [
         "load AIC Spreads",
         "AIC portfolio valuation run"
@@ -4575,7 +4576,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 1,
-      "avgRank": 1.02,
+      "avgRank": 1,
       "steps": [
         "Delete portfolio from"
       ],
@@ -4596,7 +4597,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 2,
-      "avgRank": 2.02,
+      "avgRank": 2,
       "steps": [
         "load Model parameters",
         "Model parameters comparison"
@@ -4618,7 +4619,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 4,
-      "avgRank": 3.11,
+      "avgRank": 3.09,
       "steps": [
         "load Spreads",
         "Spreads comparison"
@@ -4640,7 +4641,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 5,
-      "avgRank": 3.54,
+      "avgRank": 3.53,
       "steps": [
         "load",
         "Stratification",
@@ -4664,7 +4665,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 7,
-      "avgRank": 4.64,
+      "avgRank": 4.63,
       "steps": [
         "portfolio valuation run",
         "Light Maintenance",
@@ -4688,7 +4689,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 9,
-      "avgRank": 6.77,
+      "avgRank": 6.75,
       "steps": [
         "CSRBB Portfolio Valuation",
         "Light Maintenance",
@@ -4711,7 +4712,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 11,
-      "avgRank": 8.31,
+      "avgRank": 8.29,
       "steps": [
         "import CSRBB strategies",
         "CSRBB Planning Run",
@@ -4735,7 +4736,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 12,
-      "avgRank": 8.38,
+      "avgRank": 8.36,
       "steps": [
         "Light Maintenance",
         "ing-ec valuation",
@@ -4760,7 +4761,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 14,
-      "avgRank": 8.94,
+      "avgRank": 8.92,
       "steps": [
         "Light Maintenance",
         "bpv-kr valuation",
@@ -4784,7 +4785,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 15,
-      "avgRank": 10.12,
+      "avgRank": 10.1,
       "steps": [
         "import strategies"
       ],
@@ -4804,7 +4805,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 16,
-      "avgRank": 10.63,
+      "avgRank": 10.9,
       "steps": [
         "planning run01",
         "MDL Processing",
@@ -4829,7 +4830,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 17,
-      "avgRank": 11.14,
+      "avgRank": 11.11,
       "steps": [
         "Light Maintenance",
         "ITS planning run",
@@ -4870,7 +4871,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 1,
-      "avgRank": 1.02,
+      "avgRank": 1,
       "steps": [
         "Delete portfolio from"
       ],
@@ -4892,7 +4893,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 2,
-      "avgRank": 2.02,
+      "avgRank": 2,
       "steps": [
         "load Model parameters",
         "Model parameters comparison"
@@ -4940,7 +4941,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 4,
-      "avgRank": 3.11,
+      "avgRank": 3.09,
       "steps": [
         "load Spreads",
         "Spreads comparison"
@@ -4963,7 +4964,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 5,
-      "avgRank": 3.54,
+      "avgRank": 3.53,
       "steps": [
         "load",
         "Stratification",
@@ -4988,7 +4989,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 7,
-      "avgRank": 4.64,
+      "avgRank": 4.63,
       "steps": [
         "portfolio valuation run",
         "export to ara",
@@ -5021,7 +5022,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 9,
-      "avgRank": 6.77,
+      "avgRank": 6.75,
       "steps": [
         "CSRBB Portfolio Valuation",
         "Light Maintenance",
@@ -5047,7 +5048,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 11,
-      "avgRank": 8.31,
+      "avgRank": 8.29,
       "steps": [
         "import CSRBB strategies",
         "CSRBB Planning Run",
@@ -5074,7 +5075,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 12,
-      "avgRank": 8.38,
+      "avgRank": 8.36,
       "steps": [
         "Light Maintenance",
         "ing-ec valuation",
@@ -5100,7 +5101,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 13,
-      "avgRank": 8.74,
+      "avgRank": 8.72,
       "steps": [
         "gap planning"
       ],
@@ -5121,7 +5122,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 14,
-      "avgRank": 8.94,
+      "avgRank": 8.92,
       "steps": [
         "Light Maintenance",
         "bpv-kr valuation",
@@ -5146,7 +5147,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 15,
-      "avgRank": 10.12,
+      "avgRank": 10.1,
       "steps": [
         "import strategies"
       ],
@@ -5167,7 +5168,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 16,
-      "avgRank": 10.63,
+      "avgRank": 10.9,
       "steps": [
         "planning run01",
         "MDL Processing",
@@ -5194,7 +5195,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 17,
-      "avgRank": 11.14,
+      "avgRank": 11.11,
       "steps": [
         "Light Maintenance",
         "ITS planning run",
@@ -5217,7 +5218,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 18,
-      "avgRank": 11.39,
+      "avgRank": 11.35,
       "steps": [
         "load AIC Spreads",
         "AIC portfolio valuation run",
@@ -5305,7 +5306,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 1,
-      "avgRank": 1.02,
+      "avgRank": 1,
       "steps": [
         "Delete portfolio from"
       ],
@@ -5327,7 +5328,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 2,
-      "avgRank": 2.02,
+      "avgRank": 2,
       "steps": [
         "load Model parameters",
         "Model parameters comparison"
@@ -5350,7 +5351,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 4,
-      "avgRank": 3.11,
+      "avgRank": 3.09,
       "steps": [
         "load Spreads",
         "Spreads comparison"
@@ -5373,7 +5374,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 5,
-      "avgRank": 3.54,
+      "avgRank": 3.53,
       "steps": [
         "load",
         "Stratification",
@@ -5397,7 +5398,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 7,
-      "avgRank": 4.64,
+      "avgRank": 4.63,
       "steps": [
         "portfolio valuation run",
         "export to ara",
@@ -5422,7 +5423,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 9,
-      "avgRank": 6.77,
+      "avgRank": 6.75,
       "steps": [
         "CSRBB Portfolio Valuation",
         "CSRBB Portfolio Valuation Qtr"
@@ -5445,7 +5446,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 11,
-      "avgRank": 8.31,
+      "avgRank": 8.29,
       "steps": [
         "import CSRBB strategies",
         "CSRBB Planning Run",
@@ -5470,7 +5471,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 13,
-      "avgRank": 8.74,
+      "avgRank": 8.72,
       "steps": [
         "gap planning"
       ],
@@ -5492,7 +5493,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 14,
-      "avgRank": 8.94,
+      "avgRank": 8.92,
       "steps": [
         "Light Maintenance",
         "bpv-kr valuation",
@@ -5516,7 +5517,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 15,
-      "avgRank": 10.12,
+      "avgRank": 10.1,
       "steps": [
         "import strategies"
       ],
@@ -5537,7 +5538,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 16,
-      "avgRank": 10.63,
+      "avgRank": 10.9,
       "steps": [
         "planning run01",
         "MDL Processing",
@@ -5562,7 +5563,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 17,
-      "avgRank": 11.14,
+      "avgRank": 11.11,
       "steps": [
         "Light Maintenance",
         "ITS planning run",
@@ -5585,7 +5586,7 @@
       "scope": "Main Process",
       "quarterly": false,
       "globalSeq": 18,
-      "avgRank": 11.39,
+      "avgRank": 11.35,
       "steps": [
         "load AIC Spreads",
         "AIC portfolio valuation run"

@@ -10,6 +10,7 @@ builder.Services.AddDbContext<GreenlightContext>(options =>
 
 // Simulator + historical stats
 builder.Services.AddSingleton<SimulatorState>();
+builder.Services.AddSingleton<ScriptedEventQueue>();
 builder.Services.AddSingleton<HistoricalStatsService>(sp =>
 {
     var log = sp.GetRequiredService<ILogger<HistoricalStatsService>>();
@@ -254,4 +255,130 @@ app.MapPost("/api/simulator/target-month/{month}", (string month, SimulatorState
     return Results.Ok(new { message = $"Target month set to {month}", isQuarterEnd = sim.IsQuarterEnd });
 });
 
+// ── Simulator mode + scripted-event queue ────────────────────────────
+
+app.MapPost("/api/simulator/mode/{mode}", (string mode, SimulatorState sim) =>
+{
+    if (!Enum.TryParse<SimMode>(mode, ignoreCase: true, out var parsed))
+        return Results.BadRequest(new { error = "Mode must be one of: clean, baseline, stressed." });
+    if (sim.IsRunning)
+        return Results.BadRequest(new { error = "Cannot change mode while simulation is running. Reset first." });
+    sim.Mode = parsed;
+    return Results.Ok(new { message = $"Mode set to {parsed.ToString().ToLowerInvariant()}" });
+});
+
+// Catalog used by the operator UI dropdowns — lives entirely in historical-stats.
+app.MapGet("/api/simulator/catalog", (HistoricalStatsService stats, GreenlightContext db) =>
+{
+    var locs = db.Locations.Where(l => l.InScope).OrderBy(l => l.Code).Select(l => l.Code).ToList();
+    var catalog = new List<object>();
+    foreach (var loc in locs)
+    {
+        var subs = db.Subprocesses.OrderBy(s => s.DisplayOrder).ToList();
+        var subList = new List<object>();
+        foreach (var sub in subs)
+        {
+            var s = stats.Get(loc, sub.Name);
+            if (s is null || s.Steps.Count == 0) continue;
+            subList.Add(new
+            {
+                subprocess = sub.Name,
+                phase = sub.Phase,
+                isQuarterly = sub.IsQuarterly,
+                steps = s.Steps.Select(st => new { step = st.StepName, avgMinutes = st.AvgMinutes }).ToList(),
+                sampleErrors = s.SampleErrors,
+            });
+        }
+        if (subList.Count > 0) catalog.Add(new { location = loc, subprocesses = subList });
+    }
+    return Results.Ok(catalog);
+});
+
+app.MapPost("/api/simulator/inject", (InjectRequest req, ScriptedEventQueue queue) =>
+{
+    var action = (req.Action ?? "").ToLowerInvariant();
+    if (action is not ("slow" or "fail" or "critical" or "delay" or "hold"))
+        return Results.BadRequest(new { error = "action must be slow, fail, critical, delay, or hold" });
+    if (string.IsNullOrEmpty(req.Location))
+        return Results.BadRequest(new { error = "location is required" });
+    if (action == "slow" && req.Subprocess is null)
+        return Results.BadRequest(new { error = "slow requires subprocess" });
+    if (action == "slow" && (req.SlowMultiplier is null || req.SlowMultiplier <= 0))
+        return Results.BadRequest(new { error = "slow requires slowMultiplier > 0" });
+    if (action == "fail" && req.Subprocess is null)
+        return Results.BadRequest(new { error = "fail requires subprocess" });
+    if (action == "hold" && req.Subprocess is null)
+        return Results.BadRequest(new { error = "hold requires subprocess" });
+    if (action == "delay" && (req.WorkingDays is null || req.WorkingDays <= 0))
+        return Results.BadRequest(new { error = "delay requires workingDays > 0" });
+    // critical: location-wide rerun triggered by late-discovered incident at a specific working day
+    if (action == "critical" && (req.DiscoveryWd is null || req.DiscoveryWd < 1 || req.DiscoveryWd > 22))
+        return Results.BadRequest(new { error = "critical requires discoveryWd in 1..22" });
+
+    var id = queue.Add(new ScriptedEvent
+    {
+        Action = action,
+        Location = req.Location,
+        Subprocess = req.Subprocess,
+        Step = null, // scripted events are subprocess-level; step is picked by the simulator internally
+        SlowMultiplier = req.SlowMultiplier,
+        FailAfterPercent = req.FailAfterPercent ?? 0.8,
+        ExtraIterations = req.ExtraIterations ?? 1,
+        OpportunityCostHours = req.OpportunityCostHours ?? (action == "critical" ? 24 : 4),
+        WorkingDays = req.WorkingDays,
+        DiscoveryWd = req.DiscoveryWd,
+        Reason = req.Reason,
+        ErrorMessage = req.ErrorMessage,
+    });
+    return Results.Ok(new { id, message = $"{action} event queued" });
+});
+
+app.MapGet("/api/simulator/queue", (ScriptedEventQueue queue) => queue.List());
+
+app.MapDelete("/api/simulator/queue/{id:int}", (int id, ScriptedEventQueue queue) =>
+{
+    return queue.Remove(id)
+        ? Results.Ok(new { message = $"event {id} removed" })
+        : Results.NotFound(new { error = $"no event with id {id}" });
+});
+
+app.MapPost("/api/simulator/queue/{id:int}/release", (int id, ScriptedEventQueue queue) =>
+{
+    return queue.Release(id)
+        ? Results.Ok(new { message = $"hold {id} released" })
+        : Results.BadRequest(new { error = "no matching hold event with that id" });
+});
+
+// Fast-replay cache control — clears the in-memory cache of prior simulated runs. Use this if
+// seed data changed or you want to force a fresh sim even when the (month, mode, queue) matches.
+app.MapPost("/api/simulator/cache/clear", (IEnumerable<IHostedService> hosted) =>
+{
+    var sim = hosted.OfType<Backend.Services.SimulatorService>().FirstOrDefault();
+    if (sim is null) return Results.StatusCode(500);
+    var before = sim.CacheEntryCount;
+    sim.ClearCache();
+    return Results.Ok(new { cleared = before, message = $"cleared {before} cache entr{(before == 1 ? "y" : "ies")}" });
+});
+
+app.MapGet("/api/simulator/cache", (IEnumerable<IHostedService> hosted) =>
+{
+    var sim = hosted.OfType<Backend.Services.SimulatorService>().FirstOrDefault();
+    return Results.Ok(new { entries = sim?.CacheEntryCount ?? 0 });
+});
+
 app.Run();
+
+// Payload for POST /api/simulator/inject — scripted events target (location, subprocess) only.
+// Step is not exposed: the simulator picks which step fails / holds internally.
+record InjectRequest(
+    string Action,              // "slow" | "fail" | "critical" | "delay" | "hold"
+    string Location,
+    string? Subprocess,
+    double? SlowMultiplier,
+    double? FailAfterPercent,
+    int? ExtraIterations,
+    double? OpportunityCostHours,
+    double? WorkingDays,
+    int? DiscoveryWd,           // "critical" only: WD when the incident is discovered (1..22)
+    string? Reason,             // "critical" only: cosmetic category (DQ / config / human / tech)
+    string? ErrorMessage);

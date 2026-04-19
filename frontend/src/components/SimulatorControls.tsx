@@ -1,8 +1,13 @@
-import { Play, Pause, RotateCcw, Zap } from "lucide-react"
+import { Play, Pause, RotateCcw, Zap, Sliders } from "lucide-react"
 import { cn } from "@/lib/utils"
-import type { SimulatorStatus } from "@/types"
+import type { SimulatorStatus, SimMode } from "@/types"
 
-const SPEEDS = [1, 10, 60, 200, 1000]
+const SPEEDS = [1, 10, 60, 200, 1000, 2500, 5000]
+const MODES: { value: SimMode; label: string; hint: string }[] = [
+  { value: "clean", label: "Clean", hint: "Happy path — no failures, no reruns" },
+  { value: "baseline", label: "Baseline", hint: "Realistic — stochastic from 3 months of history" },
+  { value: "stressed", label: "Stressed", hint: "Operator-scripted adverse scenarios" },
+]
 
 interface SimulatorControlsProps {
   status: SimulatorStatus | null
@@ -11,6 +16,7 @@ interface SimulatorControlsProps {
   onResume: () => void
   onReset: () => void
   onSpeed: (n: number) => void
+  onMode: (m: SimMode) => void
 }
 
 export function SimulatorControls({
@@ -20,10 +26,12 @@ export function SimulatorControls({
   onResume,
   onReset,
   onSpeed,
+  onMode,
 }: SimulatorControlsProps) {
   if (!status) return null
 
-  const isIdle = !status.isRunning && !status.isPaused && status.phase === "Idle"
+  // Can start whenever not running and not paused (covers Idle, Complete, Resetting, Error)
+  const isIdle = !status.isRunning && !status.isPaused
   const isRunning = status.isRunning && !status.isPaused
   const isPaused = status.isPaused
 
@@ -68,6 +76,32 @@ export function SimulatorControls({
           Reset
         </button>
       )}
+
+      {/* Mode selector (Clean / Baseline / Stressed). Disabled while running — mode can only change when Idle. */}
+      <div className="flex items-center gap-1 ml-2" title="Simulation mode">
+        <Sliders className="h-3.5 w-3.5 text-slate-400" />
+        {MODES.map((m) => {
+          const active = status.mode === m.value
+          const disabled = !isIdle
+          return (
+            <button
+              key={m.value}
+              onClick={() => onMode(m.value)}
+              disabled={disabled}
+              title={m.hint}
+              className={cn(
+                "px-2 py-1 rounded text-[10px] font-medium capitalize transition-colors",
+                active
+                  ? "bg-blue-600 text-white"
+                  : "bg-slate-700 text-slate-400 hover:bg-slate-600 hover:text-white",
+                disabled && "opacity-50 cursor-not-allowed hover:bg-slate-700 hover:text-slate-400",
+              )}
+            >
+              {m.label}
+            </button>
+          )
+        })}
+      </div>
 
       {/* Speed selector */}
       <div className="flex items-center gap-1 ml-2">

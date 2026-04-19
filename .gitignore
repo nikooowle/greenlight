@@ -28,6 +28,9 @@ Thumbs.db
 *.mdf
 *.ldf
 
+# Logs
+*.log
+
 # Seed data temp files
 docs/seed-data/node_modules/
 docs/seed-data/package*.json

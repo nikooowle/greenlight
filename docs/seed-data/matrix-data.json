@@ -22,31 +22,31 @@
       "name": "Delete Portfolio",
       "phase": "Data Ingestion",
       "quarterly": false,
-      "order": 1.0217391304347827
+      "order": 1
     },
     {
       "name": "Model Parameters",
       "phase": "Data Ingestion",
       "quarterly": false,
-      "order": 2.0217391304347827
+      "order": 2
     },
     {
       "name": "Spreads",
       "phase": "Data Ingestion",
       "quarterly": false,
-      "order": 3.108695652173913
+      "order": 3.0869565217391304
     },
     {
       "name": "Load Position",
       "phase": "Data Ingestion",
       "quarterly": false,
-      "order": 3.543859649122807
+      "order": 3.526315789473684
     },
     {
       "name": "Import Strategies",
       "phase": "Data Ingestion",
       "quarterly": false,
-      "order": 10.122448979591837
+      "order": 10.10204081632653
     }
   ],
   "mainProcesses": [
@@ -54,13 +54,13 @@
       "name": "Valuation",
       "phase": "Processing",
       "quarterly": false,
-      "order": 4.642857142857143
+      "order": 4.625
     },
     {
       "name": "CSRBB (Val)",
       "phase": "Processing",
       "quarterly": false,
-      "order": 6.7727272727272725
+      "order": 6.75
     },
     {
       "name": "PDCE",
@@ -72,43 +72,43 @@
       "name": "CSRBB (Plan)",
       "phase": "Processing",
       "quarterly": false,
-      "order": 8.30952380952381
+      "order": 8.285714285714286
     },
     {
       "name": "EC",
       "phase": "Processing",
       "quarterly": false,
-      "order": 8.382978723404255
+      "order": 8.361702127659575
     },
     {
       "name": "Gap + Liquidity IR",
       "phase": "Processing",
       "quarterly": false,
-      "order": 8.73913043478261
+      "order": 8.717391304347826
     },
     {
       "name": "KR",
       "phase": "Processing",
       "quarterly": false,
-      "order": 8.941176470588236
+      "order": 8.92156862745098
     },
     {
       "name": "NII / Planning risk",
       "phase": "Processing",
       "quarterly": false,
-      "order": 10.63265306122449
+      "order": 10.89795918367347
     },
     {
       "name": "ITS Planning",
       "phase": "Processing",
       "quarterly": false,
-      "order": 11.135135135135135
+      "order": 11.108108108108109
     },
     {
       "name": "AIC",
       "phase": "Processing",
       "quarterly": false,
-      "order": 11.387096774193548
+      "order": 11.35483870967742
     },
     {
       "name": "CSRBB Export",

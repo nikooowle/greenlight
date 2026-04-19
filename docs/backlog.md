@@ -4,7 +4,7 @@
 |---|-----------|--------|-----------|
 | 1 | Project Setup & Skeleton | ✅ Done | 2026-04-12 |
 | 2 | Database Schema, Seed Data & Golden Mapping | ✅ Done | 2026-04-15 |
-| 3 | Data Simulator | ✅ Done (refactored v6-aligned) | 2026-04-15 |
+| 3 | Data Simulator | ✅ Done — all open items closed, scripted events + operator UI shipped | 2026-04-19 |
 | 4 | Processing Grid + Data Ingestion (Partial) Dashboard | ✅ Done | 2026-04-13 |
 | 5 | Subprocess Sidebar, SLA Predictions & Operator Tooling | ⬚ Not Started | — |
 | 6 | Notifications & Alerts | ⬚ Not Started | — |

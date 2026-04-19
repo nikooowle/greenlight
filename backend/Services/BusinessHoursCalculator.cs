@@ -82,7 +82,31 @@ public static class BusinessHoursCalculator
         return cursor;
     }
 
-    private static bool IsBusinessDay(DateTime date)
+    /// <summary>
+    /// Advance a wall-clock timestamp forward by the given number of working days,
+    /// preserving the time-of-day. Weekends are skipped. Holidays not yet modeled.
+    /// Fractional days are treated as a fraction of 24 calendar hours (so 0.5 WD = +12h).
+    /// Example: Tuesday 09:00 + 1.5 WD = Wednesday 21:00.
+    /// </summary>
+    public static DateTime AddWorkingDays(DateTime start, double days)
+    {
+        if (days <= 0) return start;
+        var fullDays = (int)Math.Floor(days);
+        var fractional = days - fullDays;
+        var cursor = start;
+        for (int i = 0; i < fullDays; i++)
+        {
+            do { cursor = cursor.AddDays(1); } while (!IsBusinessDay(cursor));
+        }
+        if (fractional > 0)
+        {
+            cursor = cursor.AddHours(fractional * 24);
+            while (!IsBusinessDay(cursor)) cursor = cursor.AddDays(1);
+        }
+        return cursor;
+    }
+
+    public static bool IsBusinessDay(DateTime date)
         => date.DayOfWeek != DayOfWeek.Saturday && date.DayOfWeek != DayOfWeek.Sunday;
 
     private static DateTime NextBusinessDayStart(DateTime from)

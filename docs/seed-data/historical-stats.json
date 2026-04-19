@@ -1,6 +1,6 @@
 {
   "version": "v6",
-  "generatedAt": "2026-04-14T17:02:10.977Z",
+  "generatedAt": "2026-04-19T11:21:49.160Z",
   "businessHours": {
     "startHour": 5,
     "endHour": 17,
@@ -12,42 +12,41 @@
       5
     ]
   },
-  "note": "Step durations from canonical iteration (2601 baseline). Failure rate across all 4 months. Prior completed-but-superseded iterations count as failed.",
+  "note": "Step durations: MAX per step in reference month (regular=2602, quarterly=2512). Failure/rerun/errors aggregated across 2512+2601+2602 (2603 excluded as incomplete).",
   "stats": [
     {
       "location": "AUDB",
       "subprocess": "Delete Portfolio",
+      "referenceMonth": "2602",
       "stepDurations": {
         "Delete portfolio from": {
-          "avgMinutes": 2
+          "avgMinutes": 4,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.4,
-      "rerunCountAvg": 1.67,
+      "failureRate": 0.333,
+      "rerunCountAvg": 1.5,
       "rerunsPerMonth": {
         "2601": 1,
-        "2602": 2,
-        "2603": 2
+        "2602": 2
       },
       "sampleErrors": []
     },
     {
       "location": "AUDB",
       "subprocess": "Model Parameters",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load Model parameters": {
-          "avgMinutes": 3
-        },
-        "Model parameters comparison": {
-          "avgMinutes": 0.25
+          "avgMinutes": 3,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.5,
-      "rerunCountAvg": 1.33,
+      "rerunCountAvg": 1,
       "rerunsPerMonth": {
         "2601": 1,
-        "2602": 1,
-        "2603": 2
+        "2602": 1
       },
       "sampleErrors": [
         "Exception Info: User 'PA40FE' has no access to database 'AUDB_R2601_1_MCP2512_1_P' (line: 56)  "
@@ -56,20 +55,22 @@
     {
       "location": "AUDB",
       "subprocess": "Spreads",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load Spreads": {
-          "avgMinutes": 7
+          "avgMinutes": 7,
+          "sourceMonth": "2602"
         },
         "Spreads comparison": {
-          "avgMinutes": 1
+          "avgMinutes": 1,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.5,
-      "rerunCountAvg": 1.33,
+      "rerunCountAvg": 1,
       "rerunsPerMonth": {
         "2601": 1,
-        "2602": 1,
-        "2603": 2
+        "2602": 1
       },
       "sampleErrors": [
         "Exception Info: User 'PA40FE' has no access to database 'AUDB_R2601_1_MCP2512_1_P' (line: 61)  "
@@ -78,165 +79,160 @@
     {
       "location": "AUDB",
       "subprocess": "Load Position",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load": {
-          "avgMinutes": 28
+          "avgMinutes": 16,
+          "sourceMonth": "2602"
         },
         "Stratification": {
-          "avgMinutes": 7
+          "avgMinutes": 5,
+          "sourceMonth": "2602"
         },
         "Position report OLAP exports": {
-          "avgMinutes": 10
+          "avgMinutes": 7,
+          "sourceMonth": "2602"
         },
         "copy from": {
-          "avgMinutes": 2
+          "avgMinutes": 1,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.25,
-      "rerunCountAvg": 1.33,
+      "failureRate": 0,
+      "rerunCountAvg": 1,
       "rerunsPerMonth": {
         "2601": 1,
-        "2602": 1,
-        "2603": 2
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "AUDB",
       "subprocess": "Valuation",
+      "referenceMonth": "2602",
       "stepDurations": {
         "portfolio valuation run": {
-          "avgMinutes": 32
-        },
-        "export to ara": {
-          "avgMinutes": 1
-        },
-        "Light Maintenance": {
-          "avgMinutes": 27
+          "avgMinutes": 22,
+          "sourceMonth": "2602"
         },
         "valuation report OLAP exports": {
-          "avgMinutes": 12
+          "avgMinutes": 16,
+          "sourceMonth": "2602"
         },
         "valuation run QRM Reporter exports": {
-          "avgMinutes": 1
+          "avgMinutes": 6,
+          "sourceMonth": "2602"
         },
         "Light Maintenance Portfolio Valuation": {
-          "avgMinutes": 8
+          "avgMinutes": 8,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.25,
-      "rerunCountAvg": 1.33,
+      "failureRate": 0,
+      "rerunCountAvg": 1,
       "rerunsPerMonth": {
         "2601": 1,
-        "2602": 1,
-        "2603": 2
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "AUDB",
       "subprocess": "CSRBB (Val)",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 13
-        },
         "CSRBB Portfolio Valuation": {
-          "avgMinutes": 12
+          "avgMinutes": 12,
+          "sourceMonth": "2602"
         },
         "Light Maintenance CSRBB valuation": {
-          "avgMinutes": 4
+          "avgMinutes": 4,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.4,
-      "rerunCountAvg": 1.67,
+      "failureRate": 0.333,
+      "rerunCountAvg": 1.5,
       "rerunsPerMonth": {
         "2601": 2,
-        "2602": 1,
-        "2603": 2
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "AUDB",
       "subprocess": "CSRBB (Plan)",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 6
-        },
         "import CSRBB strategies": {
-          "avgMinutes": 55
+          "avgMinutes": 55,
+          "sourceMonth": "2602"
         },
         "CSRBB Planning Run": {
-          "avgMinutes": 42
+          "avgMinutes": 42,
+          "sourceMonth": "2602"
         },
         "CSRBB Planning Light Maintenance": {
-          "avgMinutes": 4
+          "avgMinutes": 4,
+          "sourceMonth": "2602"
         },
         "CSRBB Planning export to ara": {
-          "avgMinutes": 1
-        },
-        "export to ara": {
-          "avgMinutes": 25
+          "avgMinutes": 1,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.5,
       "rerunCountAvg": 2,
       "rerunsPerMonth": {
         "2601": 3,
-        "2602": 1,
-        "2603": 2
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "AUDB",
       "subprocess": "EC",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 12
-        },
         "ing-ec valuation": {
-          "avgMinutes": 46
-        },
-        "ing-ec valuation QRM Reporter exports": {
-          "avgMinutes": 0.25
+          "avgMinutes": 46,
+          "sourceMonth": "2602"
         },
         "Light Maintenance ing-ec valuation": {
-          "avgMinutes": 4
+          "avgMinutes": 4,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.7,
-      "rerunCountAvg": 3.33,
+      "failureRate": 0.75,
+      "rerunCountAvg": 4,
       "rerunsPerMonth": {
         "2601": 7,
-        "2602": 1,
-        "2603": 2
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "AUDB",
       "subprocess": "KR",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 9
-        },
         "bpv-kr valuation": {
-          "avgMinutes": 65
-        },
-        "Light Maintenance bpv-kr valuation": {
-          "avgMinutes": 5
+          "avgMinutes": 65,
+          "sourceMonth": "2602"
         },
         "bpv-kr valuation QRM Reporter exports": {
-          "avgMinutes": 0.25
+          "avgMinutes": 7,
+          "sourceMonth": "2602"
+        },
+        "Light Maintenance bpv-kr valuation": {
+          "avgMinutes": 6,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.7,
-      "rerunCountAvg": 3.33,
+      "failureRate": 0.75,
+      "rerunCountAvg": 4,
       "rerunsPerMonth": {
         "2601": 6,
-        "2602": 2,
-        "2603": 2
+        "2602": 2
       },
       "sampleErrors": [
         "Exception Info: Workflow finished with errors. (line: 40)  ",
@@ -246,9 +242,11 @@
     {
       "location": "AUDB",
       "subprocess": "Import Strategies",
+      "referenceMonth": "2602",
       "stepDurations": {
         "import strategies": {
-          "avgMinutes": 5
+          "avgMinutes": 3,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.5,
@@ -264,24 +262,23 @@
     {
       "location": "AUDB",
       "subprocess": "NII / Planning risk",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "export to ara": {
-          "avgMinutes": 0.25
-        },
         "planning run01": {
-          "avgMinutes": 60
+          "avgMinutes": 62,
+          "sourceMonth": "2602"
         },
         "MDL Processing": {
-          "avgMinutes": 12
+          "avgMinutes": 12,
+          "sourceMonth": "2602"
         },
         "planning run02": {
-          "avgMinutes": 136
+          "avgMinutes": 136,
+          "sourceMonth": "2602"
         },
         "planning run QRM Reporter exports": {
-          "avgMinutes": 25
-        },
-        "export to ara NII": {
-          "avgMinutes": 25
+          "avgMinutes": 13,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.6,
@@ -295,15 +292,15 @@
     {
       "location": "AUDB",
       "subprocess": "ITS Planning",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 98
+        "ITS planning run": {
+          "avgMinutes": 10,
+          "sourceMonth": "2602"
         },
         "Light Maintenance ITS planning": {
-          "avgMinutes": 4
-        },
-        "ITS planning run": {
-          "avgMinutes": 25
+          "avgMinutes": 4,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.818,
@@ -317,12 +314,15 @@
     {
       "location": "AUDB",
       "subprocess": "AIC",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load AIC Spreads": {
-          "avgMinutes": 7
+          "avgMinutes": 7,
+          "sourceMonth": "2602"
         },
         "portfolio valuation AIC": {
-          "avgMinutes": 21
+          "avgMinutes": 21,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0,
@@ -335,9 +335,11 @@
     {
       "location": "BEDB",
       "subprocess": "Delete Portfolio",
+      "referenceMonth": "2602",
       "stepDurations": {
         "Delete portfolio from": {
-          "avgMinutes": 1
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0,
@@ -345,140 +347,126 @@
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 1,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "BEDB",
       "subprocess": "Model Parameters",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load Model parameters": {
-          "avgMinutes": 2
-        },
-        "Model parameters comparison": {
-          "avgMinutes": 0.25
+          "avgMinutes": 3,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.333,
-      "rerunCountAvg": 1.5,
+      "failureRate": 0.4,
+      "rerunCountAvg": 1.67,
       "rerunsPerMonth": {
         "2512": 2,
         "2601": 1,
-        "2602": 2,
-        "2603": 1
+        "2602": 2
       },
       "sampleErrors": []
     },
     {
       "location": "BEDB",
       "subprocess": "Spreads",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load Spreads": {
-          "avgMinutes": 11
+          "avgMinutes": 10,
+          "sourceMonth": "2602"
         },
         "Spreads comparison": {
-          "avgMinutes": 1
+          "avgMinutes": 1,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.333,
-      "rerunCountAvg": 1.5,
+      "failureRate": 0.4,
+      "rerunCountAvg": 1.67,
       "rerunsPerMonth": {
         "2512": 2,
         "2601": 2,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "BEDB",
       "subprocess": "Load Position",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load": {
-          "avgMinutes": 67
+          "avgMinutes": 48,
+          "sourceMonth": "2602"
         },
         "Stratification": {
-          "avgMinutes": 7
-        },
-        "export to ara": {
-          "avgMinutes": 0.25
-        },
-        "load NTG": {
-          "avgMinutes": 8
-        },
-        "Position report exports": {
-          "avgMinutes": 8
-        },
-        "copy from": {
-          "avgMinutes": 8
-        },
-        "load Portfolio": {
-          "avgMinutes": 8
+          "avgMinutes": 8,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.2,
-      "rerunCountAvg": 1.25,
+      "failureRate": 0.25,
+      "rerunCountAvg": 1.33,
       "rerunsPerMonth": {
         "2512": 2,
         "2601": 1,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "BEDB",
       "subprocess": "Valuation",
+      "referenceMonth": "2602",
       "stepDurations": {
         "portfolio valuation run": {
-          "avgMinutes": 1
+          "avgMinutes": 525,
+          "sourceMonth": "2602"
         },
         "valuation report OLAP exports": {
-          "avgMinutes": 84
+          "avgMinutes": 84,
+          "sourceMonth": "2602"
         },
         "valuation report QRM Reporter exports": {
-          "avgMinutes": 8
-        },
-        "Light Maintenance valuation": {
-          "avgMinutes": 128
-        },
-        "export to ara Portfolio Valuation": {
-          "avgMinutes": 2
-        },
-        "export to ara": {
-          "avgMinutes": 1
-        },
-        "Light Maintenance": {
-          "avgMinutes": 25
+          "avgMinutes": 8,
+          "sourceMonth": "2602"
         },
         "export to ara valuation": {
-          "avgMinutes": 25
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
+        },
+        "Light Maintenance valuation": {
+          "avgMinutes": 128,
+          "sourceMonth": "2602"
+        },
+        "export to ara Portfolio Valuation": {
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.429,
-      "rerunCountAvg": 1.75,
+      "failureRate": 0.5,
+      "rerunCountAvg": 2,
       "rerunsPerMonth": {
         "2512": 2,
         "2601": 2,
-        "2602": 2,
-        "2603": 1
+        "2602": 2
       },
       "sampleErrors": []
     },
     {
       "location": "BEDB",
       "subprocess": "EC",
+      "referenceMonth": "2602",
       "stepDurations": {
         "ing-ec valuation": {
-          "avgMinutes": 1524
-        },
-        "Full Maintenance": {
-          "avgMinutes": 743
+          "avgMinutes": 989,
+          "sourceMonth": "2602"
         },
         "ing-ec valuation exports": {
-          "avgMinutes": 8
+          "avgMinutes": 214,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.4,
@@ -495,9 +483,11 @@
     {
       "location": "BEDB",
       "subprocess": "Gap + Liquidity IR",
+      "referenceMonth": "2602",
       "stepDurations": {
         "gap planning": {
-          "avgMinutes": 124
+          "avgMinutes": 101,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.25,
@@ -512,39 +502,34 @@
     {
       "location": "BEDB",
       "subprocess": "KR",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 37
-        },
-        "export to ara": {
-          "avgMinutes": 0.25
-        },
         "bpv-kr valuation": {
-          "avgMinutes": 469
+          "avgMinutes": 469,
+          "sourceMonth": "2602"
         },
         "bpv-kr valuation exports": {
-          "avgMinutes": 131
+          "avgMinutes": 131,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.636,
-      "rerunCountAvg": 2.75,
+      "failureRate": 0.7,
+      "rerunCountAvg": 3.33,
       "rerunsPerMonth": {
         "2512": 5,
         "2601": 4,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "BEDB",
       "subprocess": "Import Strategies",
+      "referenceMonth": "2602",
       "stepDurations": {
         "import strategies Risk": {
-          "avgMinutes": 6
-        },
-        "import strategies": {
-          "avgMinutes": 3
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0,
@@ -552,47 +537,38 @@
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 1,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "BEDB",
       "subprocess": "NII / Planning risk",
+      "referenceMonth": "2602",
       "stepDurations": {
         "combined planning run": {
-          "avgMinutes": 1199
-        },
-        "export to ara": {
-          "avgMinutes": 0.25
-        },
-        "Light Maintenance": {
-          "avgMinutes": 59
-        },
-        "planning run QRM Reporter exports": {
-          "avgMinutes": 25
+          "avgMinutes": 1640,
+          "sourceMonth": "2602"
         },
         "planning run QRM reporter exports": {
-          "avgMinutes": 25
+          "avgMinutes": 453,
+          "sourceMonth": "2602"
         },
         "export to ara NII": {
-          "avgMinutes": 25
+          "avgMinutes": 1,
+          "sourceMonth": "2602"
         },
         "Light Maintenance NII": {
-          "avgMinutes": 25
-        },
-        "planning run OLAP exports": {
-          "avgMinutes": 25
+          "avgMinutes": 173,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.733,
-      "rerunCountAvg": 3.75,
+      "failureRate": 0.786,
+      "rerunCountAvg": 4.67,
       "rerunsPerMonth": {
         "2512": 4,
         "2601": 3,
-        "2602": 7,
-        "2603": 1
+        "2602": 7
       },
       "sampleErrors": [
         "running workflow PROD_Common_Planning_Run_BE failed.",
@@ -605,12 +581,15 @@
     {
       "location": "BEDB",
       "subprocess": "AIC",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load AIC Spreads": {
-          "avgMinutes": 11
+          "avgMinutes": 11,
+          "sourceMonth": "2602"
         },
         "AIC portfolio valuation run": {
-          "avgMinutes": 113
+          "avgMinutes": 105,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.4,
@@ -625,24 +604,15 @@
     {
       "location": "BEDB",
       "subprocess": "EVE (Monthly)",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "eve optionality copy run parameters": {
-          "avgMinutes": 0.25
-        },
-        "EVE Optionality SCF BE Valuation run": {
-          "avgMinutes": 156
-        },
         "eve optionality mc Be valuation monthly": {
-          "avgMinutes": 623
-        },
-        "eve optionality copy run parameters monthly": {
-          "avgMinutes": 0.25
+          "avgMinutes": 623,
+          "sourceMonth": "2602"
         },
         "EVE Optionality SCF BE Valuation run monthly": {
-          "avgMinutes": 142
-        },
-        "eve optionality mc Be valuation": {
-          "avgMinutes": 1077
+          "avgMinutes": 142,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.4,
@@ -659,21 +629,27 @@
     {
       "location": "BEDB",
       "subprocess": "EVE Optionality",
+      "referenceMonth": "2512",
       "stepDurations": {
-        "EVE Optionality SCF report": {
-          "avgMinutes": 51
-        },
-        "Light Maintenance": {
-          "avgMinutes": 89
-        },
         "EVE Optionality MC Valuation": {
-          "avgMinutes": 25
+          "avgMinutes": 885,
+          "sourceMonth": "2512"
         },
         "EVE Optionality copy run parameters": {
-          "avgMinutes": 25
+          "avgMinutes": 1,
+          "sourceMonth": "2512"
         },
         "EVE Optionality SCF Valuation": {
-          "avgMinutes": 25
+          "avgMinutes": 34,
+          "sourceMonth": "2512"
+        },
+        "EVE Optionality SCF report": {
+          "avgMinutes": 51,
+          "sourceMonth": "2512"
+        },
+        "Light Maintenance": {
+          "avgMinutes": 89,
+          "sourceMonth": "2512"
         }
       },
       "failureRate": 0.667,
@@ -689,102 +665,97 @@
     {
       "location": "BEGT",
       "subprocess": "Load Position",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load": {
-          "avgMinutes": 44
-        },
-        "Light Maintenance": {
-          "avgMinutes": 15
-        },
-        "export to ara": {
-          "avgMinutes": 1
+          "avgMinutes": 33,
+          "sourceMonth": "2602"
         },
         "Stratification": {
-          "avgMinutes": 6
+          "avgMinutes": 6,
+          "sourceMonth": "2602"
         },
         "Position report OLAP exports": {
-          "avgMinutes": 15
+          "avgMinutes": 5,
+          "sourceMonth": "2602"
         },
         "copy from": {
-          "avgMinutes": 4
+          "avgMinutes": 18,
+          "sourceMonth": "2602"
         },
         "Light Maintenance Load Portfolio": {
-          "avgMinutes": 36
+          "avgMinutes": 36,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.2,
-      "rerunCountAvg": 1.25,
+      "failureRate": 0.25,
+      "rerunCountAvg": 1.33,
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 1,
-        "2602": 2,
-        "2603": 1
+        "2602": 2
       },
       "sampleErrors": []
     },
     {
       "location": "BEGT",
       "subprocess": "Valuation",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "export to ara": {
-          "avgMinutes": 2
-        },
-        "Light Maintenance": {
-          "avgMinutes": 17
-        },
         "portfolio valuation run": {
-          "avgMinutes": 14
+          "avgMinutes": 14,
+          "sourceMonth": "2602"
         },
         "valuation report exports": {
-          "avgMinutes": 38
+          "avgMinutes": 38,
+          "sourceMonth": "2602"
         },
         "AIC portfolio valuation run": {
-          "avgMinutes": 33
-        },
-        "export to ara valuation": {
-          "avgMinutes": 0.25
+          "avgMinutes": 33,
+          "sourceMonth": "2602"
         },
         "light maintenance valuation": {
-          "avgMinutes": 6.5
+          "avgMinutes": 7,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.429,
-      "rerunCountAvg": 1.75,
+      "failureRate": 0.5,
+      "rerunCountAvg": 2,
       "rerunsPerMonth": {
         "2512": 2,
         "2601": 2,
-        "2602": 2,
-        "2603": 1
+        "2602": 2
       },
       "sampleErrors": []
     },
     {
       "location": "BEGT",
       "subprocess": "CSRBB (Val)",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 21
-        },
         "CSRBB Portfolio Valuation": {
-          "avgMinutes": 16
+          "avgMinutes": 16,
+          "sourceMonth": "2602"
         },
         "CSRBB Portfolio Valuation Qtr": {
-          "avgMinutes": 10
+          "avgMinutes": 11,
+          "sourceMonth": "2602"
         },
         "Light Maintenance CSRBB Portfolio Valuation Qtr": {
-          "avgMinutes": 39
+          "avgMinutes": 5,
+          "sourceMonth": "2602"
         },
         "Light Maintenance CSRBB Valuation": {
-          "avgMinutes": 6
+          "avgMinutes": 43,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.75,
-      "rerunCountAvg": 4,
+      "failureRate": 0.8,
+      "rerunCountAvg": 5,
       "rerunsPerMonth": {
         "2512": 7,
         "2601": 5,
-        "2602": 3,
-        "2603": 1
+        "2602": 3
       },
       "sampleErrors": [
         "- Activity Instance ID: 1 | Activity: Analyze portfolio - no approximation: (33/75) | Status: Process failed. | Started: 3/9/2026 11:10:02 AM | Completed: 3/9/2026 11:10:30 AM | HPC Job ID: 168028"
@@ -793,82 +764,81 @@
     {
       "location": "BEGT",
       "subprocess": "CSRBB (Plan)",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "export to ara": {
-          "avgMinutes": 0.25
-        },
         "import CSRBB strategies": {
-          "avgMinutes": 203
+          "avgMinutes": 205,
+          "sourceMonth": "2602"
         },
         "CSRBB Planning Run": {
-          "avgMinutes": 100
+          "avgMinutes": 103,
+          "sourceMonth": "2602"
         },
         "export to ara CSRBB Planning": {
-          "avgMinutes": 2
-        },
-        "CSRBB Planning Run Qtr": {
-          "avgMinutes": 59
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.636,
-      "rerunCountAvg": 2.75,
+      "failureRate": 0.7,
+      "rerunCountAvg": 3.33,
       "rerunsPerMonth": {
         "2512": 4,
         "2601": 4,
-        "2602": 2,
-        "2603": 1
+        "2602": 2
       },
       "sampleErrors": []
     },
     {
       "location": "BEGT",
       "subprocess": "EC",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 86
-        },
         "ing-ec valuation": {
-          "avgMinutes": 15
+          "avgMinutes": 15,
+          "sourceMonth": "2602"
         },
         "ing-ec valuation OLAP exports": {
-          "avgMinutes": 88
+          "avgMinutes": 88,
+          "sourceMonth": "2602"
         },
         "ing-ec valuation QRM Reporter exports": {
-          "avgMinutes": 0.25
+          "avgMinutes": 3,
+          "sourceMonth": "2602"
         },
         "Light Maintenance ing-ec valuation": {
-          "avgMinutes": 4
+          "avgMinutes": 5,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.556,
-      "rerunCountAvg": 2.25,
+      "failureRate": 0.625,
+      "rerunCountAvg": 2.67,
       "rerunsPerMonth": {
         "2512": 3,
         "2601": 3,
-        "2602": 2,
-        "2603": 1
+        "2602": 2
       },
       "sampleErrors": []
     },
     {
       "location": "BEGT",
       "subprocess": "Gap + Liquidity IR",
+      "referenceMonth": "2602",
       "stepDurations": {
         "gap planning": {
-          "avgMinutes": 122
+          "avgMinutes": 7,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.6,
-      "rerunCountAvg": 2.5,
+      "failureRate": 0.625,
+      "rerunCountAvg": 2.67,
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 3,
-        "2602": 4,
-        "2603": 2
+        "2602": 4
       },
       "sampleErrors": [
-        "Exception Info: Workflow finished with errors. (line: 42)  ",
         "Exception Info: Workflow finished with errors. (line: 33)  ",
+        "Exception Info: Workflow finished with errors. (line: 42)  ",
         "- Activity Instance ID: 3 | Activity: Export report or report book: Liquidity - Line Item Calculations | Status: Process skipped. | Started: 3/5/2026 7:12:54 AM | Completed: 3/5/2026 7:15:50 AM | HPC ...",
         "- Activity Instance ID: 3 | Activity: Export report or report book: Liquidity - Line Item Calculations | Status: Process skipped. | Started: 3/14/2026 3:19:32 PM | Completed: 3/14/2026 3:21:22 PM | HP..."
       ]
@@ -876,81 +846,81 @@
     {
       "location": "BEGT",
       "subprocess": "KR",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 18
-        },
         "bpv-kr valuation": {
-          "avgMinutes": 12
+          "avgMinutes": 13,
+          "sourceMonth": "2602"
         },
         "bpv-kr valuation OLAP exports": {
-          "avgMinutes": 57
-        },
-        "bpv-kr valuation QRM Reporter exports": {
-          "avgMinutes": 0.25
+          "avgMinutes": 57,
+          "sourceMonth": "2602"
         },
         "Light Maintenance BPV KR valuation": {
-          "avgMinutes": 6
+          "avgMinutes": 6,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.636,
-      "rerunCountAvg": 2.75,
+      "failureRate": 0.7,
+      "rerunCountAvg": 3.33,
       "rerunsPerMonth": {
         "2512": 4,
         "2601": 4,
-        "2602": 2,
-        "2603": 1
+        "2602": 2
       },
       "sampleErrors": []
     },
     {
       "location": "BEGT",
       "subprocess": "Import Strategies",
+      "referenceMonth": "2602",
       "stepDurations": {
         "import strategies": {
-          "avgMinutes": 22
+          "avgMinutes": 20,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.5,
-      "rerunCountAvg": 2,
+      "failureRate": 0.571,
+      "rerunCountAvg": 2.33,
       "rerunsPerMonth": {
         "2512": 2,
         "2601": 1,
-        "2602": 4,
-        "2603": 1
+        "2602": 4
       },
       "sampleErrors": []
     },
     {
       "location": "BEGT",
       "subprocess": "NII / Planning risk",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "export to ara": {
-          "avgMinutes": 2
-        },
-        "planning run exports": {
-          "avgMinutes": 42
-        },
         "planning run01": {
-          "avgMinutes": 221
+          "avgMinutes": 223,
+          "sourceMonth": "2602"
         },
         "MDL Processing": {
-          "avgMinutes": 72
+          "avgMinutes": 1529,
+          "sourceMonth": "2602"
         },
         "planning run02": {
-          "avgMinutes": 196
+          "avgMinutes": 252,
+          "sourceMonth": "2602"
+        },
+        "planning run exports": {
+          "avgMinutes": 44,
+          "sourceMonth": "2602"
         },
         "export to ara NII": {
-          "avgMinutes": 2
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.765,
-      "rerunCountAvg": 4.25,
+      "failureRate": 0.813,
+      "rerunCountAvg": 5.33,
       "rerunsPerMonth": {
         "2512": 5,
         "2601": 3,
-        "2602": 8,
-        "2603": 1
+        "2602": 8
       },
       "sampleErrors": [
         "Exception Info: Index was outside the bounds of the array. (line: 69)  "
@@ -959,27 +929,30 @@
     {
       "location": "BEGT",
       "subprocess": "ITS Planning",
+      "referenceMonth": "2602",
       "stepDurations": {
         "ITS planning run": {
-          "avgMinutes": 22
+          "avgMinutes": 19,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.2,
-      "rerunCountAvg": 1.25,
+      "failureRate": 0.25,
+      "rerunCountAvg": 1.33,
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 1,
-        "2602": 2,
-        "2603": 1
+        "2602": 2
       },
       "sampleErrors": []
     },
     {
       "location": "BEGT",
       "subprocess": "CSRBB Export",
+      "referenceMonth": "2602",
       "stepDurations": {
         "CSRBB exports": {
-          "avgMinutes": 7
+          "avgMinutes": 7,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0,
@@ -992,9 +965,11 @@
     {
       "location": "DEDB",
       "subprocess": "Delete Portfolio",
+      "referenceMonth": "2602",
       "stepDurations": {
         "Delete portfolio from": {
-          "avgMinutes": 3
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0,
@@ -1002,29 +977,26 @@
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 1,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "DEDB",
       "subprocess": "Model Parameters",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load Model parameters": {
-          "avgMinutes": 3
-        },
-        "Model parameters comparison": {
-          "avgMinutes": 0.25
+          "avgMinutes": 3,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.333,
-      "rerunCountAvg": 1.5,
+      "failureRate": 0.4,
+      "rerunCountAvg": 1.67,
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 3,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": [
         "Exception from QRM: Exception calling ImportSavedWorkflow: Exception calling ImportSavedWorkflow: There is already a workflow with the name 'PROD_MPs_Load_DE'  -- Details available: Y. -- Warnings ava...",
@@ -1034,68 +1006,69 @@
     {
       "location": "DEDB",
       "subprocess": "Spreads",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load Spreads": {
-          "avgMinutes": 19
+          "avgMinutes": 20,
+          "sourceMonth": "2602"
         },
         "Spreads comparison": {
-          "avgMinutes": 2
+          "avgMinutes": 1,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.2,
-      "rerunCountAvg": 1.25,
+      "failureRate": 0.25,
+      "rerunCountAvg": 1.33,
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 2,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "DEDB",
       "subprocess": "Load Position",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load": {
-          "avgMinutes": 55
+          "avgMinutes": 38,
+          "sourceMonth": "2602"
         },
         "Stratification": {
-          "avgMinutes": 9
+          "avgMinutes": 8,
+          "sourceMonth": "2602"
         },
         "copy from": {
-          "avgMinutes": 1
-        },
-        "export to ara": {
-          "avgMinutes": 2
-        },
-        "load NTG": {
-          "avgMinutes": 0.25
+          "avgMinutes": 38,
+          "sourceMonth": "2602"
         },
         "export to ara Load Portfolio": {
-          "avgMinutes": 8
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
         },
-        "Position report OLAP exports": {
-          "avgMinutes": 8
+        "load NTG": {
+          "avgMinutes": 10,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.429,
-      "rerunCountAvg": 1.75,
+      "failureRate": 0.4,
+      "rerunCountAvg": 1.67,
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 1,
-        "2602": 3,
-        "2603": 2
+        "2602": 3
       },
-      "sampleErrors": [
-        "Exception Info: Workflow finished with errors. (line: 13)  "
-      ]
+      "sampleErrors": []
     },
     {
       "location": "DEDB",
       "subprocess": "Load Index History",
+      "referenceMonth": "2602",
       "stepDurations": {
         "index history": {
-          "avgMinutes": 1
+          "avgMinutes": 1,
+          "sourceMonth": "2601"
         }
       },
       "failureRate": 0,
@@ -1103,53 +1076,44 @@
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 1,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "DEDB",
       "subprocess": "Valuation",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "export to ara": {
-          "avgMinutes": 2
-        },
         "portfolio valuation run": {
-          "avgMinutes": 207
-        },
-        "Light Maintenance": {
-          "avgMinutes": 3
-        },
-        "valuation report OLAP exports": {
-          "avgMinutes": 89
+          "avgMinutes": 250,
+          "sourceMonth": "2602"
         },
         "valuation report exports from ARA": {
-          "avgMinutes": 25
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
         },
         "valuation report QRM Reporter exports": {
-          "avgMinutes": 25
+          "avgMinutes": 21,
+          "sourceMonth": "2602"
         },
         "export to ara valuation": {
-          "avgMinutes": 25
+          "avgMinutes": 1,
+          "sourceMonth": "2602"
         },
         "Light Maintenance valuation": {
-          "avgMinutes": 25
-        },
-        "export to ara Portfolio Valuation": {
-          "avgMinutes": 25
+          "avgMinutes": 109,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.765,
-      "rerunCountAvg": 4.25,
+      "failureRate": 0.8,
+      "rerunCountAvg": 5,
       "rerunsPerMonth": {
         "2512": 2,
         "2601": 8,
-        "2602": 5,
-        "2603": 2
+        "2602": 5
       },
       "sampleErrors": [
-        "Exception Info: Workflow finished with errors. (line: 34)  ",
         "- Activity Instance ID: 1 | Activity: Analyze portfolio - no approximation: (65/75) | Status: Process failed. | Started: 3/6/2026 11:02:22 AM | Completed: 3/6/2026 11:18:10 AM | HPC Job ID: 167798,167...",
         "- Activity Instance ID: 1 | Activity: Analyze portfolio - no approximation: (66/75) | Status: Process failed. | Started: 3/16/2026 10:47:02 AM | Completed: 3/16/2026 4:07:42 PM | HPC Job ID: 170461,17..."
       ]
@@ -1157,47 +1121,38 @@
     {
       "location": "DEDB",
       "subprocess": "CSRBB (Val)",
+      "referenceMonth": "2602",
       "stepDurations": {
         "CSRBB Portfolio Valuation": {
-          "avgMinutes": 47
-        },
-        "CSRBB Portfolio Valuation Qtr": {
-          "avgMinutes": 17
-        },
-        "Light Maintenance CSRBB Portfolio Valuation Qtr": {
-          "avgMinutes": 25
+          "avgMinutes": 113,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.333,
-      "rerunCountAvg": 1.5,
+      "failureRate": 0.25,
+      "rerunCountAvg": 1.33,
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 1,
-        "2602": 2,
-        "2603": 2
+        "2602": 2
       },
-      "sampleErrors": [
-        "Exception Info: Failure sending mail. (line: 26)  "
-      ]
+      "sampleErrors": []
     },
     {
       "location": "DEDB",
       "subprocess": "CSRBB (Plan)",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "export to ara": {
-          "avgMinutes": 2
-        },
         "import CSRBB strategies": {
-          "avgMinutes": 49
+          "avgMinutes": 49,
+          "sourceMonth": "2602"
         },
         "CSRBB Planning Run": {
-          "avgMinutes": 110
+          "avgMinutes": 110,
+          "sourceMonth": "2602"
         },
         "export to ara EC": {
-          "avgMinutes": 2
-        },
-        "CSRBB Planning Run Qtr": {
-          "avgMinutes": 25
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.75,
@@ -1215,57 +1170,50 @@
     {
       "location": "DEDB",
       "subprocess": "EC",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "export to ara": {
-          "avgMinutes": 2
-        },
         "ing-ec valuation": {
-          "avgMinutes": 311
-        },
-        "ing-ec valuation QRM reporter exports": {
-          "avgMinutes": 0.25
+          "avgMinutes": 336,
+          "sourceMonth": "2602"
         },
         "ing-ec valuation exports from ARA": {
-          "avgMinutes": 8
-        },
-        "Light Maintenance EC": {
-          "avgMinutes": 128
-        },
-        "export to ara EC": {
-          "avgMinutes": 2
-        },
-        "Light Maintenance": {
-          "avgMinutes": 26
-        },
-        "Full Maintenance": {
-          "avgMinutes": 25
+          "avgMinutes": 8,
+          "sourceMonth": "2602"
         },
         "Light Maintenance CSRBB valuation": {
-          "avgMinutes": 25
+          "avgMinutes": 50,
+          "sourceMonth": "2602"
         },
-        "export to ara ec": {
-          "avgMinutes": 25
+        "Light Maintenance EC": {
+          "avgMinutes": 128,
+          "sourceMonth": "2602"
+        },
+        "export to ara EC": {
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.765,
-      "rerunCountAvg": 4.25,
+      "failureRate": 0.813,
+      "rerunCountAvg": 5.33,
       "rerunsPerMonth": {
         "2512": 4,
         "2601": 10,
-        "2602": 2,
-        "2603": 1
+        "2602": 2
       },
       "sampleErrors": []
     },
     {
       "location": "DEDB",
       "subprocess": "Gap + Liquidity IR",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "export to ara": {
-          "avgMinutes": 2
-        },
         "gap planning": {
-          "avgMinutes": 0.25
+          "avgMinutes": 217,
+          "sourceMonth": "2601"
+        },
+        "export to ara": {
+          "avgMinutes": 2,
+          "sourceMonth": "2601"
         }
       },
       "failureRate": 0.786,
@@ -1283,36 +1231,31 @@
     {
       "location": "DEDB",
       "subprocess": "KR",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "export to ara": {
-          "avgMinutes": 2
-        },
         "bpv-kr valuation": {
-          "avgMinutes": 292
+          "avgMinutes": 292,
+          "sourceMonth": "2602"
         },
         "bpv-kr valuation QRM reporter exports": {
-          "avgMinutes": 0.25
-        },
-        "bpv-kr valuation exports from ARA": {
-          "avgMinutes": 0.25
+          "avgMinutes": 40,
+          "sourceMonth": "2602"
         },
         "Light Maintenance KR valuation": {
-          "avgMinutes": 85
+          "avgMinutes": 85,
+          "sourceMonth": "2602"
         },
         "export to ara KR": {
-          "avgMinutes": 0.25
-        },
-        "Light Maintenance": {
-          "avgMinutes": 8
+          "avgMinutes": 1,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.733,
-      "rerunCountAvg": 3.75,
+      "failureRate": 0.786,
+      "rerunCountAvg": 4.67,
       "rerunsPerMonth": {
         "2512": 3,
         "2601": 9,
-        "2602": 2,
-        "2603": 1
+        "2602": 2
       },
       "sampleErrors": [
         "Exception Info: Workflow finished with errors. (line: 43)  "
@@ -1321,18 +1264,19 @@
     {
       "location": "DEDB",
       "subprocess": "Import Strategies",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "import strategies": {
-          "avgMinutes": 8
-        },
         "import strategies Risk": {
-          "avgMinutes": 2
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
         },
         "import strategies Finance": {
-          "avgMinutes": 1
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
         },
         "import strategies CBS": {
-          "avgMinutes": 2
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.25,
@@ -1347,27 +1291,23 @@
     {
       "location": "DEDB",
       "subprocess": "NII / Planning risk",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "export to ara": {
-          "avgMinutes": 2
-        },
         "planning run": {
-          "avgMinutes": 1378
-        },
-        "planning run QRM reporter exports": {
-          "avgMinutes": 0.25
-        },
-        "planning run exports from ARA": {
-          "avgMinutes": 0.25
+          "avgMinutes": 1378,
+          "sourceMonth": "2602"
         },
         "planning run OLAP exports": {
-          "avgMinutes": 296
+          "avgMinutes": 296,
+          "sourceMonth": "2602"
         },
         "export to ara NII": {
-          "avgMinutes": 1
+          "avgMinutes": 1,
+          "sourceMonth": "2602"
         },
         "Light Maintenance NII": {
-          "avgMinutes": 100
+          "avgMinutes": 100,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.8,
@@ -1384,15 +1324,15 @@
     {
       "location": "DEDB",
       "subprocess": "ITS Planning",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 229
-        },
         "ITS planning run": {
-          "avgMinutes": 25
+          "avgMinutes": 25,
+          "sourceMonth": "2602"
         },
         "Light Maintenance its": {
-          "avgMinutes": 27
+          "avgMinutes": 27,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.667,
@@ -1407,12 +1347,15 @@
     {
       "location": "DEDB",
       "subprocess": "AIC",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load AIC Spreads": {
-          "avgMinutes": 27
+          "avgMinutes": 28,
+          "sourceMonth": "2602"
         },
         "AIC portfolio valuation run": {
-          "avgMinutes": 77
+          "avgMinutes": 94,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0,
@@ -1427,9 +1370,11 @@
     {
       "location": "DEDB",
       "subprocess": "CSRBB Export",
+      "referenceMonth": "2602",
       "stepDurations": {
         "CSRBB exports": {
-          "avgMinutes": 3
+          "avgMinutes": 3,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.5,
@@ -1442,12 +1387,15 @@
     {
       "location": "DEDB",
       "subprocess": "SOT",
+      "referenceMonth": "2602",
       "stepDurations": {
         "SOT": {
-          "avgMinutes": 145
+          "avgMinutes": 145,
+          "sourceMonth": "2601"
         },
         "SOT QRM reporter exports": {
-          "avgMinutes": 13
+          "avgMinutes": 13,
+          "sourceMonth": "2601"
         }
       },
       "failureRate": 0,
@@ -1461,43 +1409,48 @@
     {
       "location": "DEDB",
       "subprocess": "PDCE",
+      "referenceMonth": "2512",
       "stepDurations": {
-        "of script": {
-          "avgMinutes": 355
-        },
         "pdce planning": {
-          "avgMinutes": 25
+          "avgMinutes": 1,
+          "sourceMonth": "2512"
+        },
+        "of script": {
+          "avgMinutes": 465,
+          "sourceMonth": "2512"
         },
         "Quarterly valuation": {
-          "avgMinutes": 25
+          "avgMinutes": 646,
+          "sourceMonth": "2512"
         }
       },
-      "failureRate": 0.6,
-      "rerunCountAvg": 2.5,
+      "failureRate": 0.667,
+      "rerunCountAvg": 3,
       "rerunsPerMonth": {
-        "2512": 3,
-        "2603": 2
+        "2512": 3
       },
       "sampleErrors": []
     },
     {
       "location": "DEDB",
       "subprocess": "EVE Optionality",
+      "referenceMonth": "2512",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 46
-        },
         "EVE Optionality MC Valuation": {
-          "avgMinutes": 25
-        },
-        "EVE Optionality copy run parameters": {
-          "avgMinutes": 25
+          "avgMinutes": 491,
+          "sourceMonth": "2512"
         },
         "EVE Optionality SCF Valuation": {
-          "avgMinutes": 25
+          "avgMinutes": 34,
+          "sourceMonth": "2512"
         },
         "EVE Optionality SCF report": {
-          "avgMinutes": 25
+          "avgMinutes": 52,
+          "sourceMonth": "2512"
+        },
+        "Light Maintenance": {
+          "avgMinutes": 46,
+          "sourceMonth": "2512"
         }
       },
       "failureRate": 0.833,
@@ -1510,30 +1463,31 @@
     {
       "location": "DEGT",
       "subprocess": "Load Position",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load": {
-          "avgMinutes": 47
+          "avgMinutes": 40,
+          "sourceMonth": "2602"
         },
         "Stratification": {
-          "avgMinutes": 7
-        },
-        "Light Maintenance": {
-          "avgMinutes": 15
+          "avgMinutes": 7,
+          "sourceMonth": "2602"
         },
         "Position report OLAP exports": {
-          "avgMinutes": 6
-        },
-        "export to ara": {
-          "avgMinutes": 2
+          "avgMinutes": 5,
+          "sourceMonth": "2602"
         },
         "copy from": {
-          "avgMinutes": 6
-        },
-        "Light Maintenance Load Portfolio": {
-          "avgMinutes": 5
+          "avgMinutes": 19,
+          "sourceMonth": "2602"
         },
         "Light Maintenance valuation": {
-          "avgMinutes": 8
+          "avgMinutes": 6,
+          "sourceMonth": "2602"
+        },
+        "Light Maintenance Load Portfolio": {
+          "avgMinutes": 53,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.5,
@@ -1541,122 +1495,120 @@
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 1,
-        "2602": 4,
-        "2603": 2
+        "2602": 4
       },
       "sampleErrors": []
     },
     {
       "location": "DEGT",
       "subprocess": "Valuation",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "export to ara": {
-          "avgMinutes": 0.25
+        "portfolio valuation run": {
+          "avgMinutes": 28,
+          "sourceMonth": "2602"
         },
         "Light Maintenance": {
-          "avgMinutes": 15
-        },
-        "portfolio valuation run": {
-          "avgMinutes": 28
+          "avgMinutes": 6,
+          "sourceMonth": "2602"
         },
         "export to ara valuation": {
-          "avgMinutes": 2
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
         },
         "Light Maintenance valuation": {
-          "avgMinutes": 5
+          "avgMinutes": 6,
+          "sourceMonth": "2602"
         },
         "valuation report exports": {
-          "avgMinutes": 81
+          "avgMinutes": 56,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.556,
-      "rerunCountAvg": 2.25,
+      "failureRate": 0.571,
+      "rerunCountAvg": 2.33,
       "rerunsPerMonth": {
         "2512": 2,
         "2601": 2,
-        "2602": 3,
-        "2603": 2
+        "2602": 3
       },
       "sampleErrors": []
     },
     {
       "location": "DEGT",
       "subprocess": "Gap + Liquidity IR",
+      "referenceMonth": "2602",
       "stepDurations": {
         "gap planning": {
-          "avgMinutes": 63
+          "avgMinutes": 6,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.765,
-      "rerunCountAvg": 4.25,
+      "failureRate": 0.786,
+      "rerunCountAvg": 4.67,
       "rerunsPerMonth": {
         "2512": 3,
         "2601": 3,
-        "2602": 8,
-        "2603": 3
+        "2602": 8
       },
       "sampleErrors": [
         "- Activity Instance ID: 3 | Activity: Export report or report book: Liquidity - Line Item Calculations | Status: Process skipped. | Started: 3/5/2026 6:40:27 AM | Completed: 3/5/2026 6:43:16 AM | HPC ...",
-        "Exception Info: Workflow finished with errors. (line: 44)  ",
         "Exception Info: Workflow finished with errors. (line: 42)  ",
         "running workflow PROD_LAD_SF failed: Invalid folder path: '\\\\sx9000077420\\ALMFD\\Asim\\CSRBB Internal Deals'. | Error Details: System.Exception: Invalid folder path: '\\\\sx9000077420\\ALMFD\\Asim\\CSRBB Int...",
-        "Exception Info: Workflow finished with errors. (line: 35)  "
+        "Exception Info: Workflow finished with errors. (line: 44)  "
       ]
     },
     {
       "location": "DEGT",
       "subprocess": "Import Strategies",
+      "referenceMonth": "2602",
       "stepDurations": {
         "import strategies": {
-          "avgMinutes": 21
+          "avgMinutes": 20,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.5,
-      "rerunCountAvg": 2,
+      "failureRate": 0.571,
+      "rerunCountAvg": 2.33,
       "rerunsPerMonth": {
         "2512": 2,
         "2601": 2,
-        "2602": 3,
-        "2603": 1
+        "2602": 3
       },
       "sampleErrors": []
     },
     {
       "location": "DEGT",
       "subprocess": "NII / Planning risk",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "export to ara": {
-          "avgMinutes": 1
-        },
-        "planning run exports": {
-          "avgMinutes": 28
-        },
-        "planning run02": {
-          "avgMinutes": 62
-        },
-        "export to ara NII": {
-          "avgMinutes": 2
-        },
-        "planning run": {
-          "avgMinutes": 25
-        },
         "planning run01": {
-          "avgMinutes": 25
+          "avgMinutes": 215,
+          "sourceMonth": "2602"
         },
         "MDL Processing": {
-          "avgMinutes": 25
+          "avgMinutes": 244,
+          "sourceMonth": "2602"
         },
-        "                ": {
-          "avgMinutes": 25
+        "planning run02": {
+          "avgMinutes": 154,
+          "sourceMonth": "2602"
+        },
+        "planning run exports": {
+          "avgMinutes": 40,
+          "sourceMonth": "2602"
+        },
+        "export to ara NII": {
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.818,
-      "rerunCountAvg": 5.5,
+      "failureRate": 0.85,
+      "rerunCountAvg": 6.67,
       "rerunsPerMonth": {
         "2512": 8,
         "2601": 3,
-        "2602": 9,
-        "2603": 2
+        "2602": 9
       },
       "sampleErrors": [
         "Exception Info: Index was outside the bounds of the array. (line: 72)  ",
@@ -1667,9 +1619,11 @@
     {
       "location": "ESDB",
       "subprocess": "Delete Portfolio",
+      "referenceMonth": "2602",
       "stepDurations": {
         "Delete portfolio from": {
-          "avgMinutes": 3
+          "avgMinutes": 1,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0,
@@ -1677,74 +1631,80 @@
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 1,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "ESDB",
       "subprocess": "Model Parameters",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load Model parameters": {
-          "avgMinutes": 3
-        },
-        "Model parameters comparison": {
-          "avgMinutes": 0.25
+          "avgMinutes": 3,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.556,
-      "rerunCountAvg": 2.25,
+      "failureRate": 0.5,
+      "rerunCountAvg": 2,
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 1,
-        "2602": 4,
-        "2603": 3
+        "2602": 4
       },
       "sampleErrors": []
     },
     {
       "location": "ESDB",
       "subprocess": "Spreads",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load Spreads": {
-          "avgMinutes": 22
+          "avgMinutes": 19,
+          "sourceMonth": "2602"
         },
         "Spreads comparison": {
-          "avgMinutes": 2
+          "avgMinutes": 1,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.2,
-      "rerunCountAvg": 1.25,
+      "failureRate": 0.25,
+      "rerunCountAvg": 1.33,
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 1,
-        "2602": 2,
-        "2603": 1
+        "2602": 2
       },
       "sampleErrors": []
     },
     {
       "location": "ESDB",
       "subprocess": "Load Position",
+      "referenceMonth": "2602",
       "stepDurations": {
         "Generate NTG": {
-          "avgMinutes": 14
+          "avgMinutes": 15,
+          "sourceMonth": "2602"
         },
         "load": {
-          "avgMinutes": 62
+          "avgMinutes": 36,
+          "sourceMonth": "2602"
         },
         "Stratification": {
-          "avgMinutes": 7
+          "avgMinutes": 7,
+          "sourceMonth": "2602"
         },
         "Position report OLAP exports": {
-          "avgMinutes": 12
+          "avgMinutes": 15,
+          "sourceMonth": "2602"
         },
         "copy from": {
-          "avgMinutes": 2
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
         },
         "load NTG": {
-          "avgMinutes": 8
+          "avgMinutes": 20,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.727,
@@ -1761,27 +1721,31 @@
     {
       "location": "ESDB",
       "subprocess": "Valuation",
+      "referenceMonth": "2602",
       "stepDurations": {
         "portfolio valuation run": {
-          "avgMinutes": 241
-        },
-        "export to ara": {
-          "avgMinutes": 0.25
+          "avgMinutes": 145,
+          "sourceMonth": "2602"
         },
         "Light Maintenance": {
-          "avgMinutes": 39
+          "avgMinutes": 8,
+          "sourceMonth": "2602"
         },
         "valuation report OLAP exports": {
-          "avgMinutes": 49
+          "avgMinutes": 83,
+          "sourceMonth": "2602"
         },
         "valuation report QRM reporter exports": {
-          "avgMinutes": 3
+          "avgMinutes": 213,
+          "sourceMonth": "2602"
         },
         "export to ara valuation": {
-          "avgMinutes": 25
+          "avgMinutes": 4,
+          "sourceMonth": "2602"
         },
         "Light Maintenance valuation": {
-          "avgMinutes": 25
+          "avgMinutes": 11,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.667,
@@ -1798,18 +1762,15 @@
     {
       "location": "ESDB",
       "subprocess": "CSRBB (Val)",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 22
-        },
         "CSRBB Portfolio Valuation": {
-          "avgMinutes": 45
+          "avgMinutes": 45,
+          "sourceMonth": "2602"
         },
         "Light Maintenance CSRBB valuation": {
-          "avgMinutes": 6
-        },
-        "CSRBB Portfolio Valuation Qtr": {
-          "avgMinutes": 25
+          "avgMinutes": 6,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.7,
@@ -1824,21 +1785,19 @@
     {
       "location": "ESDB",
       "subprocess": "CSRBB (Plan)",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "export to ara": {
-          "avgMinutes": 0.25
-        },
         "import CSRBB strategies": {
-          "avgMinutes": 59
+          "avgMinutes": 59,
+          "sourceMonth": "2602"
         },
         "CSRBB Planning Run": {
-          "avgMinutes": 87
+          "avgMinutes": 87,
+          "sourceMonth": "2602"
         },
         "export to ara CSRBB Planning": {
-          "avgMinutes": 2
-        },
-        "CSRBB Planning Run Qtr": {
-          "avgMinutes": 25
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.4,
@@ -1853,24 +1812,23 @@
     {
       "location": "ESDB",
       "subprocess": "EC",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 35
-        },
         "ing-ec valuation": {
-          "avgMinutes": 191
-        },
-        "ing-ec valuation exports from ARA": {
-          "avgMinutes": 0.25
+          "avgMinutes": 241,
+          "sourceMonth": "2602"
         },
         "ing-ec valuation QRM reporter exports": {
-          "avgMinutes": 1
-        },
-        "Light Maintenance ec": {
-          "avgMinutes": 12
+          "avgMinutes": 18,
+          "sourceMonth": "2602"
         },
         "Light Maintenance EC": {
-          "avgMinutes": 25
+          "avgMinutes": 8,
+          "sourceMonth": "2602"
+        },
+        "Light Maintenance ec": {
+          "avgMinutes": 12,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.667,
@@ -1887,9 +1845,11 @@
     {
       "location": "ESDB",
       "subprocess": "Gap + Liquidity IR",
+      "referenceMonth": "2602",
       "stepDurations": {
         "gap planning": {
-          "avgMinutes": 278
+          "avgMinutes": 278,
+          "sourceMonth": "2601"
         }
       },
       "failureRate": 0.5,
@@ -1907,21 +1867,19 @@
     {
       "location": "ESDB",
       "subprocess": "KR",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 20
-        },
         "bpv-kr valuation": {
-          "avgMinutes": 125
-        },
-        "bpv-kr valuation QRM Reporter exports": {
-          "avgMinutes": 0.25
-        },
-        "Light Maintenance kr": {
-          "avgMinutes": 5
+          "avgMinutes": 149,
+          "sourceMonth": "2602"
         },
         "Light Maintenance KR": {
-          "avgMinutes": 25
+          "avgMinutes": 5,
+          "sourceMonth": "2602"
+        },
+        "Light Maintenance kr": {
+          "avgMinutes": 5,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.7,
@@ -1936,9 +1894,11 @@
     {
       "location": "ESDB",
       "subprocess": "Import Strategies",
+      "referenceMonth": "2602",
       "stepDurations": {
         "import strategies": {
-          "avgMinutes": 9
+          "avgMinutes": 8,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.571,
@@ -1955,27 +1915,31 @@
     {
       "location": "ESDB",
       "subprocess": "NII / Planning risk",
+      "referenceMonth": "2602",
       "stepDurations": {
         "planning run01": {
-          "avgMinutes": 306
+          "avgMinutes": 294,
+          "sourceMonth": "2602"
         },
         "MDL Processing": {
-          "avgMinutes": 89
+          "avgMinutes": 79,
+          "sourceMonth": "2602"
         },
         "planning run02": {
-          "avgMinutes": 416
-        },
-        "Full Maintenance": {
-          "avgMinutes": 609
+          "avgMinutes": 558,
+          "sourceMonth": "2602"
         },
         "planning run QRM reporter exports": {
-          "avgMinutes": 89
+          "avgMinutes": 53,
+          "sourceMonth": "2602"
         },
         "planning run OLAP exports": {
-          "avgMinutes": 301
+          "avgMinutes": 301,
+          "sourceMonth": "2602"
         },
         "Full Maintenance planning": {
-          "avgMinutes": 150
+          "avgMinutes": 150,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.5,
@@ -1992,15 +1956,15 @@
     {
       "location": "ESDB",
       "subprocess": "ITS Planning",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 21
-        },
         "ITS planning run": {
-          "avgMinutes": 35
+          "avgMinutes": 35,
+          "sourceMonth": "2602"
         },
         "Light Maintenance ITS planning": {
-          "avgMinutes": 70
+          "avgMinutes": 70,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.813,
@@ -2015,12 +1979,15 @@
     {
       "location": "ESDB",
       "subprocess": "AIC",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load AIC Spreads": {
-          "avgMinutes": 21
+          "avgMinutes": 20,
+          "sourceMonth": "2602"
         },
         "AIC portfolio valuation run": {
-          "avgMinutes": 86
+          "avgMinutes": 88,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0,
@@ -2035,9 +2002,11 @@
     {
       "location": "ESDB",
       "subprocess": "CSRBB Export",
+      "referenceMonth": "2602",
       "stepDurations": {
         "CSRBB exports": {
-          "avgMinutes": 6
+          "avgMinutes": 6,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0,
@@ -2050,12 +2019,15 @@
     {
       "location": "ESDB",
       "subprocess": "PDCE",
+      "referenceMonth": "2512",
       "stepDurations": {
         "PDCE planning": {
-          "avgMinutes": 367
+          "avgMinutes": 367,
+          "sourceMonth": "2512"
         },
         "PDCE report OLAP exports": {
-          "avgMinutes": 25
+          "avgMinutes": 35,
+          "sourceMonth": "2512"
         }
       },
       "failureRate": 0.8,
@@ -2070,21 +2042,27 @@
     {
       "location": "ESDB",
       "subprocess": "EVE Optionality",
+      "referenceMonth": "2512",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 32
-        },
         "EVE Optionality MC Valuation": {
-          "avgMinutes": 25
+          "avgMinutes": 372,
+          "sourceMonth": "2512"
         },
         "EVE Optionality copy run parameters": {
-          "avgMinutes": 25
+          "avgMinutes": 1,
+          "sourceMonth": "2512"
         },
         "EVE Optionality SCF Valuation": {
-          "avgMinutes": 25
+          "avgMinutes": 31,
+          "sourceMonth": "2512"
         },
         "EVE Optionality SCF report": {
-          "avgMinutes": 25
+          "avgMinutes": 49,
+          "sourceMonth": "2512"
+        },
+        "Light Maintenance": {
+          "avgMinutes": 32,
+          "sourceMonth": "2512"
         }
       },
       "failureRate": 0.875,
@@ -2097,9 +2075,11 @@
     {
       "location": "FRDB",
       "subprocess": "Delete Portfolio",
+      "referenceMonth": "2602",
       "stepDurations": {
         "Delete portfolio from": {
-          "avgMinutes": 3
+          "avgMinutes": 3,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0,
@@ -2107,20 +2087,18 @@
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 1,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "FRDB",
       "subprocess": "Model Parameters",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load Model parameters": {
-          "avgMinutes": 3
-        },
-        "Model parameters comparison": {
-          "avgMinutes": 0.25
+          "avgMinutes": 4,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0,
@@ -2128,20 +2106,22 @@
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 1,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "FRDB",
       "subprocess": "Spreads",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load Spreads": {
-          "avgMinutes": 11
+          "avgMinutes": 12,
+          "sourceMonth": "2602"
         },
         "Spreads comparison": {
-          "avgMinutes": 3
+          "avgMinutes": 1,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0,
@@ -2149,26 +2129,30 @@
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 1,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "FRDB",
       "subprocess": "Load Position",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load": {
-          "avgMinutes": 39
+          "avgMinutes": 18,
+          "sourceMonth": "2602"
         },
         "Stratification": {
-          "avgMinutes": 5
+          "avgMinutes": 5,
+          "sourceMonth": "2602"
         },
         "Position report exports": {
-          "avgMinutes": 11
+          "avgMinutes": 7,
+          "sourceMonth": "2602"
         },
         "copy from": {
-          "avgMinutes": 2
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0,
@@ -2176,71 +2160,57 @@
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 1,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "FRDB",
       "subprocess": "Valuation",
+      "referenceMonth": "2602",
       "stepDurations": {
         "portfolio valuation run": {
-          "avgMinutes": 93
-        },
-        "export to ara": {
-          "avgMinutes": 1
-        },
-        "Light Maintenance": {
-          "avgMinutes": 31
+          "avgMinutes": 51,
+          "sourceMonth": "2602"
         },
         "valuation report QRM Reporter exports": {
-          "avgMinutes": 9
-        },
-        "export to ara Portfolio Valuation": {
-          "avgMinutes": 0.25
+          "avgMinutes": 7,
+          "sourceMonth": "2602"
         },
         "Light Maintenance Portfolio Valuation": {
-          "avgMinutes": 8
-        },
-        "valuation report exports": {
-          "avgMinutes": 25
+          "avgMinutes": 8,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.333,
-      "rerunCountAvg": 1.5,
+      "failureRate": 0.4,
+      "rerunCountAvg": 1.67,
       "rerunsPerMonth": {
         "2512": 3,
         "2601": 1,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "FRDB",
       "subprocess": "CSRBB (Val)",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 18
-        },
         "CSRBB Portfolio Valuation": {
-          "avgMinutes": 19
+          "avgMinutes": 19,
+          "sourceMonth": "2602"
         },
         "Light Maintenance CSRBB Valuation": {
-          "avgMinutes": 6
-        },
-        "CSRBB Portfolio Valuation Qtr": {
-          "avgMinutes": 11
+          "avgMinutes": 6,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.429,
-      "rerunCountAvg": 1.75,
+      "failureRate": 0.5,
+      "rerunCountAvg": 2,
       "rerunsPerMonth": {
         "2512": 3,
         "2601": 2,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": [
         "Exception Info: Workflow finished with errors. (line: 30)  "
@@ -2249,114 +2219,109 @@
     {
       "location": "FRDB",
       "subprocess": "CSRBB (Plan)",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "export to ara": {
-          "avgMinutes": 0.25
-        },
         "import CSRBB strategies": {
-          "avgMinutes": 60
+          "avgMinutes": 60,
+          "sourceMonth": "2602"
         },
         "CSRBB Planning Run": {
-          "avgMinutes": 64
+          "avgMinutes": 64,
+          "sourceMonth": "2602"
         },
         "export to ara CSRBB Planning": {
-          "avgMinutes": 1
-        },
-        "CSRBB Planning Run Qtr": {
-          "avgMinutes": 36
+          "avgMinutes": 1,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.333,
-      "rerunCountAvg": 1.5,
+      "failureRate": 0.4,
+      "rerunCountAvg": 1.67,
       "rerunsPerMonth": {
         "2512": 2,
         "2601": 2,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "FRDB",
       "subprocess": "EC",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 15
-        },
         "ing-ec valuation": {
-          "avgMinutes": 70
+          "avgMinutes": 70,
+          "sourceMonth": "2602"
         },
         "ing-ec valuation QRM reporter exports": {
-          "avgMinutes": 4
+          "avgMinutes": 4,
+          "sourceMonth": "2602"
         },
         "Light Maintenance ing-ec valuation": {
-          "avgMinutes": 5
+          "avgMinutes": 5,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.556,
-      "rerunCountAvg": 2.25,
+      "failureRate": 0.625,
+      "rerunCountAvg": 2.67,
       "rerunsPerMonth": {
         "2512": 4,
         "2601": 3,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "FRDB",
       "subprocess": "Gap + Liquidity IR",
+      "referenceMonth": "2602",
       "stepDurations": {
         "gap planning": {
-          "avgMinutes": 95
+          "avgMinutes": 7.83,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.333,
-      "rerunCountAvg": 1.5,
+      "failureRate": 0.25,
+      "rerunCountAvg": 1.33,
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 1,
-        "2602": 2,
-        "2603": 2
+        "2602": 2
       },
       "sampleErrors": [
-        "- Activity Instance ID: 3 | Activity: Export report or report book: Liquidity - Line Item Calculations | Status: Process skipped. | Started: 3/11/2026 7:26:37 AM | Completed: 3/11/2026 7:29:40 AM | HP...",
-        "Exception Info: Workflow finished with errors. (line: 40)  "
+        "- Activity Instance ID: 3 | Activity: Export report or report book: Liquidity - Line Item Calculations | Status: Process skipped. | Started: 3/11/2026 7:26:37 AM | Completed: 3/11/2026 7:29:40 AM | HP..."
       ]
     },
     {
       "location": "FRDB",
       "subprocess": "KR",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 12
-        },
         "bpv-kr valuation": {
-          "avgMinutes": 44
-        },
-        "bpv-kr valuation QRM reporter exports": {
-          "avgMinutes": 0.25
+          "avgMinutes": 44,
+          "sourceMonth": "2602"
         },
         "Light Maintenance bpv-kr valuation": {
-          "avgMinutes": 4
+          "avgMinutes": 4,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.636,
-      "rerunCountAvg": 2.75,
+      "failureRate": 0.7,
+      "rerunCountAvg": 3.33,
       "rerunsPerMonth": {
         "2512": 5,
         "2601": 4,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "FRDB",
       "subprocess": "Import Strategies",
+      "referenceMonth": "2602",
       "stepDurations": {
         "import strategies": {
-          "avgMinutes": 8
+          "avgMinutes": 7,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0,
@@ -2364,90 +2329,91 @@
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 1,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "FRDB",
       "subprocess": "NII / Planning risk",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "export to ara": {
-          "avgMinutes": 2
-        },
-        "planning run OLAP exports": {
-          "avgMinutes": 32
-        },
         "planning run01": {
-          "avgMinutes": 25
+          "avgMinutes": 245,
+          "sourceMonth": "2602"
         },
         "MDL Processing": {
-          "avgMinutes": 25
+          "avgMinutes": 19,
+          "sourceMonth": "2602"
         },
         "planning run02": {
-          "avgMinutes": 25
+          "avgMinutes": 57,
+          "sourceMonth": "2602"
         },
         "planning run QRM reporter exports": {
-          "avgMinutes": 25
+          "avgMinutes": 10,
+          "sourceMonth": "2602"
         },
-        "planning run01 mail only": {
-          "avgMinutes": 25
+        "planning run OLAP exports": {
+          "avgMinutes": 32,
+          "sourceMonth": "2602"
         },
         "export to ara NII": {
-          "avgMinutes": 25
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
         },
         "Light Maintenance NII": {
-          "avgMinutes": 25
+          "avgMinutes": 9,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.7,
-      "rerunCountAvg": 2.5,
+      "failureRate": 0.667,
+      "rerunCountAvg": 3,
       "rerunsPerMonth": {
         "2512": 4,
         "2601": 3,
-        "2602": 2,
-        "2603": 1
+        "2602": 2
       },
       "sampleErrors": [
         "Exception Info: Workflow finished with errors. (line: 37)  ",
-        "- Activity Instance ID: 1 | Activity: Export report or report book: ING_NII_REPORT | Status: Process failed. | Started: 3/10/2026 4:35:24 PM | Completed: 3/10/2026 5:47:14 PM | HPC Job ID: 168531",
-        "Exception Info: Workflow finished with errors. (line: 62)  "
+        "- Activity Instance ID: 1 | Activity: Export report or report book: ING_NII_REPORT | Status: Process failed. | Started: 3/10/2026 4:35:24 PM | Completed: 3/10/2026 5:47:14 PM | HPC Job ID: 168531"
       ]
     },
     {
       "location": "FRDB",
       "subprocess": "ITS Planning",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 21
-        },
         "ITS planning run": {
-          "avgMinutes": 19
+          "avgMinutes": 19,
+          "sourceMonth": "2602"
         },
         "Light Maintenance ITS planning": {
-          "avgMinutes": 5
+          "avgMinutes": 5,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.6,
-      "rerunCountAvg": 2.5,
+      "failureRate": 0.667,
+      "rerunCountAvg": 3,
       "rerunsPerMonth": {
         "2512": 3,
         "2601": 5,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "FRDB",
       "subprocess": "AIC",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load AIC Spreads": {
-          "avgMinutes": 12
+          "avgMinutes": 11,
+          "sourceMonth": "2602"
         },
         "AIC portfolio valuation run": {
-          "avgMinutes": 14
+          "avgMinutes": 15,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0,
@@ -2455,27 +2421,28 @@
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 1,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "FRDB",
       "subprocess": "PDCE",
+      "referenceMonth": "2512",
       "stepDurations": {
         "PDCE planning": {
-          "avgMinutes": 14
+          "avgMinutes": 17,
+          "sourceMonth": "2512"
         },
         "PDCE report QRM reporter exports": {
-          "avgMinutes": 3
+          "avgMinutes": 4,
+          "sourceMonth": "2512"
         }
       },
-      "failureRate": 0.5,
-      "rerunCountAvg": 2,
+      "failureRate": 0.667,
+      "rerunCountAvg": 3,
       "rerunsPerMonth": {
-        "2512": 3,
-        "2603": 1
+        "2512": 3
       },
       "sampleErrors": [
         "Exception Info: Workflow finished with errors. (line: 33)  "
@@ -2484,21 +2451,23 @@
     {
       "location": "FRDB",
       "subprocess": "EVE Optionality",
+      "referenceMonth": "2512",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 22
-        },
         "EVE Optionality MC Valuation": {
-          "avgMinutes": 25
-        },
-        "EVE Optionality copy run parameters": {
-          "avgMinutes": 25
+          "avgMinutes": 60,
+          "sourceMonth": "2512"
         },
         "EVE Optionality SCF Valuation": {
-          "avgMinutes": 25
+          "avgMinutes": 10,
+          "sourceMonth": "2512"
         },
         "EVE Optionality SCF report": {
-          "avgMinutes": 25
+          "avgMinutes": 7,
+          "sourceMonth": "2512"
+        },
+        "Light Maintenance": {
+          "avgMinutes": 22,
+          "sourceMonth": "2512"
         }
       },
       "failureRate": 0.857,
@@ -2511,39 +2480,42 @@
     {
       "location": "ITDB",
       "subprocess": "Delete Portfolio",
+      "referenceMonth": "2602",
       "stepDurations": {
         "Delete portfolio from": {
-          "avgMinutes": 3
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.333,
-      "rerunCountAvg": 1.5,
+      "failureRate": 0.4,
+      "rerunCountAvg": 1.67,
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 1,
-        "2602": 3,
-        "2603": 1
+        "2602": 3
       },
       "sampleErrors": []
     },
     {
       "location": "ITDB",
       "subprocess": "Model Parameters",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load Model parameters": {
-          "avgMinutes": 3
+          "avgMinutes": 3,
+          "sourceMonth": "2602"
         },
         "Model parameters comparison": {
-          "avgMinutes": 0.25
+          "avgMinutes": 1,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.636,
-      "rerunCountAvg": 2.75,
+      "failureRate": 0.667,
+      "rerunCountAvg": 3,
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 4,
-        "2602": 4,
-        "2603": 2
+        "2602": 4
       },
       "sampleErrors": [
         "Exception from QRM: Exception calling ImportSavedWorkflow: Exception calling ImportSavedWorkflow: There is already a workflow with the name 'PROD_MPs_Load_IT'  -- Details available: Y. -- Warnings ava...",
@@ -2553,21 +2525,23 @@
     {
       "location": "ITDB",
       "subprocess": "Spreads",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load Spreads": {
-          "avgMinutes": 10
+          "avgMinutes": 11,
+          "sourceMonth": "2602"
         },
         "Spreads comparison": {
-          "avgMinutes": 1
+          "avgMinutes": 1,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.429,
-      "rerunCountAvg": 1.75,
+      "failureRate": 0.5,
+      "rerunCountAvg": 2,
       "rerunsPerMonth": {
         "2512": 2,
         "2601": 1,
-        "2602": 3,
-        "2603": 1
+        "2602": 3
       },
       "sampleErrors": [
         "Exception Info: File  '\\\\sx9000079291\\ITDB\\Work\\Locations input files\\2025-12\\ING_SPREAD_DELIVERY_TEMPLATE_MCP_202512.xlsm' does not exist. (line: 38)  "
@@ -2576,33 +2550,25 @@
     {
       "location": "ITDB",
       "subprocess": "Load Position",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load": {
-          "avgMinutes": 21
+          "avgMinutes": 17,
+          "sourceMonth": "2602"
         },
         "Stratification": {
-          "avgMinutes": 6
-        },
-        "Position report OLAP exports": {
-          "avgMinutes": 8
-        },
-        "copy from": {
-          "avgMinutes": 8
-        },
-        "load NTG": {
-          "avgMinutes": 8
+          "avgMinutes": 6,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.556,
-      "rerunCountAvg": 2.25,
+      "failureRate": 0.5,
+      "rerunCountAvg": 2,
       "rerunsPerMonth": {
         "2512": 2,
         "2601": 2,
-        "2602": 2,
-        "2603": 3
+        "2602": 2
       },
       "sampleErrors": [
-        "Exception Info: File  '\\\\sx9000079291\\ITDB\\Work\\Locations input files\\2026-03\\IT_MCP_NTG.xlsx' does not exist. (line: 54)  ",
         "Exception Info: File  '\\\\sx9000079291\\ITDB\\Work\\Locations input files\\2025-12\\IT_MCP_NTG.xlsx' does not exist. (line: 54)  ",
         "Exception Info: File  '\\\\sx9000079291\\ITDB\\Work\\Locations input files\\2025-01\\IT_MCP_NTG.xlsx' does not exist. (line: 54)  "
       ]
@@ -2610,93 +2576,69 @@
     {
       "location": "ITDB",
       "subprocess": "Valuation",
+      "referenceMonth": "2602",
       "stepDurations": {
         "portfolio valuation run": {
-          "avgMinutes": 174
-        },
-        "export to ara": {
-          "avgMinutes": 2
-        },
-        "Light Maintenance": {
-          "avgMinutes": 34
-        },
-        "valuation report OLAP exports": {
-          "avgMinutes": 23
-        },
-        "valuation report QRM reporter exports": {
-          "avgMinutes": 2
-        },
-        "export to ara Portfolio Valuation": {
-          "avgMinutes": 25
+          "avgMinutes": 101,
+          "sourceMonth": "2602"
         },
         "Light Maintenance valuation": {
-          "avgMinutes": 25
+          "avgMinutes": 10,
+          "sourceMonth": "2602"
         },
         "valuation report QRM Reporter exports": {
-          "avgMinutes": 25
+          "avgMinutes": 9,
+          "sourceMonth": "2602"
         },
         "Light Maintenance valuation ": {
-          "avgMinutes": 25
-        },
-        "Light Maintenance Portfolio Valuation": {
-          "avgMinutes": 25
+          "avgMinutes": 7,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.571,
-      "rerunCountAvg": 1.75,
+      "failureRate": 0.5,
+      "rerunCountAvg": 2,
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 1,
-        "2602": 4,
-        "2603": 1
+        "2602": 4
       },
       "sampleErrors": []
     },
     {
       "location": "ITDB",
       "subprocess": "CSRBB (Val)",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 27
-        },
         "CSRBB Portfolio Valuation": {
-          "avgMinutes": 27
-        },
-        "CSRBB Portfolio Valuation Qtr": {
-          "avgMinutes": 47
-        },
-        "Light Maintenance CSRBB Portfolio Valuation Qtr": {
-          "avgMinutes": 7
+          "avgMinutes": 28,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.636,
-      "rerunCountAvg": 2.75,
+      "failureRate": 0.7,
+      "rerunCountAvg": 3.33,
       "rerunsPerMonth": {
         "2512": 6,
         "2601": 2,
-        "2602": 2,
-        "2603": 1
+        "2602": 2
       },
       "sampleErrors": []
     },
     {
       "location": "ITDB",
       "subprocess": "CSRBB (Plan)",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "export to ara": {
-          "avgMinutes": 2
-        },
         "import CSRBB strategies": {
-          "avgMinutes": 25
+          "avgMinutes": 54,
+          "sourceMonth": "2602"
         },
         "CSRBB Planning Run": {
-          "avgMinutes": 25
-        },
-        "CSRBB Planning Run Qtr": {
-          "avgMinutes": 25
+          "avgMinutes": 56,
+          "sourceMonth": "2602"
         },
         "export to ara CSRBB Planning": {
-          "avgMinutes": 25
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.571,
@@ -2711,86 +2653,80 @@
     {
       "location": "ITDB",
       "subprocess": "EC",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 14
-        },
-        "export to ara": {
-          "avgMinutes": 2
-        },
         "ing-ec valuation": {
-          "avgMinutes": 107
+          "avgMinutes": 163,
+          "sourceMonth": "2602"
         },
         "ing-ec valuation exports": {
-          "avgMinutes": 107
+          "avgMinutes": 67,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.6,
-      "rerunCountAvg": 2.5,
+      "failureRate": 0.667,
+      "rerunCountAvg": 3,
       "rerunsPerMonth": {
         "2512": 3,
         "2601": 3,
-        "2602": 3,
-        "2603": 1
+        "2602": 3
       },
       "sampleErrors": []
     },
     {
       "location": "ITDB",
       "subprocess": "Gap + Liquidity IR",
+      "referenceMonth": "2602",
       "stepDurations": {
         "gap planning": {
-          "avgMinutes": 159
+          "avgMinutes": 159,
+          "sourceMonth": "2601"
         }
       },
-      "failureRate": 0.571,
-      "rerunCountAvg": 1.75,
+      "failureRate": 0.6,
+      "rerunCountAvg": 1.67,
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 1,
-        "2602": 3,
-        "2603": 2
+        "2602": 3
       },
-      "sampleErrors": [
-        "Exception Info: Workflow finished with errors. (line: 56)  "
-      ]
+      "sampleErrors": []
     },
     {
       "location": "ITDB",
       "subprocess": "KR",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 20
-        },
-        "export to ara": {
-          "avgMinutes": 2
-        },
         "bpv-kr valuation": {
-          "avgMinutes": 74
+          "avgMinutes": 87,
+          "sourceMonth": "2602"
         },
         "bpv-kr valuation exports": {
-          "avgMinutes": 0.25
+          "avgMinutes": 36,
+          "sourceMonth": "2602"
         },
         "Light Maintenance KR": {
-          "avgMinutes": 25
+          "avgMinutes": 5,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.636,
-      "rerunCountAvg": 2.75,
+      "failureRate": 0.7,
+      "rerunCountAvg": 3.33,
       "rerunsPerMonth": {
         "2512": 4,
         "2601": 4,
-        "2602": 2,
-        "2603": 1
+        "2602": 2
       },
       "sampleErrors": []
     },
     {
       "location": "ITDB",
       "subprocess": "Import Strategies",
+      "referenceMonth": "2602",
       "stepDurations": {
         "import strategies": {
-          "avgMinutes": 3
+          "avgMinutes": 3,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0,
@@ -2805,27 +2741,31 @@
     {
       "location": "ITDB",
       "subprocess": "NII / Planning risk",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "export to ara": {
-          "avgMinutes": 2
-        },
         "planning run01": {
-          "avgMinutes": 92
+          "avgMinutes": 92,
+          "sourceMonth": "2602"
         },
         "MDL Processing": {
-          "avgMinutes": 12
+          "avgMinutes": 12,
+          "sourceMonth": "2602"
         },
         "planning run02": {
-          "avgMinutes": 246
+          "avgMinutes": 246,
+          "sourceMonth": "2602"
         },
         "planning run QRM reporter exports": {
-          "avgMinutes": 21
+          "avgMinutes": 21,
+          "sourceMonth": "2602"
         },
         "planning run OLAP exports": {
-          "avgMinutes": 128
+          "avgMinutes": 128,
+          "sourceMonth": "2602"
         },
         "export to ara planning": {
-          "avgMinutes": 1
+          "avgMinutes": 1,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.727,
@@ -2842,12 +2782,15 @@
     {
       "location": "ITDB",
       "subprocess": "ITS Planning",
+      "referenceMonth": "2602",
       "stepDurations": {
         "Light Maintenance": {
-          "avgMinutes": 20
+          "avgMinutes": 9,
+          "sourceMonth": "2602"
         },
         "ITS planning run": {
-          "avgMinutes": 25
+          "avgMinutes": 8,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.786,
@@ -2862,12 +2805,15 @@
     {
       "location": "ITDB",
       "subprocess": "AIC",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load AIC Spreads": {
-          "avgMinutes": 10
+          "avgMinutes": 10,
+          "sourceMonth": "2602"
         },
         "AIC portfolio valuation run": {
-          "avgMinutes": 32
+          "avgMinutes": 34,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.25,
@@ -2884,9 +2830,11 @@
     {
       "location": "ITDB",
       "subprocess": "CSRBB Export",
+      "referenceMonth": "2602",
       "stepDurations": {
         "CSRBB exports": {
-          "avgMinutes": 1
+          "avgMinutes": 1,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0,
@@ -2899,12 +2847,15 @@
     {
       "location": "ITDB",
       "subprocess": "PDCE",
+      "referenceMonth": "2512",
       "stepDurations": {
         "PDCE planning": {
-          "avgMinutes": 32
+          "avgMinutes": 35,
+          "sourceMonth": "2512"
         },
         "PDCE report QRM reporter exports": {
-          "avgMinutes": 20
+          "avgMinutes": 20,
+          "sourceMonth": "2512"
         }
       },
       "failureRate": 0.5,
@@ -2917,21 +2868,23 @@
     {
       "location": "ITDB",
       "subprocess": "EVE Optionality",
+      "referenceMonth": "2512",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 27
-        },
         "EVE Optionality MC Valuation": {
-          "avgMinutes": 25
-        },
-        "EVE Optionality copy run parameters": {
-          "avgMinutes": 25
+          "avgMinutes": 198,
+          "sourceMonth": "2512"
         },
         "EVE Optionality SCF Valuation": {
-          "avgMinutes": 25
+          "avgMinutes": 14,
+          "sourceMonth": "2512"
         },
         "EVE Optionality SCF report": {
-          "avgMinutes": 25
+          "avgMinutes": 22,
+          "sourceMonth": "2512"
+        },
+        "Light Maintenance": {
+          "avgMinutes": 27,
+          "sourceMonth": "2512"
         }
       },
       "failureRate": 0.857,
@@ -2944,39 +2897,38 @@
     {
       "location": "LUDB",
       "subprocess": "Delete Portfolio",
+      "referenceMonth": "2602",
       "stepDurations": {
         "Delete portfolio from": {
-          "avgMinutes": 2
+          "avgMinutes": 5,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.333,
-      "rerunCountAvg": 1.5,
+      "failureRate": 0.4,
+      "rerunCountAvg": 1.67,
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 2,
-        "2602": 2,
-        "2603": 1
+        "2602": 2
       },
       "sampleErrors": []
     },
     {
       "location": "LUDB",
       "subprocess": "Model Parameters",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load Model parameters": {
-          "avgMinutes": 3
-        },
-        "Model parameters comparison": {
-          "avgMinutes": 0.25
+          "avgMinutes": 4,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.636,
-      "rerunCountAvg": 2.75,
+      "failureRate": 0.7,
+      "rerunCountAvg": 3.33,
       "rerunsPerMonth": {
         "2512": 2,
         "2601": 5,
-        "2602": 3,
-        "2603": 1
+        "2602": 3
       },
       "sampleErrors": [
         "Exception Info: File  or folder '\\\\sx9000079291\\LUDB\\Work\\Q3_COMPARE_FILES_MCP\\202601' does not exist. (line: 47)  ",
@@ -2986,21 +2938,23 @@
     {
       "location": "LUDB",
       "subprocess": "Spreads",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load Spreads": {
-          "avgMinutes": 9
+          "avgMinutes": 9,
+          "sourceMonth": "2602"
         },
         "Spreads comparison": {
-          "avgMinutes": 1
+          "avgMinutes": 1,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.556,
-      "rerunCountAvg": 2.25,
+      "failureRate": 0.625,
+      "rerunCountAvg": 2.67,
       "rerunsPerMonth": {
         "2512": 2,
         "2601": 4,
-        "2602": 2,
-        "2603": 1
+        "2602": 2
       },
       "sampleErrors": [
         "Exception Info: Object reference not set to an instance of an object. (line: 50)  ",
@@ -3011,36 +2965,31 @@
     {
       "location": "LUDB",
       "subprocess": "Load Position",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Position report exports": {
-          "avgMinutes": 14
-        },
         "load": {
-          "avgMinutes": 5
+          "avgMinutes": 18,
+          "sourceMonth": "2602"
         },
         "Stratification": {
-          "avgMinutes": 5
+          "avgMinutes": 6,
+          "sourceMonth": "2602"
         },
         "Position report OLAP exports": {
-          "avgMinutes": 7
+          "avgMinutes": 12,
+          "sourceMonth": "2602"
         },
         "copy from": {
-          "avgMinutes": 2
-        },
-        "load NTG": {
-          "avgMinutes": 0.25
-        },
-        "export to ara": {
-          "avgMinutes": 2
+          "avgMinutes": 1,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.556,
-      "rerunCountAvg": 2.25,
+      "failureRate": 0.625,
+      "rerunCountAvg": 2.67,
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 4,
-        "2602": 3,
-        "2603": 1
+        "2602": 3
       },
       "sampleErrors": [
         "Exception Info: Workflow finished with errors. (line: 13)  "
@@ -3049,39 +2998,39 @@
     {
       "location": "LUDB",
       "subprocess": "Valuation",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "valuation report QRM Reporter exports": {
-          "avgMinutes": 1
-        },
         "portfolio valuation run": {
-          "avgMinutes": 64
+          "avgMinutes": 69,
+          "sourceMonth": "2602"
         },
         "valuation report OLAP exports": {
-          "avgMinutes": 27
+          "avgMinutes": 27,
+          "sourceMonth": "2602"
         },
-        "Light Maintenance valuation": {
-          "avgMinutes": 8
-        },
-        "export to ara valuation": {
-          "avgMinutes": 1
-        },
-        "Light Maintenance": {
-          "avgMinutes": 10
+        "valuation report QRM Reporter exports": {
+          "avgMinutes": 7,
+          "sourceMonth": "2602"
         },
         "export to ara Portfolio Valuation": {
-          "avgMinutes": 1
+          "avgMinutes": 3,
+          "sourceMonth": "2602"
         },
-        "export to ara": {
-          "avgMinutes": 25
+        "Light Maintenance valuation": {
+          "avgMinutes": 10,
+          "sourceMonth": "2602"
+        },
+        "export to ara valuation": {
+          "avgMinutes": 1,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.556,
-      "rerunCountAvg": 2.25,
+      "failureRate": 0.625,
+      "rerunCountAvg": 2.67,
       "rerunsPerMonth": {
         "2512": 2,
         "2601": 3,
-        "2602": 3,
-        "2603": 1
+        "2602": 3
       },
       "sampleErrors": [
         "Exception Info: Conversion failed when converting date and/or time from character string.  17:47:08 @JobNameToRun: RA_Q3Call_QRM @ToServer:  @L_PRD2UAT_LoadType:  @SourceEnvFromDatabaseName: PRD @Targ..."
@@ -3090,45 +3039,38 @@
     {
       "location": "LUDB",
       "subprocess": "CSRBB (Val)",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 18
-        },
         "CSRBB Portfolio Valuation": {
-          "avgMinutes": 15
+          "avgMinutes": 22,
+          "sourceMonth": "2602"
         },
         "Light Maintenance csrbb valuation": {
-          "avgMinutes": 5
-        },
-        "CSRBB Portfolio Valuation Qtr": {
-          "avgMinutes": 25
+          "avgMinutes": 5,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.667,
-      "rerunCountAvg": 3,
+      "failureRate": 0.727,
+      "rerunCountAvg": 3.67,
       "rerunsPerMonth": {
         "2512": 5,
         "2601": 3,
-        "2602": 3,
-        "2603": 1
+        "2602": 3
       },
       "sampleErrors": []
     },
     {
       "location": "LUDB",
       "subprocess": "CSRBB (Plan)",
+      "referenceMonth": "2602",
       "stepDurations": {
         "import CSRBB strategies": {
-          "avgMinutes": 87
+          "avgMinutes": 54,
+          "sourceMonth": "2602"
         },
         "CSRBB Planning Run": {
-          "avgMinutes": 55
-        },
-        "export to ara": {
-          "avgMinutes": 2
-        },
-        "CSRBB Planning Run Qtr": {
-          "avgMinutes": 25
+          "avgMinutes": 43,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.5,
@@ -3136,38 +3078,34 @@
       "rerunsPerMonth": {
         "2512": 2,
         "2601": 1,
-        "2602": 3,
-        "2603": 2
+        "2602": 3
       },
       "sampleErrors": []
     },
     {
       "location": "LUDB",
       "subprocess": "EC",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "ing-ec valuation exports": {
-          "avgMinutes": 35
-        },
         "ing-ec valuation": {
-          "avgMinutes": 97
+          "avgMinutes": 106,
+          "sourceMonth": "2602"
         },
-        "Light Maintenance": {
-          "avgMinutes": 11
-        },
-        "Full Maintenance": {
-          "avgMinutes": 25
+        "ing-ec valuation exports": {
+          "avgMinutes": 37,
+          "sourceMonth": "2602"
         },
         "Light Maintenance EC": {
-          "avgMinutes": 25
+          "avgMinutes": 5,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.556,
-      "rerunCountAvg": 2.25,
+      "failureRate": 0.625,
+      "rerunCountAvg": 2.67,
       "rerunsPerMonth": {
         "2512": 3,
         "2601": 2,
-        "2602": 3,
-        "2603": 1
+        "2602": 3
       },
       "sampleErrors": [
         "Exception Info: File  or folder 'LUDB\\Work\\TRISS' does not exist. (line: 26)  "
@@ -3176,62 +3114,65 @@
     {
       "location": "LUDB",
       "subprocess": "Gap + Liquidity IR",
+      "referenceMonth": "2602",
       "stepDurations": {
         "gap planning": {
-          "avgMinutes": 45
+          "avgMinutes": 40,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.625,
-      "rerunCountAvg": 2,
+      "failureRate": 0.571,
+      "rerunCountAvg": 2.33,
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 1,
-        "2602": 5,
-        "2603": 1
+        "2602": 5
       },
-      "sampleErrors": [
-        "Exception Info: Workflow finished with errors. (line: 56)  "
-      ]
+      "sampleErrors": []
     },
     {
       "location": "LUDB",
       "subprocess": "KR",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 13
-        },
         "bpv-kr valuation": {
-          "avgMinutes": 65
+          "avgMinutes": 108,
+          "sourceMonth": "2602"
         },
         "bpv-kr valuation exports": {
-          "avgMinutes": 0.25
+          "avgMinutes": 32,
+          "sourceMonth": "2602"
         },
         "Light Maintenance KR": {
-          "avgMinutes": 25
+          "avgMinutes": 65,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.667,
-      "rerunCountAvg": 3,
+      "failureRate": 0.727,
+      "rerunCountAvg": 3.67,
       "rerunsPerMonth": {
         "2512": 4,
         "2601": 4,
-        "2602": 3,
-        "2603": 1
+        "2602": 3
       },
       "sampleErrors": []
     },
     {
       "location": "LUDB",
       "subprocess": "Import Strategies",
+      "referenceMonth": "2602",
       "stepDurations": {
+        "import strategies": {
+          "avgMinutes": 5,
+          "sourceMonth": "2602"
+        },
         "import strategies IG": {
-          "avgMinutes": 2
+          "avgMinutes": 3,
+          "sourceMonth": "2602"
         },
         "import strategies Risk": {
-          "avgMinutes": 2
-        },
-        "import strategies": {
-          "avgMinutes": 5
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.25,
@@ -3246,36 +3187,39 @@
     {
       "location": "LUDB",
       "subprocess": "NII / Planning risk",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 10
-        },
         "planning run01": {
-          "avgMinutes": 160
+          "avgMinutes": 178,
+          "sourceMonth": "2602"
         },
         "MDL Processing": {
-          "avgMinutes": 11
+          "avgMinutes": 12,
+          "sourceMonth": "2602"
         },
         "planning run02": {
-          "avgMinutes": 52
+          "avgMinutes": 69,
+          "sourceMonth": "2602"
         },
         "planning run QRM reporter exports": {
-          "avgMinutes": 0.25
+          "avgMinutes": 9,
+          "sourceMonth": "2602"
         },
         "planning run OLAP exports": {
-          "avgMinutes": 188
-        },
-        "export to ara nii": {
-          "avgMinutes": 2
-        },
-        "export to ara": {
-          "avgMinutes": 2
+          "avgMinutes": 188,
+          "sourceMonth": "2602"
         },
         "export to ara NII": {
-          "avgMinutes": 25
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
         },
         "Light Maintenance NII": {
-          "avgMinutes": 25
+          "avgMinutes": 14,
+          "sourceMonth": "2602"
+        },
+        "export to ara nii": {
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.727,
@@ -3292,12 +3236,15 @@
     {
       "location": "LUDB",
       "subprocess": "AIC",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load AIC Spreads": {
-          "avgMinutes": 9
+          "avgMinutes": 9,
+          "sourceMonth": "2601"
         },
         "AIC portfolio valuation run": {
-          "avgMinutes": 26
+          "avgMinutes": 26,
+          "sourceMonth": "2601"
         }
       },
       "failureRate": 0,
@@ -3311,9 +3258,11 @@
     {
       "location": "LUDB",
       "subprocess": "CSRBB Export",
+      "referenceMonth": "2602",
       "stepDurations": {
         "CSRBB exports": {
-          "avgMinutes": 6
+          "avgMinutes": 6,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.5,
@@ -3326,46 +3275,44 @@
     {
       "location": "LUDB",
       "subprocess": "PDCE",
+      "referenceMonth": "2512",
       "stepDurations": {
         "PDCE planning": {
-          "avgMinutes": 20
+          "avgMinutes": 21,
+          "sourceMonth": "2512"
         },
         "PDCE report QRM Reporter exports": {
-          "avgMinutes": 9
-        },
-        "PDCE planning QTR": {
-          "avgMinutes": 29
-        },
-        "PDCE report QTR OLAP exports": {
-          "avgMinutes": 1
+          "avgMinutes": 9,
+          "sourceMonth": "2512"
         }
       },
       "failureRate": 0.5,
       "rerunCountAvg": 2,
       "rerunsPerMonth": {
-        "2512": 2,
-        "2603": 2
+        "2512": 2
       },
       "sampleErrors": []
     },
     {
       "location": "LUDB",
       "subprocess": "EVE Optionality",
+      "referenceMonth": "2512",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 18
-        },
         "EVE Optionality MC Valuation": {
-          "avgMinutes": 25
-        },
-        "EVE Optionality copy run parameters": {
-          "avgMinutes": 25
+          "avgMinutes": 94,
+          "sourceMonth": "2512"
         },
         "EVE Optionality SCF Valuation": {
-          "avgMinutes": 25
+          "avgMinutes": 10,
+          "sourceMonth": "2512"
         },
         "EVE Optionality SCF report": {
-          "avgMinutes": 25
+          "avgMinutes": 9,
+          "sourceMonth": "2512"
+        },
+        "Light Maintenance": {
+          "avgMinutes": 18,
+          "sourceMonth": "2512"
         }
       },
       "failureRate": 0.833,
@@ -3378,140 +3325,124 @@
     {
       "location": "NLBTR",
       "subprocess": "Load Position",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load": {
-          "avgMinutes": 58
+          "avgMinutes": 41,
+          "sourceMonth": "2602"
         },
         "Stratification": {
-          "avgMinutes": 7
-        },
-        "Light Maintenance": {
-          "avgMinutes": 20
+          "avgMinutes": 7,
+          "sourceMonth": "2602"
         },
         "Position report OLAP exports": {
-          "avgMinutes": 15
-        },
-        "export to ara": {
-          "avgMinutes": 2
+          "avgMinutes": 11,
+          "sourceMonth": "2602"
         },
         "copy from": {
-          "avgMinutes": 11
+          "avgMinutes": 81,
+          "sourceMonth": "2602"
         },
         "Light Maintenance Load Portfolio": {
-          "avgMinutes": 106
+          "avgMinutes": 106,
+          "sourceMonth": "2602"
         },
         "export to ara Load Portfolio": {
-          "avgMinutes": 2
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.2,
-      "rerunCountAvg": 1.25,
+      "failureRate": 0.25,
+      "rerunCountAvg": 1.33,
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 1,
-        "2602": 2,
-        "2603": 1
+        "2602": 2
       },
       "sampleErrors": []
     },
     {
       "location": "NLBTR",
       "subprocess": "Valuation",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "export to ara": {
-          "avgMinutes": 0.25
-        },
-        "Light Maintenance": {
-          "avgMinutes": 22
-        },
         "portfolio valuation run": {
-          "avgMinutes": 17
+          "avgMinutes": 18,
+          "sourceMonth": "2602"
         },
         "valuation report OLAP exports": {
-          "avgMinutes": 100
+          "avgMinutes": 100,
+          "sourceMonth": "2602"
         },
         "valuation report QRM Reporter exports": {
-          "avgMinutes": 0.25
+          "avgMinutes": 3,
+          "sourceMonth": "2602"
         },
         "AIC portfolio valuation run": {
-          "avgMinutes": 1
+          "avgMinutes": 1,
+          "sourceMonth": "2602"
         },
         "Light Maintenance portfolio valuation": {
-          "avgMinutes": 10
+          "avgMinutes": 10,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.429,
-      "rerunCountAvg": 1.75,
+      "failureRate": 0.5,
+      "rerunCountAvg": 2,
       "rerunsPerMonth": {
         "2512": 2,
         "2601": 2,
-        "2602": 2,
-        "2603": 1
+        "2602": 2
       },
       "sampleErrors": []
     },
     {
       "location": "NLBTR",
       "subprocess": "CSRBB (Val)",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 301
-        },
         "CSRBB Portfolio Valuation": {
-          "avgMinutes": 34
-        },
-        "CSRBB Portfolio Valuation Qtr": {
-          "avgMinutes": 25
+          "avgMinutes": 38,
+          "sourceMonth": "2602"
         },
         "Light Maintenance CSRBB valuation": {
-          "avgMinutes": 25
-        },
-        "Light Maintenance CSRBB Portfolio Valuation Qtr": {
-          "avgMinutes": 25
+          "avgMinutes": 37,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.842,
-      "rerunCountAvg": 4.75,
+      "failureRate": 0.833,
+      "rerunCountAvg": 6,
       "rerunsPerMonth": {
         "2512": 11,
         "2601": 5,
-        "2602": 2,
-        "2603": 1
+        "2602": 2
       },
-      "sampleErrors": [
-        "Exception Info: Failure sending mail. (line: 42)  "
-      ]
+      "sampleErrors": []
     },
     {
       "location": "NLBTR",
       "subprocess": "CSRBB (Plan)",
+      "referenceMonth": "2602",
       "stepDurations": {
         "import CSRBB strategies": {
-          "avgMinutes": 71
-        },
-        "export to ara": {
-          "avgMinutes": 0.25
+          "avgMinutes": 229,
+          "sourceMonth": "2602"
         },
         "CSRBB Planning Run": {
-          "avgMinutes": 188
+          "avgMinutes": 386,
+          "sourceMonth": "2602"
         },
         "export to ara CSRBB Planning": {
-          "avgMinutes": 1
-        },
-        "CSRBB Planning Run Qtr": {
-          "avgMinutes": 125
-        },
-        "CSRBB Planning Run  Qtr": {
-          "avgMinutes": 25
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.636,
-      "rerunCountAvg": 2.75,
+      "failureRate": 0.7,
+      "rerunCountAvg": 3.33,
       "rerunsPerMonth": {
         "2512": 4,
         "2601": 4,
-        "2602": 2,
-        "2603": 1
+        "2602": 2
       },
       "sampleErrors": [
         "Exception from QRM: Exception calling ImportPlanningStrategy: Exception calling ImportPlanningStrategy: The file is corrupted.  -- Details available: Y. -- Warnings available: N. (line: 43)  QRM error...",
@@ -3521,39 +3452,42 @@
     {
       "location": "NLBTR",
       "subprocess": "EC",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 14
-        },
         "ing-ec valuation": {
-          "avgMinutes": 129
+          "avgMinutes": 129,
+          "sourceMonth": "2602"
         },
         "ing-ec valuation OLAP exports": {
-          "avgMinutes": 275
+          "avgMinutes": 275,
+          "sourceMonth": "2602"
         },
         "ing-ec valuation QRM Reporter exports": {
-          "avgMinutes": 0.25
+          "avgMinutes": 7,
+          "sourceMonth": "2602"
         },
         "Light Maintenance ing-ec valuation": {
-          "avgMinutes": 260
+          "avgMinutes": 260,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.556,
-      "rerunCountAvg": 2.25,
+      "failureRate": 0.625,
+      "rerunCountAvg": 2.67,
       "rerunsPerMonth": {
         "2512": 3,
         "2601": 3,
-        "2602": 2,
-        "2603": 1
+        "2602": 2
       },
       "sampleErrors": []
     },
     {
       "location": "NLBTR",
       "subprocess": "Gap + Liquidity IR",
+      "referenceMonth": "2602",
       "stepDurations": {
         "gap planning": {
-          "avgMinutes": 234
+          "avgMinutes": 107,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.5,
@@ -3561,58 +3495,53 @@
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 1,
-        "2602": 4,
-        "2603": 2
+        "2602": 4
       },
-      "sampleErrors": [
-        "Exception Info: Workflow finished with errors. (line: 44)  "
-      ]
+      "sampleErrors": []
     },
     {
       "location": "NLBTR",
       "subprocess": "KR",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 26
-        },
         "bpv-kr valuation": {
-          "avgMinutes": 22
+          "avgMinutes": 22,
+          "sourceMonth": "2602"
         },
         "bpv-kr valuation OLAP exports": {
-          "avgMinutes": 160
-        },
-        "bpv-kr valuation QRM Reporter exports": {
-          "avgMinutes": 0.25
+          "avgMinutes": 160,
+          "sourceMonth": "2602"
         },
         "Light Maintenance KR valuation": {
-          "avgMinutes": 11
+          "avgMinutes": 11,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.636,
-      "rerunCountAvg": 2.75,
+      "failureRate": 0.7,
+      "rerunCountAvg": 3.33,
       "rerunsPerMonth": {
         "2512": 4,
         "2601": 4,
-        "2602": 2,
-        "2603": 1
+        "2602": 2
       },
       "sampleErrors": []
     },
     {
       "location": "NLBTR",
       "subprocess": "Import Strategies",
+      "referenceMonth": "2602",
       "stepDurations": {
         "import strategies": {
-          "avgMinutes": 57
+          "avgMinutes": 47,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.692,
-      "rerunCountAvg": 3.25,
+      "failureRate": 0.625,
+      "rerunCountAvg": 2.67,
       "rerunsPerMonth": {
         "2512": 3,
         "2601": 2,
-        "2602": 3,
-        "2603": 5
+        "2602": 3
       },
       "sampleErrors": [
         "Exception from QRM: Exception calling ImportPlanningStrategy: Exception calling ImportPlanningStrategy: Mismatch in planning tree during import: Expected Planning Tree 27 - NLGT Planning Tree  -- Deta...",
@@ -3622,77 +3551,69 @@
     {
       "location": "NLBTR",
       "subprocess": "NII / Planning risk",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "export to ara": {
-          "avgMinutes": 0.25
-        },
         "planning run01": {
-          "avgMinutes": 838
+          "avgMinutes": 838,
+          "sourceMonth": "2602"
         },
         "MDL Processing": {
-          "avgMinutes": 25
+          "avgMinutes": 355,
+          "sourceMonth": "2602"
         },
         "planning run02": {
-          "avgMinutes": 25
+          "avgMinutes": 330,
+          "sourceMonth": "2602"
         },
         "planning run exports": {
-          "avgMinutes": 25
-        },
-        "planning run": {
-          "avgMinutes": 25
-        },
-        "planning run QRM Reporter exports": {
-          "avgMinutes": 25
-        },
-        "Full Maintenance": {
-          "avgMinutes": 25
-        },
-        "planning run OLAP exports": {
-          "avgMinutes": 25
+          "avgMinutes": 95,
+          "sourceMonth": "2602"
         },
         "export to ara NII": {
-          "avgMinutes": 25
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.75,
-      "rerunCountAvg": 4,
+      "failureRate": 0.769,
+      "rerunCountAvg": 4.33,
       "rerunsPerMonth": {
         "2512": 6,
         "2601": 3,
-        "2602": 4,
-        "2603": 3
+        "2602": 4
       },
       "sampleErrors": [
         "Exception Info: Workflow finished with errors. (line: 112)  ",
         "Exception Info: Workflow finished with errors. (line: 91)  ",
-        "Exception Info: Workflow finished with errors. (line: 37)  ",
         "Exception Info: Index was outside the bounds of the array. (line: 69)  "
       ]
     },
     {
       "location": "NLBTR",
       "subprocess": "ITS Planning",
+      "referenceMonth": "2602",
       "stepDurations": {
         "ITS planning run": {
-          "avgMinutes": 42
+          "avgMinutes": 40,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.2,
-      "rerunCountAvg": 1.25,
+      "failureRate": 0.25,
+      "rerunCountAvg": 1.33,
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 1,
-        "2602": 2,
-        "2603": 1
+        "2602": 2
       },
       "sampleErrors": []
     },
     {
       "location": "NLBTR",
       "subprocess": "CSRBB Export",
+      "referenceMonth": "2602",
       "stepDurations": {
         "CSRBB exports": {
-          "avgMinutes": 9
+          "avgMinutes": 9,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0,
@@ -3705,39 +3626,38 @@
     {
       "location": "NLRB",
       "subprocess": "Delete Portfolio",
+      "referenceMonth": "2602",
       "stepDurations": {
         "Delete portfolio from": {
-          "avgMinutes": 2
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.2,
-      "rerunCountAvg": 1.25,
+      "failureRate": 0.25,
+      "rerunCountAvg": 1.33,
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 2,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "NLRB",
       "subprocess": "Model Parameters",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load Model parameters": {
-          "avgMinutes": 6
-        },
-        "Model parameters comparison": {
-          "avgMinutes": 0.25
+          "avgMinutes": 4,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.429,
-      "rerunCountAvg": 1.75,
+      "failureRate": 0.5,
+      "rerunCountAvg": 2,
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 4,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": [
         "Exception from QRM: Exception calling ImportLookupTable: Exception calling ImportLookupTable: Worksheet \"ING_PF_4factor_DAF\" import terminated: \"1.67594E-05\" is an invalid numeric value for row 46.  -...",
@@ -3747,87 +3667,92 @@
     {
       "location": "NLRB",
       "subprocess": "Spreads",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load Spreads": {
-          "avgMinutes": 11
+          "avgMinutes": 10,
+          "sourceMonth": "2602"
         },
         "Spreads comparison": {
-          "avgMinutes": 1
+          "avgMinutes": 1,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.2,
-      "rerunCountAvg": 1.25,
+      "failureRate": 0.25,
+      "rerunCountAvg": 1.33,
       "rerunsPerMonth": {
         "2512": 2,
         "2601": 1,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "NLRB",
       "subprocess": "Load Position",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load": {
-          "avgMinutes": 125
+          "avgMinutes": 97,
+          "sourceMonth": "2602"
         },
         "Stratification": {
-          "avgMinutes": 10
+          "avgMinutes": 11,
+          "sourceMonth": "2602"
         },
         "copy from": {
-          "avgMinutes": 2
+          "avgMinutes": 57,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.5,
-      "rerunCountAvg": 2,
+      "failureRate": 0.571,
+      "rerunCountAvg": 2.33,
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 1,
-        "2602": 5,
-        "2603": 1
+        "2602": 5
       },
       "sampleErrors": []
     },
     {
       "location": "NLRB",
       "subprocess": "Valuation",
+      "referenceMonth": "2602",
       "stepDurations": {
         "portfolio valuation run": {
-          "avgMinutes": 494
-        },
-        "export to ara": {
-          "avgMinutes": 2
-        },
-        "Light Maintenance": {
-          "avgMinutes": 34
+          "avgMinutes": 303,
+          "sourceMonth": "2602"
         },
         "valuation report OLAP exports": {
-          "avgMinutes": 14
-        },
-        "Light Maintenance Portfolio Valuation": {
-          "avgMinutes": 10
+          "avgMinutes": 10,
+          "sourceMonth": "2602"
         },
         "export to ara valuation": {
-          "avgMinutes": 25
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
+        },
+        "Light Maintenance Portfolio Valuation": {
+          "avgMinutes": 93,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.692,
-      "rerunCountAvg": 3.25,
+      "failureRate": 0.727,
+      "rerunCountAvg": 3.67,
       "rerunsPerMonth": {
         "2512": 3,
         "2601": 1,
-        "2602": 7,
-        "2603": 2
+        "2602": 7
       },
       "sampleErrors": []
     },
     {
       "location": "NLRB",
       "subprocess": "Load ELP and Mortgages",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load ELP and Mortgages": {
-          "avgMinutes": 36
+          "avgMinutes": 35,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0,
@@ -3835,41 +3760,38 @@
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 1,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "NLRB",
       "subprocess": "Planning Finance",
+      "referenceMonth": "2602",
       "stepDurations": {
         "import finance strategies": {
-          "avgMinutes": 5
+          "avgMinutes": 3,
+          "sourceMonth": "2602"
         },
         "Finance planning": {
-          "avgMinutes": 827
-        },
-        "Light Maintenance": {
-          "avgMinutes": 37
+          "avgMinutes": 689,
+          "sourceMonth": "2602"
         },
         "Finance planning OLAP export": {
-          "avgMinutes": 15
+          "avgMinutes": 15,
+          "sourceMonth": "2602"
         },
         "Light Maintenance Finance planning": {
-          "avgMinutes": 10
-        },
-        "export to ara": {
-          "avgMinutes": 0.25
+          "avgMinutes": 10,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.571,
-      "rerunCountAvg": 1.75,
+      "failureRate": 0.5,
+      "rerunCountAvg": 1.33,
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 2,
-        "2602": 1,
-        "2603": 3
+        "2602": 1
       },
       "sampleErrors": [
         "Exception Info: Workflow finished with errors. (line: 42)  ",
@@ -3879,21 +3801,19 @@
     {
       "location": "NLRB",
       "subprocess": "EC",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 8
-        },
         "ing-ec valuation": {
-          "avgMinutes": 481
+          "avgMinutes": 481,
+          "sourceMonth": "2602"
         },
         "Light Maintenance ing-ec valuation": {
-          "avgMinutes": 11
-        },
-        "export to ara": {
-          "avgMinutes": 25
+          "avgMinutes": 11,
+          "sourceMonth": "2602"
         },
         "export to ara ing-ec valuation": {
-          "avgMinutes": 25
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.786,
@@ -3910,9 +3830,11 @@
     {
       "location": "NLRB",
       "subprocess": "Gap + Liquidity IR",
+      "referenceMonth": "2602",
       "stepDurations": {
         "gap planning": {
-          "avgMinutes": 81
+          "avgMinutes": 54,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0,
@@ -3927,18 +3849,15 @@
     {
       "location": "NLRB",
       "subprocess": "KR",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 224
-        },
         "bpv-kr valuation": {
-          "avgMinutes": 294
+          "avgMinutes": 311,
+          "sourceMonth": "2602"
         },
         "Light Maintenance BPV KR valuation": {
-          "avgMinutes": 125
-        },
-        "export to ara": {
-          "avgMinutes": 2
+          "avgMinutes": 130,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.7,
@@ -3955,62 +3874,57 @@
     {
       "location": "NLRB",
       "subprocess": "Import Strategies",
+      "referenceMonth": "2602",
       "stepDurations": {
         "import strategies": {
-          "avgMinutes": 4
+          "avgMinutes": 4,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.5,
-      "rerunCountAvg": 1.5,
+      "failureRate": 0.4,
+      "rerunCountAvg": 1.67,
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 1,
-        "2602": 3,
-        "2603": 1
+        "2602": 3
       },
-      "sampleErrors": [
-        "Exception Info: Failure sending mail. (line: 35)  "
-      ]
+      "sampleErrors": []
     },
     {
       "location": "NLRB",
       "subprocess": "NII / Planning risk",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "export to ara": {
-          "avgMinutes": 2
-        },
         "combined planning run": {
-          "avgMinutes": 2159
-        },
-        "planning run exports from ARA": {
-          "avgMinutes": 25
+          "avgMinutes": 2159,
+          "sourceMonth": "2602"
         },
         "export to ara combined planning": {
-          "avgMinutes": 25
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.692,
-      "rerunCountAvg": 3.25,
+      "failureRate": 0.75,
+      "rerunCountAvg": 4,
       "rerunsPerMonth": {
         "2512": 4,
         "2601": 2,
-        "2602": 6,
-        "2603": 1
+        "2602": 6
       },
       "sampleErrors": []
     },
     {
       "location": "NLRB",
       "subprocess": "ITS Planning",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 28
-        },
         "ITS planning run": {
-          "avgMinutes": 44
+          "avgMinutes": 44,
+          "sourceMonth": "2602"
         },
         "Light Maintenance ITS planning": {
-          "avgMinutes": 13
+          "avgMinutes": 13,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.8,
@@ -4025,12 +3939,15 @@
     {
       "location": "NLRB",
       "subprocess": "AIC",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load AIC Spreads": {
-          "avgMinutes": 8
+          "avgMinutes": 9,
+          "sourceMonth": "2602"
         },
         "AIC portfolio valuation run": {
-          "avgMinutes": 75
+          "avgMinutes": 64,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.25,
@@ -4045,18 +3962,19 @@
     {
       "location": "NLRB",
       "subprocess": "SLM",
+      "referenceMonth": "2602",
       "stepDurations": {
         "copy PORTM portfolio": {
-          "avgMinutes": 76
+          "avgMinutes": 64,
+          "sourceMonth": "2602"
         },
         "load SLM": {
-          "avgMinutes": 72
+          "avgMinutes": 48,
+          "sourceMonth": "2602"
         },
         "SLM run": {
-          "avgMinutes": 52
-        },
-        "export to ara": {
-          "avgMinutes": 2
+          "avgMinutes": 43,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.625,
@@ -4071,77 +3989,69 @@
     {
       "location": "NLRB",
       "subprocess": "Fair Value",
+      "referenceMonth": "2512",
       "stepDurations": {
         "load FV Spreads": {
-          "avgMinutes": 9
+          "avgMinutes": 9,
+          "sourceMonth": "2512"
         },
         "FV Spreads comparison": {
-          "avgMinutes": 1
+          "avgMinutes": 1,
+          "sourceMonth": "2512"
         },
         "FV valuation": {
-          "avgMinutes": 56
-        },
-        "export to ara": {
-          "avgMinutes": 0.25
+          "avgMinutes": 56,
+          "sourceMonth": "2512"
         },
         "FV valuation OLAP export": {
-          "avgMinutes": 9
-        },
-        "export to ara FV valuation": {
-          "avgMinutes": 0.25
+          "avgMinutes": 9,
+          "sourceMonth": "2512"
         }
       },
-      "failureRate": 0.333,
-      "rerunCountAvg": 1.5,
+      "failureRate": 0,
+      "rerunCountAvg": 1,
       "rerunsPerMonth": {
-        "2512": 1,
-        "2603": 2
+        "2512": 1
       },
       "sampleErrors": []
     },
     {
       "location": "NLRB",
       "subprocess": "PDCE",
+      "referenceMonth": "2512",
       "stepDurations": {
-        "export to ara": {
-          "avgMinutes": 0.25
-        },
         "PDCE planning": {
-          "avgMinutes": 64
-        },
-        "PDCE report exports from ARA": {
-          "avgMinutes": 0.25
-        },
-        "export to ara PDCE QTR": {
-          "avgMinutes": 0.25
+          "avgMinutes": 232,
+          "sourceMonth": "2512"
         }
       },
-      "failureRate": 0.778,
-      "rerunCountAvg": 4.5,
+      "failureRate": 0.857,
+      "rerunCountAvg": 7,
       "rerunsPerMonth": {
-        "2512": 7,
-        "2603": 2
+        "2512": 7
       },
       "sampleErrors": []
     },
     {
       "location": "NLRB",
       "subprocess": "EVE Optionality",
+      "referenceMonth": "2512",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 69
-        },
         "EVE Optionality MC Valuation": {
-          "avgMinutes": 25
-        },
-        "EVE Optionality copy run parameters": {
-          "avgMinutes": 25
+          "avgMinutes": 452,
+          "sourceMonth": "2512"
         },
         "EVE Optionality SCF Valuation": {
-          "avgMinutes": 25
+          "avgMinutes": 54,
+          "sourceMonth": "2512"
         },
         "EVE Optionality SCF report": {
-          "avgMinutes": 25
+          "avgMinutes": 53,
+          "sourceMonth": "2512"
+        },
+        "Light Maintenance": {
+          "avgMinutes": 69,
+          "sourceMonth": "2512"
         }
       },
       "failureRate": 0.875,
@@ -4154,60 +4064,61 @@
     {
       "location": "PLDB",
       "subprocess": "Delete Portfolio",
+      "referenceMonth": "2602",
       "stepDurations": {
         "Delete portfolio from": {
-          "avgMinutes": 3
+          "avgMinutes": 1,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.2,
-      "rerunCountAvg": 1.25,
+      "failureRate": 0,
+      "rerunCountAvg": 1,
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 1,
-        "2602": 1,
-        "2603": 2
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "PLDB",
       "subprocess": "Model Parameters",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load Model parameters": {
-          "avgMinutes": 5
-        },
-        "Model parameters comparison": {
-          "avgMinutes": 1
+          "avgMinutes": 3,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.429,
-      "rerunCountAvg": 1.75,
+      "failureRate": 0.4,
+      "rerunCountAvg": 1.67,
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 2,
-        "2602": 2,
-        "2603": 2
+        "2602": 2
       },
       "sampleErrors": []
     },
     {
       "location": "PLDB",
       "subprocess": "Spreads",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load Spreads": {
-          "avgMinutes": 18
+          "avgMinutes": 28,
+          "sourceMonth": "2602"
         },
         "Spreads comparison": {
-          "avgMinutes": 2
+          "avgMinutes": 1,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.2,
-      "rerunCountAvg": 1.25,
+      "failureRate": 0,
+      "rerunCountAvg": 1,
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 1,
-        "2602": 1,
-        "2603": 2
+        "2602": 1
       },
       "sampleErrors": [
         "ac"
@@ -4216,210 +4127,163 @@
     {
       "location": "PLDB",
       "subprocess": "Load Position",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load": {
-          "avgMinutes": 106
-        },
-        "Stratification": {
-          "avgMinutes": 87
-        },
-        "Position report OLAP exports": {
-          "avgMinutes": 16
-        },
-        "copy from": {
-          "avgMinutes": 2
-        },
-        "export to ara": {
-          "avgMinutes": 1
-        },
-        "load NTG": {
-          "avgMinutes": 8
+          "avgMinutes": 58,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.5,
-      "rerunCountAvg": 1.5,
+      "failureRate": 0.333,
+      "rerunCountAvg": 1,
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 1,
-        "2602": 1,
-        "2603": 3
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "PLDB",
       "subprocess": "Valuation",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 37
+        "portfolio valuation run": {
+          "avgMinutes": 181,
+          "sourceMonth": "2602"
         },
         "valuation report OLAP exports": {
-          "avgMinutes": 74
+          "avgMinutes": 74,
+          "sourceMonth": "2602"
         },
         "valuation report QRM Reporter exports": {
-          "avgMinutes": 0.25
-        },
-        "portfolio valuation run": {
-          "avgMinutes": 94
-        },
-        "export to ara": {
-          "avgMinutes": 2
-        },
-        "Quarterly Regulatory Valuation": {
-          "avgMinutes": 111
-        },
-        "Quarterly Regulatory Valuation QRM reporter exports": {
-          "avgMinutes": 104
+          "avgMinutes": 6,
+          "sourceMonth": "2602"
         },
         "export to ara Portfolio Valuation": {
-          "avgMinutes": 25
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
         },
         "Light Maintenance valuation": {
-          "avgMinutes": 25
-        },
-        "Light Maintenance Portfolio Valuation": {
-          "avgMinutes": 25
+          "avgMinutes": 32,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.765,
-      "rerunCountAvg": 4.25,
+      "failureRate": 0.786,
+      "rerunCountAvg": 4.67,
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 9,
-        "2602": 4,
-        "2603": 3
+        "2602": 4
       },
       "sampleErrors": []
     },
     {
       "location": "PLDB",
       "subprocess": "CSRBB (Val)",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 21
-        },
         "CSRBB Portfolio Valuation": {
-          "avgMinutes": 48
-        },
-        "CSRBB Portfolio Valuation Qtr": {
-          "avgMinutes": 25
+          "avgMinutes": 48,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.714,
-      "rerunCountAvg": 3.5,
+      "failureRate": 0.75,
+      "rerunCountAvg": 4,
       "rerunsPerMonth": {
         "2512": 9,
         "2601": 2,
-        "2602": 1,
-        "2603": 2
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "PLDB",
       "subprocess": "CSRBB (Plan)",
+      "referenceMonth": "2602",
       "stepDurations": {
         "import CSRBB strategies": {
-          "avgMinutes": 77
+          "avgMinutes": 62,
+          "sourceMonth": "2602"
         },
         "CSRBB Planning Run": {
-          "avgMinutes": 134
-        },
-        "export to ara": {
-          "avgMinutes": 2
-        },
-        "CSRBB Planning Run Qtr": {
-          "avgMinutes": 25
+          "avgMinutes": 70,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.556,
-      "rerunCountAvg": 2.25,
+      "failureRate": 0.4,
+      "rerunCountAvg": 1.67,
       "rerunsPerMonth": {
         "2512": 2,
         "2601": 1,
-        "2602": 2,
-        "2603": 4
+        "2602": 2
       },
       "sampleErrors": []
     },
     {
       "location": "PLDB",
       "subprocess": "EC",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 14
-        },
         "ing-ec valuation exports": {
-          "avgMinutes": 166
+          "avgMinutes": 166,
+          "sourceMonth": "2602"
         },
         "ing-ec valuation": {
-          "avgMinutes": 101
-        },
-        "ing-ec valuation QRM reporter exports": {
-          "avgMinutes": 25
-        },
-        "export to ara": {
-          "avgMinutes": 25
+          "avgMinutes": 101,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.75,
-      "rerunCountAvg": 4,
+      "failureRate": 0.8,
+      "rerunCountAvg": 5,
       "rerunsPerMonth": {
         "2512": 3,
         "2601": 10,
-        "2602": 2,
-        "2603": 1
+        "2602": 2
       },
       "sampleErrors": []
     },
     {
       "location": "PLDB",
       "subprocess": "Gap + Liquidity IR",
+      "referenceMonth": "2602",
       "stepDurations": {
         "gap planning": {
-          "avgMinutes": 286
-        },
-        "export to ara": {
-          "avgMinutes": 0.25
+          "avgMinutes": 69,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.667,
-      "rerunCountAvg": 2.25,
+      "failureRate": 0.625,
+      "rerunCountAvg": 2.67,
       "rerunsPerMonth": {
         "2512": 3,
         "2601": 2,
-        "2602": 3,
-        "2603": 1
+        "2602": 3
       },
       "sampleErrors": [
-        "Exception Info: Workflow finished with errors. (line: 33)  ",
-        "Exception Info: Workflow finished with errors. (line: 22)  "
+        "Exception Info: Workflow finished with errors. (line: 33)  "
       ]
     },
     {
       "location": "PLDB",
       "subprocess": "KR",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 14
+        "bpv-kr valuation": {
+          "avgMinutes": 120,
+          "sourceMonth": "2602"
         },
         "bpv-kr valuation exports": {
-          "avgMinutes": 142
-        },
-        "bpv-kr valuation": {
-          "avgMinutes": 102
-        },
-        "bpv-kr valuation QRM reporter exports": {
-          "avgMinutes": 25
+          "avgMinutes": 142,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.667,
-      "rerunCountAvg": 3,
+      "failureRate": 0.727,
+      "rerunCountAvg": 3.67,
       "rerunsPerMonth": {
         "2512": 4,
         "2601": 5,
-        "2602": 2,
-        "2603": 1
+        "2602": 2
       },
       "sampleErrors": [
         "Exception Info: Workflow finished with errors. (line: 41)  "
@@ -4428,9 +4292,11 @@
     {
       "location": "PLDB",
       "subprocess": "Import Strategies",
+      "referenceMonth": "2602",
       "stepDurations": {
         "import strategies": {
-          "avgMinutes": 13
+          "avgMinutes": 10,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.625,
@@ -4449,45 +4315,27 @@
     {
       "location": "PLDB",
       "subprocess": "NII / Planning risk",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 189
-        },
         "planning run01": {
-          "avgMinutes": 483
+          "avgMinutes": 483,
+          "sourceMonth": "2602"
         },
         "MDL Processing": {
-          "avgMinutes": 46
+          "avgMinutes": 46,
+          "sourceMonth": "2602"
         },
         "planning run02": {
-          "avgMinutes": 315
-        },
-        "export to ara NII": {
-          "avgMinutes": 0.25
+          "avgMinutes": 315,
+          "sourceMonth": "2602"
         },
         "Light Maintenance NII": {
-          "avgMinutes": 91
+          "avgMinutes": 91,
+          "sourceMonth": "2602"
         },
         "planning run OLAP exports": {
-          "avgMinutes": 516
-        },
-        "planning run QRM reporter exports": {
-          "avgMinutes": 25
-        },
-        "export to ara": {
-          "avgMinutes": 25
-        },
-        "Planning (Quarterly Regulatory Stress test)": {
-          "avgMinutes": 25
-        },
-        "MDL Processing (Quarterly Regulatory Stress test)": {
-          "avgMinutes": 25
-        },
-        "planning run02 (Quarterly Regulatory Stress test)": {
-          "avgMinutes": 25
-        },
-        "planning run QRM reporter exports (Quarterly Regulatory Stress test)": {
-          "avgMinutes": 25
+          "avgMinutes": 516,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.864,
@@ -4506,15 +4354,15 @@
     {
       "location": "PLDB",
       "subprocess": "ITS Planning",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 11
-        },
         "ITS planning run": {
-          "avgMinutes": 34
+          "avgMinutes": 34,
+          "sourceMonth": "2602"
         },
         "Light Maintenance ITS planning": {
-          "avgMinutes": 5
+          "avgMinutes": 5,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.786,
@@ -4529,12 +4377,15 @@
     {
       "location": "PLDB",
       "subprocess": "AIC",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load AIC Spreads": {
-          "avgMinutes": 20
+          "avgMinutes": 19,
+          "sourceMonth": "2602"
         },
         "AIC portfolio valuation run": {
-          "avgMinutes": 63
+          "avgMinutes": 96,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0,
@@ -4549,9 +4400,11 @@
     {
       "location": "PLDB",
       "subprocess": "CSRBB Export",
+      "referenceMonth": "2602",
       "stepDurations": {
         "CSRBB exports": {
-          "avgMinutes": 1
+          "avgMinutes": 1,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.5,
@@ -4564,24 +4417,27 @@
     {
       "location": "PLDB",
       "subprocess": "SOLO",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 115
-        },
         "import SOLO strategies": {
-          "avgMinutes": 6
+          "avgMinutes": 6,
+          "sourceMonth": "2602"
         },
         "SOLO planning": {
-          "avgMinutes": 164
+          "avgMinutes": 164,
+          "sourceMonth": "2602"
         },
         "SOLO planning QRM reporter exports": {
-          "avgMinutes": 47
+          "avgMinutes": 47,
+          "sourceMonth": "2602"
         },
         "SOLO planning OLAP exports": {
-          "avgMinutes": 93
+          "avgMinutes": 93,
+          "sourceMonth": "2602"
         },
         "Light Maintenance solo": {
-          "avgMinutes": 45
+          "avgMinutes": 45,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.857,
@@ -4598,9 +4454,11 @@
     {
       "location": "PLDB",
       "subprocess": "FTP EVE SOT",
+      "referenceMonth": "2602",
       "stepDurations": {
         "FTP EVE SOT analysis": {
-          "avgMinutes": 814
+          "avgMinutes": 201,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.5,
@@ -4617,24 +4475,27 @@
     {
       "location": "PLDB",
       "subprocess": "SOT",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 31
-        },
         "NII SOT planning trees creation": {
-          "avgMinutes": 25
-        },
-        "import NII SOT planning import": {
-          "avgMinutes": 25
+          "avgMinutes": 3,
+          "sourceMonth": "2602"
         },
         "NII SOT planning run import": {
-          "avgMinutes": 25
+          "avgMinutes": 3,
+          "sourceMonth": "2602"
         },
         "SOT planning": {
-          "avgMinutes": 25
+          "avgMinutes": 202,
+          "sourceMonth": "2602"
+        },
+        "Light Maintenance": {
+          "avgMinutes": 27,
+          "sourceMonth": "2602"
         },
         "SOT planning OLAP exports": {
-          "avgMinutes": 25
+          "avgMinutes": 238,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.893,
@@ -4651,46 +4512,44 @@
     {
       "location": "PLDB",
       "subprocess": "PDCE",
+      "referenceMonth": "2512",
       "stepDurations": {
         "PDCE planning": {
-          "avgMinutes": 62
+          "avgMinutes": 62,
+          "sourceMonth": "2512"
         },
         "PDCE report QRM reporter exports": {
-          "avgMinutes": 34
-        },
-        "PDCE planning QTR": {
-          "avgMinutes": 92
-        },
-        "PDCE report QTR OLAP exports": {
-          "avgMinutes": 35
+          "avgMinutes": 34,
+          "sourceMonth": "2512"
         }
       },
-      "failureRate": 0.333,
-      "rerunCountAvg": 1.5,
+      "failureRate": 0.5,
+      "rerunCountAvg": 2,
       "rerunsPerMonth": {
-        "2512": 2,
-        "2603": 1
+        "2512": 2
       },
       "sampleErrors": []
     },
     {
       "location": "PLDB",
       "subprocess": "EVE Optionality",
+      "referenceMonth": "2512",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 33
-        },
         "EVE Optionality MC Valuation": {
-          "avgMinutes": 25
-        },
-        "EVE Optionality copy run parameters": {
-          "avgMinutes": 25
+          "avgMinutes": 308,
+          "sourceMonth": "2512"
         },
         "EVE Optionality SCF Valuation": {
-          "avgMinutes": 25
+          "avgMinutes": 28,
+          "sourceMonth": "2512"
         },
         "EVE Optionality SCF report": {
-          "avgMinutes": 25
+          "avgMinutes": 52,
+          "sourceMonth": "2512"
+        },
+        "Light Maintenance": {
+          "avgMinutes": 33,
+          "sourceMonth": "2512"
         }
       },
       "failureRate": 0.917,
@@ -4703,80 +4562,80 @@
     {
       "location": "RODB",
       "subprocess": "Delete Portfolio",
+      "referenceMonth": "2602",
       "stepDurations": {
         "Delete portfolio from": {
-          "avgMinutes": 2
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0,
       "rerunCountAvg": 1,
       "rerunsPerMonth": {
         "2601": 1,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "RODB",
       "subprocess": "Model Parameters",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load Model parameters": {
-          "avgMinutes": 5
-        },
-        "Model parameters comparison": {
-          "avgMinutes": 0.25
+          "avgMinutes": 3,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0,
       "rerunCountAvg": 1,
       "rerunsPerMonth": {
         "2601": 1,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "RODB",
       "subprocess": "Spreads",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load Spreads": {
-          "avgMinutes": 11
-        },
-        "Spreads comparison": {
-          "avgMinutes": 1
+          "avgMinutes": 10,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0,
       "rerunCountAvg": 1,
       "rerunsPerMonth": {
         "2601": 1,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "RODB",
       "subprocess": "Load Position",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "copy from": {
-          "avgMinutes": 23
-        },
         "load": {
-          "avgMinutes": 23
+          "avgMinutes": 23,
+          "sourceMonth": "2602"
         },
         "Stratification": {
-          "avgMinutes": 7
+          "avgMinutes": 7,
+          "sourceMonth": "2602"
+        },
+        "copy from": {
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.4,
-      "rerunCountAvg": 1.67,
+      "failureRate": 0.5,
+      "rerunCountAvg": 2,
       "rerunsPerMonth": {
         "2601": 3,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": [
         "Exception Info: There is not enough space on the disk.   (line: 99)  "
@@ -4785,101 +4644,100 @@
     {
       "location": "RODB",
       "subprocess": "Valuation",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 257
-        },
         "portfolio valuation run": {
-          "avgMinutes": 106
+          "avgMinutes": 106,
+          "sourceMonth": "2602"
         },
         "valuation report exports": {
-          "avgMinutes": 7
+          "avgMinutes": 7,
+          "sourceMonth": "2602"
         },
         "Light Maintenance valuation": {
-          "avgMinutes": 11
+          "avgMinutes": 11,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.625,
-      "rerunCountAvg": 2.67,
+      "failureRate": 0.714,
+      "rerunCountAvg": 3.5,
       "rerunsPerMonth": {
         "2601": 6,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "RODB",
       "subprocess": "CSRBB (Val)",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 12
-        },
         "CSRBB Portfolio Valuation": {
-          "avgMinutes": 23
+          "avgMinutes": 23,
+          "sourceMonth": "2602"
         },
         "Light Maintenance CSRBB valuation": {
-          "avgMinutes": 4
+          "avgMinutes": 4,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.4,
-      "rerunCountAvg": 1.67,
+      "failureRate": 0.333,
+      "rerunCountAvg": 1.5,
       "rerunsPerMonth": {
         "2601": 2,
-        "2602": 1,
-        "2603": 2
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "RODB",
       "subprocess": "CSRBB (Plan)",
+      "referenceMonth": "2602",
       "stepDurations": {
         "import CSRBB strategies": {
-          "avgMinutes": 95
+          "avgMinutes": 64,
+          "sourceMonth": "2602"
         },
         "CSRBB Planning Run": {
-          "avgMinutes": 65
-        },
-        "export to ara": {
-          "avgMinutes": 2
+          "avgMinutes": 52,
+          "sourceMonth": "2602"
         },
         "export to ara CSRBB Planning": {
-          "avgMinutes": 2
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0,
       "rerunCountAvg": 1,
       "rerunsPerMonth": {
         "2601": 1,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "RODB",
       "subprocess": "EC",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 15
-        },
         "ing-ec valuation": {
-          "avgMinutes": 289
+          "avgMinutes": 289,
+          "sourceMonth": "2602"
         },
         "ing-ec valuation exports": {
-          "avgMinutes": 2
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
         },
         "Light Maintenance EC": {
-          "avgMinutes": 4
+          "avgMinutes": 4,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.75,
-      "rerunCountAvg": 4,
+      "failureRate": 0.778,
+      "rerunCountAvg": 4.5,
       "rerunsPerMonth": {
         "2601": 8,
-        "2602": 1,
-        "2603": 3
+        "2602": 1
       },
       "sampleErrors": [
         "Exception Info: Workflow finished with errors. (line: 43)  "
@@ -4888,35 +4746,33 @@
     {
       "location": "RODB",
       "subprocess": "KR",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 16
-        },
         "bpv-kr valuation": {
-          "avgMinutes": 158
-        },
-        "bpv-kr valuation exports": {
-          "avgMinutes": 0.25
+          "avgMinutes": 158,
+          "sourceMonth": "2602"
         },
         "Light Maintenance kr": {
-          "avgMinutes": 6
+          "avgMinutes": 6,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.786,
-      "rerunCountAvg": 4.67,
+      "failureRate": 0.8,
+      "rerunCountAvg": 5,
       "rerunsPerMonth": {
         "2601": 9,
-        "2602": 1,
-        "2603": 4
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "RODB",
       "subprocess": "Import Strategies",
+      "referenceMonth": "2602",
       "stepDurations": {
         "import strategies": {
-          "avgMinutes": 8
+          "avgMinutes": 6,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0,
@@ -4930,24 +4786,23 @@
     {
       "location": "RODB",
       "subprocess": "NII / Planning risk",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "export to ara": {
-          "avgMinutes": 0.25
-        },
         "planning run01": {
-          "avgMinutes": 482
+          "avgMinutes": 482,
+          "sourceMonth": "2602"
         },
         "MDL Processing": {
-          "avgMinutes": 23
+          "avgMinutes": 23,
+          "sourceMonth": "2602"
         },
         "planning run02": {
-          "avgMinutes": 127
+          "avgMinutes": 127,
+          "sourceMonth": "2602"
         },
         "planning run exports": {
-          "avgMinutes": 51
-        },
-        "export to ara NII": {
-          "avgMinutes": 0.25
+          "avgMinutes": 51,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.5,
@@ -4961,15 +4816,15 @@
     {
       "location": "RODB",
       "subprocess": "ITS Planning",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 6
-        },
         "ITS planning run": {
-          "avgMinutes": 9
+          "avgMinutes": 9,
+          "sourceMonth": "2602"
         },
         "Light Maintenance ITS planning": {
-          "avgMinutes": 5
+          "avgMinutes": 5,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.75,
@@ -4983,9 +4838,11 @@
     {
       "location": "RODB",
       "subprocess": "CSRBB Export",
+      "referenceMonth": "2602",
       "stepDurations": {
         "CSRBB exports": {
-          "avgMinutes": 2
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0,
@@ -4998,9 +4855,11 @@
     {
       "location": "TRDB",
       "subprocess": "Delete Portfolio",
+      "referenceMonth": "2602",
       "stepDurations": {
         "Delete portfolio from": {
-          "avgMinutes": 2
+          "avgMinutes": 3,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0,
@@ -5008,44 +4867,45 @@
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 1,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "TRDB",
       "subprocess": "Model Parameters",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load Model parameters": {
-          "avgMinutes": 4
-        },
-        "Model parameters comparison": {
-          "avgMinutes": 0.25
+          "avgMinutes": 4,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.2,
-      "rerunCountAvg": 1.25,
+      "failureRate": 0.25,
+      "rerunCountAvg": 1.33,
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 1,
-        "2602": 2,
-        "2603": 1
+        "2602": 2
       },
       "sampleErrors": []
     },
     {
       "location": "TRDB",
       "subprocess": "Cost Pricing",
+      "referenceMonth": "2602",
       "stepDurations": {
         "Generate Ex-ante DD NTG": {
-          "avgMinutes": 2
+          "avgMinutes": 1,
+          "sourceMonth": "2602"
         },
         "load dummy deals": {
-          "avgMinutes": 7
+          "avgMinutes": 5,
+          "sourceMonth": "2602"
         },
         "Ex-ante valuation": {
-          "avgMinutes": 17
+          "avgMinutes": 14,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0,
@@ -5053,20 +4913,22 @@
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 1,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "TRDB",
       "subprocess": "Spreads",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load Spreads": {
-          "avgMinutes": 43
+          "avgMinutes": 41,
+          "sourceMonth": "2602"
         },
         "Spreads comparison": {
-          "avgMinutes": 5
+          "avgMinutes": 4,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0,
@@ -5074,26 +4936,30 @@
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 1,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "TRDB",
       "subprocess": "Load Position",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load": {
-          "avgMinutes": 51
+          "avgMinutes": 19,
+          "sourceMonth": "2602"
         },
         "Stratification": {
-          "avgMinutes": 6
+          "avgMinutes": 7,
+          "sourceMonth": "2602"
         },
         "Position report exports": {
-          "avgMinutes": 11
+          "avgMinutes": 10,
+          "sourceMonth": "2602"
         },
         "copy from": {
-          "avgMinutes": 2
+          "avgMinutes": 1,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0,
@@ -5101,35 +4967,30 @@
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 1,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "TRDB",
       "subprocess": "Valuation",
+      "referenceMonth": "2602",
       "stepDurations": {
         "portfolio valuation run": {
-          "avgMinutes": 88
-        },
-        "export to ara": {
-          "avgMinutes": 25
-        },
-        "Light Maintenance": {
-          "avgMinutes": 25
+          "avgMinutes": 59,
+          "sourceMonth": "2602"
         },
         "valuation report OLAP exports": {
-          "avgMinutes": 25
+          "avgMinutes": 42,
+          "sourceMonth": "2602"
         },
         "valuation report QRM report exports": {
-          "avgMinutes": 25
-        },
-        "export to ara Portfolio Valuation": {
-          "avgMinutes": 25
+          "avgMinutes": 12,
+          "sourceMonth": "2602"
         },
         "Light Maintenance Portfolio Valuation": {
-          "avgMinutes": 25
+          "avgMinutes": 10,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.5,
@@ -5137,8 +4998,7 @@
       "rerunsPerMonth": {
         "2512": 2,
         "2601": 2,
-        "2602": 2,
-        "2603": 2
+        "2602": 2
       },
       "sampleErrors": [
         "Exception Info: Workflow finished with errors. (line: 47)  ",
@@ -5148,84 +5008,73 @@
     {
       "location": "TRDB",
       "subprocess": "CSRBB (Val)",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 17
-        },
         "CSRBB Portfolio Valuation": {
-          "avgMinutes": 22
+          "avgMinutes": 22,
+          "sourceMonth": "2602"
         },
         "Light Maintenance CSRBB valuation": {
-          "avgMinutes": 5
-        },
-        "CSRBB Portfolio Valuation Qtr": {
-          "avgMinutes": 25
+          "avgMinutes": 5,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.6,
-      "rerunCountAvg": 2.5,
+      "failureRate": 0.667,
+      "rerunCountAvg": 3,
       "rerunsPerMonth": {
         "2512": 6,
         "2601": 2,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "TRDB",
       "subprocess": "CSRBB (Plan)",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "export to ara": {
-          "avgMinutes": 2
-        },
         "import CSRBB strategies": {
-          "avgMinutes": 51
+          "avgMinutes": 51,
+          "sourceMonth": "2602"
         },
         "CSRBB Planning Run": {
-          "avgMinutes": 115
-        },
-        "export to ara CSRBB Planning": {
-          "avgMinutes": 0.25
-        },
-        "CSRBB Planning Run Qtr": {
-          "avgMinutes": 25
+          "avgMinutes": 115,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.333,
-      "rerunCountAvg": 1.5,
+      "failureRate": 0.4,
+      "rerunCountAvg": 1.67,
       "rerunsPerMonth": {
         "2512": 2,
         "2601": 2,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "TRDB",
       "subprocess": "EC",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 144
-        },
         "ing-ec valuation": {
-          "avgMinutes": 127
-        },
-        "Light Maintenance ing-ec valuation": {
-          "avgMinutes": 4
+          "avgMinutes": 127,
+          "sourceMonth": "2602"
         },
         "ing-ec valuation QRM Report exports": {
-          "avgMinutes": 18
+          "avgMinutes": 3,
+          "sourceMonth": "2602"
+        },
+        "Light Maintenance ing-ec valuation": {
+          "avgMinutes": 5,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.6,
-      "rerunCountAvg": 2.5,
+      "failureRate": 0.667,
+      "rerunCountAvg": 3,
       "rerunsPerMonth": {
         "2512": 3,
         "2601": 4,
-        "2602": 2,
-        "2603": 1
+        "2602": 2
       },
       "sampleErrors": [
         "Exception Info: Workflow finished with errors. (line: 48)  "
@@ -5234,9 +5083,11 @@
     {
       "location": "TRDB",
       "subprocess": "Gap + Liquidity IR",
+      "referenceMonth": "2602",
       "stepDurations": {
         "gap planning": {
-          "avgMinutes": 111
+          "avgMinutes": 111,
+          "sourceMonth": "2601"
         }
       },
       "failureRate": 0.333,
@@ -5251,36 +5102,34 @@
     {
       "location": "TRDB",
       "subprocess": "KR",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 13
-        },
         "bpv-kr valuation": {
-          "avgMinutes": 75
-        },
-        "bpv-kr valuation exports": {
-          "avgMinutes": 0.25
+          "avgMinutes": 75,
+          "sourceMonth": "2602"
         },
         "Light Maintenance bpv-kr valuation": {
-          "avgMinutes": 4
+          "avgMinutes": 4,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.636,
-      "rerunCountAvg": 2.75,
+      "failureRate": 0.7,
+      "rerunCountAvg": 3.33,
       "rerunsPerMonth": {
         "2512": 4,
         "2601": 5,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "TRDB",
       "subprocess": "Import Strategies",
+      "referenceMonth": "2602",
       "stepDurations": {
         "import strategies": {
-          "avgMinutes": 10
+          "avgMinutes": 9,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0,
@@ -5295,27 +5144,31 @@
     {
       "location": "TRDB",
       "subprocess": "NII / Planning risk",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "export to ara": {
-          "avgMinutes": 2
-        },
         "planning run01": {
-          "avgMinutes": 212
+          "avgMinutes": 212,
+          "sourceMonth": "2602"
         },
         "MDL Processing": {
-          "avgMinutes": 31
+          "avgMinutes": 31,
+          "sourceMonth": "2602"
         },
         "planning run02": {
-          "avgMinutes": 470
+          "avgMinutes": 470,
+          "sourceMonth": "2602"
         },
         "planning run QRM reporter exports": {
-          "avgMinutes": 15
+          "avgMinutes": 15,
+          "sourceMonth": "2602"
         },
         "planning run OLAP exports": {
-          "avgMinutes": 75
+          "avgMinutes": 75,
+          "sourceMonth": "2602"
         },
         "export to ara NII": {
-          "avgMinutes": 1
+          "avgMinutes": 1,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.571,
@@ -5330,15 +5183,15 @@
     {
       "location": "TRDB",
       "subprocess": "ITS Planning",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 19
-        },
         "ITS planning run": {
-          "avgMinutes": 13
+          "avgMinutes": 13,
+          "sourceMonth": "2602"
         },
         "Light Maintenance ITS planning": {
-          "avgMinutes": 13
+          "avgMinutes": 13,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.75,
@@ -5353,15 +5206,15 @@
     {
       "location": "TRDB",
       "subprocess": "AIC",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load AIC Spreads": {
-          "avgMinutes": 51
+          "avgMinutes": 48,
+          "sourceMonth": "2602"
         },
         "AIC portfolio valuation run": {
-          "avgMinutes": 25
-        },
-        "export to ara AIC portfolio valuation": {
-          "avgMinutes": 0.25
+          "avgMinutes": 26,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0,
@@ -5376,9 +5229,11 @@
     {
       "location": "TRDB",
       "subprocess": "CSRBB Export",
+      "referenceMonth": "2602",
       "stepDurations": {
         "CSRBB exports": {
-          "avgMinutes": 4
+          "avgMinutes": 4,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0,
@@ -5391,40 +5246,40 @@
     {
       "location": "TRDB",
       "subprocess": "PDCE",
+      "referenceMonth": "2512",
       "stepDurations": {
         "PDCE planning": {
-          "avgMinutes": 59
+          "avgMinutes": 59,
+          "sourceMonth": "2512"
         },
         "PDCE report QRM reporter exports": {
-          "avgMinutes": 16
+          "avgMinutes": 16,
+          "sourceMonth": "2512"
         }
       },
-      "failureRate": 0.333,
-      "rerunCountAvg": 1.5,
+      "failureRate": 0.5,
+      "rerunCountAvg": 2,
       "rerunsPerMonth": {
-        "2512": 2,
-        "2603": 1
+        "2512": 2
       },
       "sampleErrors": []
     },
     {
       "location": "TRDB",
       "subprocess": "EVE Optionality",
+      "referenceMonth": "2512",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 20
-        },
-        "EVE Optionality MC Valuation": {
-          "avgMinutes": 25
-        },
-        "EVE Optionality copy run parameters": {
-          "avgMinutes": 25
-        },
         "EVE Optionality SCF Valuation": {
-          "avgMinutes": 25
+          "avgMinutes": 22,
+          "sourceMonth": "2512"
         },
         "EVE Optionality SCF report": {
-          "avgMinutes": 25
+          "avgMinutes": 18,
+          "sourceMonth": "2512"
+        },
+        "Light Maintenance": {
+          "avgMinutes": 20,
+          "sourceMonth": "2512"
         }
       },
       "failureRate": 0.857,
@@ -5439,84 +5294,88 @@
     {
       "location": "WBUS",
       "subprocess": "Delete Portfolio",
+      "referenceMonth": "2602",
       "stepDurations": {
         "Delete portfolio from": {
-          "avgMinutes": 3
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.2,
-      "rerunCountAvg": 1.25,
+      "failureRate": 0.25,
+      "rerunCountAvg": 1.33,
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 2,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "WBUS",
       "subprocess": "Model Parameters",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load Model parameters": {
-          "avgMinutes": 2
-        },
-        "Model parameters comparison": {
-          "avgMinutes": 1
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.2,
-      "rerunCountAvg": 1.25,
+      "failureRate": 0.25,
+      "rerunCountAvg": 1.33,
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 2,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "WBUS",
       "subprocess": "Spreads",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load Spreads": {
-          "avgMinutes": 23
+          "avgMinutes": 19,
+          "sourceMonth": "2602"
         },
         "Spreads comparison": {
-          "avgMinutes": 1
+          "avgMinutes": 2,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.2,
-      "rerunCountAvg": 1.25,
+      "failureRate": 0.25,
+      "rerunCountAvg": 1.33,
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 2,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": []
     },
     {
       "location": "WBUS",
       "subprocess": "Load Position",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load": {
-          "avgMinutes": 35
+          "avgMinutes": 18,
+          "sourceMonth": "2602"
         },
         "Stratification": {
-          "avgMinutes": 5
+          "avgMinutes": 4,
+          "sourceMonth": "2602"
         },
         "copy from": {
-          "avgMinutes": 2
+          "avgMinutes": 1,
+          "sourceMonth": "2602"
         }
       },
-      "failureRate": 0.2,
-      "rerunCountAvg": 1.25,
+      "failureRate": 0.25,
+      "rerunCountAvg": 1.33,
       "rerunsPerMonth": {
         "2512": 1,
         "2601": 2,
-        "2602": 1,
-        "2603": 1
+        "2602": 1
       },
       "sampleErrors": [
         "Exception Info: There is not enough space on the disk.   (line: 96)  "
@@ -5525,21 +5384,19 @@
     {
       "location": "WBUS",
       "subprocess": "Valuation",
+      "referenceMonth": "2602",
       "stepDurations": {
         "portfolio valuation run": {
-          "avgMinutes": 16
-        },
-        "Light Maintenance": {
-          "avgMinutes": 23
+          "avgMinutes": 13,
+          "sourceMonth": "2602"
         },
         "valuation report OLAP exports": {
-          "avgMinutes": 17
+          "avgMinutes": 8,
+          "sourceMonth": "2602"
         },
         "Light Maintenance Portfolio Valuation": {
-          "avgMinutes": 7
-        },
-        "export to ara": {
-          "avgMinutes": 1
+          "avgMinutes": 7,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0,
@@ -5554,12 +5411,11 @@
     {
       "location": "WBUS",
       "subprocess": "CSRBB (Val)",
+      "referenceMonth": "2602",
       "stepDurations": {
         "CSRBB Portfolio Valuation": {
-          "avgMinutes": 20
-        },
-        "CSRBB Portfolio Valuation Qtr": {
-          "avgMinutes": 9
+          "avgMinutes": 13,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0,
@@ -5574,18 +5430,15 @@
     {
       "location": "WBUS",
       "subprocess": "CSRBB (Plan)",
+      "referenceMonth": "2602",
       "stepDurations": {
         "import CSRBB strategies": {
-          "avgMinutes": 118
+          "avgMinutes": 51,
+          "sourceMonth": "2602"
         },
         "CSRBB Planning Run": {
-          "avgMinutes": 110
-        },
-        "export to ara": {
-          "avgMinutes": 1
-        },
-        "CSRBB Planning Run Qtr": {
-          "avgMinutes": 25
+          "avgMinutes": 56,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.25,
@@ -5600,9 +5453,11 @@
     {
       "location": "WBUS",
       "subprocess": "Gap + Liquidity IR",
+      "referenceMonth": "2602",
       "stepDurations": {
         "gap planning": {
-          "avgMinutes": 111
+          "avgMinutes": 3.33,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.4,
@@ -5617,18 +5472,15 @@
     {
       "location": "WBUS",
       "subprocess": "KR",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 13
-        },
         "bpv-kr valuation": {
-          "avgMinutes": 14
+          "avgMinutes": 14,
+          "sourceMonth": "2602"
         },
         "Light Maintenance bpv-kr valuation": {
-          "avgMinutes": 4
-        },
-        "export to ara": {
-          "avgMinutes": 0.25
+          "avgMinutes": 4,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.5,
@@ -5643,9 +5495,11 @@
     {
       "location": "WBUS",
       "subprocess": "Import Strategies",
+      "referenceMonth": "2602",
       "stepDurations": {
         "import strategies": {
-          "avgMinutes": 5
+          "avgMinutes": 3,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0,
@@ -5660,21 +5514,23 @@
     {
       "location": "WBUS",
       "subprocess": "NII / Planning risk",
+      "referenceMonth": "2602",
       "stepDurations": {
         "planning run01": {
-          "avgMinutes": 58
+          "avgMinutes": 37,
+          "sourceMonth": "2602"
         },
         "MDL Processing": {
-          "avgMinutes": 7
+          "avgMinutes": 8,
+          "sourceMonth": "2602"
         },
         "planning run02": {
-          "avgMinutes": 50
+          "avgMinutes": 40,
+          "sourceMonth": "2602"
         },
         "planning run OLAP exports": {
-          "avgMinutes": 32
-        },
-        "export to ara": {
-          "avgMinutes": 0.25
+          "avgMinutes": 72,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.5,
@@ -5689,15 +5545,15 @@
     {
       "location": "WBUS",
       "subprocess": "ITS Planning",
+      "referenceMonth": "2602",
       "stepDurations": {
-        "Light Maintenance": {
-          "avgMinutes": 46
-        },
         "ITS planning run": {
-          "avgMinutes": 15
+          "avgMinutes": 15,
+          "sourceMonth": "2602"
         },
         "Light Maintenance ITS planning": {
-          "avgMinutes": 9
+          "avgMinutes": 9,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0.571,
@@ -5712,12 +5568,15 @@
     {
       "location": "WBUS",
       "subprocess": "AIC",
+      "referenceMonth": "2602",
       "stepDurations": {
         "load AIC Spreads": {
-          "avgMinutes": 25
+          "avgMinutes": 24,
+          "sourceMonth": "2602"
         },
         "AIC portfolio valuation run": {
-          "avgMinutes": 11
+          "avgMinutes": 11,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0,
@@ -5732,9 +5591,11 @@
     {
       "location": "WBUS",
       "subprocess": "CSRBB Export",
+      "referenceMonth": "2602",
       "stepDurations": {
         "CSRBB exports": {
-          "avgMinutes": 5
+          "avgMinutes": 5,
+          "sourceMonth": "2602"
         }
       },
       "failureRate": 0,

@@ -141,4 +141,102 @@ Flagged during Rose's review on 2026-04-18 but deferred for a future iteration:
 6. **Step-level efficient runtime definition**
    During review, Rose clarified that "efficient" per step = MAX duration across Completed iterations for that step (not canonical-iteration only). My code uses canonical iteration; the extract `prod-efficient-runtime-by-step-v3.xlsx` uses her MAX rule. Decide whether the backend's `EfficientRuntimeHours` should flip to MAX-per-step semantics for consistency.
 
-## Status: ✅ Done — 2026-04-12 (initial), refactored 2026-04-15 (v6-aligned, realistic data, operator overrides, DQ blocker). ⚠ 6 open items to revisit.
+---
+
+## Part D — M3 lock-in (2026-04-19)
+
+All 6 open items from Part C are closed. Full scripted-event system (backend + operator UI) built on top.
+
+### Open items — final status
+
+| # | Item | Resolution |
+|---|---|---|
+| 1 | Seed uses stale 2601 data | ✅ `build-final-mapping.js` now reads 2601 from `q3 logs.ods` sheet `2601`. Extended `excelDateToISO` to parse manual `"DD MM YYYY  HH:MM:SS"` strings. |
+| 2 | Good vs Bad month toggle (`simMode`) | ✅ Evolved into 3-mode system (Clean / Baseline / Stressed) covering more than the original 2-mode ask. |
+| 3 | Historical stats regeneration | ✅ Rebuilt `historical-stats.json` under the new MAX-per-step-per-month rule. 2602 reference for regular subs, 2512 for quarterly. 2603 excluded as incomplete. Failure/rerun/error aggregates use 3-month window (2512+2601+2602). |
+| 4 | Opportunity cost calibration | ✅ Historical OC recomputed as location-level dead time (time when nothing ran at the location). Previous per-sub iter-gap formula was inflating values (e.g., DEDB EC 2602 262h → 0h under correct rule). Median OC now 0.65h, max 76h — realistic. |
+| 5 | Simulator reset mid-run | ✅ Added `ThrowIfResetOrCancelled` helper. Reset now takes ≤2s (was 15+ min). Wired into iteration loop, step wait, hold wait, and `WaitSimulatedMinutesAsync` tick. `CleanupSimulatedRunAsync` also removes `OperatorOverride` rows. |
+| 6 | Step-level efficient runtime definition | ✅ Switched from canonical-iteration sum to MAX-per-step-per-month. Reference months: 2602 (regular), 2512 (quarterly). Blank stays blank (no phase fallback). Single-level subprocess fallback to 2601 if the reference month has no completed data at all (7 edge cases). |
+
+### Phase A — scripted-event backend
+
+New `ScriptedEventQueue` service (in-memory, thread-safe) + `POST /api/simulator/inject` (action=slow/fail/critical/delay/hold), `GET/DELETE /api/simulator/queue`, `POST /api/simulator/queue/{id}/release`, `GET /api/simulator/catalog`, `POST /api/simulator/mode/{clean|baseline|stressed}`. `SimulatorState` gained a `Mode` enum property. Mode gating in `SimulatorService`: Clean skips failures/overrides/DQ blocks entirely; Baseline keeps the current stochastic behavior; Stressed runs clean by default + applies queued scripted events. Override-picker biased toward shortest steps (fixed NLRB NII/Planning flat 0.04h bug).
+
+### Phase A.1 — critical-event two-pass rerun
+
+`critical` action triggers a location-wide rerun pattern: main walk produces iter 1 for all subs at the affected location, then ONE 24h business-hour gap at that location, then a second pass through all subs in the same phase-sub order generating iter 2 entries (canonical). Iter 1 entries are rewritten in place as superseded (efficient → failed). The 24h fix duration is attributed once to the latest iter 1 entry at the location (not per-sub), so aggregate opp cost = `fixHours`, not `fixHours × affected-sub count`. Result for DEDB example: 67.65h efficient + 60.47h failed + 24h opp cost = 152h total wall-clock impact.
+
+### Phase B — operator UI
+
+New `/simulator` page (sidebar nav item alongside Dashboard). Mode toggle (Clean / Baseline / Stressed) inline with play/pause/reset/speed controls. Scripted events panel showing the live queue with Cancel (×) and Release buttons. 5 injection forms: Slow, Delay, Hold, Fail (with Subprocess-level / Critical subtype toggle). Progress bar + ETA using a rolling 60s sample window (self-calibrates to speed and scripted-event overhead). Dashboard kept clean for stakeholders — just a compact "Sim: Running X/Y" status pill in the header.
+
+### Known issues parked for Phase B refinement (next session)
+
+1. **Critical events stay "pending" after run.** Root: `ScriptedEventQueue.PeekCriticalEvents()` reads without marking "Firing"; events only flip to "Done" at end-of-run via `MarkDone`. In Clean mode, `PeekCriticalEvents` is skipped entirely — events stay Pending forever. Same issue affects slow/fail/delay/hold targeting (loc, sub) the sim never reaches.
+2. **Default speed is 1000×** → 30–45 min runs. Should bump default to 5000×, raise `Math.Clamp` max to 10000×, expose higher speed buttons in `SimulatorControls.tsx`.
+
+## Status: ✅ Done — locked 2026-04-19. Known issues parked for Phase B refinement (next session).
+
+---
+
+## Part E — Phase B refinement (2026-04-20)
+
+Both Part D known issues closed, UI polished for stakeholders, and two architectural additions delivered in response to live demo feedback (15-min runs painful; replaying the same scenario should be instant).
+
+### The 3 stated priorities
+
+| # | Item | Resolution |
+|---|---|---|
+| 1 | Critical events stay "pending" | ✅ Hybrid Option A + B: `ScriptedEventQueue.PeekCriticalEvents()` now flips `Pending → Firing` on first peek, mirroring `Consume()` semantics. New `"Skipped"` status for events that never fired (Clean mode, or `(loc, sub)` target not reached). `MarkAllUnfiredSkipped()` called at end of successful run; events stay Pending across resets so they can fire on the next Start. Frontend type union updated, new badge `bg-slate-800/50 text-slate-500 italic`. |
+| 2 | Default speed 1000× → 30–45 min runs | ✅ `_speedMultiplier` default 1000 → **5000**, `Math.Clamp` upper bound 5000 → **10000**. Frontend `SPEEDS` array now `[1, 10, 60, 200, 1000, 2500, 5000]`. 10000× accessible via `POST /api/simulator/speed/10000` for demos. |
+| 3 | Dashboard compact progress bar | ✅ Added `variant` prop to `SimProgressBar` — compact variant renders a full rounded-full pill (Activity icon + label + mini bar + percentage + ETA) inside the Dashboard header, replacing the stateless "Sim: Running X/Y" label. Same ETA / sample-window logic as the full variant; only the layout differs. `_state.CurrentLocation`/`CurrentSubprocess` continue to update during fresh runs. |
+
+### Architectural additions
+
+**Fast-replay cache.** In-memory `Dictionary<string, CachedRun>` keyed on `SHA256(month + mode + queue-fingerprint)`, where queue-fingerprint is a stable hash of non-Skipped events' parameters (sorted). First Start with a given config runs fresh; result (SubprocessRuns + ProcessLogEntries + OperatorOverrides) is serialized to JSON and cached under the key. Repeat Start with matching fingerprint → `ReplayCachedRunAsync` dumps the rows via a new DbContext and animates progress 0→100% over 4 seconds (phase = `"Replaying (cached)"`). Re-injecting the same event params → same fingerprint → cache hit. Observed: 5-event fresh run at 10000× = 106 sec; cached replay = 7.7 sec. Endpoints: `GET /api/simulator/cache`, `POST /api/simulator/cache/clear`. Dashboard compact bar shows a yellow `⚡ Replaying (cached)` pill during the animation.
+
+**Per-location parallelism.** The main walk's innermost `foreach (loc in allLocs)` is now `Parallel.ForEachAsync` with `MaxDegreeOfParallelism = allLocs.Count`. Each parallel task:
+- Creates its own `IServiceScope` + `GreenlightContext` (SQLite serializes writes at the file lock, but Task.Delay-based sim waits truly overlap).
+- Uses a deterministic per-task `Random` seeded by `seed * 31 + loc.Id * 17 + sub.Id`.
+- Reloads `SubprocessRun` via its own context so EF tracks local updates (runRows from the outer context is stale in-memory after parallel writes — refreshed via a single bulk query before the rerun pass).
+- `locClock` is a `ConcurrentDictionary<int, DateTime>`; `_state.CompletedSubprocesses` advances via a new `SimulatorState.IncrementCompletedSubprocesses()` under the existing state lock.
+- The critical-event rerun pass is also parallelized over affected locations (each location's rerun is independent — 24h fix gap + per-sub iter-2 walk).
+
+Race-safe by construction: `_queue` has per-method locks, `_stats` is read-only, `locClock` per-key writes are disjoint across tasks. `_state.CurrentLocation` / `CurrentSubprocess` are last-writer-wins cosmetic fields and may flicker during the parallel walk — acceptable.
+
+**Scripted-event history panel + auto-purge on Start.** `ScriptedEventsPanel` now renders a `HISTORY · N` section below the active-events list showing Done + Skipped events dimmed with full params. At the start of each `RunSimulationAsync`, a new `ScriptedEventQueue.PurgeTerminal()` removes any Done/Skipped events — every Start is a fresh scenario with just currently-staged Pending events. Cache key computation happens *after* the purge, so re-injecting the same params gives the same fingerprint (cache still hits on intentional replays).
+
+**Pause/resume integrity under parallelism.** Each parallel task's `WaitSimulatedMinutesAsync` call spins in the existing `while (_state.IsPaused)` loop; all 15 tasks freeze at the same `CompletedSubprocesses` count on pause and resume cleanly. Verified with a 5-second pause mid-run (progress stayed at 50/203 throughout the pause).
+
+### Verification summary (2026-04-20)
+
+- **Priority 1 (lifecycle)**: Stressed critical @ DEDB → `Pending → Firing → Done` observed via `GET /api/simulator/queue` polling. Unreachable slow @ `ZZZZ` → `Pending → Skipped` at run end.
+- **Priority 2 (speed)**: `GET /api/simulator/status` reports `speedMultiplier: 5000` on backend startup. UI buttons up to 5000× active. `POST /api/simulator/speed/10000` accepted.
+- **Priority 3 (compact bar)**: Dashboard header shows mini bar + % + ETA during fresh runs (emerald), pauses (amber), completes (emerald "done"). Yellow ⚡ pill during cached replays.
+- **Cache**: First run saves 1 entry under key `1CD456D1`; second Start with same queue loads the entry and replays in 7.7s. Changing the queue produces a new key (`DF2DBA44`) and runs fresh.
+- **Parallelism**: 5-event fresh run at 10000× completes in 106s (vs ~2 min with 1 event pre-parallelism); `Critical rerun at DEDB` and `Critical rerun at AUDB` log lines interleave, confirming concurrent execution.
+- **Purge-on-Start**: Queue with 2 Done + 1 Pending → click Start → within 2s, queue has only the 1 Pending event; after completion, history shows just that event.
+- **Pause under parallelism**: 5-second pause froze `completedSubprocesses` at 50 for all 15 tasks simultaneously; resume completed to 203/203.
+
+### Files changed
+
+**Backend**
+- `Services/ScriptedEventQueue.cs` — status doc updated to include `"Skipped"`; `PeekCriticalEvents` flips `Pending → Firing`; new methods `MarkAllUnfiredSkipped()` and `PurgeTerminal()`.
+- `Services/SimulatorService.cs` — full refactor: cache infrastructure (`CachedRun`, `_runCache`, `ComputeCacheKey`, `FingerprintEvent`, `SaveRunToCacheAsync`, `ReplayCachedRunAsync`), purge at start of `RunSimulationAsync`, `Parallel.ForEachAsync` over locations in both main walk and critical rerun pass, `ConcurrentDictionary<int, DateTime>` locClock, post-walk refresh of `runRows`.
+- `Services/SimulatorState.cs` — default speed 1000 → 5000, clamp 5000 → 10000, new `IncrementCompletedSubprocesses()` method.
+- `Program.cs` — new endpoints `GET /api/simulator/cache`, `POST /api/simulator/cache/clear`.
+
+**Frontend**
+- `types.ts` — `ScriptedEvent.status` union adds `"Skipped"`.
+- `components/SimProgressBar.tsx` — `variant: "full" | "compact"` prop; compact variant renders a header-ready pill with ETA; yellow Zap icon + `"Sim: Replaying (cached)"` label when `status.phase?.includes("cached")`.
+- `components/ScriptedEventsPanel.tsx` — added `HISTORY · N` section below active events; Skipped badge styling; `renderEventRow` helper reused for both sections.
+- `components/SimulatorControls.tsx` — SPEEDS array now `[1, 10, 60, 200, 1000, 2500, 5000]`.
+- `App.tsx` — Dashboard header swaps the static "Sim:" pill for `<SimProgressBar status={simStatus} variant="compact" />`.
+
+### Known non-issues
+
+- Cache is in-memory only; cleared on backend restart. Acceptable for demo use; a persistence layer would be over-engineering for now.
+- `_state.CurrentLocation` / `CurrentSubprocess` race during parallel walk → UI label flickers. Cosmetic only; results correct.
+- `MaxDegreeOfParallelism = 15` exceeds typical CPU core count, but the dominant work is I/O-bound (`Task.Delay` for simulated time), so over-subscription is fine.
+
+## Status: ✅ Phase B complete — locked 2026-04-20. M3 is fully done.

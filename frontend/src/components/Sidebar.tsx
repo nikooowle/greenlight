@@ -7,6 +7,7 @@ import {
   BarChart3,
   Bell,
   Users,
+  SlidersHorizontal,
   ChevronLeft,
   ChevronRight,
   Activity,
@@ -15,6 +16,7 @@ import { cn } from "@/lib/utils"
 
 const navItems = [
   { icon: LayoutDashboard, label: "Dashboard", path: "/" },
+  { icon: SlidersHorizontal, label: "Simulator", path: "/simulator" },
   { icon: AlertTriangle, label: "Issues", path: "/issues" },
   { icon: Clock, label: "SLA Monitor", path: "/sla" },
   { icon: ShieldCheck, label: "Data Quality", path: "/data-quality" },
@@ -23,9 +25,13 @@ const navItems = [
   { icon: Users, label: "Management", path: "/management" },
 ]
 
-export function Sidebar() {
+interface SidebarProps {
+  activePath: string
+  onNavigate: (path: string) => void
+}
+
+export function Sidebar({ activePath, onNavigate }: SidebarProps) {
   const [collapsed, setCollapsed] = useState(false)
-  const [activePath, setActivePath] = useState("/")
 
   return (
     <aside
@@ -50,7 +56,7 @@ export function Sidebar() {
         {navItems.map((item) => (
           <button
             key={item.path}
-            onClick={() => setActivePath(item.path)}
+            onClick={() => onNavigate(item.path)}
             className={cn(
               "w-full flex items-center gap-3 px-3 py-2.5 rounded-md text-sm transition-colors",
               activePath === item.path

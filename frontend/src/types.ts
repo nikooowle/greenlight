@@ -37,6 +37,46 @@ export interface MatrixCell {
   totalRequiredSteps: number
 }
 
+export type SimMode = "clean" | "baseline" | "stressed"
+
+export type ScriptedEventAction = "slow" | "fail" | "critical" | "delay" | "hold"
+
+export interface CatalogStep {
+  step: string
+  avgMinutes: number
+}
+
+export interface CatalogSubprocess {
+  subprocess: string
+  phase: string
+  isQuarterly: boolean
+  steps: CatalogStep[]
+  sampleErrors: string[]
+}
+
+export interface CatalogEntry {
+  location: string
+  subprocesses: CatalogSubprocess[]
+}
+
+export interface ScriptedEvent {
+  id: number
+  action: ScriptedEventAction
+  location: string
+  subprocess: string | null
+  step: string | null
+  slowMultiplier: number | null
+  failAfterPercent: number | null
+  extraIterations: number | null
+  opportunityCostHours: number | null
+  workingDays: number | null
+  discoveryWd: number | null
+  reason: string | null
+  errorMessage: string | null
+  isReleased: boolean
+  status: "Pending" | "Firing" | "Done" | "Skipped"
+}
+
 export interface SimulatorStatus {
   isRunning: boolean
   isPaused: boolean
@@ -46,4 +86,7 @@ export interface SimulatorStatus {
   totalSubprocesses: number
   currentSubprocess: string | null
   currentLocation: string | null
+  mode: SimMode
+  targetMonth?: string
+  isQuarterEnd?: boolean
 }
